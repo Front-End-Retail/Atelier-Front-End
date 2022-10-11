@@ -5,12 +5,9 @@ A complete redesign of the web portal for the online retailer Atelier
 ## Table Of Contents
 
 Link to usage
+
 Link to installation
 
-```bash
-pip install foobar
-
-```
 
 ## Installation
 
