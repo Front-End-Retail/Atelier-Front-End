@@ -4,12 +4,24 @@ A complete redesign of the web portal for the online retailer Atelier
 
 ## Table Of Contents
 
-Link to usage
+### Link to usage
 
-Link to installation
+  * Overview of the application
+    * Overview
+    * Ratings and Reviews
+    * Questions and Answers
+    * Related Items and Comparison
+  
+### Link to installation
+
 
 
 ## Installation
+  * List all dependencies
+  ```javascript
+  npm install
+  ```
+  * Environmental Requirements
 
 ## Usage
 
