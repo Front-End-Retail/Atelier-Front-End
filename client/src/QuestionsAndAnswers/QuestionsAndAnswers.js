@@ -1,17 +1,22 @@
 import React from 'react';
+const axios = require('axios');
 
 const { useState, useEffect } = React;
 
 const QuestionsAndAnswers = () => {
 
-  const = tryARequest => {
-
+  const tryARequest = () => {
+    axios.default.get('/reviews', { params: { specificURL : 'qa/questions?product_id=37311' }}).then((data) => {
+      console.log('gotten', data.data)
+    }).catch(err => {
+      console.log('error getting', err)
+    })
   }
 
   return (
     <div>
       Questions And Answers
-      <button onClick={()=>{}}>Test Button</button>
+      <button onClick={()=>{tryARequest()}}>Test Button</button>
     </div>
   )
 }
