@@ -7,10 +7,10 @@ const app = express();
 app.use(express.json());
 
 //sets up middleware to add github API key to every request
-app.use(function(req, res, next) {
-  req.setHeader(Authorization: process.env.GITHUB_API_KEY)
+app.use((req, res, next) => {
+  res.setHeader({'Authorization' : process.env.GITHUB_API_KEY})
   next()
-})
+});
 
 //other option for default autho headers in axios
 //axios.defaults.headers.common['Authorization'] = `process.env.GITHUB_API_KEY`;
