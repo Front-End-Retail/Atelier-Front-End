@@ -1,10 +1,14 @@
 const express = require('express');
 const path = require('path');
 require('dotenv').config();
+const {getReviews} = require('./controllers/reviewControllers')
 
 const app = express();
 
+app.use(express.static(path.join(__dirname, '/../client/dist')));
 app.use(express.json());
+
+console.log(path.join(__dirname, '/../client/dist'))
 
 //sets up middleware to add github API key to every request
 app.use((req, res, next) => {
@@ -12,7 +16,9 @@ app.use((req, res, next) => {
   next()
 });
 
-//other option for default autho headers in axios
+
+app.get('/reviews', getReviews)
+//other option for default author headers in axios
 //axios.defaults.headers.common['Authorization'] = `process.env.GITHUB_API_KEY`;
 
 //ROUTES BELOW
