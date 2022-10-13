@@ -12,3 +12,8 @@ const QuestionsAndAnswers = () => {
 }
 
 export default QuestionsAndAnswers;
+
+/*
+General API for Atelier
+https://app-hrsei-api.herokuapp.com/api/fec2/:hr-rfe/
+*/
