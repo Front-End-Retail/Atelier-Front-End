@@ -12,7 +12,7 @@ console.log(path.join(__dirname, '/../client/dist'))
 
 //sets up middleware to add github API key to every request
 app.use((req, res, next) => {
-  res.setHeader({'{Authorization' : process.env.GITHUB_API_KEY})
+  res.setHeader({'Authorization' : process.env.GITHUB_API_KEY})
   next()
 });
 
