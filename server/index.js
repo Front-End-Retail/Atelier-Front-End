@@ -11,6 +11,10 @@ app.use(express.json());
 console.log(path.join(__dirname, '/../client/dist'))
 
 //sets up middleware to add github API key to every request
+app.use((req, res, next)=> {
+  console.log(req);
+  next()
+})
 app.use((req, res, next) => {
   res.setHeader({'Authorization' : process.env.GITHUB_API_KEY})
   next()
@@ -23,5 +27,5 @@ app.get('/reviews', getReviews)
 
 //ROUTES BELOW
 
-app.listen(3001);
+app.listen(3000);
 console.log('Listening on port 3001');
