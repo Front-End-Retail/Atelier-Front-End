@@ -6,7 +6,8 @@ const { useState, useEffect } = React;
 const RatingsAndReviews = () => {
 
   const fetchReviews = () => {
-    axios.get('/reviews').then(reviewData => {
+    axios({url: 'http://localhost:3000/reviews', method: 'get'}).then(reviewData => {
+      console.log('success!')
       console.log(reviewData);
     }).catch(error => {
       console.log('could not perform get request', error)

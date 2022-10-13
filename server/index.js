@@ -10,10 +10,15 @@ app.use(express.static(path.join(__dirname, '/../client/dist')));
 app.use(express.json());
 
 //sets up middleware to add github API key to every request
-// app.use((req, res, next) => {
-//   res.setHeader({'Authorization' : process.env.GITHUB_API_KEY})
-//   next()
-// });
+app.use((req, res, next)=> {
+  console.log(req);
+  next()
+})
+app.use((req, res, next) => {
+  res.setHeader({'Authorization' : process.env.GITHUB_API_KEY})
+  next()
+});
+
 
 //other option for default author headers in axios
 axios.defaults.headers.common['Authorization'] = `process.env.GITHUB_API_KEY`;
@@ -45,5 +50,5 @@ app.get('/reviews', (req, res) => {
 //   res.end()
 // })
 
-app.listen(3001);
+app.listen(3000);
 console.log('Listening on port 3001');
