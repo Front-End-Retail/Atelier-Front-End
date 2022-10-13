@@ -15,7 +15,7 @@ const RatingsAndReviews = () => {
   }
 
 useEffect(() => {
-  fetchReviews()
+  // fetchReviews()
 })
   return (
     <div>
