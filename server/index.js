@@ -8,17 +8,10 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 app.use(express.json());
-
-//sets up middleware to add github API key to every request
-app.use((req, res, next)=> {
-  console.log(req);
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*")
   next()
 })
-app.use((req, res, next) => {
-  res.setHeader({'Authorization' : process.env.GITHUB_API_KEY})
-  next()
-});
-
 
 //other option for default author headers in axios
 axios.defaults.headers.common['Authorization'] = `process.env.GITHUB_API_KEY`;
@@ -26,7 +19,7 @@ axios.defaults.headers.common['Authorization'] = `process.env.GITHUB_API_KEY`;
 let authObject = { 'Authorization' : process.env.GITHUB_API_KEY }
 
 //ROUTES BELOW
-app.get('/reviews', (req, res) => {
+app.get('/products', (req, res) => {
   console.log('in the get', req.query)
   console.log(authObject)
   console.log('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/' + req.query.specificURL)
@@ -39,16 +32,6 @@ app.get('/reviews', (req, res) => {
     res.end()
   })
 })
-
-// app.get('/reviews', (req, res) => {
-//   console.log('in the get')
-//   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/' + req.url).then(data => {
-//     console.log("got the data, I hope")
-//   }).catch(err => {
-//     console.log('error on server in get', err)
-//   })
-//   res.end()
-// })
 
 app.listen(3000);
 console.log('Listening on port 3001');

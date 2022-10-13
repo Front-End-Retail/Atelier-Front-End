@@ -6,7 +6,7 @@ const { useState, useEffect } = React;
 const QuestionsAndAnswers = () => {
 
   const tryARequest = () => {
-    axios.default.get('/reviews', { params: { specificURL : 'qa/questions?product_id=37311' }}).then((data) => {
+    axios.default.get('http://localhost:3000/products', { params: { specificURL : 'qa/questions?product_id=37311' }}).then((data) => {
       console.log('gotten', data.data)
     }).catch(err => {
       console.log('error getting', err)
