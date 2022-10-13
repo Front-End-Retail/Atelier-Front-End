@@ -6,7 +6,7 @@ const RatingsAndReviews = () => {
 
   return (
     <div>
-      This will be Ratings And Reviews
+      test test test test
     </div>
   )
 }
