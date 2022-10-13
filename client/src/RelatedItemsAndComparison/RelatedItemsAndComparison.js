@@ -7,7 +7,7 @@ const RelatedItemsAndComparison = () => {
   return (
     <div>
       Questions And Answers
-    </div>
+    </div>ch
   )
 }
 
