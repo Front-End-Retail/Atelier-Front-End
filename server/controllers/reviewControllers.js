@@ -1,0 +1,1 @@
+// Put all controllers for the ratings and reviews modules here
