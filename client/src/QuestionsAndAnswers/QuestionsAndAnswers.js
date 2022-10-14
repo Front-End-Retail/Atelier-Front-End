@@ -11,8 +11,7 @@ const QuestionsAndAnswers = () => {
   const [currentQuestions, setCurrentQuestions] = useState({})
 
   const getProductQuestions = () => {
-    axios.default.get('http://localhost:3000/products', { params: { specificURL: `qa/questions?product_id=${currentId}` } }).then((data) => {
-      console.log('gotten', data.data)
+    axios.default.get('http://localhost:3000/qanda', { params: { specificURL: `qa/questions?product_id=${currentId}` } }).then((data) => {
       setCurrentQuestions(data.data.results)
     }).catch(err => {
       console.log('error getting', err)

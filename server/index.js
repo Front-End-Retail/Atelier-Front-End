@@ -21,14 +21,36 @@ let authObject = { 'Authorization': process.env.GITHUB_API_KEY }
 
 //ROUTES BELOW
 app.get('/products', (req, res) => {
-  console.log('in the get', req.query)
-  console.log(authObject)
-  console.log('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/' + req.query.specificURL)
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/' + req.query.specificURL, { headers: authObject }).then(data => {
-    console.log("got the data, I hope", data.data)
     res.send(data.data)
   }).catch(err => {
-    console.log('error on server in get')
+    res.status(500)
+    res.end()
+  })
+})
+
+app.get('/comparison', (req, res) => {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/' + req.query.specificURL, { headers: authObject }).then(data => {
+    res.send(data.data)
+  }).catch(err => {
+    res.status(500)
+    res.end()
+  })
+})
+
+app.get('/qanda', (req, res) => {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/' + req.query.specificURL, { headers: authObject }).then(data => {
+    res.send(data.data)
+  }).catch(err => {
+    res.status(500)
+    res.end()
+  })
+})
+
+app.get('/review', (req, res) => {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/' + req.query.specificURL, { headers: authObject }).then(data => {
+    res.send(data.data)
+  }).catch(err => {
     res.status(500)
     res.end()
   })
