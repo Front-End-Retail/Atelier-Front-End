@@ -1,12 +1,55 @@
+/* QandA Main Component */
+
 .qandawrapper {
   border: 1px solid black;
 }
 
+.qasearchwrapper {
+  padding: 5px;
+}
+
+.qandatitle {
+  padding: 5px;
+  font-weight:lighter;
+}
+
+/* QandA List */
+
+.qalistqlinewrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.qalistquestion {
+  display: flex;
+  margin-left: 1%;
+  gap: 3%;
+}
+
+.qalisthelpful {
+  display: flex;
+  margin-right: 3%;
+  margin-top: 5px;
+  font-size: smaller;
+  gap: 7px;
+}
+
+.qalistqtext {
+  margin-top: 20px;
+  display:inline;
+  min-width: fit-content;
+}
+
+
+/* QandA Search */
+
 .search-field {
-  width: 100%;
+  width: 97%;
+  height: 50px;
   padding: 10px 35px 10px 15px;
+  margin-left: 3px;
+  margin-right: 3px;
   border: none;
-  border-radius: 100px;
   border: 1px solid black;
 }
 
@@ -14,7 +57,7 @@
   background: transparent;
   border: none;
   outline: none;
-  margin-left: -35px;
+  margin-left: -45px;
 }
 
 .search-button img {

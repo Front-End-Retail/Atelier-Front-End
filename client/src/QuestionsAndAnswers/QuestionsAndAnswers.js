@@ -18,8 +18,8 @@ const QuestionsAndAnswers = () => {
 
   return (
     <div className={'qandawrapper'}>
-      <h3>Questions And Answers</h3>
-      <button onClick={() => { tryARequest() }}>Test Button</button>
+      <h3 className={'qandatitle'}>QUESTIONS & ANSWERS</h3>
+      {/* <button onClick={() => { tryARequest() }}>Test Button</button> */}
       <QASearch />
       <div className={'qalistwrapper'}>
         <QAListItem />
