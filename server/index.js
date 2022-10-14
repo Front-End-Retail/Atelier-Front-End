@@ -8,8 +8,9 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 app.use(express.json());
+// allow the client at port 3001 to send requests to the server
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Origin", "http://localhost:3001")
   next()
 })
 

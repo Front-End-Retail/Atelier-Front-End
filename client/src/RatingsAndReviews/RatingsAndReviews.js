@@ -1,16 +1,17 @@
 import React from 'react';
-import axios from 'axios';
+import ReviewList from './components/ReviewList.js'
+// import axios from 'axios';
+const axios = require('axios');
 
 const { useState, useEffect } = React;
 
 const RatingsAndReviews = () => {
 
-  const fetchReviews = () => {
-    axios({url: 'http://localhost:3000/reviews', method: 'get'}).then(reviewData => {
-      console.log('success!')
-      console.log(reviewData);
-    }).catch(error => {
-      console.log('could not perform get request', error)
+  const tryARequest = () => {
+    axios.default.get('http://localhost:3000/products', { params: { specificURL : 'reviews?product_id=37311' }}).then((data) => {
+      console.log('gotten', data.data)
+    }).catch(err => {
+      console.log('error getting', err)
     })
   }
 
@@ -19,7 +20,8 @@ useEffect(() => {
 })
   return (
     <div>
-      Ratings and Reviews go here!
+      <ReviewList />
+      <button onClick={()=>{tryARequest()}}>Rating Test</button>
     </div>
   )
 }
