@@ -1,13 +1,16 @@
 import React from 'react';
+import '../assests/overview.css';
+import ImageGallery from './ImageGallery.jsx';
+import Product from './Product.jsx';
 
 const { useState, useEffect } = React;
 
-const Overview = () => {
+const Overview = (props) => {
 
   return (
-    <div>
-      This will be Overview
-      <p>Test Test Testahhhhhhhhh</p>
+    <div className='overview-container'>
+      <ImageGallery />
+      <Product />
     </div>
   )
 }

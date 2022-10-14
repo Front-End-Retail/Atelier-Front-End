@@ -13,9 +13,9 @@ const App = () => {
     <div>
       <h1>The modules will be below</h1>
       <Overview />
-      <QuestionsAndAnswers />
+      {/* <QuestionsAndAnswers />
       <RatingsAndReviews />
-      <RelatedItemsAndComparison />
+      <RelatedItemsAndComparison /> */}
     </div>
   );
 }
