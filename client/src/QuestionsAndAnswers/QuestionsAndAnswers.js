@@ -34,7 +34,7 @@ export default QuestionsAndAnswers;
 
 /*
 TODOs:
-
+--Make initial get request to render QandA for particular product
 
 
 
