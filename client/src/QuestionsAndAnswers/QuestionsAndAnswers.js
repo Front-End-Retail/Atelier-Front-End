@@ -24,8 +24,8 @@ const QuestionsAndAnswers = () => {
       <div className={'qalistwrapper'}>
         <QAListItem />
       </div>
-      <button>MORE ANSWERED QUESTIONS</button>
-      <button>ADD A QUESTION +</button>
+      <button className={"qanda-button"}>MORE ANSWERED QUESTIONS</button>
+      <button className={"qanda-button"}>ADD A QUESTION +</button>
     </div>
   )
 }
