@@ -9,17 +9,19 @@ const { useState, useEffect } = React;
 
 const RatingsAndReviews = () => {
   const [reviews, setReviews] = useState([])
+  const [metaReviews, setMetaReviews] = useState({})
 
-  const tryARequest = () => {
-    axios.default.get('http://localhost:3000/products', { params: { specificURL : 'reviews?product_id=37311' }}).then((reviewData) => {
+  const reviewRequest = (query, func = () => {}) => {
+    axios.default.get('http://localhost:3000/products', { params: { specificURL : query }}).then((reviewData) => {
       console.log('gotten', reviewData.data)
-      setReviews(reviewData.data.results)
+      func(reviewData.data.results)
     }).catch(err => {
       console.log('error getting', err)
     })
   }
   const testButton = () => {
-    tryARequest()
+    reviewRequest('reviews?product_id=37311', setReviews)
+    reviewRequest('reviews/meta?product_id=37311', setMetaReviews)
   }
 
 useEffect(() => {
@@ -28,7 +30,7 @@ useEffect(() => {
   return (
       <div id="randr">
         <RatingBreakdown />
-        <ReviewList />
+        <ReviewList reviews={reviews}/>
         <button onClick={testButton}>Rating Test</button>
       </div>
   )
