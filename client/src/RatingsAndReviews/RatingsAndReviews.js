@@ -10,28 +10,39 @@ const { useState, useEffect } = React;
 const RatingsAndReviews = () => {
   const [reviews, setReviews] = useState([])
   const [metaReviews, setMetaReviews] = useState({})
+  const [ratingAverage, setRatingAverage] = useState()
 
-  const reviewRequest = (query, func = () => {}) => {
-    axios.default.get('http://localhost:3000/products', { params: { specificURL : query }}).then((reviewData) => {
+  const reviewRequest = () => {
+    axios.default.get('http://localhost:3000/products', { params: { specificURL : 'reviews?product_id=37311' }}).then((reviewData) => {
       console.log('gotten', reviewData.data)
-      func(reviewData.data.results)
+      setReviews(reviewData.data.results)
+    }).catch(err => {
+      console.log('error getting', err)
+    })
+  }
+  const metaRequest = () => {
+    axios.default.get('http://localhost:3000/products', { params: { specificURL : 'reviews/meta?product_id=37311' }}).then((reviewData) => {
+      console.log('gotten', reviewData.data)
+      setMetaReviews(reviewData.data)
     }).catch(err => {
       console.log('error getting', err)
     })
   }
   const testButton = () => {
-    reviewRequest('reviews?product_id=37311', setReviews)
-    reviewRequest('reviews/meta?product_id=37311', setMetaReviews)
+    reviewRequest( setReviews)
+    metaRequest()
   }
 
 useEffect(() => {
   // fetchReviews()
 })
   return (
-      <div id="randr">
-        <RatingBreakdown />
-        <ReviewList reviews={reviews}/>
+      <div >
         <button onClick={testButton}>Rating Test</button>
+        <div id="randr">
+        <RatingBreakdown metaReviews={metaReviews}/>
+        <ReviewList reviews={reviews}/>
+        </div>
       </div>
   )
 }
