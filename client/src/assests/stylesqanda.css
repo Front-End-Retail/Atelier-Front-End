@@ -1,0 +1,25 @@
+.qandawrapper {
+  border: 1px solid black;
+}
+
+.search-field {
+  width: 100%;
+  padding: 10px 35px 10px 15px;
+  border: none;
+  border-radius: 100px;
+  border: 1px solid black;
+}
+
+.search-button {
+  background: transparent;
+  border: none;
+  outline: none;
+  margin-left: -35px;
+}
+
+.search-button img {
+  width: 20px;
+  height: 20px;
+  margin-bottom: -7px;
+  object-fit: cover;
+}
