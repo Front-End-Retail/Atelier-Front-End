@@ -1,7 +1,7 @@
 import React from 'react';
 import QASearch from './QASearch.js'
 import QAListItem from './QAListItem.js'
-import '../assests/stylesqanda.css';
+import '../assets/stylesqanda.css';
 const axios = require('axios');
 
 const { useState, useEffect } = React;
