@@ -3,11 +3,17 @@ const axios = require('axios');
 const { useState, useEffect } = React;
 import ReviewEntry from './ReviewEntry.js'
 
-const ReviewList = () => {
+const ReviewList = ({reviews}) => {
   return (
-    <div>
-      Review List goes here
-      <ReviewEntry />
+    <div id="review-list">
+      {reviews.map((review, index) => {
+        return (
+          <ReviewEntry key={index} review={review}/>
+        )
+      })}<div id="button-cont">
+      <button className="review-button">More Reviews</button>
+      <button className="review-button">Add Review</button>
+      </div>
     </div>
   )
 }
