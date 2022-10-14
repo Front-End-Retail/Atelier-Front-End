@@ -32,7 +32,7 @@ const QAListItem = ({ question }) => {
         </div>
         <div className={"qalist-helpful"}>
           <p>Helpful?</p>
-          <p>Yes({question.question_helpfulness})</p>
+          <p>Yes ({question.question_helpfulness})</p>
           <p> | </p>
           <p> Add Answer </p>
         </div>

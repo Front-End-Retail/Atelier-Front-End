@@ -18,7 +18,7 @@ const QAAnswerItem = ({ answer }) => {
           <p>by {answer.answerer_name}, {format(parseISO(answer.date), 'MMMM d, yyyy')}</p>
           <p> | </p>
           <p>Helpful?</p>
-          <p>Yes({answer.helpfulness})</p>
+          <p>Yes ({answer.helpfulness})</p>
           <p> | </p>
           <p> Report </p>
         </div>
