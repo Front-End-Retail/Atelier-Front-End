@@ -1,0 +1,121 @@
+/* QandA Main Component */
+
+.qandawrapper {
+  border: 1px solid black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.qasearchwrapper {
+  padding: 5px;
+}
+
+.qandatitle {
+  padding: 5px;
+  font-weight:lighter;
+  margin: 1%;
+}
+
+/* QandA List */
+
+    /* Question Section of QandALIST*/
+
+.qalist-q-line-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.qalist-question {
+  display: flex;
+  margin-left: 1%;
+  gap: 3%;
+}
+
+.qalist-helpful {
+  display: flex;
+  margin-right: 3%;
+  margin-top: 5px;
+  font-size: smaller;
+  font-weight: lighter;
+  gap: 7px;
+}
+
+.qalist-q-text {
+  margin-top: 20px;
+  display:inline;
+  min-width: fit-content;
+}
+
+    /* Answer Section of QandALIST*/
+
+.qalist-aline-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: -20px;
+}
+
+.qalist-answer {
+  display: flex;
+  margin-left: 1%;
+  gap: 1%;
+  max-width: 65%;
+}
+
+.qalist-a-text {
+  margin-top: 20px;
+  display:inline;
+  min-width: fit-content;
+}
+
+.qalist-answer-info-wrapper {
+  display: flex;
+  margin-top: -20px;
+  font-size: smaller;
+  font-weight: lighter;
+  gap: 7px;
+  margin-left: 3.5%;
+}
+
+
+/* QandA Search */
+
+.search-field {
+  width: 97%;
+  height: 50px;
+  padding: 10px 35px 10px 15px;
+  margin-left: 3px;
+  margin-right: 3px;
+  border: none;
+  border: 1px solid black;
+  font-weight: bold;
+}
+
+.search-button {
+  background: transparent;
+  border: none;
+  outline: none;
+  margin-left: -45px;
+}
+
+.search-button img {
+  width: 20px;
+  height: 20px;
+  margin-bottom: -7px;
+  object-fit: cover;
+}
+
+/* Buttons on QandA Main */
+
+.qanda-button {
+  padding: 20px;
+  margin: 1%;
+  background-color: white;
+  font-weight: bold;
+}
+
+.qanda-button:hover {
+  padding: 20px;
+  margin: 1%;
+  background-color: rgb(214, 214, 214);
+  font-weight: bold;
+}

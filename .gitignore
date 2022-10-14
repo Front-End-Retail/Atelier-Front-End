@@ -103,3 +103,5 @@ typings/
 .tern-port
 
 client/dist/bundle.js
+
+**/.DS_Store

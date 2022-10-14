@@ -15,6 +15,10 @@ module.exports = {
         loader: "babel-loader"
       },
       {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        type: "asset",
+      },
+      {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
       }
