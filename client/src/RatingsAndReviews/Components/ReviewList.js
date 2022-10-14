@@ -5,9 +5,11 @@ import ReviewEntry from './ReviewEntry.js'
 
 const ReviewList = () => {
   return (
-    <div>
+    <div id="review-list">
       Review List goes here
       <ReviewEntry />
+      <button>More Reviews</button>
+      <button>Add Review</button>
     </div>
   )
 }

@@ -2,12 +2,12 @@ import React from 'react';
 const axios = require('axios');
 const { useState, useEffect } = React;
 
-const StarRating = () => {
+const RatingBreakdown = () => {
   return (
     <div>
-      Star Rating Generator Component
+      Rating Breakdown
     </div>
   )
 }
 
-export default StarRating;
+export default RatingBreakdown;

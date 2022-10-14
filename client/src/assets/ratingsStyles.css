@@ -1,0 +1,11 @@
+#randr {
+  display: flex;
+  border: solid black 1px;
+  flex-direction: row;
+  width: 80vw;
+  height: 500px;
+}
+
+#review-list {
+  margin-left: auto;
+}
