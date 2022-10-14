@@ -44,12 +44,8 @@ export default QuestionsAndAnswers;
 
 /*
 TODOs:
---Make initial get request to render QandA for particular product
-
-
-
-
-
+--Make initial get request to render QandA for particular product -- done
+--Need to add functionality to search, more answered questions and add a question
 
 
 General API for Atelier

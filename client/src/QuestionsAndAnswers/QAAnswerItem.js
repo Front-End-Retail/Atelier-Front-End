@@ -24,3 +24,9 @@ const QAAnswerItem = ({ answer }) => {
 }
 
 export default QAAnswerItem;
+
+/*
+TODOs:
+--Reformat the "A:" so the answer info wrapper always lines up correctly beneath the answer text
+
+*/
