@@ -7,6 +7,24 @@ const { useState, useEffect } = React;
 const QAListItem = ({ question }) => {
   console.log("QUESTION IN THE LIST", question)
 
+  const [questionId, setQuestionId] = useState(question.question_id)
+  const [answersForQ, setAnswersForQ] = useState([])
+
+  const getAnswersArray = (questionIdPassedIn) => {
+    axios.default.get('http://localhost:3000/products', { params: { specificURL: `qa/questions/${questionIdPassedIn}/answers` } }).then((data) => {
+      console.log('GOT THEM ANSWERS', data.data)
+      setAnswersForQ(data.data.results)
+    }).catch(err => {
+      console.log('error getting answers', err)
+    })
+  }
+
+//qa/questions/:question_id/answers
+
+  useEffect(() => {
+    getAnswersArray(questionId)
+  }, [questionId, setQuestionId])
+
   return (
     <div className={'qalist-item-wrapper'}>
       <div className={"qalist-q-line-wrapper"}>
@@ -21,7 +39,9 @@ const QAListItem = ({ question }) => {
           <p> Add Answer </p>
         </div>
       </div>
-      <QAAnswerItem />
+      {answersForQ.length > 0 && answersForQ.map((answer, index) => {
+        return <QAAnswerItem answer={answer} key={index} />
+      })}
     </div>
   )
 }
