@@ -5,14 +5,12 @@ const axios = require('axios');
 const { useState, useEffect } = React;
 
 const QAListItem = ({ question }) => {
-  console.log("QUESTION IN THE LIST", question)
 
   const [questionId, setQuestionId] = useState(question.question_id)
   const [answersForQ, setAnswersForQ] = useState([])
 
   const getAnswersArray = (questionIdPassedIn) => {
-    axios.default.get('http://localhost:3000/products', { params: { specificURL: `qa/questions/${questionIdPassedIn}/answers` } }).then((data) => {
-      console.log('GOT THEM ANSWERS', data.data)
+    axios.default.get('http://localhost:3000/qanda', { params: { specificURL: `qa/questions/${questionIdPassedIn}/answers` } }).then((data) => {
       setAnswersForQ(data.data.results)
     }).catch(err => {
       console.log('error getting answers', err)
