@@ -7,22 +7,32 @@ const axios = require('axios');
 const { useState, useEffect } = React;
 
 const QuestionsAndAnswers = () => {
+  const [currentId, setCurrentId] = useState('37311')
+  const [currentQuestions, setCurrentQuestions] = useState({})
 
-  const tryARequest = () => {
-    axios.default.get('http://localhost:3000/products', { params: { specificURL: 'qa/questions?product_id=37311' } }).then((data) => {
+  const getProductQuestions = () => {
+    axios.default.get('http://localhost:3000/products', { params: { specificURL: `qa/questions?product_id=${currentId}` } }).then((data) => {
       console.log('gotten', data.data)
+      setCurrentQuestions(data.data.results)
     }).catch(err => {
       console.log('error getting', err)
     })
   }
 
+  //will call for question info on initial render
+  useEffect(() => {
+    getProductQuestions()
+  }, [])
+
   return (
     <div className={'qandawrapper'}>
       <h3 className={'qandatitle'}>QUESTIONS & ANSWERS</h3>
-      {/* <button onClick={() => { tryARequest() }}>Test Button</button> */}
+      {/* <button onClick={() => { getProductQuestions() }}>Test Button</button> */}
       <QASearch />
       <div className={'qalistwrapper'}>
-        <QAListItem />
+        {currentQuestions.length > 0 && currentQuestions.map((question, index) => {
+          return <QAListItem question={question} key={index} />
+        })}
       </div>
       <button className={"qanda-button"}>MORE ANSWERED QUESTIONS</button>
       <button className={"qanda-button"}>ADD A QUESTION +</button>
