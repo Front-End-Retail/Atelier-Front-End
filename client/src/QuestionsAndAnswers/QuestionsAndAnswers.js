@@ -1,4 +1,7 @@
 import React from 'react';
+import QASearch from './QASearch.js'
+import QAListItem from './QAListItem.js'
+import '../assests/stylesqanda.css';
 const axios = require('axios');
 
 const { useState, useEffect } = React;
@@ -6,7 +9,7 @@ const { useState, useEffect } = React;
 const QuestionsAndAnswers = () => {
 
   const tryARequest = () => {
-    axios.default.get('http://localhost:3000/products', { params: { specificURL : 'qa/questions?product_id=37311' }}).then((data) => {
+    axios.default.get('http://localhost:3000/products', { params: { specificURL: 'qa/questions?product_id=37311' } }).then((data) => {
       console.log('gotten', data.data)
     }).catch(err => {
       console.log('error getting', err)
@@ -14,9 +17,15 @@ const QuestionsAndAnswers = () => {
   }
 
   return (
-    <div>
-      Questions And Answers
-      <button onClick={()=>{tryARequest()}}>Test Button</button>
+    <div className={'qandawrapper'}>
+      <h3>Questions And Answers</h3>
+      <button onClick={() => { tryARequest() }}>Test Button</button>
+      <QASearch />
+      <div className={'qalistwrapper'}>
+        <QAListItem />
+      </div>
+      <button>MORE ANSWERED QUESTIONS</button>
+      <button>ADD A QUESTION +</button>
     </div>
   )
 }
@@ -24,6 +33,15 @@ const QuestionsAndAnswers = () => {
 export default QuestionsAndAnswers;
 
 /*
+TODOs:
+
+
+
+
+
+
+
+
 General API for Atelier
 https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/
 
