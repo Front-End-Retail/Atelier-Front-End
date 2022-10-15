@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './assests/styles.css';
+import './assets/styles.css';
 import { createRoot } from 'react-dom/client';
 import Overview from './Overview/Overview.js';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.js';

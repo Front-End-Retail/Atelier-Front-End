@@ -1,26 +1,49 @@
 import React from 'react';
-import axios from 'axios';
+import ReviewList from './components/ReviewList.js'
+import RatingBreakdown from './components/RatingBreakdown.js'
+import '../assets/ratingsStyles.css'
+// import axios from 'axios';
+const axios = require('axios');
 
 const { useState, useEffect } = React;
 
 const RatingsAndReviews = () => {
+  const [reviews, setReviews] = useState([])
+  const [metaReviews, setMetaReviews] = useState({})
+  const [ratingAverage, setRatingAverage] = useState()
 
-  const fetchReviews = () => {
-    axios({url: 'http://localhost:3000/reviews', method: 'get'}).then(reviewData => {
-      console.log('success!')
-      console.log(reviewData);
-    }).catch(error => {
-      console.log('could not perform get request', error)
+  const reviewRequest = () => {
+    axios.default.get('http://localhost:3000/products', { params: { specificURL : 'reviews?product_id=37311' }}).then((reviewData) => {
+      console.log('gotten', reviewData.data)
+      setReviews(reviewData.data.results)
+    }).catch(err => {
+      console.log('error getting', err)
     })
+  }
+  const metaRequest = () => {
+    axios.default.get('http://localhost:3000/products', { params: { specificURL : 'reviews/meta?product_id=37311' }}).then((reviewData) => {
+      console.log('gotten', reviewData.data)
+      setMetaReviews(reviewData.data)
+    }).catch(err => {
+      console.log('error getting', err)
+    })
+  }
+  const testButton = () => {
+    reviewRequest( setReviews)
+    metaRequest()
   }
 
 useEffect(() => {
   // fetchReviews()
 })
   return (
-    <div>
-      Ratings and Reviews go here!
-    </div>
+      <div >
+        <button onClick={testButton}>Rating Test</button>
+        <div id="randr">
+        <RatingBreakdown metaReviews={metaReviews}/>
+        <ReviewList reviews={reviews}/>
+        </div>
+      </div>
   )
 }
 

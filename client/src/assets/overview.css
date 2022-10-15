@@ -1,0 +1,59 @@
+.overview-containe {
+  border: 1px solid black;
+}
+
+.overview-container {
+  height: 33%;
+  display: flex;
+  margin: 0 30px;
+}
+
+.image-gallery {
+  width: 55%;
+  background-color: lightgray;
+}
+
+.product-container {
+  width: 45%;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px 20px;
+  gap: 5px;
+  width: 33%;
+}
+
+.product-info h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.style-selector {
+  padding: 10px 20px;
+  width: 33%;
+}
+
+.style-thumbnails {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.style-image {
+  min-width: 30%;
+  min-height: 30%;
+  max-width: 30%;
+  max-height: 30%;
+  border: 1px groove lightgray;
+}
+
+.add-to-bag form {
+  padding: 10px 20px;
+  width: 33%;
+  display: flex;
+  flex-wrap: wrap;
+}

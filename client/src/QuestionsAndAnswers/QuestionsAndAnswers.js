@@ -1,22 +1,40 @@
 import React from 'react';
+import QASearch from './QASearch.js'
+import QAListItem from './QAListItem.js'
+import '../assets/stylesqanda.css';
 const axios = require('axios');
 
 const { useState, useEffect } = React;
 
 const QuestionsAndAnswers = () => {
+  const [currentId, setCurrentId] = useState('37311')
+  const [currentQuestions, setCurrentQuestions] = useState({})
 
-  const tryARequest = () => {
-    axios.default.get('http://localhost:3000/products', { params: { specificURL : 'qa/questions?product_id=37311' }}).then((data) => {
-      console.log('gotten', data.data)
+  const getProductQuestions = () => {
+    axios.default.get('http://localhost:3000/qanda', { params: { specificURL: `qa/questions?product_id=${currentId}` } }).then((data) => {
+      setCurrentQuestions(data.data.results)
     }).catch(err => {
       console.log('error getting', err)
     })
   }
 
+  //will call for question info on initial render
+  useEffect(() => {
+    getProductQuestions()
+  }, [])
+
   return (
-    <div>
-      Questions And Answers
-      <button onClick={()=>{tryARequest()}}>Test Button</button>
+    <div className={'qandawrapper'}>
+      <h3 className={'qandatitle'}>QUESTIONS & ANSWERS</h3>
+      {/* <button onClick={() => { getProductQuestions() }}>Test Button</button> */}
+      <QASearch />
+      <div className={'qalistwrapper'}>
+        {currentQuestions.length > 0 && currentQuestions.map((question, index) => {
+          return <QAListItem question={question} key={index} />
+        })}
+      </div>
+      <button className={"qanda-button"}>MORE ANSWERED QUESTIONS</button>
+      <button className={"qanda-button"}>ADD A QUESTION +</button>
     </div>
   )
 }
@@ -24,6 +42,11 @@ const QuestionsAndAnswers = () => {
 export default QuestionsAndAnswers;
 
 /*
+TODOs:
+--Make initial get request to render QandA for particular product -- done
+--Need to add functionality to search, more answered questions and add a question
+
+
 General API for Atelier
 https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/
 
