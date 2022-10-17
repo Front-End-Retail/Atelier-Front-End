@@ -1,6 +1,8 @@
 import React from 'react';
 import QASearch from './QASearch.js'
 import QAListItem from './QAListItem.js'
+import Modal from './Modal'
+import useModal from './useModal'
 import '../assets/stylesqanda.css';
 const axios = require('axios');
 
@@ -23,6 +25,8 @@ const QuestionsAndAnswers = () => {
     getProductQuestions()
   }, [])
 
+  const {toggle, visible} = useModal();
+
   return (
     <div className={'qandawrapper'}>
       <h3 className={'qandatitle'}>QUESTIONS & ANSWERS</h3>
@@ -35,6 +39,8 @@ const QuestionsAndAnswers = () => {
       </div>
       <button className={"qanda-button"}>MORE ANSWERED QUESTIONS</button>
       <button className={"qanda-button"}>ADD A QUESTION +</button>
+      <button onClick={toggle}>Show Modal</button>
+      <Modal visible={visible} toggle={toggle} />
     </div>
   )
 }
