@@ -1,13 +1,19 @@
 import React from 'react';
+import ImageModal from './ImageModal.js'
+import useImageModal from './useImageModal.js'
 const axios = require('axios');
 
 const { useState, useEffect } = React;
 
 const QAAnswerImage = ({ photo }) => {
 
+  const {toggleImage, imageVisibility} = useImageModal();
 
   return (
-    <img className={"answer-image"} src={photo.url}></img>
+    <div>
+      <img onClick={toggleImage} className={"answer-image"} src={photo.url}></img>
+      <ImageModal imageVisibility={imageVisibility} toggleImage={toggleImage} imagePath={photo.url} />
+    </div>
   )
 }
 
