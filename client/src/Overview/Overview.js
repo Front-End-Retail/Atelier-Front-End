@@ -10,11 +10,12 @@ const Overview = (props) => {
   const [products, setProducts] = useState([]);
   const [currentProduct, setCurrentProduct] = useState({});
   const [currentStyle, setCurrentStyle] = useState([]);
+  const [selectedStyle, setSelectedStyle] = useState({});
   const [styles, setStyles] = useState([]);
   const fetchAllProducts = () => {
     axios({
       method: 'get',
-      url: 'http://localhost:3000/products',
+      url: 'http://localhost:T3000/products',
       params: {
         specificURL: 'products'
       }
@@ -60,10 +61,14 @@ const Overview = (props) => {
   useEffect(() => {
     fetchAllStyles();
   }, [products]);
+
+  useEffect(() => {
+    setSelectedStyle(currentStyle[0])
+  }, [currentStyle]);
   return (
     <div className='overview-container'>
       <ImageGallery />
-      <Product currentProduct={currentProduct} styles={styles} currentStyle={currentStyle} />
+      {selectedStyle && <Product currentProduct={currentProduct} styles={styles} currentStyle={currentStyle} selectedStyle={selectedStyle} setSelectedStyle={setSelectedStyle} />}
     </div>
   )
 }
