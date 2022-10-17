@@ -12,7 +12,7 @@ test('loads items eventually', () => {
   const { container } = render(<RatingsAndReviews />);
   const testButt = container.querySelector(`button[name="test-button"]`)
   expect(testButt).toBeTruthy();
-  const data = fireEvent.click(container.querySelector(`button[name="test-button"]`))
+  fireEvent.click(container.querySelector(`button[name="test-button"]`))
   // const inputEl = container.querySelector(`input[name="userName"]`);
   // // Click button
   // fireEvent.click(screen.getByText(''))
