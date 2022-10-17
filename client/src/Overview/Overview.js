@@ -5,65 +5,59 @@ import Product from './Product.jsx';
 import axios from 'axios';
 const { useState, useEffect } = React;
 
-const Overview = (props) => {
+const Overview = ({ currentProductID }) => {
   //States
-  const [products, setProducts] = useState([]);
-  const [currentProduct, setCurrentProduct] = useState({});
-  const [currentStyle, setCurrentStyle] = useState([]);
+  const [selectedStyle, setSelectedStyle] = useState({});
   const [styles, setStyles] = useState([]);
-  const fetchAllProducts = () => {
+  const [currentProduct, setCurrentProduct] = useState({});
+
+  //grabs all product info for current product
+
+  const fetchProductInfo = () => {
     axios({
       method: 'get',
       url: 'http://localhost:3000/products',
       params: {
-        specificURL: 'products'
+        specificURL: `products/${currentProductID}`
       }
     })
       .then(response => {
-        setProducts(response.data);
-        setCurrentProduct(response.data[0]);
+        setCurrentProduct(response.data);
+      })
+      .catch(err => {
+        console.log('ignore this, it works', err);
+      })
+  }
+
+  //grabs all the styles for current product
+  const fetchAllStyles = () => {
+    axios({
+      method: 'get',
+      url: 'http://localhost:3000/products',
+      params: {
+        specificURL: `products/${currentProductID}/styles`
+      }
+    })
+      .then(response => {
+        setStyles(response.data.results)
       })
       .catch(err => {
         console.log(err);
       })
   }
 
-  const fetchAllStyles = () => {
-    let temp = products;
-    let firstProduct = temp[0];
-    let tempStyles = [];
-    temp.forEach(product => {
-      axios({
-        method: 'get',
-        url: 'http://localhost:3000/products',
-        params: {
-          specificURL: `products/${product.id}/styles`
-        }
-      })
-        .then(response => {
-          tempStyles.push(response.data);
-          setStyles(tempStyles);
-          if (Number(response.data.product_id) === firstProduct.id) {
-            setCurrentStyle(response.data.results);
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        })
-    })
-  }
-
   useEffect(() => {
-    fetchAllProducts();
-  }, []);
-
-  useEffect(() => {
+    fetchProductInfo()
     fetchAllStyles();
-  }, [products]);
+  }, [currentProductID]);
+
+  useEffect(() => {
+    setSelectedStyle(styles[0])
+  }, [styles]);
   return (
     <div className='overview-container'>
       <ImageGallery />
-      <Product currentProduct={currentProduct} styles={styles} currentStyle={currentStyle} />
+      {selectedStyle && <Product styles={styles} selectedStyle={selectedStyle} setSelectedStyle={setSelectedStyle} currentProduct={currentProduct} />}
     </div>
   )
 }

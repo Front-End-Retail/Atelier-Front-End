@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
-const StyleSelector = ({ currentStyle }) => {
+const StyleSelector = ({ styles, selectedStyle, setSelectedStyle }) => {
+
   return (
     <div className="style-selector">
-      <span><em>Style ></em> Selected Style</span>
+      <span><b>Style > </b>{selectedStyle.name}</span>
       <div className="style-thumbnails">
-        {currentStyle.map((style, i) => {
+        {styles.map((style, i) => {
           return (
-            <img className="style-image" key={i} src={style.photos[0].thumbnail_url} />
+            <img onClick={e => {
+              e.preventDefault();
+              setSelectedStyle(style)
+            }
+            } className="style-image" key={i} src={style.photos[0].thumbnail_url} />
           )
         })}
       </div>
