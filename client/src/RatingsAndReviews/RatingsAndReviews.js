@@ -26,15 +26,19 @@ const RatingsAndReviews = () => {
       return 1;
     }
     return 0;
-  } } else {
+  } } else if (name === 'date') {
     return function(a,b){
       // Turn your strings into dates, and then subtract them
       // to get a value that is either negative, positive, or zero.
       return new Date(b.date) - new Date(a.date);
     };
+  } else {
+    return function (a, b)  {
+      let random = Math.floor(Math.random() * 2)
+      return (random === 0 ? new Date(b.date) - new Date(a.date) : b.helpfulness - a.helpfulness)
+    }
   }
-}
-
+  }
   const sortReviews = (name) => {
     let filter = name;
     let filteredReviews = [...reviews].sort(propComparator(filter))
