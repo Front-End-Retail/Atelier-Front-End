@@ -2,17 +2,21 @@
  * @jest-environment jsdom
  */
 
-import {render, fireEvent, screen} from '@testing-library/react'
+import {render, fireEvent, screen, waitFor} from '@testing-library/react'
 import React from 'react'
 import ReactDOM from 'react-dom';
 import RatingsAndReviews from '../RatingsAndReviews/RatingsAndReviews.js'
 
-test('loads items eventually', () => {
+test('loads items eventually', async () => {
   render(<RatingsAndReviews />)
   const { container } = render(<RatingsAndReviews />);
   const testButt = container.querySelector(`button[name="test-button"]`)
   expect(testButt).toBeTruthy();
   fireEvent.click(container.querySelector(`button[name="test-button"]`))
+  await waitFor(() => {
+    screen.findAllByText('Rating Test')
+  })
+
   // const inputEl = container.querySelector(`input[name="userName"]`);
   // // Click button
   // fireEvent.click(screen.getByText(''))
