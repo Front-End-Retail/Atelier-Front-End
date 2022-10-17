@@ -9,6 +9,7 @@ const RelatedItemsAndComparison = () => {
   const dummyProductID = 37311;
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [relatedProductsID, setRelatedProductsID] = useState([]);
+  const [currentProductID, setCurrentProductID] = useState(Number);
 
   useEffect(()=> {
 
@@ -16,7 +17,13 @@ const RelatedItemsAndComparison = () => {
       axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${dummyProductID}/related`} })
       .then((response)=> {
         console.log('response.data from calling API/products: ', response.data)
-        setRelatedProductsID(response.data);
+        const temp = [];
+        response.data.forEach((productID) => {
+          if (productID !== 37312) {
+            temp.push(productID);
+          }
+        })
+        setRelatedProductsID(temp);
        // console.log(relatedProductsID) //set useEffect to watch relatedProductsID// this will log out an empty array
       })
       .catch(err=> {
@@ -28,17 +35,51 @@ const RelatedItemsAndComparison = () => {
   }, []);
 
  useEffect(()=> {
+  // const temp = [];
+  // const product = {};
   console.log('relatedProductsID: ', relatedProductsID);
   for (const id in relatedProductsID) {
-    console.log('each id in relatedProductsID: ', relatedProductsID[id]) //37312, 37313, 37318, 37317
-    axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${relatedProductsID[id]}`} })
-    .then((response)=>{
-      console.log('data retrieved after calling API/products/productID: ', response.data)
-    })
-  }
+    setCurrentProductID(relatedProductsID[id]);
+    // console.log('each id in relatedProductsID: ', relatedProductsID[id]) //37312, 37313, 37318, 37317
+    // axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${relatedProductsID[id]}`} })
+    // .then((response)=>{
+    //   console.log('data retrieved after calling API/products/productID: ', response.data)
+    //   product.name = response.data.name;
+    //   product.price = response.data.default_price;
+    //   product.category = response.data.category;
+    //   console.log('product: ', product);
+    //   temp.push(product);
+    //   console.log('temp: ', temp)
+    //   setRelatedProducts(temp);
+      // axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${relatedProductsID[id]}/styles`} })
+      // .then((response)=>{
+      // console.log('styles for each product: ',  response.data);
+      // })
+      // .catch(err=>{
+      //   console.log('client failed to retrieve  styles of current product: ', err);
+      // })
+    }
+
  },[relatedProductsID])
 
+useEffect(()=>{
+console.log('currentProductID: ', currentProductID)
+const temp = [];
+const product = {};
+axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${currentProductID}`} })
+  .then((response)=>{
+    product.name = response.data.name;
+    product.category = response.data.category;
+    product.price = response.data.default_price;
+    console.log('product: ', product);
+    temp.push(product);
+    setRelatedProducts(temp);
+  })
+}, [currentProductID])
 
+useEffect(()=>{
+   console.log('relatedProducts: ', relatedProducts);
+}, [relatedProducts])
 
 
   return (

@@ -25,11 +25,11 @@ const RelatedProduct = ({relatedProduct}) =>{
   // getCurrentImageURL();
   return (
     <div>
-    {/* <div>{relatedProduct.name}</div>
-    <div>USD {relatedProduct.default_price}</div>
-    <img src="https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2760&q=80"
+     <div>{relatedProduct.name}</div>
+     <div>USD {relatedProduct.price}</div>
+    {/* <img src="https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2760&q=80"
      alt='related product'
-     height='50px'/> */}
+     height='50px'/> */} 
     {/* <div>{relatedProduct.image}</div> */}
 </div>
   );
