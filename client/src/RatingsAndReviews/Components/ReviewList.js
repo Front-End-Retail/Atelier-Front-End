@@ -4,10 +4,15 @@ const { useState, useEffect } = React;
 import ReviewEntry from './ReviewEntry.js'
 import Sorting from './Sorting.js'
 
-const ReviewList = ({reviews}) => {
+const ReviewList = ({reviews, sortReviews}) => {
+
+  const passSortingName = (name) => {
+    sortReviews(name)
+  }
+
   return (
     <div id="review-list">
-      {reviews[0] && <p>{reviews.length} reviews, sorted by <Sorting /></p>}
+      {reviews[0] && <p>{reviews.length} reviews, sorted by <Sorting reviews={reviews} passSortingName={passSortingName}/></p>}
       {reviews.map((review, index) => {
         return (
           <ReviewEntry key={index} review={review}/>

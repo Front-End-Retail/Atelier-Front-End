@@ -39,7 +39,7 @@ const App = () => {
       <h1>The modules will be below</h1>
       <Overview currentProductID={currentProductID} />
       <QuestionsAndAnswers />
-      <RatingsAndReviews />
+      <RatingsAndReviews /> */}
       <RelatedItemsAndComparison />
     </div>
   );
