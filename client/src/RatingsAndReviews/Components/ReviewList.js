@@ -15,7 +15,7 @@ const ReviewList = ({reviews}) => {
       })}<div id="button-cont">
 
       <button className="review-button">More Reviews</button>
-      <button className="review-button">Add Review</button>
+      <button className="review-button">Add Review +</button>
       </div>
     </div>
   )
