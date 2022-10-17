@@ -38,7 +38,7 @@ useEffect(() => {
 })
   return (
       <div >
-        <button onClick={testButton}>Rating Test</button>
+        <button onClick={testButton} name="test-button">Rating Test</button>
         <div id="randr">
         <RatingBreakdown metaReviews={metaReviews}/>
         <ReviewList reviews={reviews}/>

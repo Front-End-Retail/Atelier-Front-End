@@ -13,8 +13,8 @@
   flex-direction: column;
   margin:4px, 4px;
   padding:4px;
-  width: 500px;
-  height: 10%;
+  width: 3fr;
+  height: 500px;
   overflow-x: hidden;
   overflow-y: auto;
   text-align:justify;
@@ -55,4 +55,15 @@
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
+}
+
+.toggle-line {
+  border-left: .5px solid green;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+.review-links {
+  padding-left: 1%;
+  padding-right: 1%;
 }
