@@ -7,6 +7,7 @@ const { useState, useEffect } = React;
 const QAListItem = ({ question }) => {
 
   const [questionId, setQuestionId] = useState(question.question_id)
+  const [displayedAnswersForQ, setDisplayedAnswersForQ] = useState([])
   const [answersForQ, setAnswersForQ] = useState([])
 
   const getAnswersArray = (questionIdPassedIn) => {
@@ -17,8 +18,21 @@ const QAListItem = ({ question }) => {
     })
   }
 
-//qa/questions/:question_id/answers
+  //on initial get of the answers array, this will set the displayed answers to the first two answers
+  useEffect(() => {
+    let copyOfAnswers = answersForQ
+    copyOfAnswers = copyOfAnswers.slice(0, 2)
+    setDisplayedAnswersForQ(copyOfAnswers)
+  }, [answersForQ])
 
+  //on click, add two answers to the displayed answers from the total answers
+  const addTwoAnswers = () => {
+    let newCopyOfAnswers = answersForQ
+    newCopyOfAnswers = newCopyOfAnswers.slice(0, displayedAnswersForQ.length + 2)
+    setDisplayedAnswersForQ(newCopyOfAnswers)
+  }
+
+  //on load, get all of the answers for the given question
   useEffect(() => {
     getAnswersArray(questionId)
   }, [questionId, setQuestionId])
@@ -37,9 +51,10 @@ const QAListItem = ({ question }) => {
           <p> Add Answer </p>
         </div>
       </div>
-      {answersForQ.length > 0 && answersForQ.map((answer, index) => {
+      {displayedAnswersForQ.length > 0 && displayedAnswersForQ.map((answer, index) => {
         return <QAAnswerItem answer={answer} key={index} />
       })}
+      {displayedAnswersForQ.length < answersForQ.length && <button className={"showAnswersButton"} onClick={() => {addTwoAnswers()}}>LOAD MORE ANSWERS</button>}
     </div>
   )
 }
