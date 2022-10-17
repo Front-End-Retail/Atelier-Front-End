@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import StyleSelector from './StyleSelector.jsx';
-const Product = ({ currentProduct, styles, currentStyle, selectedStyle, setSelectedStyle }) => {
+const Product = ({ styles, currentProduct, selectedStyle, setSelectedStyle }) => {
   return (
     <div className="product-container">
       <div className="product-info">
@@ -11,7 +11,7 @@ const Product = ({ currentProduct, styles, currentStyle, selectedStyle, setSelec
         {selectedStyle.sale_price ? <div className="sale-price"><p style={{ color: 'red' }}>{selectedStyle.sale_price}</p><p style={{ textDecoration: 'line-through' }}>{selectedStyle.original_price}</p></div> : <p>${selectedStyle.original_price}</p>}
 
       </div >
-      <StyleSelector currentStyle={currentStyle} selectedStyle={selectedStyle} setSelectedStyle={setSelectedStyle} />
+      <StyleSelector styles={styles} selectedStyle={selectedStyle} setSelectedStyle={setSelectedStyle} />
       <div className="add-to-bag">
         <form>
           <select className="size-select">
