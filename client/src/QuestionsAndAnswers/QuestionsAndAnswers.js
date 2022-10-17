@@ -9,7 +9,7 @@ const axios = require('axios');
 const { useState, useEffect } = React;
 
 const QuestionsAndAnswers = () => {
-  const [currentId, setCurrentId] = useState('37315')
+  const [currentId, setCurrentId] = useState('37314')
   const [currentQuestions, setCurrentQuestions] = useState({})
 
   const getProductQuestions = () => {
