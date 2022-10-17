@@ -5,31 +5,53 @@ import YourOutfit from './YourOutfit.jsx';
 
 const { useState, useEffect } = React;
 
-
 const RelatedItemsAndComparison = () => {
-  const handleClick = (event) => {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products', {headers})
+  const dummyProductID = 37311;
+  const [relatedProducts, setRelatedProducts] = useState([]);
+  const [relatedProductsID, setRelatedProductsID] = useState([]);
+
+  useEffect(()=> {
+
+    const fetchRelatedProducts = () => {
+      axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${dummyProductID}/related`} })
+      .then((response)=> {
+        console.log('response.data from calling API/products: ', response.data)
+        setRelatedProductsID(response.data);
+       // console.log(relatedProductsID) //set useEffect to watch relatedProductsID// this will log out an empty array
+      })
+      .catch(err=> {
+        console.log('failed to retrieve related product ID from API: ', err)
+      })
+    };
+
+    fetchRelatedProducts();
+  }, []);
+
+ useEffect(()=> {
+  console.log('relatedProductsID: ', relatedProductsID);
+  for (const id in relatedProductsID) {
+    console.log('each id in relatedProductsID: ', relatedProductsID[id]) //37312, 37313, 37318, 37317
+    axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${relatedProductsID[id]}`} })
     .then((response)=>{
-      const allProducts = response.data;
-      console.log('all products client received', allProducts);
+      console.log('data retrieved after calling API/products/productID: ', response.data)
     })
-    .catch((err)=> {
-      console.log('client failed to retrieve all products', err);
-    })
-  };
+  }
+ },[relatedProductsID])
+
+
+
 
   return (
     <div>
       Related Items and Comparison go here!
       <br></br>
-      <button onClick={handleClick}>test</button>
       <br></br>
-      <span>You may also like</span>
-      <RelatedProducts></RelatedProducts>
-      <span>Your outfit</span>
+      <span>YOU MIGHT ALSO LIKE</span>
+      <RelatedProducts relatedProducts={relatedProducts}></RelatedProducts>
+      <span>COMPLETE YOUR OUTFIT</span>
       <YourOutfit></YourOutfit>
     </div>
-  )
-}
+  );
+};
 
 export default RelatedItemsAndComparison;

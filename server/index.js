@@ -35,6 +35,7 @@ app.get('/comparison', (req, res) => {
   }).catch(err => {
     res.status(500)
     res.end()
+    console.log(err)
   })
 })
 
