@@ -9,6 +9,7 @@ const ReviewEntry = ({review}) => {
       <h4>{review.summary}</h4>
       <p>{review.body}</p>
       {review.recommend && <p>I recommend this product!</p>}
+      <p>Helpful?<a className="review-links">Yes</a><a className="review-links toggle-line">Report</a></p>
     </div>
   )
 }
