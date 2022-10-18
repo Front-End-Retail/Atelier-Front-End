@@ -1,0 +1,87 @@
+/* @keyframes heartbeat{
+
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.25);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+} */
+
+/* .heart {
+  color:black;
+  opacity: 0.3;
+  cursor: point;
+  width: 25px;
+  height: 25px;
+  padding: 10px;
+}
+
+.heart:hover{
+  animation: heartbeat 1s infinite;
+  fill:red;
+  color:red;
+  opacity: 1;
+  transition: opacity 500ms;
+} */
+.YouMightAlsoLike{
+  font-family: 'Nunito', sans-serif;
+  font-size: medium;
+  text-align: center;
+}
+
+.CompleteYourOutfit{
+  font-family: 'Nunito', sans-serif;
+  font-size: medium;
+  text-align: center;
+}
+
+.relatedProduct{
+  display:block;
+  width: 220px;
+  height:250px;
+  border: solid;
+  margin:10px;
+  border-radius: 15px;
+}
+
+.relatedProduct:hover {
+  background-color: rgb(62,62,62);
+  cursor: pointer;
+  color:white;
+  transition: all 1s ease;
+}
+.container{
+  /* background-color: blueviolet; */
+  /* border-style: solid; */
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: center;
+}
+
+.name{
+  padding: 3px;
+  font-family: 'Nunito', sans-serif;
+  text-align: center;
+}
+
+.category{
+  padding:3px
+}
+
+.price{
+  padding: 3px
+}
+
+.ModalContainer{
+  border: solid;
+  width: 200px;
+  height: 200px;
+  border-radius: 12px;
+  position: fixed;
+}
