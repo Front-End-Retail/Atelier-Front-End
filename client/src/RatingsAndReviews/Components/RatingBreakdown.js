@@ -28,7 +28,7 @@ const RatingBreakdown = ({metaReviews, ratingSort}) => {
       {metaReviews.ratings && <p>{helpfulAverage} % of reviews recommend this product</p>}
       <div id="rating-breakdown-num">
       <h1 id="average-rating">{metaReviews.ratings && rating}</h1>
-      {!isNaN(rating) && <StarAverage rating={rating}/>}
+      {!isNaN(rating) && <StarAverage rating={4.6}/>}
       </div>
       {ratingTotal && Object.keys(metaReviews.ratings).reverse().map(starNum => {
         let ratio = findRatio(ratingTotal, metaReviews.ratings[starNum])
