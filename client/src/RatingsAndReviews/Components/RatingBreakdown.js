@@ -7,7 +7,7 @@ import {findAverage, helpfulPerc, findTotal, findRatio} from './helperFuncs'
 const axios = require('axios');
 const { useState, useEffect } = React;
 
-const RatingBreakdown = ({metaReviews}) => {
+const RatingBreakdown = ({metaReviews, ratingSort}) => {
   const [rating, setRating] = useState()
   const [ratingTotal, setRatingTotal] = useState()
   const [helpfulAverage, setHelpfulAverage] = useState()
@@ -18,6 +18,9 @@ const RatingBreakdown = ({metaReviews}) => {
     setRatingTotal(findTotal(metaReviews.ratings))
   }, [metaReviews])
 
+  const starClick = (event) => {
+    ratingSort(event.target.name)
+  }
 
   return (
     <div id="breakdown-container">
@@ -25,21 +28,21 @@ const RatingBreakdown = ({metaReviews}) => {
       {metaReviews.ratings && <p>{helpfulAverage} % of reviews recommend this product</p>}
       <div id="rating-breakdown-num">
       <h1 id="average-rating">{metaReviews.ratings && rating}</h1>
-      {!isNaN(rating) && <StarAverage rating={rating}/>}
+      {!isNaN(rating) && <StarAverage rating={4.6}/>}
       </div>
       {ratingTotal && Object.keys(metaReviews.ratings).reverse().map(starNum => {
         let ratio = findRatio(ratingTotal, metaReviews.ratings[starNum])
         let ratioTotal = 300 - ratio;
         return <table>
         <tr width="300px">
-        <u>{starNum} stars</u> <td style={{background: "gray", width: ratio, height:25}}></td><td style={{background: "black", width: ratioTotal, height:25}}></td>
+        <a name={starNum} onClick={starClick}>{starNum} stars</a> <td style={{background: "gray", width: ratio, height:25}}></td><td style={{background: "black", width: ratioTotal, height:25}}></td>
         </tr>
         </table>
       })}
       {metaReviews.characteristics && Object.keys(metaReviews.characteristics).map(key => {
         return (
-          <div class="slidecontainer">{key}
-          <input type="range" min="10" max="50" value={Math.round(metaReviews.characteristics[key]["value"] * 100) / 10} class="slider" id="myRange">
+          <div className="slide-container">{key}
+          <input type="range" min="10" max="50" value={Math.round(metaReviews.characteristics[key]["value"] * 100) / 10} className="slider" id="myRange">
           </input></div>
         )
       })}
