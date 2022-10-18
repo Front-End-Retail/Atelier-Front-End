@@ -1,5 +1,7 @@
 import React from 'react';
 import { format, parseISO } from "date-fns";
+import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 const axios = require('axios');
 const { useState, useEffect } = React;
 
@@ -32,7 +34,7 @@ const RatingBreakdown = ({metaReviews}) => {
 
   return (
     <div id="breakdown-container">
-      <h3>Ratings and Reviews</h3>
+      <h3>Ratings and Reviews</h3><FontAwesomeIcon icon={faCoffee}></FontAwesomeIcon>
       {metaReviews.ratings && <p>{helpfulAverage} % of reviews recommend this product</p>}
       <h1 id="average-rating">{metaReviews.ratings && rating}</h1>
       {/* make map function, this is cluttered */}
