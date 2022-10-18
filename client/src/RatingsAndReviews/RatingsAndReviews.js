@@ -3,6 +3,7 @@ import ReviewList from './components/ReviewList.js'
 import RatingBreakdown from './components/RatingBreakdown.js'
 import { format, parseISO } from "date-fns";
 import '../assets/ratingsStyles.css'
+import {helpfulPerc} from './components/helperFuncs'
 // import axios from 'axios';
 const axios = require('axios');
 
@@ -11,34 +12,11 @@ const { useState, useEffect } = React;
 const RatingsAndReviews = ({currentProductId}) => {
   const [currentProduct, setCurrentProduct] = useState(37311)
   const [reviews, setReviews] = useState([])
+  const [starReviews, setStarReviews] = useState([])
   const [metaReviews, setMetaReviews] = useState({})
   const [ratingAverage, setRatingAverage] = useState()
+  const [starFilter, setStarFilter] = useState([true, true, true, true, true])
 
-  const propComparator = (name) => {
-    if (name === 'helpfulness') {
-    return function (a, b)  {
-    if ( a[name] < b[name] ){
-      // console.log(a[name])
-      // console.log(b[name])
-      return -1;
-    }
-    if ( a[name] > b[name] ){
-      return 1;
-    }
-    return 0;
-  } } else if (name === 'date') {
-    return function(a,b){
-      // Turn your strings into dates, and then subtract them
-      // to get a value that is either negative, positive, or zero.
-      return new Date(b.date) - new Date(a.date);
-    };
-  } else {
-    return function (a, b)  {
-      let random = Math.floor(Math.random() * 2)
-      return (random === 0 ? new Date(b.date) - new Date(a.date) : b.helpfulness - a.helpfulness)
-    }
-  }
-  }
   const sortReviews = (name) => {
     axios.default.get('http://localhost:3000/products', { params: { specificURL : `reviews?product_id=${currentProduct}&count=500&sort=${name}` }}).then((reviewData) => {
       // console.log('gotten', reviewData.data)
@@ -47,11 +25,35 @@ const RatingsAndReviews = ({currentProductId}) => {
         datum.date = format(parseISO(datum.date), 'MMMM d, yyyy')
         return datum
       })
-      console.log(reviewsArray)
       setReviews(reviewsArray)
+      setStarReviews(reviewsArray)
     }).catch(err => {
       console.log('error getting', err)
     })
+  }
+// sort by star rating, 1-5, and toggle filter for each star
+  const ratingSort = (toggleStar) => {
+    // console.log(toggleStar)
+    // set the starFiler boolean
+    let tempStarFilter = [...starFilter]
+    tempStarFilter = tempStarFilter.map((star, index) => {
+      if (index + 1 === Number(toggleStar)) {
+        return !star
+      } else {
+        return star
+      }
+    })
+    setStarFilter([...tempStarFilter]);
+    // console.log(starFilter)
+    let tempStarReviews = [...reviews]
+    tempStarReviews = tempStarReviews.filter(review => {
+      let tempStar = Number(review.rating) - 1
+      if (starFilter[tempStar]) {
+        return true
+      }
+
+    })
+    setStarReviews(tempStarReviews)
   }
 
   const reviewRequest = () => {
@@ -62,8 +64,8 @@ const RatingsAndReviews = ({currentProductId}) => {
         datum.date = format(parseISO(datum.date), 'MMMM d, yyyy')
         return datum
       })
-      console.log(reviewsArray)
       setReviews(reviewsArray)
+      setStarReviews(reviewsArray)
     }).catch(err => {
       console.log('error getting', err)
     })
@@ -81,15 +83,17 @@ const RatingsAndReviews = ({currentProductId}) => {
     metaRequest()
   }
 
-useEffect(() => {
-  // fetchReviews()
-})
+// useEffect(() => {
+//   reviewRequest()
+//   metaRequest()
+// }, [])
+
   return (
       <div >
         <button onClick={testButton} name="test-button">Rating Test</button>
         <div id="randr">
-        <RatingBreakdown metaReviews={metaReviews} />
-        <ReviewList reviews={reviews} sortReviews={sortReviews}/>
+        <RatingBreakdown metaReviews={metaReviews} ratingSort={ratingSort}/>
+        <ReviewList reviews={starReviews} sortReviews={sortReviews}/>
         </div>
       </div>
   )

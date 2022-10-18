@@ -3,6 +3,7 @@ import QASearch from './QASearch.js'
 import QAListItem from './QAListItem.js'
 import Modal from './Modal'
 import useModal from './useModal'
+import SortbyHelpfulness from './QAHelpers.js'
 import '../assets/stylesqanda.css';
 const axios = require('axios');
 
@@ -12,19 +13,22 @@ const QuestionsAndAnswers = () => {
   const [currentId, setCurrentId] = useState('37314')
   const [currentQuestions, setCurrentQuestions] = useState([])
   const [displayedQuestions, setDisplayedQuestions] = useState([])
+  const [searchedQuestions, setSearchedQuestions] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
 
   const getProductQuestions = () => {
-    axios.default.get('http://localhost:3000/qanda', { params: { specificURL: `qa/questions?product_id=${currentId}` } }).then((data) => {
-      setCurrentQuestions(data.data.results)
+    axios.default.get('http://localhost:3000/qanda', { params: { specificURL: `qa/questions?product_id=${currentId}&count=100` } }).then((data) => {
+      let sortedData = SortbyHelpfulness(data.data.results, "question_helpfulness")
+      setCurrentQuestions(sortedData)
     }).catch(err => {
       console.log('error getting', err)
     })
   }
 
-  //will set initial list of displayed questions. Setting limit to 2 for testing, should be 4 when complete
+  //will set initial list of displayed questions
   useEffect(() => {
     let copyQuestions = currentQuestions
-    copyQuestions = copyQuestions.slice(0, 2)
+    copyQuestions = copyQuestions.slice(0, 4)
     setDisplayedQuestions(copyQuestions)
   }, [currentQuestions])
 
@@ -40,22 +44,48 @@ const QuestionsAndAnswers = () => {
     getProductQuestions()
   }, [])
 
+  //update search term function to be passed down into search bar component
+  const newSearchTerm = (theTerm) => {
+    setSearchTerm(theTerm)
+  }
+
+  //useEffect on the searchTerm, if it's updated and greater than 3, update searchedQuestions
+  useEffect(() => {
+    if (searchTerm.length > 3) {
+      let aCopyOfQuestions = currentQuestions
+      let searchString = searchTerm.toLowerCase()
+      aCopyOfQuestions = aCopyOfQuestions.filter(question => {
+        let questionText = question.question_body.toLowerCase()
+        if (questionText.indexOf(searchString) !== -1) {
+          return question
+        }
+      })
+      setSearchedQuestions(aCopyOfQuestions)
+    } else {
+      setSearchedQuestions([])
+    }
+  }, [searchTerm])
+
+  //the basic modal logic, custom hook
   const {toggle, visible} = useModal();
 
   return (
     <div className={'qandawrapper'}>
       <h3 className={'qandatitle'}>QUESTIONS & ANSWERS</h3>
       {/* <button onClick={() => { getProductQuestions() }}>Test Button</button> */}
-      <QASearch />
+      <QASearch newSearchTerm={newSearchTerm} />
       <div className={'qalistwrapper'}>
-        {displayedQuestions.length > 0 && displayedQuestions.map((question, index) => {
+        {searchedQuestions.length > 0 && searchedQuestions.map((question, index) => {
+          return <QAListItem question={question} key={index} />
+        })}
+        {displayedQuestions.length > 0 && searchedQuestions.length < 1 && displayedQuestions.map((question, index) => {
           return <QAListItem question={question} key={index} />
         })}
       </div>
       {displayedQuestions.length < currentQuestions.length && <button onClick={() => {addMoreQuestions()}} className={"qanda-button"}>MORE ANSWERED QUESTIONS</button>}
       <button className={"qanda-button"}>ADD A QUESTION +</button>
-      <button onClick={toggle}>Show Modal</button>
-      <Modal visible={visible} toggle={toggle} />
+      {/* <button onClick={toggle}>Show Modal</button>
+      <Modal visible={visible} toggle={toggle} /> */}
     </div>
   )
 }
