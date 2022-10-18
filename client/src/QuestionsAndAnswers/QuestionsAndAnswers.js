@@ -9,8 +9,9 @@ const axios = require('axios');
 const { useState, useEffect } = React;
 
 const QuestionsAndAnswers = () => {
-  const [currentId, setCurrentId] = useState('37311')
-  const [currentQuestions, setCurrentQuestions] = useState({})
+  const [currentId, setCurrentId] = useState('37314')
+  const [currentQuestions, setCurrentQuestions] = useState([])
+  const [displayedQuestions, setDisplayedQuestions] = useState([])
 
   const getProductQuestions = () => {
     axios.default.get('http://localhost:3000/qanda', { params: { specificURL: `qa/questions?product_id=${currentId}` } }).then((data) => {
@@ -18,6 +19,20 @@ const QuestionsAndAnswers = () => {
     }).catch(err => {
       console.log('error getting', err)
     })
+  }
+
+  //will set initial list of displayed questions. Setting limit to 2 for testing, should be 4 when complete
+  useEffect(() => {
+    let copyQuestions = currentQuestions
+    copyQuestions = copyQuestions.slice(0, 2)
+    setDisplayedQuestions(copyQuestions)
+  }, [currentQuestions])
+
+  //add more answered questions if displayqs length is less than curretqs length
+  const addMoreQuestions = () => {
+    let newQCopy = currentQuestions
+    newQCopy = newQCopy.slice(0, displayedQuestions.length + 2)
+    setDisplayedQuestions(newQCopy)
   }
 
   //will call for question info on initial render
@@ -33,11 +48,11 @@ const QuestionsAndAnswers = () => {
       {/* <button onClick={() => { getProductQuestions() }}>Test Button</button> */}
       <QASearch />
       <div className={'qalistwrapper'}>
-        {currentQuestions.length > 0 && currentQuestions.map((question, index) => {
+        {displayedQuestions.length > 0 && displayedQuestions.map((question, index) => {
           return <QAListItem question={question} key={index} />
         })}
       </div>
-      <button className={"qanda-button"}>MORE ANSWERED QUESTIONS</button>
+      {displayedQuestions.length < currentQuestions.length && <button onClick={() => {addMoreQuestions()}} className={"qanda-button"}>MORE ANSWERED QUESTIONS</button>}
       <button className={"qanda-button"}>ADD A QUESTION +</button>
       <button onClick={toggle}>Show Modal</button>
       <Modal visible={visible} toggle={toggle} />
