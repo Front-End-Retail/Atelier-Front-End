@@ -2,7 +2,8 @@ import React from 'react';
 const axios = require('axios');
 const { useState, useEffect } = React;
 
-const StarRating = () => {
+const StarRating = ({rating}) => {
+  const  [rating, setRating] = useState()
   return (
 
 <div class="star-rating">
