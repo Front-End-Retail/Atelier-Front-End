@@ -1,6 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import StyleSelector from './StyleSelector.jsx';
 const Product = ({ styles, currentProduct, selectedStyle, setSelectedStyle }) => {
+  const [bulkQuantity, setBulkQuantity] = useState([]);
+  const [sizes, setSizes] = useState([]);
+  const [qty, setQty] = useState([]);
+  //this function will take the quantity associated with the selected size and create an array
+  const createQtyArray = (size) => {
+    let temp = []
+    let sizeIndex = sizes.indexOf(size);
+    if (bulkQuantity[sizeIndex] > 15) {
+      temp = Array.from(Array(16).keys());
+    } else {
+      temp = Array.from(Array(bulkQuantity[sizeIndex] + 1).keys());
+    }
+    setQty(temp);
+  }
+
+  useEffect(() => {
+    let tempQuantity = [];
+    let tempSizes = [];
+    for (let key in selectedStyle.skus) {
+      tempQuantity.push(selectedStyle.skus[key].quantity)
+      tempSizes.push(selectedStyle.skus[key].size);
+    }
+    setBulkQuantity(tempQuantity);
+    setSizes(tempSizes)
+  }, [selectedStyle]);
+
   return (
     <div className="product-container">
       <div className="product-info">
@@ -14,29 +40,22 @@ const Product = ({ styles, currentProduct, selectedStyle, setSelectedStyle }) =>
       <StyleSelector styles={styles} selectedStyle={selectedStyle} setSelectedStyle={setSelectedStyle} />
       <div className="add-to-bag">
         <form>
-          <select className="size-select">
-            <option value="" disabled defaultValue="selected" hidden>Select Size</option>
-            <option>SM</option>
-            <option>MD</option>
-            <option>LG</option>
-            <option>XL</option>
+          <select onChange={e => {
+            createQtyArray(e.target.value);
+          }} className="size-select">
+            <option value="-1" disabled defaultValue="selected">Select a Size</option>
+            {sizes.map((size, i) => {
+              return (
+                <option key={i} value={size}>{size}</option>
+              )
+            })}
           </select>
           <select className='qty'>
-            <option>1</option>
-            <option>1</option>
-            <option>1</option>
-            <option>1</option>
-            <option>1</option>
-            <option>1</option>
-            <option>1</option>
-            <option>1</option>
-            <option>1</option>
-            <option>1</option>
-            <option>1</option>
-            <option>1</option>
-            <option>1</option>
-            <option>1</option>
-            <option>1</option>
+            {qty.map((number, i) => {
+              return (
+                <option key={i} value={number}>{number}</option>
+              )
+            })}
           </select>
           <button type="submit">Add to Bag</button>
           <button type="button">Favorite</button>
