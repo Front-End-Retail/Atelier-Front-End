@@ -4,7 +4,7 @@ const axios = require('axios');
 
 const { useState, useEffect } = React;
 
-const QAListItem = ({ question }) => {
+const QAListItem = ({ question, addQuestionHelpfulness }) => {
 
   const [questionId, setQuestionId] = useState(question.question_id)
   const [displayedAnswersForQ, setDisplayedAnswersForQ] = useState([])
@@ -47,7 +47,7 @@ const QAListItem = ({ question }) => {
         </div>
         <div className={"qalist-helpful"}>
           <p>Helpful?</p>
-          <p>Yes ({question.question_helpfulness})</p>
+          <p onClick={() => {addQuestionHelpfulness(questionId)}}>Yes ({question.question_helpfulness})</p>
           <p> | </p>
           <p> Add Answer </p>
         </div>

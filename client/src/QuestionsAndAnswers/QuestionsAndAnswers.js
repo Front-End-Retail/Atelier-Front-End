@@ -25,6 +25,14 @@ const QuestionsAndAnswers = () => {
     })
   }
 
+  const addQuestionHelpfulness = (questionId) => {
+    axios.default.put('http://localhost:3000/qanda', { questionId: questionId }).then((data) => {
+      console.log('succesful put to helpfulness')
+    }).catch((err) => {
+      console.log('error put to helpfullness', err)
+    })
+  }
+
   //will set initial list of displayed questions
   useEffect(() => {
     let copyQuestions = currentQuestions
@@ -76,10 +84,10 @@ const QuestionsAndAnswers = () => {
       <QASearch newSearchTerm={newSearchTerm} />
       <div className={'qalistwrapper'}>
         {searchedQuestions.length > 0 && searchedQuestions.map((question, index) => {
-          return <QAListItem question={question} key={index} />
+          return <QAListItem question={question} key={index} addQuestionHelpfulness={addQuestionHelpfulness} />
         })}
         {displayedQuestions.length > 0 && searchedQuestions.length < 1 && displayedQuestions.map((question, index) => {
-          return <QAListItem question={question} key={index} />
+          return <QAListItem question={question} key={index} addQuestionHelpfulness={addQuestionHelpfulness} />
         })}
       </div>
       {displayedQuestions.length < currentQuestions.length && <button onClick={() => {addMoreQuestions()}} className={"qanda-button"}>MORE ANSWERED QUESTIONS</button>}

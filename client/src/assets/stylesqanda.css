@@ -105,13 +105,13 @@
 
 .qalist-answersnotactive {
   max-height: 0;
-    transition: max-height 0.15s ease-out;
+    transition: all 1s ease-in-out;
     overflow: hidden;
 }
 
 .qalist-answersandbuttonwrapper {
   max-height: 500px;
-    transition: max-height 0.25s ease-in;
+    transition: all 1s ease-in-out;
   display: flex;
   flex-direction: column;
 }
