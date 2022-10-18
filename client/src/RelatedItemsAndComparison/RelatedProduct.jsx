@@ -1,7 +1,7 @@
 import React from 'react';
 const { useState, useEffect } = React;
 import axios from 'axios';
-
+import '../assets/related.css';
 
 
 const RelatedProduct = ({relatedProductID}) =>{
@@ -28,6 +28,9 @@ const RelatedProduct = ({relatedProductID}) =>{
             newProduct.image = response.data.results[0].photos[0].url;
             setRelatedProduct(newProduct);
           })
+          .catch(err=>{
+            console.log('failed to fetch styles for given product id: ', err);
+          })
       //setRelatedProduct(newProduct);
       // axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${relatedProductID}/styles`} })
       //   .then(response=>{
@@ -49,19 +52,17 @@ const RelatedProduct = ({relatedProductID}) =>{
   // }, [relatedProduct])
 
   return (
-    <div>
+    <div className='relatedProduct'>
       <div>{relatedProduct.name}</div>
       <div>{relatedProduct.category}</div>
-      <div>{relatedProduct.price}</div>
+      <div>USD{relatedProduct.price}</div>
       <img src={relatedProduct.image} alt='related product' height='50px'/>
     {/* <img src="https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2760&q=80"
      alt='related product'
      height='50px'/> */}
     {/* <div>{relatedProduct.image}</div> */}
     </div>
-
     )
-
 };
 
 export default RelatedProduct;
