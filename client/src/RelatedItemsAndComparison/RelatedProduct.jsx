@@ -3,6 +3,8 @@ const { useState, useEffect } = React;
 import axios from 'axios';
 import '../assets/related.css';
 import Modal from './Modal.jsx';
+import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -49,6 +51,9 @@ const RelatedProduct = ({relatedProductID}) =>{
     <div className='relatedProduct'>
 
       {/* cant add listeners to react icons */}
+      <div>
+        <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
+      </div>
       <div className='name'>{relatedProduct.name}</div>
       <div className='category'>{relatedProduct.category}</div>
       <div className='price'>USD{relatedProduct.price}</div>

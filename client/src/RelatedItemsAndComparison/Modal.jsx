@@ -1,12 +1,12 @@
 import React from 'react';
-import '../assets/related.css';
+import './Modal.css';
 const { useState, useEffect } = React;
 
 const Modal = ({closeModal}) =>{
   return (
     <div className='modalBackground'>
 
-      <div className='ModalContainer'>
+      <div className='modalContainer'>
 
         <div className='body'>
           <p>Comparing Modal</p>
