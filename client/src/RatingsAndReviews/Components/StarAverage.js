@@ -1,5 +1,5 @@
 import React from 'react';
-import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 const axios = require('axios');
 const { useState, useEffect } = React;

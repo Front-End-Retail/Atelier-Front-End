@@ -11,23 +11,6 @@ const RatingBreakdown = ({metaReviews}) => {
   const [rating, setRating] = useState()
   const [ratingTotal, setRatingTotal] = useState()
   const [helpfulAverage, setHelpfulAverage] = useState()
-  // const findAverage = (ratingsObj) => {
-  //   // console.log("findAverage", metaReviews.recommended)
-  //   let average = 0
-  //   let total = 0;
-  //   for (let key in ratingsObj) {
-  //     average += (Number(key) * Number(ratingsObj[key]))
-  //     total += Number(ratingsObj[key])
-  //   }
-  //   return Math.round(((average/total) * 10) / 10)
-  // }
-  // const helpfulPerc = (helpfulObj) => {
-  //   if (helpfulObj) {
-  //     let total = Number(helpfulObj.false) + Number(helpfulObj.true);
-  //     return (Math.round((Number(helpfulObj.true)/total) * 100));
-  //   }
-  // }
-
 
   useEffect(() => {
     setHelpfulAverage(helpfulPerc(metaReviews.recommended))
