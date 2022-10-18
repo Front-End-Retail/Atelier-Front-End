@@ -10,7 +10,7 @@ const RelatedProducts = ({relatedProductsID, handleModal}) => {
   return (
     <div className='container'>
     {relatedProductsID.map((relatedProductID, index)=>{
-      return <RelatedProduct key={index} relatedProductID={relatedProductID} handleModal={handleModal}></RelatedProduct>
+      return <RelatedProduct key={index} relatedProductID={relatedProductID}></RelatedProduct>
     })}
     </div>
   );

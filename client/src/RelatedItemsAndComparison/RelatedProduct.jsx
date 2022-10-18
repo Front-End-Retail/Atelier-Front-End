@@ -2,15 +2,19 @@ import React from 'react';
 const { useState, useEffect } = React;
 import axios from 'axios';
 import '../assets/related.css';
+import Modal from './Modal.jsx';
+import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 
 
-const RelatedProduct = ({relatedProductID, handleModal}) =>{
+const RelatedProduct = ({relatedProductID}) =>{
   // const [name, setName] = useState('');
   // const [category, setCategory] = useState('');
   // const [price, setPrice] = useState(0);
   // const [imageURL, setImageURL] = useState('');
   const [relatedProduct, setRelatedProduct] = useState({});
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${relatedProductID}` } })
@@ -31,7 +35,6 @@ const RelatedProduct = ({relatedProductID, handleModal}) =>{
           .catch(err=>{
             console.log('failed to fetch styles for given product id: ', err);
           })
-
     })
     .catch(err=>{
       console.log('failed to retrieve product details: ', err);
@@ -43,15 +46,21 @@ const RelatedProduct = ({relatedProductID, handleModal}) =>{
   //   console.log('effects everytime relatedProduct changes')
   // }, [relatedProduct])
 
+
   return (
-    <div className='relatedProduct' onMouseEnter={handleModal}>
-    
+    <div className='relatedProduct'>
+
       {/* cant add listeners to react icons */}
+      <div>
+        <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
+      </div>
       <div className='name'>{relatedProduct.name}</div>
       <div className='category'>{relatedProduct.category}</div>
       <div className='price'>USD{relatedProduct.price}</div>
       <div style={{backgroundImage: `url(${relatedProduct.image})`}}>
       <img src={relatedProduct.image} alt='related product' height='123px' width='155px'/>
+      <button onClick={()=>{setOpenModal(true)}}>compare</button>
+      {openModal && <Modal closeModal={setOpenModal}/>}
       </div>
     {/* <img src="https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2760&q=80"
      alt='related product'
