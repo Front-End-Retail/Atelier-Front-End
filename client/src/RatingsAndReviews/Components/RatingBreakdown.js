@@ -1,7 +1,8 @@
 import React from 'react';
 import { format, parseISO } from "date-fns";
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
+import StarAverage from './StarAverage.js'
 const axios = require('axios');
 const { useState, useEffect } = React;
 
@@ -34,9 +35,12 @@ const RatingBreakdown = ({metaReviews}) => {
 
   return (
     <div id="breakdown-container">
-      <h3>Ratings and Reviews</h3><FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
+      <h3>Ratings and Reviews</h3>
       {metaReviews.ratings && <p>{helpfulAverage} % of reviews recommend this product</p>}
+      <div id="rating-breakdown-num">
       <h1 id="average-rating">{metaReviews.ratings && rating}</h1>
+      {!isNaN(rating) && <StarAverage rating={rating}/>}
+      </div>
       {/* make map function, this is cluttered */}
       {metaReviews.ratings && <p><a>{metaReviews.ratings["1"]}</a></p>}
       {metaReviews.ratings && <p><a>{metaReviews.ratings["2"]}</a></p>}
