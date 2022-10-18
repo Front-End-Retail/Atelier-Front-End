@@ -6,6 +6,7 @@ const Modal = () =>{
   return (
     <div className='ModalContainer'>
       <p>Comparing Modal</p>
+      <button>x</button>
     </div>
   );
 }
