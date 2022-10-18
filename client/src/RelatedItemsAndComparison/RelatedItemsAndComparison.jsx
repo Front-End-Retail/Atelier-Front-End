@@ -10,7 +10,7 @@ const { useState, useEffect } = React;
 
 const RelatedItemsAndComparison = () => {
 
-  const [openModal, setOpenModal] = useState(false);
+
   const dummyProductID = 37311;
   //   const [relatedProducts, setRelatedProducts] = useState([]);
   //   const [relatedProductsID, setRelatedProductsID] = useState([]);
@@ -47,9 +47,7 @@ const RelatedItemsAndComparison = () => {
   }
   , [relatedProductsID])
 
- const handleModal = (event) => {
-  setOpenModal(true);
- }
+
 
 
 // useEffect(()=>{
@@ -60,8 +58,7 @@ const RelatedItemsAndComparison = () => {
   return (
     <div>
       <h2 className='YouMightAlsoLike'>YOU MIGHT ALSO LIKE</h2>
-      <RelatedProducts relatedProductsID={relatedProductsID} handleModal={handleModal}></RelatedProducts>
-      {openModal && <Modal />}
+      <RelatedProducts relatedProductsID={relatedProductsID} ></RelatedProducts>
       <h3 className='CompleteYourOutfit'>COMPLETE YOUR OUTFIT</h3>
       <YourOutfit></YourOutfit>
     </div>
