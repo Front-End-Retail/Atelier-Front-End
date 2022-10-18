@@ -8,8 +8,8 @@ const axios = require('axios');
 
 const { useState, useEffect } = React;
 
-const RatingsAndReviews = () => {
-  const [currentProduct = setCurrentProduct] = useState(37311);
+const RatingsAndReviews = ({currentProductId}) => {
+  const [currentProduct, setCurrentProduct] = useState(37311)
   const [reviews, setReviews] = useState([])
   const [metaReviews, setMetaReviews] = useState({})
   const [ratingAverage, setRatingAverage] = useState()
@@ -26,15 +26,19 @@ const RatingsAndReviews = () => {
       return 1;
     }
     return 0;
-  } } else {
+  } } else if (name === 'date') {
     return function(a,b){
       // Turn your strings into dates, and then subtract them
       // to get a value that is either negative, positive, or zero.
       return new Date(b.date) - new Date(a.date);
     };
+  } else {
+    return function (a, b)  {
+      let random = Math.floor(Math.random() * 2)
+      return (random === 0 ? new Date(b.date) - new Date(a.date) : b.helpfulness - a.helpfulness)
+    }
   }
-}
-
+  }
   const sortReviews = (name) => {
     let filter = name;
     let filteredReviews = [...reviews].sort(propComparator(filter))
@@ -47,7 +51,7 @@ const RatingsAndReviews = () => {
 
   const reviewRequest = () => {
     axios.default.get('http://localhost:3000/products', { params: { specificURL : `reviews?product_id=${currentProduct}` }}).then((reviewData) => {
-      console.log('gotten', reviewData.data)
+      // console.log('gotten', reviewData.data)
       let reviewsArray = reviewData.data.results
       reviewsArray = reviewsArray.map(datum => {
         datum.date = format(parseISO(datum.date), 'MMMM d, yyyy')
@@ -61,7 +65,7 @@ const RatingsAndReviews = () => {
   }
   const metaRequest = () => {
     axios.default.get('http://localhost:3000/products', { params: { specificURL : `reviews/meta?product_id=${currentProduct}` }}).then((reviewData) => {
-      // console.log('gotten', reviewData.data)
+      console.log('gotten', reviewData.data)
       setMetaReviews(reviewData.data)
     }).catch(err => {
       console.log('error getting', err)
