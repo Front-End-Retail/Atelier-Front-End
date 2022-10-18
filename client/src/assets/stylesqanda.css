@@ -94,7 +94,15 @@
   margin-left: 5px;
 }
 
+.qalist-answersnotactive {
+  max-height: 0;
+    transition: max-height 0.15s ease-out;
+    overflow: hidden;
+}
+
 .qalist-answersandbuttonwrapper {
+  max-height: 500px;
+    transition: max-height 0.25s ease-in;
   display: flex;
   flex-direction: column;
 }
@@ -118,14 +126,17 @@
 
 .qalist-a-image-wrapper {
   display: flex;
-  gap: 10px;
+  gap: 5px;
+  margin-left: 5px;
+}
+
+.image-wrapper {
+  max-width:60px;
+  margin-bottom: 10px;
 }
 
 .answer-image {
-  max-width: 8%;
-  margin-left: 5px;
-  margin-bottom: 1%;
-  margin-right: 1%;
+  max-width: 100%;
 }
 
 /* QandA Search */

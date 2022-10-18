@@ -52,12 +52,12 @@ const QAListItem = ({ question }) => {
           <p> Add Answer </p>
         </div>
       </div>
-      {isActive && <div className="qalist-answersandbuttonwrapper">
+      <div className={isActive ? "qalist-answersandbuttonwrapper" : "qalist-answersnotactive"}>
       {displayedAnswersForQ.length > 0 && displayedAnswersForQ.map((answer, index) => {
         return <QAAnswerItem answer={answer} key={index} />
       })}
       {displayedAnswersForQ.length < answersForQ.length && <button className={"showAnswersButton"} onClick={() => {addTwoAnswers()}}>LOAD MORE ANSWERS</button>}
-      </div>}
+      </div>
     </div>
   )
 }
