@@ -51,10 +51,12 @@ const QAListItem = ({ question }) => {
           <p> Add Answer </p>
         </div>
       </div>
+      <div className="qalist-answersandbuttonwrapper">
       {displayedAnswersForQ.length > 0 && displayedAnswersForQ.map((answer, index) => {
         return <QAAnswerItem answer={answer} key={index} />
       })}
       {displayedAnswersForQ.length < answersForQ.length && <button className={"showAnswersButton"} onClick={() => {addTwoAnswers()}}>LOAD MORE ANSWERS</button>}
+      </div>
     </div>
   )
 }
