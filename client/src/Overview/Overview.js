@@ -12,7 +12,6 @@ const Overview = ({ currentProductID }) => {
   const [currentProduct, setCurrentProduct] = useState({});
 
   //grabs all product info for current product
-
   const fetchProductInfo = () => {
     axios({
       method: 'get',

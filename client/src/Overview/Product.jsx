@@ -6,8 +6,13 @@ const Product = ({ styles, currentProduct, selectedStyle, setSelectedStyle }) =>
   const [qty, setQty] = useState([]);
   //this function will take the quantity associated with the selected size and create an array
   const createQtyArray = (size) => {
+    let temp = []
     let sizeIndex = sizes.indexOf(size);
-    let temp = Array.from(Array(bulkQuantity[sizeIndex]).keys());
+    if (bulkQuantity[sizeIndex] > 15) {
+      temp = Array.from(Array(16).keys());
+    } else {
+      temp = Array.from(Array(bulkQuantity[sizeIndex] + 1).keys());
+    }
     setQty(temp);
   }
 
@@ -35,18 +40,18 @@ const Product = ({ styles, currentProduct, selectedStyle, setSelectedStyle }) =>
       <StyleSelector styles={styles} selectedStyle={selectedStyle} setSelectedStyle={setSelectedStyle} />
       <div className="add-to-bag">
         <form>
-          <select className="size-select">
-            <option value="" disabled defaultValue="selected" hidden>Select a Size</option>
+          <select onChange={e => {
+            createQtyArray(e.target.value);
+          }} className="size-select">
+            <option value="-1" disabled defaultValue="selected">Select a Size</option>
             {sizes.map((size, i) => {
               return (
-                <option onSelect={e => {
-                  createQtyArray(e.target.value);
-                }} key={i} value={size}>{size}</option>
+                <option key={i} value={size}>{size}</option>
               )
             })}
           </select>
           <select className='qty'>
-            {bulkQuantity.map((number, i) => {
+            {qty.map((number, i) => {
               return (
                 <option key={i} value={number}>{number}</option>
               )
