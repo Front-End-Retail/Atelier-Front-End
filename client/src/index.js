@@ -37,11 +37,9 @@ const App = () => {
   return (
     <div>
       <h1>The modules will be below</h1>
-
-      <Overview />
       <Overview currentProductID={currentProductID} />
       <QuestionsAndAnswers />
-      <RatingsAndReviews currentProductID={currentProductID}/>
+      <RatingsAndReviews currentProductID={currentProductID} />
       <RelatedItemsAndComparison />
     </div>
   );
