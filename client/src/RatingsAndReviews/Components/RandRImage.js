@@ -10,7 +10,7 @@ const RandRImage = ({ photo }) => {
   const {toggleImage, imageVisibility} = useImageModal();
 
   return (
-    <div>
+    <div className={"image-wrapper"}>
       <img onClick={toggleImage} className={"answer-image"} src={photo.url}></img>
       <ImageModal imageVisibility={imageVisibility} toggleImage={toggleImage} imagePath={photo.url} />
     </div>
