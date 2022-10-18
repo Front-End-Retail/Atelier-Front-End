@@ -8,19 +8,18 @@ import Modal from './Modal.jsx';
 
 const { useState, useEffect } = React;
 
-const RelatedItemsAndComparison = () => {
+const RelatedItemsAndComparison = ({currentProductID, changeCurrentProduct}) => {
 
+// console.log('currentProductID passed in: ', currentProductID) //its first 0 and then 37311
 
-  const dummyProductID = 37311;
-  //   const [relatedProducts, setRelatedProducts] = useState([]);
-  //   const [relatedProductsID, setRelatedProductsID] = useState([]);
-  //   const [currentProductID, setCurrentProductID] = useState(Number);
 
   const [relatedProductsID, setRelatedProductsID] = useState([]);
+  const dummyProductID =  37311;
 
   useEffect(() => {
     const temp = [];
     const fetchAllRelatedProductsID = () => {
+      // console.log('currentProductID in fetchAllRelatedProducts: ', currentProductID);//0
       axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${dummyProductID}/related` } })
         .then((response) => {
           console.log('response.data from calling API/products: ', response.data);
@@ -58,7 +57,7 @@ const RelatedItemsAndComparison = () => {
   return (
     <div>
       <h2 className='YouMightAlsoLike'>YOU MIGHT ALSO LIKE</h2>
-      <RelatedProducts relatedProductsID={relatedProductsID} ></RelatedProducts>
+      <RelatedProducts relatedProductsID={relatedProductsID} changeCurrentProduct={changeCurrentProduct}></RelatedProducts>
       <h3 className='CompleteYourOutfit'>COMPLETE YOUR OUTFIT</h3>
       <YourOutfit></YourOutfit>
     </div>

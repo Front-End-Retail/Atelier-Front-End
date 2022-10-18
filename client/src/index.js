@@ -30,6 +30,10 @@ const App = () => {
       })
   }
 
+  const changeCurrentProduct = (newProductID) =>{
+    setCurrentProductID(newProductID);
+  }
+
   useEffect(() => {
     fetchAllProducts();
   }, [])
@@ -38,10 +42,9 @@ const App = () => {
     <div>
       <h1>The modules will be below</h1>
       <Overview currentProductID={currentProductID} />
-      <RelatedItemsAndComparison currentProductID={currentProductID}/>
+      <RelatedItemsAndComparison currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct}/>
       <QuestionsAndAnswers />
       <RatingsAndReviews currentProductID={currentProductID}/>
-
     </div>
   );
 }

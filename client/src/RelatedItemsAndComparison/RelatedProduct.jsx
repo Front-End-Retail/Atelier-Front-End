@@ -4,17 +4,21 @@ import axios from 'axios';
 import '../assets/related.css';
 import Modal from './Modal.jsx';
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as faHeartActive } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as faHeartInactive } from '@fortawesome/free-regular-svg-icons';
 
 
 
-const RelatedProduct = ({relatedProductID}) =>{
+const RelatedProduct = ({relatedProductID, changeCurrentProduct}) =>{
   // const [name, setName] = useState('');
   // const [category, setCategory] = useState('');
   // const [price, setPrice] = useState(0);
   // const [imageURL, setImageURL] = useState('');
   const [relatedProduct, setRelatedProduct] = useState({});
   const [openModal, setOpenModal] = useState(false);
+  const [liked, setLiked] = useState(false);
+
+  const likeIcon = (liked) => (liked ? faHeartActive : faHeartInactive);
 
   useEffect(() => {
     axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${relatedProductID}` } })
@@ -45,14 +49,20 @@ const RelatedProduct = ({relatedProductID}) =>{
   // useEffect(()=>{
   //   console.log('effects everytime relatedProduct changes')
   // }, [relatedProduct])
-
+const handleLikeClick = (event) =>{
+  console.log('event.target inside of handleLikeClick: ', event.target);
+  setLiked(true);
+  // changeCurrentProduct(relatedProductID);
+}
 
   return (
-    <div className='relatedProduct'>
+    <div className='relatedProduct' >
 
       {/* cant add listeners to react icons */}
-      <div>
-        <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
+      <div className='heartIcon' onClick={handleLikeClick}>
+      {/* onClick={()=>{changeCurrentProduct(relatedProductID)}} */}
+      <FontAwesomeIcon icon={likeIcon(liked)} color="red"/>
+        {/* <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon> */}
       </div>
       <div className='name'>{relatedProduct.name}</div>
       <div className='category'>{relatedProduct.category}</div>
