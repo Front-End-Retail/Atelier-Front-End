@@ -41,9 +41,7 @@ const App = () => {
       <Overview />
       <Overview currentProductID={currentProductID} />
       <QuestionsAndAnswers />
-
       <RatingsAndReviews currentProductID={currentProductID}/>
-
       <RelatedItemsAndComparison />
     </div>
   );
