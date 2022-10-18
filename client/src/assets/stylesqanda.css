@@ -11,6 +11,15 @@
   padding: 5px;
 }
 
+.qalistwrapper {
+  margin:4px, 4px;
+  padding:4px;
+  width: 3fr;
+  max-height: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
 .qandatitle {
   padding: 5px;
   font-weight:lighter;
@@ -28,8 +37,7 @@
 
 .qalist-question {
   display: flex;
-  margin-left: 1%;
-  gap: 3%;
+  margin-left: 10px;
 }
 
 .qalist-helpful {
@@ -45,9 +53,26 @@
   margin-top: 20px;
   display:inline;
   min-width: fit-content;
+  margin-left: 5px;
 }
 
     /* Answer Section of QandALIST*/
+
+.qalist-totalanswerwrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.qalist-answer-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.qalist-largea {
+  margin-top: 0;
+  margin-left: 10px;
+}
 
 .qalist-aline-wrapper {
   display: flex;
@@ -58,34 +83,48 @@
 
 .qalist-answer {
   display: flex;
-  margin-left: 1%;
+  margin-left: 5px;
   gap: 1%;
   max-width: 65%;
 }
 
 .qalist-a-text {
-  margin-top: 20px;
+  margin-top: 22px;
   display:inline;
   min-width: fit-content;
 }
 
 .qalist-answer-info-wrapper {
   display: flex;
-  margin-top: -20px;
+  margin-top: -23px;
   font-size: smaller;
   font-weight: lighter;
   gap: 7px;
-  margin-left: 3.5%;
+  margin-left: 5px;
+}
+
+.qalist-answersnotactive {
+  max-height: 0;
+    transition: max-height 0.15s ease-out;
+    overflow: hidden;
+}
+
+.qalist-answersandbuttonwrapper {
+  max-height: 500px;
+    transition: max-height 0.25s ease-in;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Button for adding more Answers */
 
 .showAnswersButton {
-  margin-left: 3%;
+  margin-left: 27px;
   border: none;
   background-color: white;
   font-size: small;
   font-weight: bolder;
+  align-self: flex-start;
 }
 
 .showAnswersButton:hover {
@@ -96,14 +135,17 @@
 
 .qalist-a-image-wrapper {
   display: flex;
-  gap: 10px;
+  gap: 5px;
+  margin-left: 5px;
+}
+
+.image-wrapper {
+  max-width:60px;
+  margin-bottom: 10px;
 }
 
 .answer-image {
-  max-width: 5%;
-  margin-left: 3%;
-  margin-bottom: 1%;
-  margin-right: 1%;
+  max-width: 100%;
 }
 
 /* QandA Search */
@@ -137,16 +179,16 @@
 
 .qanda-button {
   padding: 20px;
-  margin: 1%;
+  margin-left: 11px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   background-color: white;
   font-weight: bold;
 }
 
 .qanda-button:hover {
-  padding: 20px;
-  margin: 1%;
   background-color: rgb(214, 214, 214);
-  font-weight: bold;
+  font-weight: bolder;
 }
 
 /* MODAL STYLING */

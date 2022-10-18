@@ -3,6 +3,7 @@ import QASearch from './QASearch.js'
 import QAListItem from './QAListItem.js'
 import Modal from './Modal'
 import useModal from './useModal'
+import SortbyHelpfulness from './QAHelpers.js'
 import '../assets/stylesqanda.css';
 const axios = require('axios');
 
@@ -14,17 +15,18 @@ const QuestionsAndAnswers = () => {
   const [displayedQuestions, setDisplayedQuestions] = useState([])
 
   const getProductQuestions = () => {
-    axios.default.get('http://localhost:3000/qanda', { params: { specificURL: `qa/questions?product_id=${currentId}` } }).then((data) => {
-      setCurrentQuestions(data.data.results)
+    axios.default.get('http://localhost:3000/qanda', { params: { specificURL: `qa/questions?product_id=${currentId}&count=100` } }).then((data) => {
+      let sortedData = SortbyHelpfulness(data.data.results, "question_helpfulness")
+      setCurrentQuestions(sortedData)
     }).catch(err => {
       console.log('error getting', err)
     })
   }
 
-  //will set initial list of displayed questions. Setting limit to 2 for testing, should be 4 when complete
+  //will set initial list of displayed questions
   useEffect(() => {
     let copyQuestions = currentQuestions
-    copyQuestions = copyQuestions.slice(0, 2)
+    copyQuestions = copyQuestions.slice(0, 4)
     setDisplayedQuestions(copyQuestions)
   }, [currentQuestions])
 
@@ -54,8 +56,8 @@ const QuestionsAndAnswers = () => {
       </div>
       {displayedQuestions.length < currentQuestions.length && <button onClick={() => {addMoreQuestions()}} className={"qanda-button"}>MORE ANSWERED QUESTIONS</button>}
       <button className={"qanda-button"}>ADD A QUESTION +</button>
-      <button onClick={toggle}>Show Modal</button>
-      <Modal visible={visible} toggle={toggle} />
+      {/* <button onClick={toggle}>Show Modal</button>
+      <Modal visible={visible} toggle={toggle} /> */}
     </div>
   )
 }
