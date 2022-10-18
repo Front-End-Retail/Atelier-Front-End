@@ -7,8 +7,6 @@ import '../assets/related.css';
 
 const RelatedProducts = ({relatedProductsID, handleModal}) => {
 
-console.log('relatedProductID passed in RelatedProducts.jsx: ', relatedProductsID);
-
   return (
     <div className='container'>
     {relatedProductsID.map((relatedProductID, index)=>{
