@@ -50,7 +50,7 @@ const RatingsAndReviews = ({currentProductId}) => {
   }
 
   const reviewRequest = () => {
-    axios.default.get('http://localhost:3000/products', { params: { specificURL : `reviews?product_id=${currentProduct}` }}).then((reviewData) => {
+    axios.default.get('http://localhost:3000/products', { params: { specificURL : `reviews?product_id=${currentProduct}&count=100` }}).then((reviewData) => {
       // console.log('gotten', reviewData.data)
       let reviewsArray = reviewData.data.results
       reviewsArray = reviewsArray.map(datum => {
