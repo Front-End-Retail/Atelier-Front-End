@@ -3,6 +3,7 @@ import ReviewList from './components/ReviewList.js'
 import RatingBreakdown from './components/RatingBreakdown.js'
 import { format, parseISO } from "date-fns";
 import '../assets/ratingsStyles.css'
+import {helpfulPerc} from './components/helperFuncs'
 // import axios from 'axios';
 const axios = require('axios');
 
@@ -14,31 +15,6 @@ const RatingsAndReviews = ({currentProductId}) => {
   const [metaReviews, setMetaReviews] = useState({})
   const [ratingAverage, setRatingAverage] = useState()
 
-  const propComparator = (name) => {
-    if (name === 'helpfulness') {
-    return function (a, b)  {
-    if ( a[name] < b[name] ){
-      // console.log(a[name])
-      // console.log(b[name])
-      return -1;
-    }
-    if ( a[name] > b[name] ){
-      return 1;
-    }
-    return 0;
-  } } else if (name === 'date') {
-    return function(a,b){
-      // Turn your strings into dates, and then subtract them
-      // to get a value that is either negative, positive, or zero.
-      return new Date(b.date) - new Date(a.date);
-    };
-  } else {
-    return function (a, b)  {
-      let random = Math.floor(Math.random() * 2)
-      return (random === 0 ? new Date(b.date) - new Date(a.date) : b.helpfulness - a.helpfulness)
-    }
-  }
-  }
   const sortReviews = (name) => {
     axios.default.get('http://localhost:3000/products', { params: { specificURL : `reviews?product_id=${currentProduct}&count=500&sort=${name}` }}).then((reviewData) => {
       // console.log('gotten', reviewData.data)
@@ -47,7 +23,6 @@ const RatingsAndReviews = ({currentProductId}) => {
         datum.date = format(parseISO(datum.date), 'MMMM d, yyyy')
         return datum
       })
-      console.log(reviewsArray)
       setReviews(reviewsArray)
     }).catch(err => {
       console.log('error getting', err)
@@ -62,7 +37,6 @@ const RatingsAndReviews = ({currentProductId}) => {
         datum.date = format(parseISO(datum.date), 'MMMM d, yyyy')
         return datum
       })
-      console.log(reviewsArray)
       setReviews(reviewsArray)
     }).catch(err => {
       console.log('error getting', err)
