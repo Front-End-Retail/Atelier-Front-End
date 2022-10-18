@@ -2,8 +2,8 @@ import React from 'react';
 import ReviewList from './components/ReviewList.js'
 import RatingBreakdown from './components/RatingBreakdown.js'
 import { format, parseISO } from "date-fns";
-import '../assets/ratingsStyles.css'
-import {helpfulPerc} from './components/helperFuncs'
+import '../assets/ratingsStyles.css';
+import {helpfulPerc} from './components/helperFuncs';
 // import axios from 'axios';
 const axios = require('axios');
 
@@ -44,16 +44,15 @@ const RatingsAndReviews = ({currentProductId}) => {
       }
     })
     setStarFilter([...tempStarFilter]);
-    // console.log(starFilter)
     let tempStarReviews = [...reviews]
     tempStarReviews = tempStarReviews.filter(review => {
       let tempStar = Number(review.rating) - 1
-      if (starFilter[tempStar]) {
+      if (tempStarFilter[tempStar]) {
         return true
       }
 
     })
-    setStarReviews(tempStarReviews)
+    setStarReviews([...tempStarReviews])
   }
 
   const reviewRequest = () => {
@@ -83,10 +82,11 @@ const RatingsAndReviews = ({currentProductId}) => {
     metaRequest()
   }
 
-// useEffect(() => {
-//   reviewRequest()
-//   metaRequest()
-// }, [])
+useEffect(() => {
+  reviewRequest()
+  metaRequest()
+}, [])
+
 
   return (
       <div >
