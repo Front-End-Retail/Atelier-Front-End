@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import RelatedProducts from './RelatedProducts.jsx';
 import YourOutfit from './YourOutfit.jsx';
+import '../assets/related.css';
+
 
 const { useState, useEffect } = React;
 
@@ -115,12 +117,9 @@ const RelatedItemsAndComparison = () => {
 
   return (
     <div>
-      Related Items and Comparison go here!
-      <br></br>
-      <br></br>
-      <span>YOU MIGHT ALSO LIKE</span>
+      <h2 className='YouMightAlsoLike'>YOU MIGHT ALSO LIKE</h2>
       <RelatedProducts relatedProductsID={relatedProductsID}></RelatedProducts>
-      <span>COMPLETE YOUR OUTFIT</span>
+      <h3 className='CompleteYourOutfit'>COMPLETE YOUR OUTFIT</h3>
       <YourOutfit></YourOutfit>
     </div>
   );
