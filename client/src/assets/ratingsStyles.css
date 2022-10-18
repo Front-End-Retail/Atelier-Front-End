@@ -28,7 +28,7 @@
   width: 3fr;
   height: 1fr;
 }
-
+/* Breakdown section */
 #breakdown-container {
   display: flex;
   flex-direction: column;
@@ -43,6 +43,11 @@
   font-size: 4em;
 
 }
+#rating-breakdown-num {
+  display: flex;
+  flex: row;
+}
+
 
 .review-button {
   padding: 20px;
@@ -97,3 +102,5 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+

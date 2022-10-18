@@ -1,20 +1,20 @@
 import React from 'react';
-import ImageModal from './ImageModal.js'
-import useImageModal from './useImageModal.js'
+import ImageModal from '../..//QuestionsAndAnswers/ImageModal.js'
+import useImageModal from '../../QuestionsAndAnswers/useImageModal.js'
 const axios = require('axios');
 
 const { useState, useEffect } = React;
 
-const QAAnswerImage = ({ photo }) => {
+const RandRImage = ({ photo }) => {
 
   const {toggleImage, imageVisibility} = useImageModal();
 
   return (
-    <div className={"image-wrapper"} >
+    <div>
       <img onClick={toggleImage} className={"answer-image"} src={photo.url}></img>
       <ImageModal imageVisibility={imageVisibility} toggleImage={toggleImage} imagePath={photo.url} />
     </div>
   )
 }
 
-export default QAAnswerImage;
+export default RandRImage;
