@@ -3,11 +3,14 @@ import axios from 'axios';
 import RelatedProducts from './RelatedProducts.jsx';
 import YourOutfit from './YourOutfit.jsx';
 import '../assets/related.css';
+import Modal from './Modal.jsx';
 
 
 const { useState, useEffect } = React;
 
 const RelatedItemsAndComparison = () => {
+
+  const [openModal, setOpenModal] = useState(false);
   const dummyProductID = 37311;
 //   const [relatedProducts, setRelatedProducts] = useState([]);
 //   const [relatedProductsID, setRelatedProductsID] = useState([]);
@@ -45,6 +48,10 @@ const RelatedItemsAndComparison = () => {
     console.log('relatedProductsID', relatedProductsID)
   }
   , [relatedProductsID])
+
+ const handleModal = (event) => {
+  setOpenModal(true);
+ }
 
 //     const fetchRelatedProducts = () => {
 //       axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${dummyProductID}/related`} })
@@ -118,7 +125,8 @@ const RelatedItemsAndComparison = () => {
   return (
     <div>
       <h2 className='YouMightAlsoLike'>YOU MIGHT ALSO LIKE</h2>
-      <RelatedProducts relatedProductsID={relatedProductsID}></RelatedProducts>
+      <RelatedProducts relatedProductsID={relatedProductsID} handleModal={handleModal}></RelatedProducts>
+      {openModal && <Modal />}
       <h3 className='CompleteYourOutfit'>COMPLETE YOUR OUTFIT</h3>
       <YourOutfit></YourOutfit>
     </div>

@@ -2,9 +2,10 @@ import React from 'react';
 const { useState, useEffect } = React;
 import axios from 'axios';
 import '../assets/related.css';
+import { FiHeart } from 'react-icons/fi';
 
 
-const RelatedProduct = ({relatedProductID}) =>{
+const RelatedProduct = ({relatedProductID, handleModal}) =>{
   // const [name, setName] = useState('');
   // const [category, setCategory] = useState('');
   // const [price, setPrice] = useState(0);
@@ -52,7 +53,9 @@ const RelatedProduct = ({relatedProductID}) =>{
   // }, [relatedProduct])
 
   return (
-    <div className='relatedProduct'>
+    <div className='relatedProduct' onMouseEnter={handleModal}>
+      <FiHeart className='heart'></FiHeart>
+      {/* cant add listeners to react icons */}
       <div className='name'>{relatedProduct.name}</div>
       <div className='category'>{relatedProduct.category}</div>
       <div className='price'>USD{relatedProduct.price}</div>
@@ -66,5 +69,22 @@ const RelatedProduct = ({relatedProductID}) =>{
     </div>
     )
 };
+// import { useState } from "react";
+// import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
+
+// export default function App() {
+//   const [favorite, setFavorite] = useState(false);
+//   const toggleFavorite = () => setFavorite((prev) => !prev);
+
+//   return (
+//     <button onClick={toggleFavorite} className="top-rated-car-react-button">
+//       {favorite ? (
+//         <MdFavoriteBorder style={{ color: "#F76631" }} />
+//       ) : (
+//         <MdFavorite style={{ color: "#F76631" }} />
+//       )}
+//     </button>
+//   );
+// }
 
 export default RelatedProduct;
