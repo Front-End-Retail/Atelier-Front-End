@@ -9,6 +9,7 @@ const QAListItem = ({ question }) => {
   const [questionId, setQuestionId] = useState(question.question_id)
   const [displayedAnswersForQ, setDisplayedAnswersForQ] = useState([])
   const [answersForQ, setAnswersForQ] = useState([])
+  const [isActive, setIsActive] = useState(false);
 
   const getAnswersArray = (questionIdPassedIn) => {
     axios.default.get('http://localhost:3000/qanda', { params: { specificURL: `qa/questions/${questionIdPassedIn}/answers` } }).then((data) => {
@@ -39,7 +40,7 @@ const QAListItem = ({ question }) => {
 
   return (
     <div className={'qalist-item-wrapper'}>
-      <div className={"qalist-q-line-wrapper"}>
+      <div onClick={() => setIsActive(!isActive)} className={"qalist-q-line-wrapper"}>
         <div className={"qalist-question"}>
           <h3>Q:</h3>
           <p className={"qalist-q-text"}><strong>{question.question_body}</strong></p>
@@ -51,10 +52,12 @@ const QAListItem = ({ question }) => {
           <p> Add Answer </p>
         </div>
       </div>
+      <div className={isActive ? "qalist-answersandbuttonwrapper" : "qalist-answersnotactive"}>
       {displayedAnswersForQ.length > 0 && displayedAnswersForQ.map((answer, index) => {
         return <QAAnswerItem answer={answer} key={index} />
       })}
       {displayedAnswersForQ.length < answersForQ.length && <button className={"showAnswersButton"} onClick={() => {addTwoAnswers()}}>LOAD MORE ANSWERS</button>}
+      </div>
     </div>
   )
 }
