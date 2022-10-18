@@ -1,11 +1,22 @@
 import React from 'react';
-import '../assets/related.css';
+import './Modal.css';
 const { useState, useEffect } = React;
 
-const Modal = () =>{
+const Modal = ({closeModal}) =>{
   return (
-    <div className='ModalContainer'>
-      <p>Comparing Modal</p>
+    <div className='modalBackground'>
+
+      <div className='modalContainer'>
+
+        <div className='body'>
+          <p>Comparing Modal</p>
+        </div>
+        <div className='titleCloseBtn'>
+          <button onClick={()=>{closeModal(false)}}>x</button>
+        </div>
+
+      </div>
+
     </div>
   );
 }

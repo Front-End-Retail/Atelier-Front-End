@@ -4,11 +4,16 @@ const axios = require('axios');
 
 const { useState, useEffect } = React;
 
-const QASearch = () => {
+const QASearch = ({ newSearchTerm }) => {
+  const [searchText, setSearchText] = useState('')
+
+  useEffect(() => {
+    newSearchTerm(searchText)
+  }, [searchText])
 
   return (
     <div className={'qasearchwrapper'}>
-      <input type={"search"} id={"site-search"} name={"q"} className={"search-field"} placeholder={"HAVE A QUESTION? SEARCH FOR ANSWERS..."}></input>
+      <input value={searchText} onChange={(event) => {setSearchText(event.target.value)}} type={"search"} id={"site-search"} name={"q"} className={"search-field"} placeholder={"HAVE A QUESTION? SEARCH FOR ANSWERS..."}></input>
       <button type={"submit"} className={"search-button"}><img src={magnifyingGlass}></img></button>
     </div>
   )
