@@ -3,33 +3,36 @@ import { format, parseISO } from "date-fns";
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 import StarAverage from './StarAverage.js'
+import {findAverage, helpfulPerc, findTotal, findRatio} from './helperFuncs'
 const axios = require('axios');
 const { useState, useEffect } = React;
 
 const RatingBreakdown = ({metaReviews}) => {
   const [rating, setRating] = useState()
+  const [ratingTotal, setRatingTotal] = useState()
   const [helpfulAverage, setHelpfulAverage] = useState()
-  const findAverage = (ratingsObj) => {
-    // console.log("findAverage", metaReviews.recommended)
-    let average = 0
-    let total = 0;
-    for (let key in ratingsObj) {
-      average += (Number(key) * Number(ratingsObj[key]))
-      total += Number(ratingsObj[key])
-    }
-    return Math.round(((average/total) * 10) / 10)
-  }
-  const helpfulPerc = (helpfulObj) => {
-    if (helpfulObj) {
-      let total = Number(helpfulObj.false) + Number(helpfulObj.true);
-      return (Math.round((Number(helpfulObj.true)/total) * 100));
-    }
-  }
+  // const findAverage = (ratingsObj) => {
+  //   // console.log("findAverage", metaReviews.recommended)
+  //   let average = 0
+  //   let total = 0;
+  //   for (let key in ratingsObj) {
+  //     average += (Number(key) * Number(ratingsObj[key]))
+  //     total += Number(ratingsObj[key])
+  //   }
+  //   return Math.round(((average/total) * 10) / 10)
+  // }
+  // const helpfulPerc = (helpfulObj) => {
+  //   if (helpfulObj) {
+  //     let total = Number(helpfulObj.false) + Number(helpfulObj.true);
+  //     return (Math.round((Number(helpfulObj.true)/total) * 100));
+  //   }
+  // }
 
 
   useEffect(() => {
     setHelpfulAverage(helpfulPerc(metaReviews.recommended))
     setRating(findAverage(metaReviews.ratings))
+    setRatingTotal(findTotal(metaReviews.ratings))
   }, [metaReviews])
 
 
@@ -41,12 +44,15 @@ const RatingBreakdown = ({metaReviews}) => {
       <h1 id="average-rating">{metaReviews.ratings && rating}</h1>
       {!isNaN(rating) && <StarAverage rating={rating}/>}
       </div>
-      {/* make map function, this is cluttered */}
-      {metaReviews.ratings && <p><a>{metaReviews.ratings["1"]}</a></p>}
-      {metaReviews.ratings && <p><a>{metaReviews.ratings["2"]}</a></p>}
-      {metaReviews.ratings && <p><a>{metaReviews.ratings["3"]}</a></p>}
-      {metaReviews.ratings && <p><a>{metaReviews.ratings["4"]}</a></p>}
-      {metaReviews.ratings && <p><a>{metaReviews.ratings["5"]}</a></p>}
+      {ratingTotal && Object.keys(metaReviews.ratings).reverse().map(starNum => {
+        let ratio = findRatio(ratingTotal, metaReviews.ratings[starNum])
+        let ratioTotal = 300 - ratio;
+        return <table>
+        <tr width="300px">
+        <u>{starNum} stars</u> <td style={{background: "gray", width: ratio, height:25}}></td><td style={{background: "black", width: ratioTotal, height:25}}></td>
+        </tr>
+        </table>
+      })}
       {metaReviews.characteristics && Object.keys(metaReviews.characteristics).map(key => {
         return (
           <div class="slidecontainer">{key}
