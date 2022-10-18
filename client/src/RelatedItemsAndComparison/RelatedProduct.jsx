@@ -12,19 +12,19 @@ const RelatedProduct = ({relatedProductID, handleModal}) =>{
   // const [imageURL, setImageURL] = useState('');
   const [relatedProduct, setRelatedProduct] = useState({});
 
-  useEffect(()=>{
-    axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${relatedProductID}`} })
-    .then((response)=>{
-      console.log('relatedProductID', relatedProductID)
-      console.log('product details in RelatedProduct.jsx', response.data);
+  useEffect(() => {
+    axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${relatedProductID}` } })
+      .then((response) => {
+        console.log('relatedProductID', relatedProductID)
+        console.log('product details in RelatedProduct.jsx', response.data);
 
-      const newProduct = {};
-      newProduct.name = response.data.name;
-      newProduct.category = response.data.category;
-      newProduct.price = response.data.default_price;
-      console.log('newProduct ', newProduct)
-        axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${relatedProductID}/styles`} })
-          .then(response=>{
+        const newProduct = {};
+        newProduct.name = response.data.name;
+        newProduct.category = response.data.category;
+        newProduct.price = response.data.default_price;
+        console.log('newProduct ', newProduct)
+        axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${relatedProductID}/styles` } })
+          .then(response => {
             console.log('url for current product: ', response.data.results[0].photos[0].url);
             newProduct.image = response.data.results[0].photos[0].url;
             setRelatedProduct(newProduct);
@@ -65,7 +65,7 @@ const RelatedProduct = ({relatedProductID, handleModal}) =>{
     {/* <img src="https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2760&q=80"
      alt='related product'
      height='50px'/> */}
-    {/* <div>{relatedProduct.image}</div> */}
+      {/* <div>{relatedProduct.image}</div> */}
     </div>
     )
 };
