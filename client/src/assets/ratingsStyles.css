@@ -73,6 +73,12 @@
   padding-right: 1%;
 }
 
+.thumbnail-container {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
 .slider {
   -webkit-appearance: none;  /* Override default CSS styles */
   appearance: none;

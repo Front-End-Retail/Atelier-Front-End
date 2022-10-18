@@ -29,6 +29,10 @@ const RatingsAndReviews = ({currentProductId}) => {
     })
   }
 
+  const ratingSort = (star ) => {
+
+  }
+
   const reviewRequest = () => {
     axios.default.get('http://localhost:3000/products', { params: { specificURL : `reviews?product_id=${currentProduct}&count=500` }}).then((reviewData) => {
       // console.log('gotten', reviewData.data)
