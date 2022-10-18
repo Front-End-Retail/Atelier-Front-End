@@ -53,10 +53,12 @@ const RelatedProduct = ({relatedProductID}) =>{
 
   return (
     <div className='relatedProduct'>
-      <div>{relatedProduct.name}</div>
-      <div>{relatedProduct.category}</div>
-      <div>USD{relatedProduct.price}</div>
-      <img src={relatedProduct.image} alt='related product' height='50px'/>
+      <div className='name'>{relatedProduct.name}</div>
+      <div className='category'>{relatedProduct.category}</div>
+      <div className='price'>USD{relatedProduct.price}</div>
+      <div style={{backgroundImage: `url(${relatedProduct.image})`}}>
+      <img src={relatedProduct.image} alt='related product' height='123px' width='155px'/>
+      </div>
     {/* <img src="https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2760&q=80"
      alt='related product'
      height='50px'/> */}
