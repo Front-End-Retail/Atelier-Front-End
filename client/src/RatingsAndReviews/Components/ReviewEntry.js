@@ -1,12 +1,13 @@
 import React from 'react';
 import RandRImage from './RandRImage.js'
+import StarAverage from './StarAverage.js'
 const axios = require('axios');
 const { useState, useEffect } = React;
 
 const ReviewEntry = ({review}) => {
   return (
     <div className="review-entry">
-      <p>{review.rating}</p>
+      <StarAverage rating={review.rating} />
       <h4>{review.summary}</h4>
       <p>{review.date}</p>
       <p>{review.body}</p>
