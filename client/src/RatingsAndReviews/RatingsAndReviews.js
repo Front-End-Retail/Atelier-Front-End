@@ -12,8 +12,10 @@ const { useState, useEffect } = React;
 const RatingsAndReviews = ({currentProductId}) => {
   const [currentProduct, setCurrentProduct] = useState(37311)
   const [reviews, setReviews] = useState([])
+  const [starReviews, setStarReviews] = useState([])
   const [metaReviews, setMetaReviews] = useState({})
   const [ratingAverage, setRatingAverage] = useState()
+  const [starFilter, setStarFilter] = useState([true, true, true, true, true])
 
   const sortReviews = (name) => {
     axios.default.get('http://localhost:3000/products', { params: { specificURL : `reviews?product_id=${currentProduct}&count=500&sort=${name}` }}).then((reviewData) => {
@@ -24,13 +26,34 @@ const RatingsAndReviews = ({currentProductId}) => {
         return datum
       })
       setReviews(reviewsArray)
+      setStarReviews(reviewsArray)
     }).catch(err => {
       console.log('error getting', err)
     })
   }
+// sort by star rating, 1-5, and toggle filter for each star
+  const ratingSort = (toggleStar) => {
+    // console.log(toggleStar)
+    // set the starFiler boolean
+    let tempStarFilter = [...starFilter]
+    tempStarFilter = tempStarFilter.map((star, index) => {
+      if (index + 1 === Number(toggleStar)) {
+        return !star
+      } else {
+        return star
+      }
+    })
+    setStarFilter([...tempStarFilter]);
+    // console.log(starFilter)
+    let tempStarReviews = [...reviews]
+    tempStarReviews = tempStarReviews.filter(review => {
+      let tempStar = Number(review.rating) - 1
+      if (starFilter[tempStar]) {
+        return true
+      }
 
-  const ratingSort = (star ) => {
-
+    })
+    setStarReviews(tempStarReviews)
   }
 
   const reviewRequest = () => {
@@ -42,6 +65,7 @@ const RatingsAndReviews = ({currentProductId}) => {
         return datum
       })
       setReviews(reviewsArray)
+      setStarReviews(reviewsArray)
     }).catch(err => {
       console.log('error getting', err)
     })
@@ -59,15 +83,17 @@ const RatingsAndReviews = ({currentProductId}) => {
     metaRequest()
   }
 
-useEffect(() => {
-  // fetchReviews()
-})
+// useEffect(() => {
+//   reviewRequest()
+//   metaRequest()
+// }, [])
+
   return (
       <div >
         <button onClick={testButton} name="test-button">Rating Test</button>
         <div id="randr">
-        <RatingBreakdown metaReviews={metaReviews} />
-        <ReviewList reviews={reviews} sortReviews={sortReviews}/>
+        <RatingBreakdown metaReviews={metaReviews} ratingSort={ratingSort}/>
+        <ReviewList reviews={starReviews} sortReviews={sortReviews}/>
         </div>
       </div>
   )

@@ -18,8 +18,8 @@ const RatingBreakdown = ({metaReviews, ratingSort}) => {
     setRatingTotal(findTotal(metaReviews.ratings))
   }, [metaReviews])
 
-  const starClick = () => {
-    console.log()
+  const starClick = (event) => {
+    ratingSort(event.target.name)
   }
 
   return (
@@ -35,7 +35,7 @@ const RatingBreakdown = ({metaReviews, ratingSort}) => {
         let ratioTotal = 300 - ratio;
         return <table>
         <tr width="300px">
-        <u name={starNum} onClick={starClick}>{starNum} stars</u> <td style={{background: "gray", width: ratio, height:25}}></td><td style={{background: "black", width: ratioTotal, height:25}}></td>
+        <a name={starNum} onClick={starClick}>{starNum} stars</a> <td style={{background: "gray", width: ratio, height:25}}></td><td style={{background: "black", width: ratioTotal, height:25}}></td>
         </tr>
         </table>
       })}
