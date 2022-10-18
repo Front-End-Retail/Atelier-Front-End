@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-const ImageGallery = (props) => {
+const ImageGallery = ({ selectedStyle }) => {
+  console.log(selectedStyle.photos[0].url);
   return (
-    <div className="image-gallery">
-
-    </div>
+    <div style={{ backgroundImage: selectedStyle.photos[0].url }} className="image-gallery" >
+    </div >
   )
 }
 export default ImageGallery;

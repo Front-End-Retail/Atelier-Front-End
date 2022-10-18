@@ -3,15 +3,17 @@
 }
 
 .overview-container {
-  height: 33%;
   display: flex;
-  margin: 0 30px;
+  margin: 0 50px;
+  max-height: 540px;
 }
 
 .image-gallery {
   width: 55%;
-  background-color: lightgray;
+
 }
+
+
 
 .product-container {
   width: 45%;
