@@ -33,7 +33,6 @@ const RelatedProduct = ({relatedProductID}) =>{
           .catch(err=>{
             console.log('failed to fetch styles for given product id: ', err);
           })
-
     })
     .catch(err=>{
       console.log('failed to retrieve product details: ', err);
@@ -45,6 +44,7 @@ const RelatedProduct = ({relatedProductID}) =>{
   //   console.log('effects everytime relatedProduct changes')
   // }, [relatedProduct])
 
+
   return (
     <div className='relatedProduct'>
 
@@ -55,7 +55,7 @@ const RelatedProduct = ({relatedProductID}) =>{
       <div style={{backgroundImage: `url(${relatedProduct.image})`}}>
       <img src={relatedProduct.image} alt='related product' height='123px' width='155px'/>
       <button onClick={()=>{setOpenModal(true)}}>compare</button>
-      {openModal && <Modal />}
+      {openModal && <Modal closeModal={setOpenModal}/>}
       </div>
     {/* <img src="https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2760&q=80"
      alt='related product'

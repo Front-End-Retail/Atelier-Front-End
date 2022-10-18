@@ -40,17 +40,22 @@ const RatingsAndReviews = ({currentProductId}) => {
   }
   }
   const sortReviews = (name) => {
-    let filter = name;
-    let filteredReviews = [...reviews].sort(propComparator(filter))
-    // console.log(filteredReviews)
-    console.log(reviews)
-    console.log(filteredReviews)
-    setReviews([...filteredReviews])
-
+    axios.default.get('http://localhost:3000/products', { params: { specificURL : `reviews?product_id=${currentProduct}&count=500&sort=${name}` }}).then((reviewData) => {
+      // console.log('gotten', reviewData.data)
+      let reviewsArray = reviewData.data.results
+      reviewsArray = reviewsArray.map(datum => {
+        datum.date = format(parseISO(datum.date), 'MMMM d, yyyy')
+        return datum
+      })
+      console.log(reviewsArray)
+      setReviews(reviewsArray)
+    }).catch(err => {
+      console.log('error getting', err)
+    })
   }
 
   const reviewRequest = () => {
-    axios.default.get('http://localhost:3000/products', { params: { specificURL : `reviews?product_id=${currentProduct}` }}).then((reviewData) => {
+    axios.default.get('http://localhost:3000/products', { params: { specificURL : `reviews?product_id=${currentProduct}&count=500` }}).then((reviewData) => {
       // console.log('gotten', reviewData.data)
       let reviewsArray = reviewData.data.results
       reviewsArray = reviewsArray.map(datum => {
