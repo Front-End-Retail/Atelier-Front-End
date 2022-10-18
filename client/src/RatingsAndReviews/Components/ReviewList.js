@@ -5,21 +5,32 @@ import ReviewEntry from './ReviewEntry.js'
 import Sorting from './Sorting.js'
 
 const ReviewList = ({reviews, sortReviews}) => {
-
+  const [displayNum, setDisplayNum] = useState(2)
+  const [currentReviews, setCurrentReviews] = useState([])
   const passSortingName = (name) => {
     sortReviews(name)
   }
+  useEffect(() => {
+    setCurrentReviews(reviews.slice(0, displayNum))
+  }, [reviews, displayNum])
 
+  const moreReviews = () => {
+    if (displayNum + 1 < reviews.length) {
+      setDisplayNum(displayNum + 2)
+    } else if (displayNum + 1 === reviews.length ) {
+      setDisplayNum(displayNum + 1)
+    }
+  }
   return (
     <div id="review-list">
       {reviews[0] && <p>{reviews.length} reviews, sorted by <Sorting reviews={reviews} passSortingName={passSortingName}/></p>}
-      {reviews.map((review, index) => {
+      {currentReviews.length > 0 && currentReviews.map((review, index) => {
         return (
           <ReviewEntry key={index} review={review}/>
         )
       })}<div id="button-cont">
 
-      <button className="review-button">More Reviews</button>
+      {displayNum !== reviews.length && <button className="review-button" onClick={moreReviews}>More Reviews</button>}
       <button className="review-button">Add Review +</button>
       </div>
     </div>
