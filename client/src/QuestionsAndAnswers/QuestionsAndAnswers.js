@@ -23,10 +23,10 @@ const QuestionsAndAnswers = () => {
     })
   }
 
-  //will set initial list of displayed questions. Setting limit to 2 for testing, should be 4 when complete
+  //will set initial list of displayed questions
   useEffect(() => {
     let copyQuestions = currentQuestions
-    copyQuestions = copyQuestions.slice(0, 2)
+    copyQuestions = copyQuestions.slice(0, 4)
     setDisplayedQuestions(copyQuestions)
   }, [currentQuestions])
 
