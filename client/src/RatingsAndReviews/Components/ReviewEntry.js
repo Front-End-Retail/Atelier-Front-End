@@ -11,6 +11,7 @@ const ReviewEntry = ({review}) => {
       <h4>{review.summary}</h4>
       <p>{review.date}</p>
       <p>{review.body}</p>
+      {review.response === null && <div className="response"><h4>Response:</h4>{review.response}</div>}
       <div className="thumbnail-container">
       {review.photos.length > 0 && review.photos.map((photo, index) => {
         return <RandRImage photo={photo} key ={index}/>

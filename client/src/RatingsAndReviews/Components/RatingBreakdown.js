@@ -3,11 +3,11 @@ import { format, parseISO } from "date-fns";
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 import StarAverage from './StarAverage.js'
-import {findAverage, helpfulPerc, findTotal, findRatio} from './helperFuncs'
+import {findAverage, helpfulPerc, findTotal, findRatio, everyFunc} from './helperFuncs'
 const axios = require('axios');
 const { useState, useEffect } = React;
 
-const RatingBreakdown = ({metaReviews, ratingSort}) => {
+const RatingBreakdown = ({metaReviews, ratingSort, starFilter}) => {
   const [rating, setRating] = useState()
   const [ratingTotal, setRatingTotal] = useState()
   const [helpfulAverage, setHelpfulAverage] = useState()
@@ -28,7 +28,7 @@ const RatingBreakdown = ({metaReviews, ratingSort}) => {
       {metaReviews.ratings && <p>{helpfulAverage} % of reviews recommend this product</p>}
       <div id="rating-breakdown-num">
       <h1 id="average-rating">{metaReviews.ratings && rating}</h1>
-      {!isNaN(rating) && <StarAverage rating={4.6}/>}
+      {!isNaN(rating) && <StarAverage rating={rating}/>}
       </div>
       {ratingTotal && Object.keys(metaReviews.ratings).reverse().map(starNum => {
         let ratio = findRatio(ratingTotal, metaReviews.ratings[starNum])
@@ -39,6 +39,10 @@ const RatingBreakdown = ({metaReviews, ratingSort}) => {
         </tr>
         </table>
       })}
+      {!starFilter.every(everyFunc) &&
+      <div>
+        {}
+      </div>}
       {metaReviews.characteristics && Object.keys(metaReviews.characteristics).map(key => {
         return (
           <div className="slide-container">{key}
