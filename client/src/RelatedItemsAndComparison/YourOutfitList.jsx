@@ -14,12 +14,12 @@ const YourOutfitList = () => {
   useEffect(()=>{
   axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${dummyProductID}` } })
     .then(response=>{
-      console.log('detail info retrieved with product_id', response.data);
+      // console.log('detail info retrieved with product_id', response.data);
       temp.name = response.data.name;
       temp.category = response.data.category;
       axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${dummyProductID}/styles` } })
         .then((response)=>{
-          console.log('style info ', response.data);
+          // console.log('style info ', response.data);
           response.data.results.forEach(result=>{
             if (result.style_id === 221002) {
               temp.style = result.name;
@@ -30,7 +30,7 @@ const YourOutfitList = () => {
               }
             }
           })
-          console.log('temp after assigning properties: ', temp);
+          // console.log('temp after assigning properties: ', temp);
           setCurrentOutfit(temp);
         })
         .catch(err=>{

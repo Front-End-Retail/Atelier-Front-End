@@ -56,5 +56,7 @@ export const findRatio = (total, currentNum) => {
   // this should be obsolete once you transition to styled components
   return (Math.round(Number(currentNum) / total * 300))
 }
-
-
+// use this to check if any star ratings are toggled
+export let everyFunc = (currentStar) => {
+  return !currentStar
+}

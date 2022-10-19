@@ -10,22 +10,23 @@ const { useState, useEffect } = React;
 
 const RelatedItemsAndComparison = ({currentProductID, changeCurrentProduct}) => {
 
-console.log('currentProductID passed in: ', currentProductID) //its first 0 and then 37311
+// console.log('currentProductID passed in: ', currentProductID) //its first 0 and then 37311 //DONT CONSOLE.LOG here, console.log inside of fetch
 
 
   const [relatedProductsID, setRelatedProductsID] = useState([]);
 
 
     const fetchAllRelatedProductsID = () => {
+      console.log('currentProductID passed in: ', currentProductID)
       const temp = [];
       // console.log('currentProductID in fetchAllRelatedProducts: ', currentProductID);//0
       axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${currentProductID}/related` } })
         .then((response) => {
-          console.log('response.data from calling API/products: ', response.data);
+          // console.log('response.data from calling API/products: ', response.data);
           //do the forEach below to filter out 37312 because it has no images
           const storageObj ={};
           response.data.forEach(id => {
-            if (id !== 37312 && storageObj[id] === undefined) { //to filter out duplicate style_id//i hardcoded 37312
+            if (id !== 37312 && storageObj[id] === undefined && id!== currentProductID) { //to filter out duplicate style_id//i hardcoded 37312
                storageObj[id] = 1;
                temp.push(id);
             }
@@ -38,16 +39,16 @@ console.log('currentProductID passed in: ', currentProductID) //its first 0 and 
         })
     };
 
-  useEffect(() => {
-    fetchAllRelatedProductsID();
-  }, [])
+  // useEffect(() => {
+  //   fetchAllRelatedProductsID();
+  // }, [])
 
  useEffect(()=>{
   fetchAllRelatedProductsID();
  },[currentProductID])
 
   useEffect(() => {
-    console.log('relatedProductsID', relatedProductsID)
+    // console.log('relatedProductsID in comparison.jsx after relatedProductsID being updated', relatedProductsID)
   }
   , [relatedProductsID])
 

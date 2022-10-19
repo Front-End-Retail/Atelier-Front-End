@@ -9,8 +9,7 @@ import RatingsAndReviews from '../RatingsAndReviews/RatingsAndReviews.js'
 import Overview from '../Overview/Overview.js';
 test('loads items eventually', async () => {
   render(<RatingsAndReviews />)
-  const { container } = render(<RatingsAndReviews />);
-  const testButt = container.querySelector(`button[name="test-button"]`)
+  const testButt = screen.querySelector(`button[name="test-button"]`)
   expect(testButt).toBeTruthy();
   fireEvent.click(container.querySelector(`button[name="test-button"]`))
   await waitFor(() => {

@@ -12,6 +12,7 @@ import axios from 'axios';
 const App = () => {
   const [products, setProducts] = useState([]);
   const [currentProductID, setCurrentProductID] = useState(0);
+  const [currentProductName, setCurrentProductName] = useState('');
   //fetches initial product data and assigns the currentProductID state
   const fetchAllProducts = () => {
     axios({
@@ -24,14 +25,15 @@ const App = () => {
       .then(response => {
         setProducts(response.data);
         setCurrentProductID(response.data[0].id);
+        setCurrentProductName(response.data[0].name);
       })
       .catch(err => {
         console.log(err);
       })
   }
 
+
   const changeCurrentProduct = (newProductID) =>{
-    // console.log('newProductID inside of changeCurrentProduct', newProductID)
     setCurrentProductID(newProductID);
   }
 
@@ -41,10 +43,10 @@ const App = () => {
 
   return (
     <div>
-      {currentProductID !== 0 && <div>
+      {currentProductName !== '' && currentProductID !== 0 && <div>
         <h1>The modules will be below</h1>
         <Overview currentProductID={currentProductID} />
-        <RelatedItemsAndComparison currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct}/>
+        <RelatedItemsAndComparison currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct} />
         <QuestionsAndAnswers />
         <RatingsAndReviews currentProductID={currentProductID} />
       </div>}

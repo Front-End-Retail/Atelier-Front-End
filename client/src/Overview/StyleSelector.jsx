@@ -8,11 +8,13 @@ const StyleSelector = ({ styles, selectedStyle, setSelectedStyle }) => {
       <div className="style-thumbnails">
         {styles.map((style, i) => {
           return (
-            <img onClick={e => {
-              e.preventDefault();
-              setSelectedStyle(style)
-            }
-            } className="style-image" key={i} src={style.photos[0].thumbnail_url} />
+            <div key={i} className="image-container">
+              <img onClick={e => {
+                e.preventDefault();
+                setSelectedStyle(style)
+              }
+              } className="style-image" src={style.photos[0].thumbnail_url} />
+            </div>
           )
         })}
       </div>

@@ -6,7 +6,7 @@ import '../assets/related.css';
 
 
 const RelatedProducts = ({relatedProductsID, changeCurrentProduct}) => {
-
+  // console.log('relatedProductsID array passed in RelatedProducts.jsx', relatedProductsID)//[37313, 37314, 37317, 37319, 37320]
   return (
     <div className='container'>
     {relatedProductsID.map((relatedProductID, index)=>{
