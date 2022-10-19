@@ -1,5 +1,4 @@
 import React from 'react';
-import '../assets/overview.css';
 import ImageGallery from './ImageGallery.jsx';
 import Product from './Product.jsx';
 import axios from 'axios';

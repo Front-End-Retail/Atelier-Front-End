@@ -5,7 +5,6 @@ const Product = ({ styles, currentProduct, selectedStyle, setSelectedStyle }) =>
   const [bulkQuantity, setBulkQuantity] = useState([]);
   const [sizes, setSizes] = useState([]);
   const [qty, setQty] = useState([]);
-  console.log(bulkQuantity);
   //this function will take the quantity associated with the selected size and create an array
   const createQtyArray = (size) => {
     let temp = []
