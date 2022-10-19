@@ -9,8 +9,8 @@ const axios = require('axios');
 
 const { useState, useEffect } = React;
 
-const RatingsAndReviews = ({currentProductId}) => {
-  const [currentProduct, setCurrentProduct] = useState(37311)
+const RatingsAndReviews = ({currentProductID}) => {
+  // const [currentProduct, setCurrentProduct] = useState(37311)
   const [reviews, setReviews] = useState([])
   const [starReviews, setStarReviews] = useState([])
   const [metaReviews, setMetaReviews] = useState({})
@@ -18,7 +18,7 @@ const RatingsAndReviews = ({currentProductId}) => {
   const [starFilter, setStarFilter] = useState([false, false, false, false, false]  )
 // [true,true,true,true,true]  [false, false, false, false, false]
   const sortReviews = (name) => {
-    axios.default.get('http://localhost:3000/products', { params: { specificURL : `reviews?product_id=${currentProduct}&count=500&sort=${name}` }}).then((reviewData) => {
+    axios.default.get('http://localhost:3000/products', { params: { specificURL : `reviews?product_id=${currentProductID}&count=500&sort=${name}` }}).then((reviewData) => {
       // console.log('gotten', reviewData.data)
       let reviewsArray = reviewData.data.results
       reviewsArray = reviewsArray.map(datum => {
@@ -63,7 +63,7 @@ const RatingsAndReviews = ({currentProductId}) => {
   }
 
   const reviewRequest = () => {
-    axios.default.get('http://localhost:3000/products', { params: { specificURL : `reviews?product_id=${currentProduct}&count=500` }}).then((reviewData) => {
+    axios.default.get('http://localhost:3000/products', { params: { specificURL : `reviews?product_id=${currentProductID}&count=500` }}).then((reviewData) => {
       // console.log('gotten', reviewData.data)
       let reviewsArray = reviewData.data.results
       reviewsArray = reviewsArray.map(datum => {
@@ -77,7 +77,7 @@ const RatingsAndReviews = ({currentProductId}) => {
     })
   }
   const metaRequest = () => {
-    axios.default.get('http://localhost:3000/products', { params: { specificURL : `reviews/meta?product_id=${currentProduct}` }}).then((reviewData) => {
+    axios.default.get('http://localhost:3000/products', { params: { specificURL : `reviews/meta?product_id=${currentProductID}` }}).then((reviewData) => {
       // console.log('gotten', reviewData.data)
       setMetaReviews(reviewData.data)
     }).catch(err => {
@@ -92,7 +92,7 @@ const RatingsAndReviews = ({currentProductId}) => {
 useEffect(() => {
   reviewRequest()
   metaRequest()
-}, [])
+}, [currentProductID])
 // need this to reset starfilter when reviews are reset to all with sort function. Refactor to work with sort function if you can!
 useEffect(() => {
   setStarFilter([false, false, false, false, false])

@@ -1,23 +1,29 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 const axios = require('axios');
 const { useState, useEffect } = React;
 
-const StarRating = ({rating}) => {
-  const  [rating, setRating] = useState()
+const StarRating = () => {
   return (
 
-<div class="star-rating">
-  <input type="radio" id="5-stars" name="rating" value="5" />
-  <label for="5-stars" class="star">&#9733;</label>
-  <input type="radio" id="4-stars" name="rating" value="4" />
-  <label for="4-stars" class="star">&#9733;</label>
-  <input type="radio" id="3-stars" name="rating" value="3" />
-  <label for="3-stars" class="star">&#9733;</label>
-  <input type="radio" id="2-stars" name="rating" value="2" />
-  <label for="2-stars" class="star">&#9733;</label>
-  <input type="radio" id="1-star" name="rating" value="1" />
-  <label for="1-star" class="star">&#9733;</label>
-</div>
+
+    <div class="star-rating">
+      <div class="star-rating__wrap">
+        Rating
+        <input class="star-rating__input" id="star-rating-5" type="radio" name="rating" value="5" />
+        <label class="star-rating__ico" for="star-rating-5" title="5 out of 5 stars"><FontAwesomeIcon icon={faStar}/></label>
+        <input class="star-rating__input" id="star-rating-4" type="radio" name="rating" value="4"/>
+        <label class="star-rating__ico" for="star-rating-4" title="4 out of 5 stars"><FontAwesomeIcon icon={faStar}/></label>
+        <input class="star-rating__input" id="star-rating-3" type="radio" name="rating" value="3"/>
+        <label class="star-rating__ico" for="star-rating-3" title="3 out of 5 stars"><FontAwesomeIcon icon={faStar}/></label>
+        <input class="star-rating__input" id="star-rating-2" type="radio" name="rating" value="2"/>
+        <label class="star-rating__ico" for="star-rating-2" title="2 out of 5 stars"><FontAwesomeIcon icon={faStar}/></label>
+        <input class="star-rating__input" id="star-rating-1" type="radio" name="rating" value="1"/>
+        <label class="star-rating__ico" for="star-rating-1" title="1 out of 5 stars"><FontAwesomeIcon icon={faStar}/></label>
+      </div>
+    </div>
+
   )
 }
 

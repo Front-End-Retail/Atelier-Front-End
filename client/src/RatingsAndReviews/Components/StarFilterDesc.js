@@ -11,9 +11,11 @@ const StarFilterDesc = ({starFilter}) => {
       string += (index + 1) + ', '
       }
     })
+    // remove the extra comma at the end of the string
     if (string.slice(-2) === ', ') {
       string = string.slice(0, -2)
     }
+    // Order the string from highest to lowest (map runs in order)
     return string.split(',').reverse().join(', ');
   }
   return (

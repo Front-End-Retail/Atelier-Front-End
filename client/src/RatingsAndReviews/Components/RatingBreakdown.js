@@ -26,6 +26,7 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter}) => {
   return (
     <div id="breakdown-container">
       <h3>Ratings and Reviews</h3>
+      <FontAwesomeIcon icon={faStar} className="test-star"/>
       {metaReviews.ratings && <p>{helpfulAverage} % of reviews recommend this product</p>}
       <div id="rating-breakdown-num">
       <h1 id="average-rating">{metaReviews.ratings && rating}</h1>
