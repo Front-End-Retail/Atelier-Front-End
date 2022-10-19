@@ -10,23 +10,25 @@ const { useState, useEffect } = React;
 
 const RelatedItemsAndComparison = ({currentProductID, changeCurrentProduct}) => {
 
-// console.log('currentProductID passed in: ', currentProductID) //its first 0 and then 37311
+console.log('currentProductID passed in: ', currentProductID) //its first 0 and then 37311
 
 
   const [relatedProductsID, setRelatedProductsID] = useState([]);
-  const dummyProductID =  37311;
+
 
   useEffect(() => {
     const temp = [];
     const fetchAllRelatedProductsID = () => {
       // console.log('currentProductID in fetchAllRelatedProducts: ', currentProductID);//0
-      axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${dummyProductID}/related` } })
+      axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${currentProductID}/related` } })
         .then((response) => {
           console.log('response.data from calling API/products: ', response.data);
           //do the forEach below to filter out 37312 because it has no images
+          const storageObj ={};
           response.data.forEach(id => {
-            if (id !== 37312) {
-              temp.push(id);
+            if (id !== 37312 && storageObj[id] === undefined) { //to filter out duplicate style_id//i hardcoded 37312
+               storageObj[id] = 1;
+               temp.push(id);
             }
           })
           console.log('temp: ', temp);//[37313, 37318, 37317]

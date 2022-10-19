@@ -56,12 +56,12 @@ const handleLikeClick = (event) =>{
 }
 
   return (
-    <div className='relatedProduct' >
+    <div className='relatedProduct' onClick={changeCurrentProduct(relatedProductID)} >
 
       {/* cant add listeners to react icons */}
       <div className='heartIcon' onClick={handleLikeClick}>
       {/* onClick={()=>{changeCurrentProduct(relatedProductID)}} */}
-      <FontAwesomeIcon icon={likeIcon(liked)} color="red"/>
+         <FontAwesomeIcon icon={likeIcon(liked)} color="red"/>
         {/* <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon> */}
       </div>
       <div className='name'>{relatedProduct.name}</div>
