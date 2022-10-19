@@ -83,7 +83,7 @@
   width: 200px;
   height: 200px;
   border-radius: 12px;
-  position: relative;
+  position: fixed;
 }
 
 /* .modalBackground {
@@ -110,4 +110,29 @@
 .titleCloseBtn {
   display: flex;
   justify-content: flex-end;
+}
+
+.heartIcon{
+  padding: 5px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.emptyList{
+  display: flex;
+  justify-content: center;
+}
+
+.regularPrice{
+  text-decoration: line-through;
+}
+
+.currentOutfit{
+  border: solid;
+  display:block;
+  border-radius: 15px;
+  width: 220px;
+  height:250px;
+  text-align: center;
+  padding: 15px;
 }
