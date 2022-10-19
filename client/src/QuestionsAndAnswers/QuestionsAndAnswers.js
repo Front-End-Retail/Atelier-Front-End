@@ -90,10 +90,10 @@ const QuestionsAndAnswers = () => {
   //the basic modal logic, custom hook
   const {toggle, visible} = useModal();
 
-  const submitQuestionForm = () => {
-    event.preventDefault()
-    toggle()
-  }
+  // const submitQuestionForm = () => {
+  //   event.preventDefault()
+  //   toggle()
+  // }
 
   return (
     <div className={'qandawrapper'}>
@@ -110,7 +110,7 @@ const QuestionsAndAnswers = () => {
       </div>
       {displayedQuestions.length < currentQuestions.length && <button onClick={() => {addMoreQuestions()}} className={"qanda-button"}>MORE ANSWERED QUESTIONS</button>}
       <button onClick={toggle} className={"qanda-button"}>ADD A QUESTION +</button>
-      <QAAddQuestionModal visible={visible} toggle={toggle} submitQuestionForm={submitQuestionForm} />
+      <QAAddQuestionModal visible={visible} toggle={toggle} currentId={currentId} getProductQuestions={getProductQuestions} />
     </div>
   )
 }
