@@ -16,9 +16,8 @@ console.log('currentProductID passed in: ', currentProductID) //its first 0 and 
   const [relatedProductsID, setRelatedProductsID] = useState([]);
 
 
-  useEffect(() => {
-    const temp = [];
     const fetchAllRelatedProductsID = () => {
+      const temp = [];
       // console.log('currentProductID in fetchAllRelatedProducts: ', currentProductID);//0
       axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${currentProductID}/related` } })
         .then((response) => {
@@ -38,10 +37,14 @@ console.log('currentProductID passed in: ', currentProductID) //its first 0 and 
           console.log('client failed to retrieve all products ids: ', err);
         })
     };
+
+  useEffect(() => {
     fetchAllRelatedProductsID();
   }, [])
 
-
+ useEffect(()=>{
+  fetchAllRelatedProductsID();
+ },[currentProductID])
 
   useEffect(() => {
     console.log('relatedProductsID', relatedProductsID)
