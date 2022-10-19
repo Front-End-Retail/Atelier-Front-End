@@ -3,6 +3,7 @@ import { format, parseISO } from "date-fns";
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 import StarAverage from './StarAverage.js'
+import StarFilterDesc from './StarFilterDesc.js'
 import {findAverage, helpfulPerc, findTotal, findRatio, everyFunc} from './helperFuncs'
 const axios = require('axios');
 const { useState, useEffect } = React;
@@ -39,10 +40,7 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter}) => {
         </tr>
         </table>
       })}
-      {!starFilter.every(everyFunc) &&
-      <div>
-        {}
-      </div>}
+      {!starFilter.every(everyFunc) && <StarFilterDesc starFilter={starFilter}/>}
       {metaReviews.characteristics && Object.keys(metaReviews.characteristics).map(key => {
         return (
           <div className="slide-container">{key}
