@@ -10,9 +10,9 @@ const ImageGallery = ({ selectedStyle }) => {
     <div className="image-gallery">
       <img className="main-image" src={mainImage} />
       <div className="thumbnails-container">
-        {selectedStyle.photos.map(thumbnail => {
+        {selectedStyle.photos.map((thumbnail, i) => {
           return (
-            <img onClick={() => {
+            <img key={i} onClick={() => {
               setMainImage(thumbnail.url)
             }} src={thumbnail.thumbnail_url} />
           )
