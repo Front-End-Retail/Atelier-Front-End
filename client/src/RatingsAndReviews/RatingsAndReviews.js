@@ -15,7 +15,7 @@ const RatingsAndReviews = ({currentProductId}) => {
   const [starReviews, setStarReviews] = useState([])
   const [metaReviews, setMetaReviews] = useState({})
   const [ratingAverage, setRatingAverage] = useState()
-  const [starFilter, setStarFilter] = useState([true, true, true, true, true])
+  const [starFilter, setStarFilter] = useState([false, false, false, false, false])
 
   const sortReviews = (name) => {
     axios.default.get('http://localhost:3000/products', { params: { specificURL : `reviews?product_id=${currentProduct}&count=500&sort=${name}` }}).then((reviewData) => {
@@ -45,14 +45,23 @@ const RatingsAndReviews = ({currentProductId}) => {
     })
     setStarFilter([...tempStarFilter]);
     let tempStarReviews = [...reviews]
-    tempStarReviews = tempStarReviews.filter(review => {
-      let tempStar = Number(review.rating) - 1
-      if (tempStarFilter[tempStar]) {
-        return true
-      }
+    let everyFunc = (currentStar) => {
+      return !currentStar
+    }
+    let revertToAll = tempStarFilter.every(everyFunc)
+    if (revertToAll) {
+      setStarReviews(reviews)
+    } else {
+      tempStarReviews = tempStarReviews.filter(review => {
+        let tempStar = Number(review.rating) - 1
+        if (tempStarFilter[tempStar]) {
+          return true
+        }
 
-    })
-    setStarReviews([...tempStarReviews])
+      })
+      setStarReviews([...tempStarReviews])
+    }
+
   }
 
   const reviewRequest = () => {
