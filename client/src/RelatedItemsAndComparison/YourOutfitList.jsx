@@ -1,6 +1,7 @@
 import React from 'react';
 import '../assets/related.css';
 import axios from 'axios';
+import '../assets/related.css';
 const { useState, useEffect } = React;
 
 const YourOutfitList = () => {
@@ -30,6 +31,7 @@ const YourOutfitList = () => {
             }
           })
           console.log('temp after assigning properties: ', temp);
+          setCurrentOutfit(temp);
         })
         .catch(err=>{
           console.log('failed to get style info', err);
@@ -41,13 +43,23 @@ const YourOutfitList = () => {
 
 }, [])// the 2 .then() data was rendered twice without useEffect
 
-  return (
-    <div>
-    {outfits.length ===0 ? <div className='emptyList'>
-     <p>It's empty here...Add more? </p>
-     </div> : <div>its not empty!</div>}
-    </div>
-  );
+    return (
+      <div className='currentOutfit'>
+        <h4>{currentOutfit.name}</h4>
+        <div>{currentOutfit.style}</div>
+        <div>{currentOutfit.category}</div>
+        <div className='regularPrice'>${currentOutfit.regularPrice}</div>
+        <div style={{ color: 'red' }}>${currentOutfit.price}</div>
+        <img src={currentOutfit.image} alt='temp.image' height='123px' width='155px'/>
+      </div>
+    );
+  // return (
+  //   <div>
+  //   {outfits.length ===0 ? <div className='emptyList'>
+  //    <p>It's empty here...Add more? </p>
+  //    </div> : <div>its not empty!</div>}
+  //   </div>
+  // );
 };
 
 export default YourOutfitList;

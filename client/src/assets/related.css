@@ -122,3 +122,17 @@
   display: flex;
   justify-content: center;
 }
+
+.regularPrice{
+  text-decoration: line-through;
+}
+
+.currentOutfit{
+  border: solid;
+  display:block;
+  border-radius: 15px;
+  width: 220px;
+  height:250px;
+  text-align: center;
+  padding: 15px;
+}
