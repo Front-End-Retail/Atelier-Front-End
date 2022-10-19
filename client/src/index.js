@@ -46,8 +46,8 @@ const App = () => {
       {currentProductName !== '' && currentProductID !== 0 && <div>
         <h1>The modules will be below</h1>
         <Overview currentProductID={currentProductID} />
-        {/* <RelatedItemsAndComparison currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct} /> */}
-        <QuestionsAndAnswers />
+        <RelatedItemsAndComparison currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct} />
+        <QuestionsAndAnswers currentProductID={currentProductID} currentProductName={currentProductName} />
         <RatingsAndReviews currentProductID={currentProductID} />
       </div>}
     </div>
