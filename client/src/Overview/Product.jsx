@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import StyleSelector from './StyleSelector.jsx';
 import StarAverage from '../RatingsAndReviews/components/StarAverage.js';
-const Product = ({ styles, currentProduct, selectedStyle, setSelectedStyle }) => {
+import { findAverage, findTotal } from '../RatingsAndReviews/components/helperFuncs.js';
+const Product = ({ styles, currentProduct, selectedStyle, setSelectedStyle, metaReviews }) => {
   const [bulkQuantity, setBulkQuantity] = useState([]);
   const [sizes, setSizes] = useState([]);
   const [qty, setQty] = useState([]);
@@ -31,8 +32,8 @@ const Product = ({ styles, currentProduct, selectedStyle, setSelectedStyle }) =>
   return (
     <div className="product-container">
       <div className="product-info">
-        <StarAverage />
-        <span>Read all reviews</span>
+        <StarAverage rating={findAverage(metaReviews.ratings)} />
+        <span>Read all <a href="#review-list">{findTotal(metaReviews.ratings)}</a> reviews</span>
         <span>{currentProduct.category}</span>
         <h2>{currentProduct.name}</h2>
 
@@ -45,7 +46,7 @@ const Product = ({ styles, currentProduct, selectedStyle, setSelectedStyle }) =>
           <select onChange={e => {
             createQtyArray(e.target.value);
           }} className="size-select">
-            <option value="-1" disabled defaultValue="selected">Select a Size</option>
+            <option value="1" defaultValue="selected">Select a Size</option>
             {sizes.map((size, i) => {
               return (
                 <option key={i} value={size}>{size}</option>
