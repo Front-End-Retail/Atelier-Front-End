@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import RelatedProducts from './RelatedProducts.jsx';
-import YourOutfit from './YourOutfit.jsx';
+import YourOutfitList from './YourOutfitList.jsx';
 import '../assets/related.css';
 import Modal from './Modal.jsx';
 
@@ -59,7 +59,7 @@ const RelatedItemsAndComparison = ({currentProductID, changeCurrentProduct}) => 
       <h2 className='YouMightAlsoLike'>YOU MIGHT ALSO LIKE</h2>
       <RelatedProducts relatedProductsID={relatedProductsID} changeCurrentProduct={changeCurrentProduct}></RelatedProducts>
       <h3 className='CompleteYourOutfit'>COMPLETE YOUR OUTFIT</h3>
-      <YourOutfit></YourOutfit>
+      <YourOutfitList></YourOutfitList>
     </div>
   );
 };

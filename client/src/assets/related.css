@@ -117,3 +117,8 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.emptyList{
+  display: flex;
+  justify-content: center;
+}
