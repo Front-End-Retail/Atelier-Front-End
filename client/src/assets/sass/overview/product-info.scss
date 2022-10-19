@@ -1,5 +1,5 @@
 .product-container {
-  width: 45%;
+  width: 50%;
 }
 
 .product-info {
@@ -27,14 +27,24 @@
   justify-content: space-between;
   gap: 10px;
   margin-top: 10px;
+  min-width: fit-content;
+}
+
+.image-container {
+  min-height: 40%;
+  min-width: 40%;
+  border: 1px groove lightgray;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
 }
 
 .style-image {
-  min-width: 30%;
-  min-height: 30%;
-  max-width: 30%;
-  max-height: 30%;
-  border: 1px groove lightgray;
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+  aspect-ratio: 1/1;
 }
 
 .add-to-bag form {
