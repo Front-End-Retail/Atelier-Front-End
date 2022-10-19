@@ -28,6 +28,7 @@ const QuestionsAndAnswers = () => {
   const addQuestionHelpfulness = (questionId) => {
     axios.default.put('http://localhost:3000/qanda', { questionId: questionId }).then((data) => {
       console.log('succesful put to helpfulness')
+      getProductQuestions()
     }).catch((err) => {
       console.log('error put to helpfullness', err)
     })

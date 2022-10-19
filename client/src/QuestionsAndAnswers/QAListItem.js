@@ -40,8 +40,8 @@ const QAListItem = ({ question, addQuestionHelpfulness }) => {
 
   return (
     <div className={'qalist-item-wrapper'}>
-      <div onClick={() => setIsActive(!isActive)} className={"qalist-q-line-wrapper"}>
-        <div className={"qalist-question"}>
+      <div className={"qalist-q-line-wrapper"}>
+        <div onClick={() => setIsActive(!isActive)} className={"qalist-question"}>
           <h3>Q:</h3>
           <p className={"qalist-q-text"}><strong>{question.question_body}</strong></p>
         </div>

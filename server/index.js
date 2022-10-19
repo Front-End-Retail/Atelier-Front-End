@@ -51,8 +51,12 @@ app.get('/qanda', (req, res) => {
 })
 
 app.put('/qanda', (req, res) => {
-  console.log('QANDA PUT REQUEST AND BODY', req.body)
-  res.send()
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.body.questionId}/helpful`, {}, { headers: authObject }).then(() => {
+    res.send()
+  }).catch((err) => {
+    res.status(400)
+    res.end()
+  })
 })
 
 app.get('/review', (req, res) => {
