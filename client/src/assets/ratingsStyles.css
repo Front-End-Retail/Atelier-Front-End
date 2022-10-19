@@ -201,21 +201,3 @@
   max-width: 100%;
   height: auto;
 }
-
-.test-star {
-  display: inline-block;
-  position: relative;
-  font-size: 100px;
-  color: #ddd;
-}
-
-.test-star:after {
-  font-family: FontAwesome;
-  content: "\f005";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 70%;
-  overflow: hidden;
-  color: #f80;
-}

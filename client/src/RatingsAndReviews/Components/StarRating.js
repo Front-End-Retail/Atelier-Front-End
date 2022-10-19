@@ -5,21 +5,25 @@ const axios = require('axios');
 const { useState, useEffect } = React;
 
 const StarRating = () => {
+  const handleChange = (e) => {
+    e.preventDefault()
+    handleStarChange(e.target.value)
+  }
   return (
 
 
     <div class="star-rating">
       <div class="star-rating__wrap">
         Rating
-        <input class="star-rating__input" id="star-rating-5" type="radio" name="rating" value="5" />
+        <input  onChange={handleChange} class="star-rating__input" id="star-rating-5" type="radio" name="rating" value="5" />
         <label class="star-rating__ico" for="star-rating-5" title="5 out of 5 stars"><FontAwesomeIcon icon={faStar}/></label>
-        <input class="star-rating__input" id="star-rating-4" type="radio" name="rating" value="4"/>
+        <input  onChange={handleChange} class="star-rating__input" id="star-rating-4" type="radio" name="rating" value="4"/>
         <label class="star-rating__ico" for="star-rating-4" title="4 out of 5 stars"><FontAwesomeIcon icon={faStar}/></label>
-        <input class="star-rating__input" id="star-rating-3" type="radio" name="rating" value="3"/>
+        <input  onChange={handleChange} class="star-rating__input" id="star-rating-3" type="radio" name="rating" value="3"/>
         <label class="star-rating__ico" for="star-rating-3" title="3 out of 5 stars"><FontAwesomeIcon icon={faStar}/></label>
-        <input class="star-rating__input" id="star-rating-2" type="radio" name="rating" value="2"/>
+        <input  onChange={handleChange} class="star-rating__input" id="star-rating-2" type="radio" name="rating" value="2"/>
         <label class="star-rating__ico" for="star-rating-2" title="2 out of 5 stars"><FontAwesomeIcon icon={faStar}/></label>
-        <input class="star-rating__input" id="star-rating-1" type="radio" name="rating" value="1"/>
+        <input  onChange={handleChange} class="star-rating__input" id="star-rating-1" type="radio" name="rating" value="1"/>
         <label class="star-rating__ico" for="star-rating-1" title="1 out of 5 stars"><FontAwesomeIcon icon={faStar}/></label>
       </div>
     </div>
