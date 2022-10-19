@@ -9,7 +9,8 @@ const QAListItem = ({ question, addQuestionHelpfulness }) => {
   const [questionId, setQuestionId] = useState(question.question_id)
   const [displayedAnswersForQ, setDisplayedAnswersForQ] = useState([])
   const [answersForQ, setAnswersForQ] = useState([])
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(false)
+  const [votedHelpful, setVotedHelpful] = useState(false)
 
   const getAnswersArray = (questionIdPassedIn) => {
     axios.default.get('http://localhost:3000/qanda', { params: { specificURL: `qa/questions/${questionIdPassedIn}/answers` } }).then((data) => {
@@ -38,6 +39,14 @@ const QAListItem = ({ question, addQuestionHelpfulness }) => {
     getAnswersArray(questionId)
   }, [questionId, setQuestionId])
 
+  //vote helpful if hasn't already voted helpful
+  const voteHelpful = () => {
+    if (!votedHelpful) {
+      addQuestionHelpfulness(questionId)
+      setVotedHelpful(true)
+    }
+  }
+
   return (
     <div className={'qalist-item-wrapper'}>
       <div className={"qalist-q-line-wrapper"}>
@@ -47,7 +56,7 @@ const QAListItem = ({ question, addQuestionHelpfulness }) => {
         </div>
         <div className={"qalist-helpful"}>
           <p>Helpful?</p>
-          <p onClick={() => {addQuestionHelpfulness(questionId)}}>Yes ({question.question_helpfulness})</p>
+          <p className={"underlined"}onClick={() => {voteHelpful()}}>Yes </p><p>({question.question_helpfulness})</p>
           <p> | </p>
           <p> Add Answer </p>
         </div>

@@ -49,6 +49,11 @@
   gap: 7px;
 }
 
+.underlined {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .qalist-q-text {
   margin-top: 20px;
   display:inline;

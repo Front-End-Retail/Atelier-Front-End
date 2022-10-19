@@ -15,6 +15,7 @@ const QuestionsAndAnswers = () => {
   const [displayedQuestions, setDisplayedQuestions] = useState([])
   const [searchedQuestions, setSearchedQuestions] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
+  const [qsOnPage, setQsOnPage] = useState(4)
 
   const getProductQuestions = () => {
     axios.default.get('http://localhost:3000/qanda', { params: { specificURL: `qa/questions?product_id=${currentId}&count=100` } }).then((data) => {
@@ -27,7 +28,6 @@ const QuestionsAndAnswers = () => {
 
   const addQuestionHelpfulness = (questionId) => {
     axios.default.put('http://localhost:3000/qanda', { questionId: questionId }).then((data) => {
-      console.log('succesful put to helpfulness')
       getProductQuestions()
     }).catch((err) => {
       console.log('error put to helpfullness', err)
@@ -37,16 +37,20 @@ const QuestionsAndAnswers = () => {
   //will set initial list of displayed questions
   useEffect(() => {
     let copyQuestions = currentQuestions
-    copyQuestions = copyQuestions.slice(0, 4)
+    copyQuestions = copyQuestions.slice(0, qsOnPage)
     setDisplayedQuestions(copyQuestions)
   }, [currentQuestions])
 
   //add more answered questions if displayqs length is less than curretqs length
   const addMoreQuestions = () => {
-    let newQCopy = currentQuestions
-    newQCopy = newQCopy.slice(0, displayedQuestions.length + 2)
-    setDisplayedQuestions(newQCopy)
+    setQsOnPage(qsOnPage + 2)
   }
+
+  useEffect(() => {
+    let newQCopy = currentQuestions
+    newQCopy = newQCopy.slice(0, qsOnPage)
+    setDisplayedQuestions(newQCopy)
+  }, [qsOnPage])
 
   //will call for question info on initial render
   useEffect(() => {
