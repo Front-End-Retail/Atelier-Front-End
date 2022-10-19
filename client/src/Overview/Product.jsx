@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import StyleSelector from './StyleSelector.jsx';
+import StarAverage from '../RatingsAndReviews/components/StarAverage.js';
 const Product = ({ styles, currentProduct, selectedStyle, setSelectedStyle }) => {
   const [bulkQuantity, setBulkQuantity] = useState([]);
   const [sizes, setSizes] = useState([]);
   const [qty, setQty] = useState([]);
+  console.log(bulkQuantity);
   //this function will take the quantity associated with the selected size and create an array
   const createQtyArray = (size) => {
     let temp = []
@@ -30,7 +32,8 @@ const Product = ({ styles, currentProduct, selectedStyle, setSelectedStyle }) =>
   return (
     <div className="product-container">
       <div className="product-info">
-        <span>Read all reviews (needs star component) </span>
+        <StarAverage />
+        <span>Read all reviews</span>
         <span>{currentProduct.category}</span>
         <h2>{currentProduct.name}</h2>
 

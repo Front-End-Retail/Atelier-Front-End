@@ -10,7 +10,7 @@ const Overview = ({ currentProductID }) => {
   const [selectedStyle, setSelectedStyle] = useState({});
   const [styles, setStyles] = useState([]);
   const [currentProduct, setCurrentProduct] = useState({});
-
+  const [photos, setPhotos] = useState([]);
   //grabs all product info for current product
   const fetchProductInfo = () => {
     axios({
@@ -55,7 +55,7 @@ const Overview = ({ currentProductID }) => {
   }, [styles]);
   return (
     <div className='overview-container'>
-      <ImageGallery />
+      {selectedStyle && Object.keys(selectedStyle).length !== 0 && <ImageGallery selectedStyle={selectedStyle} />}
       {selectedStyle && <Product styles={styles} selectedStyle={selectedStyle} setSelectedStyle={setSelectedStyle} currentProduct={currentProduct} />}
     </div>
   )
