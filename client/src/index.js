@@ -31,6 +31,7 @@ const App = () => {
   }
 
   const changeCurrentProduct = (newProductID) =>{
+    // console.log('newProductID inside of changeCurrentProduct', newProductID)
     setCurrentProductID(newProductID);
   }
 
