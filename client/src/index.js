@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import './assets/styles.css';
+import './assets/sass/styles.scss';
 import { createRoot } from 'react-dom/client';
 import Overview from './Overview/Overview.js';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.js';
@@ -31,6 +31,7 @@ const App = () => {
   }
 
   const changeCurrentProduct = (newProductID) =>{
+    // console.log('newProductID inside of changeCurrentProduct', newProductID)
     setCurrentProductID(newProductID);
   }
 
