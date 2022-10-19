@@ -55,7 +55,7 @@ const RelatedProduct = ({ relatedProductID, changeCurrentProduct }) => {
   }
 
   return (
-    <div className='relatedProduct' onClick={changeCurrentProduct(relatedProductID)} >
+    <div className='relatedProduct' onClick={()=>{changeCurrentProduct(relatedProductID)}} >
 
       {/* cant add listeners to react icons */}
       <div className='heartIcon' onClick={handleLikeClick}>

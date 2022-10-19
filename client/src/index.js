@@ -32,7 +32,8 @@ const App = () => {
       })
   }
 
-  const changeCurrentProduct = (newProductID) => {
+
+  const changeCurrentProduct = (newProductID) =>{
     setCurrentProductID(newProductID);
   }
 
