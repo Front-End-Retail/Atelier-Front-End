@@ -18,7 +18,7 @@ const RatingsAndReviews = ({currentProductID}) => {
   const [starFilter, setStarFilter] = useState([false, false, false, false, false]  )
 // [true,true,true,true,true]  [false, false, false, false, false]
   const sortReviews = (name) => {
-    axios.default.get('http://localhost:3000/products', { params: { specificURL : `reviews?product_id=${currentProductID}&count=500&sort=${name}` }}).then((reviewData) => {
+    axios.default.get('http://localhost:3000/review', { params: { specificURL : `reviews?product_id=${currentProductID}&count=500&sort=${name}` }}).then((reviewData) => {
       // console.log('gotten', reviewData.data)
       let reviewsArray = reviewData.data.results
       reviewsArray = reviewsArray.map(datum => {
@@ -63,7 +63,7 @@ const RatingsAndReviews = ({currentProductID}) => {
   }
 
   const reviewRequest = () => {
-    axios.default.get('http://localhost:3000/products', { params: { specificURL : `reviews?product_id=${currentProductID}&count=500` }}).then((reviewData) => {
+    axios.default.get('http://localhost:3000/review', { params: { specificURL : `reviews?product_id=${currentProductID}&count=500` }}).then((reviewData) => {
       // console.log('gotten', reviewData.data)
       let reviewsArray = reviewData.data.results
       reviewsArray = reviewsArray.map(datum => {
@@ -77,7 +77,7 @@ const RatingsAndReviews = ({currentProductID}) => {
     })
   }
   const metaRequest = () => {
-    axios.default.get('http://localhost:3000/products', { params: { specificURL : `reviews/meta?product_id=${currentProductID}` }}).then((reviewData) => {
+    axios.default.get('http://localhost:3000/review', { params: { specificURL : `reviews/meta?product_id=${currentProductID}` }}).then((reviewData) => {
       // console.log('gotten', reviewData.data)
       setMetaReviews(reviewData.data)
     }).catch(err => {
