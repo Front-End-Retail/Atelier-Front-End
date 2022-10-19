@@ -4,12 +4,13 @@ const axios = require('axios');
 
 const { useState, useEffect } = React;
 
-const QAListItem = ({ question, addQuestionHelpfulness }) => {
+const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness }) => {
 
   const [questionId, setQuestionId] = useState(question.question_id)
   const [displayedAnswersForQ, setDisplayedAnswersForQ] = useState([])
   const [answersForQ, setAnswersForQ] = useState([])
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(false)
+  const [votedHelpful, setVotedHelpful] = useState(false)
 
   const getAnswersArray = (questionIdPassedIn) => {
     axios.default.get('http://localhost:3000/qanda', { params: { specificURL: `qa/questions/${questionIdPassedIn}/answers` } }).then((data) => {
@@ -38,6 +39,28 @@ const QAListItem = ({ question, addQuestionHelpfulness }) => {
     getAnswersArray(questionId)
   }, [questionId, setQuestionId])
 
+  //vote helpful if hasn't already voted helpful
+  const voteHelpful = () => {
+    if (!votedHelpful) {
+      addQuestionHelpfulness(questionId)
+      setVotedHelpful(true)
+    }
+  }
+
+  //update the helpfulness count of an answer
+  const updateHelpfulCount = (searchAnswerId) => {
+    let answersCopy = answersForQ.slice()
+    answersCopy.map(answer => {
+      if (answer.answer_id === searchAnswerId) {
+        answer.helpfulness++
+        return answer
+      } else {
+        return answer
+      }
+    })
+    setAnswersForQ(answersCopy)
+  }
+
   return (
     <div className={'qalist-item-wrapper'}>
       <div className={"qalist-q-line-wrapper"}>
@@ -47,14 +70,14 @@ const QAListItem = ({ question, addQuestionHelpfulness }) => {
         </div>
         <div className={"qalist-helpful"}>
           <p>Helpful?</p>
-          <p onClick={() => {addQuestionHelpfulness(questionId)}}>Yes ({question.question_helpfulness})</p>
+          <p className={"underlined"}onClick={() => {voteHelpful()}}>Yes </p><p>({question.question_helpfulness})</p>
           <p> | </p>
           <p> Add Answer </p>
         </div>
       </div>
       <div className={isActive ? "qalist-answersandbuttonwrapper" : "qalist-answersnotactive"}>
       {displayedAnswersForQ.length > 0 && displayedAnswersForQ.map((answer, index) => {
-        return <QAAnswerItem answer={answer} key={index} />
+        return <QAAnswerItem answer={answer} key={index} addAnswerHelpfulness={addAnswerHelpfulness} updateHelpfulCount={updateHelpfulCount} />
       })}
       {displayedAnswersForQ.length < answersForQ.length && <button className={"showAnswersButton"} onClick={() => {addTwoAnswers()}}>LOAD MORE ANSWERS</button>}
       </div>

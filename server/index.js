@@ -50,8 +50,17 @@ app.get('/qanda', (req, res) => {
   })
 })
 
-app.put('/qanda', (req, res) => {
+app.put('/qanda/qhelp', (req, res) => {
   axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.body.questionId}/helpful`, {}, { headers: authObject }).then(() => {
+    res.send()
+  }).catch((err) => {
+    res.status(400)
+    res.end()
+  })
+})
+
+app.put('/qanda/ahelp', (req, res) => {
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/answers/${req.body.answerId}/helpful`, {}, { headers: authObject }).then(() => {
     res.send()
   }).catch((err) => {
     res.status(400)
