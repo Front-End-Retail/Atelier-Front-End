@@ -38,6 +38,7 @@
 .qalist-question {
   display: flex;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .qalist-helpful {
@@ -47,6 +48,11 @@
   font-size: smaller;
   font-weight: lighter;
   gap: 7px;
+}
+
+.underlined {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .qalist-q-text {
@@ -125,6 +131,7 @@
   font-size: small;
   font-weight: bolder;
   align-self: flex-start;
+  cursor: pointer;
 }
 
 .showAnswersButton:hover {
