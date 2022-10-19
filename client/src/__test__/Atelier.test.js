@@ -2,11 +2,11 @@
  * @jest-environment jsdom
  */
 
-import {render, fireEvent, screen, waitFor} from '@testing-library/react'
+import { render, fireEvent, screen, waitFor } from '@testing-library/react'
 import React from 'react'
 import ReactDOM from 'react-dom';
 import RatingsAndReviews from '../RatingsAndReviews/RatingsAndReviews.js'
-
+import Overview from '../Overview/Overview.js';
 test('loads items eventually', async () => {
   render(<RatingsAndReviews />)
   const { container } = render(<RatingsAndReviews />);
