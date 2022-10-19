@@ -5,12 +5,22 @@ const axios = require('axios');
 
 const { useState, useEffect } = React;
 
-const QAAnswerItem = ({ answer }) => {
+const QAAnswerItem = ({ answer, addAnswerHelpfulness, updateHelpfulCount }) => {
+  const [answerId, setAnswerId] =useState(answer.answer_id)
   const [photos, setPhotos] = useState([])
+  const [votedAHelpful, setVotedAHelpful] = useState(false)
 
   useEffect(() => {
     setPhotos(answer.photos)
   }, [])
+
+  const voteAHelpful = () => {
+    if (!votedAHelpful) {
+      addAnswerHelpfulness(answerId)
+      updateHelpfulCount(answerId)
+      setVotedAHelpful(true)
+    }
+  }
 
   return (
     <div className={"qalist-totalanswerwrapper"}>
@@ -30,7 +40,7 @@ const QAAnswerItem = ({ answer }) => {
           <p>by {answer.answerer_name}, {format(parseISO(answer.date), 'MMMM d, yyyy')}</p>
           <p> | </p>
           <p>Helpful?</p>
-          <p>Yes ({answer.helpfulness})</p>
+          <p className={"underlined"}onClick={() => {voteAHelpful()}}>Yes </p><p>({answer.helpfulness})</p>
           <p> | </p>
           <p> Report </p>
         </div>

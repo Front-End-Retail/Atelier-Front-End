@@ -38,6 +38,7 @@
 .qalist-question {
   display: flex;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .qalist-helpful {
@@ -130,6 +131,7 @@
   font-size: small;
   font-weight: bolder;
   align-self: flex-start;
+  cursor: pointer;
 }
 
 .showAnswersButton:hover {

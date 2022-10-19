@@ -4,7 +4,7 @@ const axios = require('axios');
 
 const { useState, useEffect } = React;
 
-const QAListItem = ({ question, addQuestionHelpfulness }) => {
+const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness }) => {
 
   const [questionId, setQuestionId] = useState(question.question_id)
   const [displayedAnswersForQ, setDisplayedAnswersForQ] = useState([])
@@ -47,6 +47,20 @@ const QAListItem = ({ question, addQuestionHelpfulness }) => {
     }
   }
 
+  //update the helpfulness count of an answer
+  const updateHelpfulCount = (searchAnswerId) => {
+    let answersCopy = answersForQ.slice()
+    answersCopy.map(answer => {
+      if (answer.answer_id === searchAnswerId) {
+        answer.helpfulness++
+        return answer
+      } else {
+        return answer
+      }
+    })
+    setAnswersForQ(answersCopy)
+  }
+
   return (
     <div className={'qalist-item-wrapper'}>
       <div className={"qalist-q-line-wrapper"}>
@@ -63,7 +77,7 @@ const QAListItem = ({ question, addQuestionHelpfulness }) => {
       </div>
       <div className={isActive ? "qalist-answersandbuttonwrapper" : "qalist-answersnotactive"}>
       {displayedAnswersForQ.length > 0 && displayedAnswersForQ.map((answer, index) => {
-        return <QAAnswerItem answer={answer} key={index} />
+        return <QAAnswerItem answer={answer} key={index} addAnswerHelpfulness={addAnswerHelpfulness} updateHelpfulCount={updateHelpfulCount} />
       })}
       {displayedAnswersForQ.length < answersForQ.length && <button className={"showAnswersButton"} onClick={() => {addTwoAnswers()}}>LOAD MORE ANSWERS</button>}
       </div>

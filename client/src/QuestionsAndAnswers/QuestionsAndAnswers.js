@@ -27,7 +27,15 @@ const QuestionsAndAnswers = () => {
   }
 
   const addQuestionHelpfulness = (questionId) => {
-    axios.default.put('http://localhost:3000/qanda', { questionId: questionId }).then((data) => {
+    axios.default.put('http://localhost:3000/qanda/qhelp', { questionId: questionId }).then((data) => {
+      getProductQuestions()
+    }).catch((err) => {
+      console.log('error put to helpfullness', err)
+    })
+  }
+
+  const addAnswerHelpfulness = (answerId) => {
+    axios.default.put('http://localhost:3000/qanda/ahelp', { answerId: answerId }).then((data) => {
       getProductQuestions()
     }).catch((err) => {
       console.log('error put to helpfullness', err)
@@ -89,10 +97,10 @@ const QuestionsAndAnswers = () => {
       <QASearch newSearchTerm={newSearchTerm} />
       <div className={'qalistwrapper'}>
         {searchedQuestions.length > 0 && searchedQuestions.map((question, index) => {
-          return <QAListItem question={question} key={index} addQuestionHelpfulness={addQuestionHelpfulness} />
+          return <QAListItem question={question} key={index} addQuestionHelpfulness={addQuestionHelpfulness}  addAnswerHelpfulness={addAnswerHelpfulness} />
         })}
         {displayedQuestions.length > 0 && searchedQuestions.length < 1 && displayedQuestions.map((question, index) => {
-          return <QAListItem question={question} key={index} addQuestionHelpfulness={addQuestionHelpfulness} />
+          return <QAListItem question={question} key={index} addQuestionHelpfulness={addQuestionHelpfulness} addAnswerHelpfulness={addAnswerHelpfulness} />
         })}
       </div>
       {displayedQuestions.length < currentQuestions.length && <button onClick={() => {addMoreQuestions()}} className={"qanda-button"}>MORE ANSWERED QUESTIONS</button>}
