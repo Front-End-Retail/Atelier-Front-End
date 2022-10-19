@@ -1,31 +1,29 @@
 import React, { useState, useEffect } from 'react';
 
 const ImageGallery = ({ selectedStyle }) => {
-  const [mainImage, setMainImage] = useState('');
+  const [mainImages, setMainImages] = useState([]);
   const [thumbnails, setThumbnails] = useState([]);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const previousSlide = () => {
+    const lastIndex = mainImages.length
+  }
 
   useEffect(() => {
-    setMainImage(selectedStyle.photos[0].url)
-    let temp = [];
+    let tempMain = [];
+    let tempThumb = [];
     selectedStyle.photos.forEach(photo => {
-      temp.push(photo);
+      tempMain.push(photo.url);
+      tempThumb.push(photo.thumbnail_url);
     })
-    setThumbnails(temp);
+    setMainImages(tempMain)
+    setThumbnails(tempThumb);
   }, [selectedStyle])
 
 
   return (
     <div className="image-gallery">
-      <img className="main-image" src={mainImage} />
-      <div className="thumbnails-container">
-        {thumbnails.map((thumbnail, i) => {
-          return (
-            <img key={i} onClick={() => {
-              setMainImage(thumbnail.url)
-            }} src={thumbnail.thumbnail_url} />
-          )
-        })}
-      </div>
+
     </div >
   )
 }
