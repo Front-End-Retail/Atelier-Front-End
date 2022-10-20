@@ -3,6 +3,8 @@ const axios = require('axios');
 const { useState, useEffect } = React;
 import ReviewEntry from './ReviewEntry.js'
 import Sorting from './Sorting.js'
+import ReviewModal from './ReviewModal.js'
+import UseReviewModal from './UseReviewModal.js'
 
 const ReviewList = ({reviews, sortReviews}) => {
   const [displayNum, setDisplayNum] = useState(2)
@@ -21,6 +23,7 @@ const ReviewList = ({reviews, sortReviews}) => {
       setDisplayNum(displayNum + 1)
     }
   }
+  const {toggle, visible} = UseReviewModal()
   return (
     <div id="review-list">
       {reviews[0] && <p>{reviews.length} reviews, sorted by <Sorting reviews={reviews} passSortingName={passSortingName}/></p>}
@@ -31,7 +34,8 @@ const ReviewList = ({reviews, sortReviews}) => {
       })}<div id="button-cont">
 
       {displayNum !== reviews.length && <button className="review-button" onClick={moreReviews}>More Reviews</button>}
-      <button className="review-button">Add Review +</button>
+      <button className="review-button" onClick={toggle}>Add Review +</button>
+      <ReviewModal visible={visible} toggle={toggle} reviews={reviews}/>
       </div>
     </div>
   )

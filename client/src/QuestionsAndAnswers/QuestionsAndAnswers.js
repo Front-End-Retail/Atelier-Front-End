@@ -1,7 +1,7 @@
 import React from 'react';
 import QASearch from './QASearch.js'
 import QAListItem from './QAListItem.js'
-import Modal from './Modal'
+import QAAddQuestionModal from './QAAddQuestionModal.js'
 import useModal from './useModal'
 import SortbyHelpfulness from './QAHelpers.js'
 import '../assets/stylesqanda.css';
@@ -9,8 +9,8 @@ const axios = require('axios');
 
 const { useState, useEffect } = React;
 
-const QuestionsAndAnswers = () => {
-  const [currentId, setCurrentId] = useState('37314')
+const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
+  const [currentId, setCurrentId] = useState(currentProductID)
   const [currentQuestions, setCurrentQuestions] = useState([])
   const [displayedQuestions, setDisplayedQuestions] = useState([])
   const [searchedQuestions, setSearchedQuestions] = useState([])
@@ -62,8 +62,12 @@ const QuestionsAndAnswers = () => {
 
   //will call for question info on initial render
   useEffect(() => {
+    setCurrentId(currentProductID)
+  }, [currentProductID])
+
+  useEffect(() => {
     getProductQuestions()
-  }, [])
+  }, [currentId])
 
   //update search term function to be passed down into search bar component
   const newSearchTerm = (theTerm) => {
@@ -90,6 +94,11 @@ const QuestionsAndAnswers = () => {
   //the basic modal logic, custom hook
   const {toggle, visible} = useModal();
 
+  // const submitQuestionForm = () => {
+  //   event.preventDefault()
+  //   toggle()
+  // }
+
   return (
     <div className={'qandawrapper'}>
       <h3 className={'qandatitle'}>QUESTIONS & ANSWERS</h3>
@@ -97,16 +106,15 @@ const QuestionsAndAnswers = () => {
       <QASearch newSearchTerm={newSearchTerm} />
       <div className={'qalistwrapper'}>
         {searchedQuestions.length > 0 && searchedQuestions.map((question, index) => {
-          return <QAListItem question={question} key={index} addQuestionHelpfulness={addQuestionHelpfulness}  addAnswerHelpfulness={addAnswerHelpfulness} />
+          return <QAListItem question={question} key={index} addQuestionHelpfulness={addQuestionHelpfulness} addAnswerHelpfulness={addAnswerHelpfulness} currentProductName={currentProductName} />
         })}
         {displayedQuestions.length > 0 && searchedQuestions.length < 1 && displayedQuestions.map((question, index) => {
-          return <QAListItem question={question} key={index} addQuestionHelpfulness={addQuestionHelpfulness} addAnswerHelpfulness={addAnswerHelpfulness} />
+          return <QAListItem question={question} key={index} addQuestionHelpfulness={addQuestionHelpfulness} addAnswerHelpfulness={addAnswerHelpfulness} currentProductName={currentProductName} />
         })}
       </div>
       {displayedQuestions.length < currentQuestions.length && <button onClick={() => {addMoreQuestions()}} className={"qanda-button"}>MORE ANSWERED QUESTIONS</button>}
-      <button className={"qanda-button"}>ADD A QUESTION +</button>
-      {/* <button onClick={toggle}>Show Modal</button>
-      <Modal visible={visible} toggle={toggle} /> */}
+      <button onClick={toggle} className={"qanda-button"}>ADD A QUESTION +</button>
+      <QAAddQuestionModal visible={visible} toggle={toggle} currentId={currentId} getProductQuestions={getProductQuestions} currentProductName={currentProductName} />
     </div>
   )
 }

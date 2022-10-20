@@ -32,6 +32,7 @@ const App = () => {
       })
   }
 
+
   const changeCurrentProduct = (newProductID) => {
     setCurrentProductID(newProductID);
   }
@@ -46,7 +47,7 @@ const App = () => {
         <h1>The modules will be below</h1>
         <Overview currentProductID={currentProductID} />
         <RelatedItemsAndComparison currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct} />
-        <QuestionsAndAnswers />
+        <QuestionsAndAnswers currentProductID={currentProductID} currentProductName={currentProductName} />
         <RatingsAndReviews currentProductID={currentProductID} />
       </div>}
     </div>

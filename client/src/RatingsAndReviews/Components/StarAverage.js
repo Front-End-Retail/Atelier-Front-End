@@ -15,7 +15,7 @@ const StarAverage = ({rating}) => {
     let tempRating = rating;
     for (let i = 0; i < 5; i++) {
       if (rating - i < 1 && rating - i >= .5 ) {
-        content.push(<FontAwesomeIcon icon={faStarHalf} style={{ height: "10px" }}></FontAwesomeIcon>)
+        content.push(<FontAwesomeIcon key={i} icon={faStarHalf} style={{ height: "10px" }}></FontAwesomeIcon>)
       } else if (tempRating > 0) {
       content.push(<FontAwesomeIcon icon={faStar} style={{ height: "10px" }}></FontAwesomeIcon>)
       } else {
