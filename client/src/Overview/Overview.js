@@ -9,7 +9,7 @@ const Overview = ({ currentProductID }) => {
   const [selectedStyle, setSelectedStyle] = useState({});
   const [styles, setStyles] = useState([]);
   const [currentProduct, setCurrentProduct] = useState({});
-  const [photos, setPhotos] = useState([]);
+  const [metaReviews, setMetaReviews] = useState({});
   //grabs all product info for current product
   const fetchProductInfo = () => {
     axios({
@@ -44,9 +44,19 @@ const Overview = ({ currentProductID }) => {
       })
   }
 
+  const metaRequest = () => {
+    axios.get('http://localhost:3000/products', { params: { specificURL: `reviews/meta?product_id=${currentProductID}` } }).then((reviewData) => {
+      // console.log('gotten', reviewData.data)
+      setMetaReviews(reviewData.data)
+    }).catch(err => {
+      console.log('error getting', err)
+    })
+  }
+
   useEffect(() => {
-    fetchProductInfo()
+    fetchProductInfo();
     fetchAllStyles();
+    metaRequest();
   }, [currentProductID]);
 
   useEffect(() => {
@@ -55,7 +65,7 @@ const Overview = ({ currentProductID }) => {
   return (
     <div className='overview-container'>
       {selectedStyle && Object.keys(selectedStyle).length !== 0 && <ImageGallery selectedStyle={selectedStyle} />}
-      {selectedStyle && <Product styles={styles} selectedStyle={selectedStyle} setSelectedStyle={setSelectedStyle} currentProduct={currentProduct} />}
+      {selectedStyle && <Product metaReviews={metaReviews} styles={styles} selectedStyle={selectedStyle} setSelectedStyle={setSelectedStyle} currentProduct={currentProduct} />}
     </div>
   )
 }
