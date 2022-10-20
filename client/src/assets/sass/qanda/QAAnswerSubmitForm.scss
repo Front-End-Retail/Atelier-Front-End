@@ -1,5 +1,5 @@
 .QAAnswerSubmitForm {
-
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .qModalRow {
@@ -9,6 +9,8 @@
 
 .qModalInput {
   width: 100%;
+  display: block;
+  margin-bottom: 1%;
 }
 
 .warning-text {
@@ -17,4 +19,54 @@
   color: red;
   font-style: italic;
   text-align: right;
+}
+
+.modal-subtext {
+  font-size: x-small;
+  font-weight: bold;
+  font-style: italic;
+  text-align: right;
+}
+
+.modal-title {
+  // text-align: center;
+}
+
+.modal-subtitle {
+  // text-align: center;
+  font-size: small;
+  font-weight: bold;
+  margin-top: -3.5%;
+  margin-bottom: 7%;
+}
+
+.form-input-title {
+  display: block;
+  margin-top: 3.5%;
+  margin-bottom: .25%;
+  font-weight: bold;
+  font-size: small;
+}
+
+.form-input-textblock {
+  display: block;
+  width: 100%;
+}
+
+.modal-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalSubmissionButton {
+  color: white;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: grey;
+  border-radius: 5%;
+}
+
+.modalSubmissionButton:hover {
+  background-color: rgb(56, 56, 56)
 }
