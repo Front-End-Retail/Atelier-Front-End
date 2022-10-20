@@ -60,3 +60,12 @@ export const findRatio = (total, currentNum) => {
 export let everyFunc = (currentStar) => {
   return !currentStar
 }
+
+// create object for posting a review
+export const makeReviewObj = (...objs) => {
+  let postObj = {}
+  objs.map(obj => {
+    postObj
+  })
+  return postObj
+}

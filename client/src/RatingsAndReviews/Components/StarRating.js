@@ -4,9 +4,9 @@ import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 const axios = require('axios');
 const { useState, useEffect } = React;
 
-const StarRating = () => {
+const StarRating = ({handleStarChange}) => {
   const handleChange = (e) => {
-    e.preventDefault()
+    // e.preventDefault()
     handleStarChange(e.target.value)
   }
   return (
