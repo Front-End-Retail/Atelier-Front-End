@@ -68,12 +68,29 @@ app.put('/qanda/ahelp', (req, res) => {
   })
 })
 
-app.post('/qanda', (req, res) => {
+app.post('/qanda/question', (req, res) => {
   console.log(req.body)
   axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/`, req.body, { headers: authObject }).then(() => {
     res.send()
   }).catch((err) => {
-    console.log('error in qanda post', err)
+    console.log('error in qanda question post', err)
+    res.status(500)
+    res.end()
+  })
+})
+
+app.post('/qanda/answer', (req, res) => {
+  console.log(req.body)
+  let answerObject = {
+    body: req.body.body,
+    name: req.body.name,
+    email: req.body.email,
+    photos: req.body.photos
+  }
+  axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.body.question_id}/answers`, answerObject, { headers: { 'Authorization': process.env.GITHUB_API_KEY, question_id: req.body.question_id } }).then(() => {
+    res.send()
+  }).catch((err) => {
+    console.log('error in qanda answer post', err)
     res.status(500)
     res.end()
   })
