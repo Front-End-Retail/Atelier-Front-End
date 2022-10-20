@@ -9,7 +9,7 @@ const { useState, useEffect } = React;
 
 const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness, currentProductName, currentId, getProductQuestions }) => {
 
-  const [questionId, setQuestionId] = useState(question.question_id)
+  const [questionId, setQuestionId] = useState(0)
   const [displayedAnswersForQ, setDisplayedAnswersForQ] = useState([])
   const [answersForQ, setAnswersForQ] = useState([])
   const [isActive, setIsActive] = useState(false)
@@ -39,7 +39,13 @@ const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness, cu
 
   //on load, get all of the answers for the given question
   useEffect(() => {
-    getAnswersArray(questionId)
+    setQuestionId(question.question_id)
+  }, [question.question_id])
+
+  useEffect(() => {
+    if (questionId !== 0) {
+      getAnswersArray(questionId)
+    }
   }, [questionId, setQuestionId])
 
   //vote helpful if hasn't already voted helpful
