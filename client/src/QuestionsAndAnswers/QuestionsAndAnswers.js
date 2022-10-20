@@ -4,7 +4,7 @@ import QAListItem from './QAListItem.js'
 import QAAddQuestionModal from './QAAddQuestionModal.js'
 import useModal from './useModal'
 import SortbyHelpfulness from './QAHelpers.js'
-import '../assets/stylesqanda.css';
+// import '../assets/stylesqanda.css';
 const axios = require('axios');
 
 const { useState, useEffect } = React;

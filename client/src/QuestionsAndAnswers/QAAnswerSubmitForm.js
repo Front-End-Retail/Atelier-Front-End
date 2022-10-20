@@ -16,7 +16,7 @@ const QAAnswerSubmitForm = ({ toggle, questionId }) => {
     name: answerName,
     email: answerEmail,
     photos: [],
-    question_id : questionId
+    question_id: questionId
   }
 
   const submitAnswerForm = () => {
@@ -63,21 +63,27 @@ const QAAnswerSubmitForm = ({ toggle, questionId }) => {
     <div className={'QAAnswerSubmitForm'}>
       <form>
         <label>
-          <p>Your Answer*</p>
-          <textarea type={"text"} cols={"50"} rows={"5"} maxLength={"1000"} required={"required"} value={answerText} onChange={(e) => {setAnswerText(e.target.value)}}></textarea>
-          {validAnswerText && <div>*Required, must be less than 1000 characters*</div>}
+          <div>Your Answer*</div>
+          <textarea type={"text"} cols={"61"} rows={"5"} maxLength={"1000"} required={"required"} value={answerText} onChange={(e) => { setAnswerText(e.target.value) }}></textarea>
+          {validAnswerText && <div className={"warning-text"}>*Required, must be less than 1000 characters*  </div>}
         </label>
-        <label>
-          What is your nickname?*
-          <input type={"text"} maxLength={"60"} required={"required"} value={answerName} onChange={(e) => {setAnswerName(e.target.value)}}></input>
-          {validAnswerName && <div>*Required, must be less than 60 characters*</div>}
-        </label>
-        <label>
-          Your email*
-          <input type={"email"} required={"required"} value={answerEmail} onChange={(e) => {setAnswerEmail(e.target.value)}}></input>
-          {validAnswerEmail && <div>*Required, must be correctly formated email address*</div>}
-        </label>
-        <button type="button" onClick={() => {submitAnswerForm()}}>Submit</button>
+        <table>
+          <tr>
+            <label className={"qModalRow"}>
+              <td>What is your nickname?*</td>
+              <td><input type={"text"} maxLength={"60"} required={"required"} value={answerName} onChange={(e) => { setAnswerName(e.target.value) }} className={"qModalInput"}></input></td>
+              {validAnswerName && <><td></td><td><div className={"warning-text"}>*Required, must be less than 60 characters*</div></td></>}
+            </label>
+          </tr>
+          <tr>
+            <label className={"qModalRow"}>
+              <td>Your email*</td>
+              <td><input type={"email"} required={"required"} value={answerEmail} onChange={(e) => { setAnswerEmail(e.target.value) }} className={"qModalInput"}></input></td>
+              {validAnswerEmail && <><td></td><td><div className={"warning-text"}>*Required, must be correctly formated email address*</div></td></>}
+            </label>
+          </tr>
+        </table>
+        <button type="button" onClick={() => { submitAnswerForm() }}>Submit</button>
       </form>
     </div>
   )
