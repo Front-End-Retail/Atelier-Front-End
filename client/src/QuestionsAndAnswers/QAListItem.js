@@ -14,6 +14,7 @@ const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness, cu
   const [answersForQ, setAnswersForQ] = useState([])
   const [isActive, setIsActive] = useState(false)
   const [votedHelpful, setVotedHelpful] = useState(false)
+  const [displayedAnswersLength, setDisplayedAnswersLength] = useState(2)
 
   const getAnswersArray = (questionIdPassedIn) => {
     axios.default.get('http://localhost:3000/qanda', { params: { specificURL: `qa/questions/${questionIdPassedIn}/answers` } }).then((data) => {
@@ -26,15 +27,19 @@ const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness, cu
   //on initial get of the answers array, this will set the displayed answers to the first two answers
   useEffect(() => {
     let copyOfAnswers = answersForQ
-    copyOfAnswers = copyOfAnswers.slice(0, 2)
+    copyOfAnswers = copyOfAnswers.slice(0, displayedAnswersLength)
     setDisplayedAnswersForQ(copyOfAnswers)
   }, [answersForQ])
 
   //on click, add two answers to the displayed answers from the total answers
-  const addTwoAnswers = () => {
+  useEffect(() => {
     let newCopyOfAnswers = answersForQ
-    newCopyOfAnswers = newCopyOfAnswers.slice(0, displayedAnswersForQ.length + 2)
+    newCopyOfAnswers = newCopyOfAnswers.slice(0, displayedAnswersLength)
     setDisplayedAnswersForQ(newCopyOfAnswers)
+  }, [displayedAnswersLength])
+
+  const addTwotoLength = () => {
+    setDisplayedAnswersLength(displayedAnswersLength + 2)
   }
 
   //on load, get all of the answers for the given question
@@ -83,14 +88,14 @@ const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness, cu
           <p>Helpful?</p>
           <p className={"underlined"}onClick={() => {voteHelpful()}}>Yes </p><p>({question.question_helpfulness})</p>
           <p> | </p>
-          <p onClick={toggle}> Add Answer </p>
+          <p className={"underlined"} onClick={toggle}> Add Answer </p>
         </div>
       </div>
       <div className={isActive ? "qalist-answersandbuttonwrapper" : "qalist-answersnotactive"}>
       {displayedAnswersForQ.length > 0 && displayedAnswersForQ.map((answer, index) => {
         return <QAAnswerItem answer={answer} key={index} addAnswerHelpfulness={addAnswerHelpfulness} updateHelpfulCount={updateHelpfulCount} currentId={currentId} />
       })}
-      {displayedAnswersForQ.length < answersForQ.length && <button className={"showAnswersButton"} onClick={() => {addTwoAnswers()}}>LOAD MORE ANSWERS</button>}
+      {displayedAnswersForQ.length < answersForQ.length && <button className={"showAnswersButton"} onClick={() => {addTwotoLength()}}>LOAD MORE ANSWERS</button>}
       </div>
       <QAAddAnswerModal visible={visible} toggle={toggle} currentProductName={currentProductName} questionText={question.question_body} questionId={questionId} getProductQuestions={getProductQuestions} />
     </div>
