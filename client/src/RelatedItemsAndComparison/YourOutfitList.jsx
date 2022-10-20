@@ -23,7 +23,7 @@ if (outfitList.length === 0) {
   )
 } else {
     return (
-      <div>
+      <div className='yourOutfitListContainer'>
           <button className='leftArrowIcon'><FontAwesomeIcon icon={faArrowLeft}/></button>
           <div>
           {outfitList.map((outfit, index)=>{
