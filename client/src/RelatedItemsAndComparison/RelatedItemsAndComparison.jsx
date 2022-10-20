@@ -83,22 +83,19 @@ const handlePlusIconClick = () =>{
 }
 
 const updateOutfitList = (currentStyleID) =>{
-   //[{style.id=...}, {style.id=...}]
-   console.log('hey look, it got in updateOutfitList()!!!')
+   //[{styleID=...}, {styleID=...}]
+  //  console.log('hey look, it got in updateOutfitList()!!!')
    const copyOutfitList = outfitList.slice(); //dont manipulate with the state directly, make a copy! i have a bug here
    copyOutfitList.forEach((outfit, index)=>{
     console.log('outfit.styleID:', outfit.styleID)
     console.log('currentStyleID being passed in:', currentStyleID)
     if (outfit.styleID= currentStyleID) {
       copyOutfitList.splice(index, 1);
-     console.log('copyOutfitList after splicing: ', copyOutfitList) //yeah its correct up till here//[]
+    //  console.log('copyOutfitList after splicing: ', copyOutfitList) //yeah its correct up till here//[]
     }
    })
    setOutfitList(copyOutfitList);//everytime there is a state change, it re-renders?
 }
-
-
-
 
 
   return (
