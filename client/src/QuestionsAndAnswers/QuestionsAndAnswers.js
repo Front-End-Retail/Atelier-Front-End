@@ -106,7 +106,7 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
       <QASearch newSearchTerm={newSearchTerm} />
       <div className={'qalistwrapper'}>
         {searchedQuestions.length > 0 && searchedQuestions.map((question, index) => {
-          return <QAListItem question={question} key={index} addQuestionHelpfulness={addQuestionHelpfulness}  addAnswerHelpfulness={addAnswerHelpfulness} currentProductName={currentProductName} />
+          return <QAListItem question={question} key={index} addQuestionHelpfulness={addQuestionHelpfulness} addAnswerHelpfulness={addAnswerHelpfulness} currentProductName={currentProductName} />
         })}
         {displayedQuestions.length > 0 && searchedQuestions.length < 1 && displayedQuestions.map((question, index) => {
           return <QAListItem question={question} key={index} addQuestionHelpfulness={addQuestionHelpfulness} addAnswerHelpfulness={addAnswerHelpfulness} currentProductName={currentProductName} />

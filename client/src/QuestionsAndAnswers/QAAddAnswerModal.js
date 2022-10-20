@@ -9,7 +9,7 @@ const QAAddAnswerModal = ({ visible, toggle, currentProductName, questionText })
     <div className="modal-pop" role="dialog" aria-modal="true">
       <h3>Submit Your Answer</h3>
       <p>{currentProductName} : {questionText}</p>
-      <QAAnswerSubmitForm />
+      <QAAnswerSubmitForm toggle={toggle} />
     </div>
     <div className="modal-overlay" onClick={toggle}></div>
   </div>, container
