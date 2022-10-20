@@ -7,25 +7,51 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const RelatedProducts = ({relatedProductsID, changeCurrentProduct}) => {
+
   // console.log('relatedProductsID array passed in RelatedProducts.jsx', relatedProductsID)//[37313, 37314, 37317, 37319, 37320]
 
-if (relatedProductsID.length >=4) {
+  const [currCarousel, setCurrCarousel] = useState(relatedProductsID);
+  console.log('currCarousel after initilizing: ', currCarousel);//[]
+
+useEffect(()=>{
+  setCurrCarousel(relatedProductsID);
+},[relatedProductsID])//it takes sometime to get relatedProductsID prop
+
+  const handleRightArrowClick = () => {
+    console.log('tell me it did get in handleRightArrowClick!')
+    const leftoverCarousel = currCarousel.slice(4); //relatedProductsID was put to mapping
+    console.log('leftoverCarousel: ', leftoverCarousel)
+    setCurrCarousel(leftoverCarousel);
+  }
+
+  const handleLeftArrowClick = () => {
+    console.log('tell me it did get in handleLeftArrowClick!')
+    const prevCarousel = relatedProductsID.slice(0, 4); //relatedProductsID was put to mapping
+    console.log('prevCarousel: ', prevCarousel)
+    setCurrCarousel(prevCarousel);
+  }
+
+
+if (currCarousel.length >=4) {
+  const sizedCarousel = currCarousel.slice(0,4);
+  console.log('sizedCarousel: ', sizedCarousel)
   return (
     <div className='relatedProductsOuterContainer'>
-    <button className='leftArrowIcon'><FontAwesomeIcon icon={faArrowLeft}/></button>
     <div className='relatedProductsContainer'>
-    {relatedProductsID.map((relatedProductID, index)=>{
+    {sizedCarousel.map((relatedProductID, index)=>{
       return <RelatedProduct key={index} relatedProductID={relatedProductID} relatedProductsID={relatedProductsID} changeCurrentProduct={changeCurrentProduct}></RelatedProduct>
     })}
     </div>
-    <button className='rightArrowIcon'><FontAwesomeIcon icon={faArrowRight}/></button>
+    <button className='rightArrowIcon' onClick={handleRightArrowClick}><FontAwesomeIcon icon={faArrowRight}/></button>
     </div>
   );
 } else {
+  console.log('currCarousel inside of else : ', currCarousel);//[]
   return (
     <div className='relatedProductsContainer'>
       {/* //this is container before */}
-    {relatedProductsID.map((relatedProductID, index)=>{
+      {relatedProductsID.length>4 && <button className='leftArrowIcon' onClick={handleLeftArrowClick}><FontAwesomeIcon icon={faArrowLeft}/></button>}
+    {currCarousel.map((relatedProductID, index)=>{
       return <RelatedProduct key={index} relatedProductID={relatedProductID} relatedProductsID={relatedProductsID} changeCurrentProduct={changeCurrentProduct}></RelatedProduct>
     })}
     </div>
