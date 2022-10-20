@@ -14,7 +14,7 @@ const ImageGallery = ({ selectedStyle }) => {
 
   const nextSlide = () => {
     const lastIndex = mainImages.length - 1;
-    const shouldResetIndex = currentImageIndex === 0
+    const shouldResetIndex = currentImageIndex === lastIndex
     const index = shouldResetIndex ? lastIndex : currentImageIndex + 1;
     setCurrentImageIndex(index);
   }
@@ -39,8 +39,8 @@ const ImageGallery = ({ selectedStyle }) => {
       </div>
       <div className="image-slide" style={{
         backgroundImage: `url(${mainImages[currentImageIndex]})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        backgroundPosition: 'center',
+        backgroundSize: 'contain'
       }}></div>
       <div
         className={`slide-arrow right`}
