@@ -332,3 +332,46 @@ height: 200px; */
   padding: 3px;
   font-family: 'Nunito', sans-serif;
 }
+
+.yourOutfitListContainer{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.outfit-component{
+  border: 1px solid #ede0d4;
+  height: 300px;
+  width: 300px;
+  padding: 10px;
+  background-color: #ede0d4;
+}
+
+.outfit-pic {
+  height: 75%;
+  border: 3px solid #ede0d4;
+  border-radius: 7px;
+}
+
+.timesIcon {
+  display: flex;
+  justify-content: flex-end;
+  padding: 3px;
+}
+
+.outfit-name {
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+  padding: 3px;
+}
+
+.outfit-regularPrice {
+  text-decoration: line-through;
+}
+
+.outfit-category{
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  color:#808080;
+  padding: 1.5px;
+}
