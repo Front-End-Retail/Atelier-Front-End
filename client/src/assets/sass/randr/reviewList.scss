@@ -1,15 +1,22 @@
+// #review-list {
+//   margin-left: auto;
+//   display: flex;
+//   flex-shrink: 1;
+//   flex-direction: column;
+//   margin:4px, 4px;
+//   padding:4px;
+//   width: 70%;
+//   height: 800px;
+//   overflow-x: hidden;
+//   overflow-y: auto;
+//   text-align:justify;
+// }
 #review-list {
-  margin-left: auto;
   display: flex;
-  flex-shrink: 1;
   flex-direction: column;
-  margin:4px, 4px;
-  padding:4px;
   width: 70%;
-  height: 800px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  text-align:justify;
+  max-height: 800px;
+  overflow-x: scroll;
 }
 
 .review-button {
