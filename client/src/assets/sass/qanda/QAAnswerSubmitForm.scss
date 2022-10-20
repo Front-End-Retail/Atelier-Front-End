@@ -1,0 +1,20 @@
+.QAAnswerSubmitForm {
+
+}
+
+.qModalRow {
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+}
+
+.qModalInput {
+  width: 100%;
+}
+
+.warning-text {
+  font-size: x-small;
+  font-weight: bold;
+  color: red;
+  font-style: italic;
+  text-align: right;
+}

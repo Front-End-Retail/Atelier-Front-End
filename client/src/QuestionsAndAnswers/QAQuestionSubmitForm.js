@@ -64,22 +64,27 @@ const QAQuestionSubmitForm = ({ toggle, currentId, getProductQuestions }) => {
     <div>
       <form>
         <label>
-          <p>Your Question*</p>
-          <textarea type={"text"} cols={"50"} rows={"5"} maxLength={"1000"} required={"required"} value={questionText} onChange={(e) => {setQuestionText(event.target.value)}}></textarea>
-          {validText && <div>*Required, must be less than 1000 characters*</div>}
+          <div>Your Question*</div>
+          <textarea type={"text"} cols={"58"} rows={"5"} maxLength={"1000"} required={"required"} value={questionText} onChange={(e) => { setQuestionText(event.target.value) }}></textarea>
+          {validText && <div className={"warning-text"}>*Required, must be less than 1000 characters* </div>}
         </label>
-        <label>
-          What is your nickname*
-          <input type={"text"} maxLength={"60"} required={"required"} value={nickName} onChange={(e) => {setNickName(event.target.value)}}></input>
-          {validName && <div>*Required, must be less than 60 characters*</div>}
-        </label>
-        <div></div>
-        <label>
-          Your email*
-          <input type={"email"} required={"required"} value={emailText} onChange={(e) => {setEmailText(event.target.value)}}></input>
-          {validEmail && <div>*Required, must be correctly formated email address*</div>}
-        </label>
-        <button type="button" onClick={() => {submitQuestionForm()}}>Submit</button>
+        <table>
+          <tr>
+            <label className={"qModalRow"}>
+              <td>What is your nickname*</td>
+              <td><input type={"text"} maxLength={"60"} required={"required"} value={nickName} onChange={(e) => { setNickName(event.target.value)}} className={"qModalInput"}></input></td>
+              {validName && <><td></td><td><div className={"warning-text"}>*Required, must be less than 60 characters*</div></td></>}
+            </label>
+          </tr>
+          <tr>
+            <label className={"qModalRow"}>
+              <td>Your email*</td>
+              <td><input type={"email"} required={"required"} value={emailText} onChange={(e) => { setEmailText(event.target.value) }} className={"qModalInput"}></input></td>
+              {validEmail && <><td></td><td><div className={"warning-text"}>*Required, must be correctly formated email address*</div></td></>}
+            </label>
+          </tr>
+        </table>
+        <button type="button" onClick={() => { submitQuestionForm() }}>Submit</button>
       </form>
     </div>
   )
