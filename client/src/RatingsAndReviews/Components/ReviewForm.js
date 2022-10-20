@@ -1,5 +1,6 @@
 import React from 'react';
 import StarRating from './StarRating.js';
+const axios = require('axios');
 const { useState, useEffect } = React;
 
 const ReviewForm = ({toggle, metaReviews}) => {
@@ -8,7 +9,7 @@ const ReviewForm = ({toggle, metaReviews}) => {
   const [email, setEmail] = useState('')
   const [formRating, setFormRating] = useState('')
   const [recommended, setRecommended] = useState(true)
-  var characteristics = {}
+  const [characteristics, setCharacteristics] = useState({})
   const [summary, setSummary] = useState('')
   const [body, setBody] = useState('')
   const [photos, setPhotos] = useState([])
@@ -16,38 +17,56 @@ const ReviewForm = ({toggle, metaReviews}) => {
   const handleChange = (e) => {
     e.target.name === 'username' ? setUsername(e.target.value) :
     e.target.name === 'summary' ? setSummary(e.target.value) :
-    e.target.name === 'helpful' ? setRecommended(e.target.value) :
+    e.target.name === 'helpful' ? setRecommended((e.target.value=== 'true')) : //converts string to boolean
     e.target.name === 'body' ? setBody(e.target.value) :
     e.target.name === 'email' ? setEmail(e.target.value) :
-    characteristics[e.target.name] = e.target.value
+    null
+    // characteristics[e.target.name] = e.target.value
   }
   const handleSubmit = (e) => {
     e.preventDefault()
     // create object for post request
-    // const reviewObject = {
-    //   "product_id": metaReviews.product_id,
-    //   "rating": formRating,
-    //   "summary": summary,
-    //   "body": body,
-    //   "recommend": recommended,
-    //   "name": username,
-    //   "email": email,
-    //   "photos": photos,
-    //   "characteristics": characteristics
-    // }
-    toggle()
-    console.log(typeof (recommended === 'true'))
-    // setPhotos([])
-    // setUsername('')
-    // setSummary('')
-    // setRecommended('')
-    // setBody('')
-    // setEmail('')
-    // characteristics = {}
+    const reviewObject = {
+      "product_id": Number(metaReviews.product_id),
+      "rating": Number(formRating),
+      "summary": summary,
+      "body": body,
+      "recommend": recommended,
+      "name": username,
+      "email": email,
+      "photos": photos,
+      "characteristics": characteristics
+    }
+    console.log(reviewObject, characteristics)
+     //get rid of me please!!!!!!!!!!!!! I should be in the post request
+    // toggle()
+    postReview(reviewObject)
+    setPhotos([])
+    setUsername('')
+    setSummary('')
+    setRecommended('')
+    setBody('')
+    setEmail('')
+    setCharacteristics({})
 
   }
   const handleStarChange =(rating) => {
     setFormRating(rating)
+  }
+  // handle change for the characteristic radio buttons
+  const handleCharChange = (e) => {
+    let tempChar = {...characteristics}
+    // value needs to be an int, not a string
+    tempChar[e.target.name] = Number(e.target.value)
+    setCharacteristics(tempChar)
+  }
+
+  const postReview = (reviewFormObj) => {
+    axios.default.post('http://localhost:3000/review', reviewFormObj).then(() => {
+      toggle()
+    }).catch((err) => {
+      console.log('error sending question', err)
+    })
   }
   return (
     <form onSubmit={handleSubmit}>
@@ -72,15 +91,15 @@ const ReviewForm = ({toggle, metaReviews}) => {
             return (
               <div>
                 <p>{key}</p>
-                <input onChange={handleChange} type="radio" value="1" name={objId}/>
+                <input onChange={handleCharChange} type="radio" value="1" name={objId}/>
                   <label  for="">1</label>
-                <input onChange={handleChange} type="radio" value="2" name={objId}/>
+                <input onChange={handleCharChange} type="radio" value="2" name={objId}/>
                   <label for="">2</label>
-                <input onChange={handleChange} type="radio" value="3" name={objId}/>
+                <input onChange={handleCharChange} type="radio" value="3" name={objId}/>
                   <label for="">3</label>
-                <input onChange={handleChange} type="radio" value="4" name={objId}/>
+                <input onChange={handleCharChange} type="radio" value="4" name={objId}/>
                   <label for="">4</label>
-                <input onChange={handleChange} type="radio" value="5" name={objId}/>
+                <input onChange={handleCharChange} type="radio" value="5" name={objId}/>
                   <label for="">5</label>
               </div>
             )})}
