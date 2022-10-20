@@ -84,10 +84,10 @@ const RatingsAndReviews = ({currentProductID}) => {
       console.log('error getting', err)
     })
   }
-  const testButton = () => {
-    reviewRequest()
-    metaRequest()
-  }
+  // const testButton = () => {
+  //   reviewRequest()
+  //   metaRequest()
+  // }
 
 useEffect(() => {
   reviewRequest()
@@ -101,7 +101,7 @@ useEffect(() => {
 
   return (
       <div >
-        <button onClick={testButton} name="test-button">Rating Test</button>
+        {/* <button onClick={testButton} name="test-button">Rating Test</button> */}
         <div id="randr">
         <RatingBreakdown metaReviews={metaReviews} ratingSort={ratingSort} starFilter={starFilter}/>
         <ReviewList reviews={starReviews} sortReviews={sortReviews} metaReviews={metaReviews}/>
