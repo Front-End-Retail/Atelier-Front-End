@@ -7,7 +7,6 @@ const { useState, useEffect } = React;
 const StarRating = ({handleStarChange}) => {
   const handleChange = (e) => {
     // e.preventDefault()
-    console.log(e.target.value)
     handleStarChange(e.target.value)
   }
   return (

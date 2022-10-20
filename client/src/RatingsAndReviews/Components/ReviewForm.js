@@ -7,10 +7,11 @@ const ReviewForm = ({toggle, metaReviews}) => {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [formRating, setFormRating] = useState('')
-  const [recommended, setRecommended] = useState('')
+  const [recommended, setRecommended] = useState(true)
   var characteristics = {}
   const [summary, setSummary] = useState('')
   const [body, setBody] = useState('')
+  const [photos, setPhotos] = useState([])
 
   const handleChange = (e) => {
     e.target.name === 'username' ? setUsername(e.target.value) :
@@ -22,14 +23,27 @@ const ReviewForm = ({toggle, metaReviews}) => {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
+    // create object for post request
+    // const reviewObject = {
+    //   "product_id": metaReviews.product_id,
+    //   "rating": formRating,
+    //   "summary": summary,
+    //   "body": body,
+    //   "recommend": recommended,
+    //   "name": username,
+    //   "email": email,
+    //   "photos": photos,
+    //   "characteristics": characteristics
+    // }
     toggle()
-    console.log(characteristics)
-    setUsername('')
-    setSummary('')
-    setRecommended('')
-    setBody('')
-    setEmail('')
-    characteristics = {}
+    console.log(typeof (recommended === 'true'))
+    // setPhotos([])
+    // setUsername('')
+    // setSummary('')
+    // setRecommended('')
+    // setBody('')
+    // setEmail('')
+    // characteristics = {}
 
   }
   const handleStarChange =(rating) => {
@@ -48,9 +62,9 @@ const ReviewForm = ({toggle, metaReviews}) => {
           <p>For authentication reasons, you will not be emailed</p>
           <StarRating handleStarChange={handleStarChange}/>
           <p>Would you recommend this product?</p>
-            <input onChange={handleChange} type="radio" className="helpful radio" name="helpful" value="yes"/>
+            <input onChange={handleChange} type="radio" className="helpful radio" name="helpful" value={true}/>
               <label for="yes">Yes</label>
-            <input onChange={handleChange} type="radio" className='helpful-radio' name="helpful" value="no"/>
+            <input onChange={handleChange} type="radio" className='helpful-radio' name="helpful" value={false}/>
               <label for="No">No</label>
           <p>Characteristics</p>
           {metaReviews.characteristics && Object.keys(metaReviews.characteristics).map(key => {
