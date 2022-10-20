@@ -34,7 +34,7 @@ const Product = ({ styles, currentProduct, selectedStyle, setSelectedStyle, meta
       <div className="product-info">
         <StarAverage rating={findAverage(metaReviews.ratings)} />
         <span>Read all <a href="#review-list">{findTotal(metaReviews.ratings)}</a> reviews</span>
-        <span>{currentProduct.category}</span>
+        <span className="category">{currentProduct.category}</span>
         <h2>{currentProduct.name}</h2>
 
         {selectedStyle.sale_price ? <div className="sale-price"><p style={{ color: 'red' }}>{selectedStyle.sale_price}</p><p style={{ textDecoration: 'line-through' }}>{selectedStyle.original_price}</p></div> : <p>${selectedStyle.original_price}</p>}

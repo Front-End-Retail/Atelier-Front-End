@@ -5,6 +5,8 @@ const ImageGallery = ({ selectedStyle }) => {
   const [mainImages, setMainImages] = useState([]);
   const [thumbnails, setThumbnails] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [fullscreen, setFullscreen] = useState(false);
+  const [isSelected, setIsSelected] = useState('');
 
   const previousSlide = () => {
     const lastIndex = mainImages.length - 1;
@@ -20,6 +22,10 @@ const ImageGallery = ({ selectedStyle }) => {
     setCurrentImageIndex(index);
   }
 
+  const handleSelected = (selection) => {
+    setIsSelected(selection);
+  }
+
   useEffect(() => {
     let tempMain = [];
     let tempThumb = [];
@@ -30,32 +36,39 @@ const ImageGallery = ({ selectedStyle }) => {
     setMainImages(tempMain)
     setThumbnails(tempThumb);
     setCurrentImageIndex(0);
+    setIsSelected(currentImageIndex);
   }, [selectedStyle])
 
 
   return (
     <div className="image-gallery">
+
       <FontAwesomeIcon icon={faChevronLeft}
         className={`slide-arrow left`}
         onClick={previousSlide} />
       <div className="image-slide" style={{
         backgroundImage: `url(${mainImages[currentImageIndex]})`,
-        backgroundPosition: 'bottom',
+        backgroundPosition: 'center',
         backgroundSize: 'cover'
-      }}>
+      }} onClick={() => setFullscreen(!fullscreen)}>
         <div className='thumbnails-container'>
           {thumbnails.map(thumbnail => {
             return (
               <div onClick={() => {
                 setCurrentImageIndex(thumbnails.indexOf(thumbnail));
-              }} className='thumbnail-overview' style={
+                handleSelected(thumbnail);
+              }} className='thumbnail-overview' style={isSelected === thumbnail ? {
+                backgroundImage: `url(${thumbnail})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                border: '2px solid #8DB7E0'
+              } :
                 {
                   backgroundImage: `url(${thumbnail})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center'
-
                 }
-              }></div>
+              } />
             )
           })}
         </div>

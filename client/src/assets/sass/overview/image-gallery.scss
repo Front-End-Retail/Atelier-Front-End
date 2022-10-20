@@ -1,22 +1,22 @@
 .image-gallery {
-  width: 50%;
+  width: 60%;
   height: 100%;
   display: flex;
   align-items: center;
-  background-color: grey;
+  background-color: #34699E;
+  padding: 0 10px;
 }
 
 
 .image-slide {
-  height: 90%;
+  height: 70%;
   width: 100%;
   background-repeat: no-repeat;
-  background-attachment: scroll;
   transition: background-image .5s ease-in-out;
 }
 
 .slide-arrow {
-  color: blue;
+  color: #FFF;
   cursor: pointer;
   font-size: 2rem;
 }
@@ -44,7 +44,7 @@
 }
 
 .thumbnail-overview {
-  width: 15%;
+  width: 10%;
   min-height: 15%;
   border: 2px solid white;
   margin: 5px;
