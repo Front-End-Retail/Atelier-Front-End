@@ -28,6 +28,7 @@ const ImageGallery = ({ selectedStyle }) => {
     })
     setMainImages(tempMain)
     setThumbnails(tempThumb);
+    setCurrentImageIndex(0);
   }, [selectedStyle])
 
 
@@ -39,9 +40,26 @@ const ImageGallery = ({ selectedStyle }) => {
       </div>
       <div className="image-slide" style={{
         backgroundImage: `url(${mainImages[currentImageIndex]})`,
-        backgroundPosition: 'center',
-        backgroundSize: 'contain'
-      }}></div>
+        backgroundPosition: 'bottom',
+        backgroundSize: 'cover'
+      }}>
+        <div className='thumbnails-container'>
+          {thumbnails.map(thumbnail => {
+            return (
+              <div onClick={() => {
+                setCurrentImageIndex(thumbnails.indexOf(thumbnail));
+              }} className='thumbnail-overview' style={
+                {
+                  backgroundImage: `url(${thumbnail})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+
+                }
+              }></div>
+            )
+          })}
+        </div>
+      </div>
       <div
         className={`slide-arrow right`}
         onClick={nextSlide}>Next
