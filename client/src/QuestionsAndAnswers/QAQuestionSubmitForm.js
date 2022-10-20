@@ -23,7 +23,7 @@ const QAQuestionSubmitForm = ({ toggle, currentId, getProductQuestions }) => {
     event.preventDefault()
     if (validateQuestionForm()) {
       console.log("A valid form", questionSubmission)
-      axios.default.post('http://localhost:3000/qanda', questionSubmission).then(() => {
+      axios.default.post('http://localhost:3000/qanda/question', questionSubmission).then(() => {
         getProductQuestions()
         toggle()
       }).catch((err) => {

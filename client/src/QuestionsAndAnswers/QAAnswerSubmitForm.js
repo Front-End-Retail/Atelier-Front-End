@@ -3,7 +3,7 @@ const axios = require('axios');
 
 const { useState, useEffect } = React;
 
-const QAAnswerSubmitForm = ({ toggle }) => {
+const QAAnswerSubmitForm = ({ toggle, questionId }) => {
   const [answerText, setAnswerText] = useState('')
   const [answerName, setAnswerName] = useState('')
   const [answerEmail, setAnswerEmail] = useState('')
@@ -15,14 +15,22 @@ const QAAnswerSubmitForm = ({ toggle }) => {
     body: answerText,
     name: answerName,
     email: answerEmail,
-    photos: []
+    photos: [],
+    question_id : questionId
   }
 
   const submitAnswerForm = () => {
     event.preventDefault()
     if (answerFormValidation()) {
       console.log("A Valid answer form!")
-      toggle()
+      axios.default.post('http://localhost:3000/qanda/answer', answerFormObject).then(() => {
+        // getProductQuestions()
+        // toggle()
+        console.log('posted an answer')
+      }).catch((err) => {
+        console.log('error sending question', err)
+      })
+      // toggle()
     } else {
       console.log("An invalid form!")
     }
