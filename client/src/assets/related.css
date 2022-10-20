@@ -30,15 +30,17 @@
   transition: opacity 500ms;
 } */
 .YouMightAlsoLike{
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Lobster', sans-serif;
+  font-weight: bold;
   font-size: medium;
   text-align: center;
 }
 
 .CompleteYourOutfit{
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Lobster', sans-serif;
   font-size: medium;
   text-align: center;
+  font-weight: bold;
 }
 
 .relatedProduct{
@@ -65,7 +67,6 @@
 }
 
 .name{
-  padding: 3px;
   font-family: 'Nunito', sans-serif;
   text-align: center;
 }
@@ -134,5 +135,24 @@
   width: 220px;
   height:250px;
   text-align: center;
-  padding: 15px;
+  padding: 5px;
+}
+
+.emptyOutfitList{
+  display:flex;
+  justify-content: center;
+  font-family: 'Pacifico', cursive;;
+  font-size: medium;
+}
+
+.plusIcon{
+  display:flex;
+  justify-content: center;
+  font-family: 'Nunito', sans-serif;
+  padding-bottom: 30px;
+}
+
+.timesIcon{
+  display:flex;
+  justify-content: flex-end;
 }
