@@ -7,7 +7,7 @@ const axios = require('axios');
 
 const { useState, useEffect } = React;
 
-const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness, currentProductName, currentId }) => {
+const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness, currentProductName, currentId, getProductQuestions }) => {
 
   const [questionId, setQuestionId] = useState(question.question_id)
   const [displayedAnswersForQ, setDisplayedAnswersForQ] = useState([])
@@ -86,7 +86,7 @@ const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness, cu
       })}
       {displayedAnswersForQ.length < answersForQ.length && <button className={"showAnswersButton"} onClick={() => {addTwoAnswers()}}>LOAD MORE ANSWERS</button>}
       </div>
-      <QAAddAnswerModal visible={visible} toggle={toggle} currentProductName={currentProductName} questionText={question.question_body} questionId={questionId} />
+      <QAAddAnswerModal visible={visible} toggle={toggle} currentProductName={currentProductName} questionText={question.question_body} questionId={questionId} getProductQuestions={getProductQuestions} />
     </div>
   )
 }
