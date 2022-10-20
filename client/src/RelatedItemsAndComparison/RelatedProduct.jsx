@@ -27,32 +27,32 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, changeCurrentProd
   const fetchCard = () => {
     axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${relatedProductID}` } })
       .then((response) => {
-    // console.log('relatedProductID', relatedProductID)
-    // console.log('product details in RelatedProduct.jsx', response.data);
+        // console.log('relatedProductID', relatedProductID)
+        // console.log('product details in RelatedProduct.jsx', response.data);
         const newProduct = {};
         newProduct.name = response.data.name;
         newProduct.category = response.data.category;
         newProduct.price = response.data.default_price;
-    // console.log('newProduct ', newProduct)
+        // console.log('newProduct ', newProduct)
         axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${relatedProductID}/styles` } })
           .then(response => {
-          newProduct.image = response.data.results[0].photos[0].url;
-          setRelatedProduct(newProduct);
+            newProduct.image = response.data.results[0].photos[0].url;
+            setRelatedProduct(newProduct);
           })
           .catch(err => {
-          console.log('failed to fetch styles for given product id: ', err);
+            console.log('failed to fetch styles for given product id: ', err);
           })
-        })
+      })
       .catch(err => {
         console.log('failed to retrieve product details: ', err);
-  })
+      })
   }
 
   useEffect(() => {
     fetchCard();
   }, [relatedProductID]) //without this useEffect, this get request was ran repeatedly 10 times or more,
   //the data does get on the screen on the first go but eventually there are 123 messages and server failed with a response "too many requests"
-//everytime when this hook updates
+  //everytime when this hook updates
 
   // useEffect(()=>{
   //   console.log('effects everytime relatedProduct changes')
@@ -64,24 +64,28 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, changeCurrentProd
   }
 
 
-    return (
+  return (
 
 
-      <div className='card-component' onClick={()=>{changeCurrentProduct(relatedProductID)}} >
-          <div className='upper-part'>
-                 <img className="product-image" src={relatedProduct.image} alt='related product'/> 
-              {/* cant add listeners to react icons */}
-                  {/* <button className='starIcon' onClick={() => { setOpenModal(true) }}><FontAwesomeIcon icon={faStar}/></button>*/}
-          </div>
-          <div className='lower-part'>
-                 <div className='product-name'>{relatedProduct.name}</div>
-                 <div className='product-category'>{relatedProduct.category}</div>
-                 <div className='product-price'>USD {relatedProduct.price}</div>
-          </div>
-           {/* <div style={{ backgroundImage: `url(${relatedProduct.image})` }}> */}
-            {openModal && <Modal closeModal={setOpenModal} />}
-     </div>
- )
+    <div className='card-component' onClick={() => { changeCurrentProduct(relatedProductID) }} >
+      <div className='upper-part'>
+        <div className="product-image" style={{
+          backgroundImage: `url(${relatedProduct.image})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }} alt='related product' />
+        {/* cant add listeners to react icons */}
+        {/* <button className='starIcon' onClick={() => { setOpenModal(true) }}><FontAwesomeIcon icon={faStar}/></button>*/}
+      </div>
+      <div className='lower-part'>
+        <div className='product-name'>{relatedProduct.name}</div>
+        <div className='product-category'>{relatedProduct.category}</div>
+        <div className='product-price'>USD {relatedProduct.price}</div>
+      </div>
+      {/* <div style={{ backgroundImage: `url(${relatedProduct.image})` }}> */}
+      {openModal && <Modal closeModal={setOpenModal} />}
+    </div>
+  )
 
 };
 

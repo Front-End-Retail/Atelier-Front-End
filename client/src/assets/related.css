@@ -29,57 +29,58 @@
   opacity: 1;
   transition: opacity 500ms;
 } */
-.YouMightAlsoLike{
+.YouMightAlsoLike {
   font-family: 'Lobster', sans-serif;
   font-weight: bold;
   font-size: medium;
   text-align: center;
 }
 
-.CompleteYourOutfit{
+.CompleteYourOutfit {
   font-family: 'Lobster', sans-serif;
   font-size: medium;
   text-align: center;
   font-weight: bold;
 }
 
-.relatedProduct{
-  display:block;
+.relatedProduct {
+  display: block;
   width: 220px;
-  height:250px;
+  height: 250px;
   border: solid;
-  margin:10px;
+  margin: 10px;
   border-radius: 15px;
 }
 
 .relatedProduct:hover {
-  background-color: rgb(62,62,62);
+  background-color: rgb(62, 62, 62);
   cursor: pointer;
-  color:white;
+  color: white;
   transition: all 1s ease;
 }
+
 /* .container{
   /* background-color: blueviolet; */
-  /* border-style: solid; */
-  /* display:flex;
+/* border-style: solid; */
+/* display:flex;
   flex-wrap:wrap;
   justify-content: center; */
 /* } */
 
-.name{
+.name {
   font-family: 'Nunito', sans-serif;
   text-align: center;
 }
 
-.category{
-  padding:3px
-}
-
-.price{
+.category {
   padding: 3px
 }
 
-.ModalContainer{
+.price {
+  padding: 3px
+}
+
+.ModalContainer {
   border: solid;
   width: 200px;
   height: 200px;
@@ -113,59 +114,61 @@
   justify-content: flex-end;
 }
 
-.heartIcon{
+.heartIcon {
   padding: 5px;
   display: flex;
   justify-content: flex-end;
 }
 
-.emptyList{
+
+.emptyList {
   display: flex;
   justify-content: center;
 }
 
-.regularPrice{
+.regularPrice {
   text-decoration: line-through;
 }
 
-.currentOutfit{
+.currentOutfit {
   border: solid;
-  display:block;
+  display: block;
   border-radius: 15px;
   width: 220px;
-  height:250px;
+  height: 250px;
   text-align: center;
   padding: 5px;
 }
 
-.emptyOutfitList{
-  display:flex;
+.emptyOutfitList {
+  display: flex;
   justify-content: center;
-  font-family: 'Pacifico', cursive;;
+  font-family: 'Pacifico', cursive;
+  ;
   font-size: medium;
 }
 
-.plusIcon{
-  display:flex;
+.plusIcon {
+  display: flex;
   justify-content: center;
   font-family: 'Nunito', sans-serif;
   padding-bottom: 30px;
 }
 
-.timesIcon{
-  display:flex;
+.timesIcon {
+  display: flex;
   justify-content: flex-end;
 }
 
 
-.leftArrowIcon{
+.leftArrowIcon {
   height: 40px;
-  width:40px;
+  width: 40px;
 }
 
-.rightArrowIcon{
+.rightArrowIcon {
   height: 40px;
-  width:40px;
+  width: 40px;
 }
 
 
@@ -174,9 +177,9 @@ padding: 0 10vw;
 border: solid;
 width: 90px;
 height: 200px; */
-  /* overflow-x: auto; */
-  /* scroll-behavior: smooth; */
-  /* flex-wrap: wrap; */
+/* overflow-x: auto; */
+/* scroll-behavior: smooth; */
+/* flex-wrap: wrap; */
 /* }
 
 .product-card{
@@ -233,7 +236,7 @@ height: 200px; */
   display: flex;
   /* position: relative;
   place-self: center; */
-  /* height: 300px;
+/* height: 300px;
   width: 200px;
   /* align-self:flex-start; */
 
@@ -272,35 +275,44 @@ height: 200px; */
   align-self: center;
   padding-left: 5px;
 }
-
-.lower-part{
-  display: flex;
-  height: 120px;
-  background-color: #ede0d4;
-} */
-
-.relatedProductsContainer{
-  display:flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.card-component{
-  border: solid;
+*/
+.card-component {
+  border: 1px solid #ede0d4;
   height: 300px;
   width: 300px;
+  padding: 10px;
+  background-color: #ede0d4;
 }
 
-.upper-part{
-  height: 180px;
-  width: 300px;
-  border: solid;
+.card-component:hover {
+  background-color: rgb(62, 62, 62);
+  cursor: pointer;
+  color: white;
+  transition: all 1s ease;
 }
 
-.product-image{
+.relatedProductsContainer {
+  display: flex;
+
+  justify-content: center;
+  gap: 20px;
+}
+
+.upper-part {
+  height: 50%;
+  border: 3px solid #ede0d4;
+  border-radius: 7px;
+}
+
+
+.lower-part {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.product-image {
   height: 100%;
   width: 100%;
-  aspect-ratio: 1/1;
-
 }
-
