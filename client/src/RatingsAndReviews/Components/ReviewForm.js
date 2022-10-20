@@ -1,10 +1,12 @@
 import React from 'react';
 import StarRating from './StarRating.js';
+// import {Cloudinary} from "@cloudinary/url-gen";
+// import {AdvancedImage} from '@cloudinary/react'
 const axios = require('axios');
 const { useState, useEffect } = React;
 
 const ReviewForm = ({toggle, metaReviews}) => {
-  // Will need to pass down prop which has the characteristics for the current product to conditionally render the radio buttons as needed
+  // Hooks for the form entries
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [formRating, setFormRating] = useState('')
@@ -13,9 +15,17 @@ const ReviewForm = ({toggle, metaReviews}) => {
   const [summary, setSummary] = useState('')
   const [body, setBody] = useState('')
   const [photos, setPhotos] = useState([])
+  // validation hooks
+  const [nameValidation, setNameValidation] = useState(false)
+  const [emailValidation, setEmailValidation] = useState(false)
+  const [summaryValidation, setSummaryValidation] = useState(false)
+  const [bodyValidation, setBodyValidation] = useState(false)
+  // image hook
+  const [imageSelected, setImageSelected] = useState("");
+  const [fileInputState, setFileInputState] = useState("");
 
   const handleChange = (e) => {
-    e.target.name === 'username' ? setUsername(e.target.value) :
+    e.target.name === 'username' && e.target.value.length > 0 ? (setUsername(e.target.value), setNameValidation(true)) :
     e.target.name === 'summary' ? setSummary(e.target.value) :
     e.target.name === 'helpful' ? setRecommended((e.target.value=== 'true')) : //converts string to boolean
     e.target.name === 'body' ? setBody(e.target.value) :
@@ -37,9 +47,7 @@ const ReviewForm = ({toggle, metaReviews}) => {
       "photos": photos,
       "characteristics": characteristics
     }
-    console.log(reviewObject, characteristics)
-     //get rid of me please!!!!!!!!!!!!! I should be in the post request
-    // toggle()
+    console.log(reviewObject, photos)
     postReview(reviewObject)
     setPhotos([])
     setUsername('')
@@ -68,15 +76,38 @@ const ReviewForm = ({toggle, metaReviews}) => {
       console.log('error sending question', err)
     })
   }
+// widget for uploading photos
+  const showWidget = () => {
+
+    let widget = window.cloudinary.createUploadWidget({
+       cloudName: `de2i2agjs`,
+       uploadPreset: `svtvxvjd`,
+      thumbnails: '.thumbnail-div'},
+
+    (error, result) => {
+      if (!error && result && result.event === "success") {
+      console.log(result.info.url);
+      if (photos.length < 5) {
+        let tempPhotos = [...photos]
+        tempPhotos.push(result.info.url)
+        setPhotos(tempPhotos)
+      }
+
+    }});
+    if (photos.length < 5) {
+      widget.open()
+    }
+
+  }
   return (
     <form onSubmit={handleSubmit}>
           <label>
             Username:
-            <input onChange={handleChange} type="text" name="username" placeholder="Example: jackson11!"/>
+            <input onChange={handleChange} maxlength="60" type="text" name="username" placeholder="Example: jackson11!"/>
             </label>
             <label>
           Email:
-          <input onChange={handleChange} type="email" name="email" placeholder="“Example: jackson11@email.com”"/>
+          <input onChange={handleChange} maxlength="60" type="email" name="email" placeholder="“Example: jackson11@email.com”"/>
           </label>
           <p>For authentication reasons, you will not be emailed</p>
           <StarRating handleStarChange={handleStarChange}/>
@@ -109,10 +140,14 @@ const ReviewForm = ({toggle, metaReviews}) => {
             </label>
           <label for="story">Review Body:</label>
             <textarea onChange={handleChange} id="story" name="body"
-                      rows="7" cols="60">
+                      rows="7" cols="60" maxlength="1000">
             "Why did you like the product or not?"
             </textarea>
-        <input type="submit" value="Submit" />
+            {/* Upload files here */}
+            <button type="button" onClick={showWidget}>Upload Image</button>
+            <div className="thumbnail-div"></div>
+        <input type="submit" value="Submit" multiple="multiple"/>
+
       </form>
   )
 }

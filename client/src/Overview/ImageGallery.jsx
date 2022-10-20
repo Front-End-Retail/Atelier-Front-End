@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 const ImageGallery = ({ selectedStyle }) => {
   const [mainImages, setMainImages] = useState([]);
   const [thumbnails, setThumbnails] = useState([]);
@@ -34,10 +35,9 @@ const ImageGallery = ({ selectedStyle }) => {
 
   return (
     <div className="image-gallery">
-      <div
+      <FontAwesomeIcon icon={faChevronLeft}
         className={`slide-arrow left`}
-        onClick={previousSlide}>Previous
-      </div>
+        onClick={previousSlide} />
       <div className="image-slide" style={{
         backgroundImage: `url(${mainImages[currentImageIndex]})`,
         backgroundPosition: 'bottom',
@@ -60,10 +60,9 @@ const ImageGallery = ({ selectedStyle }) => {
           })}
         </div>
       </div>
-      <div
+      <FontAwesomeIcon icon={faChevronRight}
         className={`slide-arrow right`}
-        onClick={nextSlide}>Next
-      </div>
+        onClick={nextSlide} />
     </div >
   )
 }
