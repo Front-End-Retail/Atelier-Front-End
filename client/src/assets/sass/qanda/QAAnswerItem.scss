@@ -1,0 +1,55 @@
+.qalist-totalanswerwrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.qalist-answer-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.qalist-largea {
+  margin-top: 0;
+  margin-left: 10px;
+}
+
+.qalist-aline-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: -20px;
+}
+
+.qalist-answer {
+  display: flex;
+  margin-left: 5px;
+  gap: 1%;
+  max-width: 65%;
+}
+
+.qalist-a-text {
+  margin-top: 22px;
+  display:inline;
+  min-width: fit-content;
+}
+
+.qalist-a-image-wrapper {
+  display: flex;
+  gap: 5px;
+  margin-left: 5px;
+}
+
+.qalist-answer-info-wrapper {
+  display: flex;
+  margin-top: -23px;
+  font-size: smaller;
+  font-weight: lighter;
+  gap: 7px;
+  margin-left: 5px;
+}
+
+.underlined {
+  text-decoration: underline;
+  cursor: pointer;
+}

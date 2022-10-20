@@ -1,0 +1,57 @@
+.qalist-item-wrapper {
+
+}
+
+.qalist-q-line-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.qalist-question {
+  display: flex;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.qalist-helpful {
+  display: flex;
+  margin-right: 3%;
+  margin-top: 5px;
+  font-size: smaller;
+  font-weight: lighter;
+  gap: 7px;
+}
+
+.qalist-q-text {
+  margin-top: 20px;
+  display:inline;
+  min-width: fit-content;
+  margin-left: 5px;
+}
+
+.qalist-answersandbuttonwrapper {
+  max-height: 500px;
+    transition: all .5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.qalist-answersnotactive {
+  max-height: 0;
+    transition: all .5s ease-in-out;
+    overflow: hidden;
+}
+
+.showAnswersButton {
+  margin-left: 27px;
+  border: none;
+  background-color: white;
+  font-size: small;
+  font-weight: bolder;
+  align-self: flex-start;
+  cursor: pointer;
+}
+
+.showAnswersButton:hover {
+  color: rgb(26, 24, 33);
+}
