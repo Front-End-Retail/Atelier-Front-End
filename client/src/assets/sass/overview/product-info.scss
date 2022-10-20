@@ -24,15 +24,15 @@
 
 .style-thumbnails {
   display: flex;
-  justify-content: space-between;
-  gap: 10px;
+  flex-wrap: wrap;
   margin-top: 10px;
+  gap: 10px;
   min-width: fit-content;
 }
 
 .image-container {
-  min-height: 40%;
-  min-width: 40%;
+  min-height: 20%;
+  width: 20%;
   border: 1px groove lightgray;
   border-radius: 50%;
   overflow: hidden;

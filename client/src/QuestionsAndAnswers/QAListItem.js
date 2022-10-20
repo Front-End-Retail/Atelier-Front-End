@@ -1,10 +1,13 @@
 import React from 'react';
 import QAAnswerItem from './QAAnswerItem.js'
+import QAAddAnswerModal from './QAAddAnswerModal.js'
+import useModal from './useModal.js'
+
 const axios = require('axios');
 
 const { useState, useEffect } = React;
 
-const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness }) => {
+const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness, currentProductName, currentId }) => {
 
   const [questionId, setQuestionId] = useState(question.question_id)
   const [displayedAnswersForQ, setDisplayedAnswersForQ] = useState([])
@@ -61,6 +64,8 @@ const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness }) 
     setAnswersForQ(answersCopy)
   }
 
+  const {toggle, visible} = useModal();
+
   return (
     <div className={'qalist-item-wrapper'}>
       <div className={"qalist-q-line-wrapper"}>
@@ -72,15 +77,16 @@ const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness }) 
           <p>Helpful?</p>
           <p className={"underlined"}onClick={() => {voteHelpful()}}>Yes </p><p>({question.question_helpfulness})</p>
           <p> | </p>
-          <p> Add Answer </p>
+          <p onClick={toggle}> Add Answer </p>
         </div>
       </div>
       <div className={isActive ? "qalist-answersandbuttonwrapper" : "qalist-answersnotactive"}>
       {displayedAnswersForQ.length > 0 && displayedAnswersForQ.map((answer, index) => {
-        return <QAAnswerItem answer={answer} key={index} addAnswerHelpfulness={addAnswerHelpfulness} updateHelpfulCount={updateHelpfulCount} />
+        return <QAAnswerItem answer={answer} key={index} addAnswerHelpfulness={addAnswerHelpfulness} updateHelpfulCount={updateHelpfulCount} currentId={currentId} />
       })}
       {displayedAnswersForQ.length < answersForQ.length && <button className={"showAnswersButton"} onClick={() => {addTwoAnswers()}}>LOAD MORE ANSWERS</button>}
       </div>
+      <QAAddAnswerModal visible={visible} toggle={toggle} currentProductName={currentProductName} questionText={question.question_body} questionId={questionId} />
     </div>
   )
 }
