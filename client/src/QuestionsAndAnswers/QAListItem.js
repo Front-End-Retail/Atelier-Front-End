@@ -7,7 +7,7 @@ const axios = require('axios');
 
 const { useState, useEffect } = React;
 
-const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness, currentProductName, currentId, getProductQuestions }) => {
+const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness, currentProductName, currentId, getProductQuestions, reportAnAnswer }) => {
 
   const [questionId, setQuestionId] = useState(0)
   const [displayedAnswersForQ, setDisplayedAnswersForQ] = useState([])
@@ -93,7 +93,7 @@ const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness, cu
       </div>
       <div className={isActive ? "qalist-answersandbuttonwrapper" : "qalist-answersnotactive"}>
       {displayedAnswersForQ.length > 0 && displayedAnswersForQ.map((answer, index) => {
-        return <QAAnswerItem answer={answer} key={index} addAnswerHelpfulness={addAnswerHelpfulness} updateHelpfulCount={updateHelpfulCount} currentId={currentId} />
+        return <QAAnswerItem answer={answer} key={index} addAnswerHelpfulness={addAnswerHelpfulness} updateHelpfulCount={updateHelpfulCount} currentId={currentId} reportAnAnswer={reportAnAnswer} />
       })}
       {displayedAnswersForQ.length < answersForQ.length && <button className={"showAnswersButton"} onClick={() => {addTwotoLength()}}>LOAD MORE ANSWERS</button>}
       </div>
