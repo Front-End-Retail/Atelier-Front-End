@@ -1,12 +1,12 @@
 import React from 'react';
 const axios = require('axios');
 const { useState, useEffect } = React;
-import ReviewEntry from './ReviewEntry.js'
-import Sorting from './Sorting.js'
-import ReviewModal from './ReviewModal.js'
-import UseReviewModal from './UseReviewModal.js'
+import ReviewEntry from './ReviewEntry.js';
+import Sorting from './Sorting.js';
+import ReviewModal from './ReviewModal.js';
+import UseReviewModal from './UseReviewModal.js';
 
-const ReviewList = ({reviews, sortReviews}) => {
+const ReviewList = ({reviews, sortReviews, metaReviews}) => {
   const [displayNum, setDisplayNum] = useState(2)
   const [currentReviews, setCurrentReviews] = useState([])
   const passSortingName = (name) => {
@@ -35,7 +35,7 @@ const ReviewList = ({reviews, sortReviews}) => {
 
       {displayNum !== reviews.length && <button className="review-button" onClick={moreReviews}>More Reviews</button>}
       <button className="review-button" onClick={toggle}>Add Review +</button>
-      <ReviewModal visible={visible} toggle={toggle} reviews={reviews}/>
+      <ReviewModal visible={visible} toggle={toggle} reviews={reviews} metaReviews={metaReviews}/>
       </div>
     </div>
   )
