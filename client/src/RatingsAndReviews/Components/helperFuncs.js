@@ -6,7 +6,7 @@ export const findAverage = (ratingsObj) => {
     average += (Number(key) * Number(ratingsObj[key]))
     total += Number(ratingsObj[key])
   }
-  return Math.round(((average/total) * 10) / 10)
+  return Math.round(((average/total) * 10) / 10).toFixed(1)
 }
  export const helpfulPerc = (helpfulObj) => {
   if (helpfulObj) {
