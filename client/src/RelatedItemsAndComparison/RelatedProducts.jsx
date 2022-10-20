@@ -11,19 +11,20 @@ const RelatedProducts = ({relatedProductsID, changeCurrentProduct}) => {
 
 if (relatedProductsID.length >=4) {
   return (
-    <section className='relatedProductsSection'>
+    <div className='relatedProductsOuterContainer'>
     <button className='leftArrowIcon'><FontAwesomeIcon icon={faArrowLeft}/></button>
-    <div className='container'>
+    <div className='relatedProductsContainer'>
     {relatedProductsID.map((relatedProductID, index)=>{
       return <RelatedProduct key={index} relatedProductID={relatedProductID} relatedProductsID={relatedProductsID} changeCurrentProduct={changeCurrentProduct}></RelatedProduct>
     })}
     </div>
     <button className='rightArrowIcon'><FontAwesomeIcon icon={faArrowRight}/></button>
-    </section>
+    </div>
   );
 } else {
   return (
-    <div className='container'>
+    <div className='relatedProductsContainer'>
+      {/* //this is container before */}
     {relatedProductsID.map((relatedProductID, index)=>{
       return <RelatedProduct key={index} relatedProductID={relatedProductID} relatedProductsID={relatedProductsID} changeCurrentProduct={changeCurrentProduct}></RelatedProduct>
     })}

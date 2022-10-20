@@ -67,64 +67,21 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, changeCurrentProd
     return (
 
 
-      <div className='product-container' onClick={()=>{changeCurrentProduct(relatedProductID)}} >
-
-        {/* cant add listeners to react icons */}
-
-          <div className='product-card'>
-          {/* <div className='heartIcon' onClick={handleLikeClick}>
-                  <FontAwesomeIcon icon={likeIcon(liked)} color="red" />
-           </div> */}
-                 <div className='product-image'>
-                      <button className='starIcon' onClick={() => { setOpenModal(true) }}><FontAwesomeIcon icon={faStar}/></button>
-                      <img src={relatedProduct.image} className='product-thumb' alt='related product'/>
-                 </div>
-                 <div className='product-info'>
-                    <h2 className='product-name'>{relatedProduct.name}</h2>
-                    <div className='product-category'>{relatedProduct.category}</div>
-                    <span className='price'>USD {relatedProduct.price}</span>
-                    {/* <div style={{ backgroundImage: `url(${relatedProduct.image})` }}></div>
-                    <img src={relatedProduct.image} alt='related product' height='123px' width='155px' /> */}
-                 </div>
-         </div>
-
-         <div className='product-modal'>
-         {openModal && <Modal closeModal={setOpenModal} />}
-         </div>
-
-    </div>
-  )
-
-
-
-//   return (
-//     <div className='relatedProduct' onClick={()=>{changeCurrentProduct(relatedProductID)}} >
-
-//       {/* cant add listeners to react icons */}
-//       <div className='heartIcon' onClick={handleLikeClick}>
-//       {/* onClick={()=>{changeCurrentProduct(relatedProductID)}} */}
-//         <FontAwesomeIcon icon={likeIcon(liked)} color="red" />
-//       {/* <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon> */}
-//       </div>
-//       <div className='name'>{relatedProduct.name}</div>
-//       <div className='category'>{relatedProduct.category}</div>
-//       <div className='price'>USD{relatedProduct.price}</div>
-//       <div style={{ backgroundImage: `url(${relatedProduct.image})` }}>
-//       <img src={relatedProduct.image} alt='related product' height='123px' width='155px' />
-//       <button onClick={() => { setOpenModal(true) }}>compare</button>
-//       {openModal && <Modal closeModal={setOpenModal} />}
-//       </div>
-//     {/* <img src="https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2760&q=80"
-//    alt='related product'
-//    height='50px'/> */}
-//   </div>
-// )
-
-
-
-
-
-
+      <div className='card-component' onClick={()=>{changeCurrentProduct(relatedProductID)}} >
+          <div className='upper-part'>
+                 <img className="product-image" src={relatedProduct.image} alt='related product'/> 
+              {/* cant add listeners to react icons */}
+                  {/* <button className='starIcon' onClick={() => { setOpenModal(true) }}><FontAwesomeIcon icon={faStar}/></button>*/}
+          </div>
+          <div className='lower-part'>
+                 <div className='product-name'>{relatedProduct.name}</div>
+                 <div className='product-category'>{relatedProduct.category}</div>
+                 <div className='product-price'>USD {relatedProduct.price}</div>
+          </div>
+           {/* <div style={{ backgroundImage: `url(${relatedProduct.image})` }}> */}
+            {openModal && <Modal closeModal={setOpenModal} />}
+     </div>
+ )
 
 };
 
