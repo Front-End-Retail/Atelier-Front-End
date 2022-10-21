@@ -13,6 +13,9 @@ const App = () => {
   const [products, setProducts] = useState([]);
   const [currentProductID, setCurrentProductID] = useState(0);
   const [currentProductName, setCurrentProductName] = useState('');
+  const [styles, setStyles] = useState([]);
+  const [selectedStyle, setSelectedStyle] = useState({});
+
   //fetches initial product data and assigns the currentProductID state
   const fetchAllProducts = () => {
     axios({
@@ -32,20 +35,47 @@ const App = () => {
       })
   }
 
+  //grabs all the styles for current product
+  const fetchAllStyles = () => {
+    axios({
+      method: 'get',
+      url: 'http://localhost:3000/products',
+      params: {
+        specificURL: `products/${currentProductID}/styles`
+      }
+    })
+      .then(response => {
+        setStyles(response.data.results)
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
 
   const changeCurrentProduct = (newProductID) => {
     setCurrentProductID(newProductID);
+  }
+
+  const changeSelectedStyle = (style) => {
+    setSelectedStyle(style);
   }
 
   useEffect(() => {
     fetchAllProducts();
   }, [])
 
+  useEffect(() => {
+    fetchAllStyles()
+  }, [currentProductID])
+
+  useEffect(() => {
+    setSelectedStyle(styles[0])
+  }, [styles]);
+
   return (
     <div>
       {currentProductName !== '' && currentProductID !== 0 && <div>
-        <h1>The modules will be below</h1>
-        <Overview currentProductID={currentProductID} />
+        <Overview currentProductID={currentProductID} styles={styles} selectedStyle={selectedStyle} changeStyle={changeSelectedStyle} />
         <RelatedItemsAndComparison currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct} />
         <QuestionsAndAnswers currentProductID={currentProductID} currentProductName={currentProductName} />
         <RatingsAndReviews currentProductID={currentProductID} />

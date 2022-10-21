@@ -109,6 +109,7 @@ const ReviewForm = ({toggle, metaReviews}) => {
           Email:
           <input onChange={handleChange} maxlength="60" type="email" name="email" placeholder="“Example: jackson11@email.com”"/>
           </label>
+          {/* {setNameValidation ? <p>Required field</p> : null} */}
           <p>For authentication reasons, you will not be emailed</p>
           <StarRating handleStarChange={handleStarChange}/>
           <p>Would you recommend this product?</p>

@@ -290,6 +290,7 @@ height: 200px; */
   gap: 20px;
 }
 
+
 .product-image {
   height: 75%;
   border: 3px solid #ede0d4;
@@ -303,6 +304,7 @@ height: 200px; */
   flex-direction: column;
   margin-top: 10px;
 }
+
 
 
 .starIconButton {
@@ -331,6 +333,7 @@ height: 200px; */
   width:30px;
   cursor: point;
 }
+
 
 .product-name{
   font-family: 'Nunito', sans-serif;

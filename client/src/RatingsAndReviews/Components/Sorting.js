@@ -10,7 +10,7 @@ const Sorting = ({reviews, passSortingName}) => {
     passSortingName(name)
   }
   return (
-    <select onChange={handleSelect} name="languages" id="lang">
+    <select onChange={handleSelect} name="languages" id="dropdown">
       <option value="none">None Selected</option>
       <option value="helpfulness">Helpful</option>
       <option value="newest">Newest</option>
