@@ -10,7 +10,7 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
 
 
-const RelatedProduct = ({ relatedProductID, relatedProductsID, changeCurrentProduct }) => {
+const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProductID, changeCurrentProduct }) => {
 
   // console.log('each relatedProductID received in RelatedProduct.jsx: ', relatedProductID) //dont console.log here
 
@@ -68,22 +68,23 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, changeCurrentProd
 
 
     <div className='card-component' onClick={() => { changeCurrentProduct(relatedProductID) }} >
-      <div className='upper-part'>
+
         <div className="product-image" style={{
           backgroundImage: `url(${relatedProduct.image})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
-        }} alt='related product' />
+        }} alt='related product' >
+              <button className='starIconButton' onClick={() => { setOpenModal(true) }}><FontAwesomeIcon className='starIcon' icon={faStar} color='white'/></button>
+       </div>
         {/* cant add listeners to react icons */}
         {/* <button className='starIcon' onClick={() => { setOpenModal(true) }}><FontAwesomeIcon icon={faStar}/></button>*/}
-      </div>
-      <div className='lower-part'>
-        <div className='product-name'>{relatedProduct.name}</div>
-        <div className='product-category'>{relatedProduct.category}</div>
-        <div className='product-price'>USD {relatedProduct.price}</div>
+       <div className='lower-part'>
+             <div className='product-name'>{relatedProduct.name}</div>
+             <div className='product-category'>{relatedProduct.category}</div>
+             <div className='product-price'>USD {relatedProduct.price}</div>
       </div>
       {/* <div style={{ backgroundImage: `url(${relatedProduct.image})` }}> */}
-      {openModal && <Modal closeModal={setOpenModal} />}
+      {openModal && <Modal closeModal={setOpenModal} currentProductID={currentProductID} relatedProductID={relatedProductID} />}
     </div>
   )
 
