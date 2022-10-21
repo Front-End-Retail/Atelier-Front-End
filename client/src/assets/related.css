@@ -152,6 +152,8 @@
 .leftArrowIcon {
   height: 40px;
   width: 40px;
+  float: right;
+  margin-top: 200px;
 }
 
 .rightArrowIcon {
@@ -326,7 +328,7 @@ height: 200px; */
 .starIcon:hover{
   height: 30px;
   width:30px;
-  pointer:cursor;
+  cursor: point;
 }
 
 .product-name{
@@ -388,4 +390,19 @@ height: 200px; */
   font-size: 13px;
   color:#808080;
   padding: 1.5px;
+}
+
+.rightArrowIcon {
+  /* float: right; */
+  margin-top: 200px;
+  position: absolute;
+  top: -10px;
+  right:-10px;
+}
+
+.relatedProductsOuterContainer{
+  position: relative;
+  /* how to overlay the rightArrowIcon button? */
+  /* The container (WSEDIT) should have position:relative so you can absolutely-position the button.
+The button should be inside the container. The button needs: position:absolute; top:-10px; right:-20px (approximately) */
 }
