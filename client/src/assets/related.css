@@ -67,18 +67,6 @@
   justify-content: center; */
 /* } */
 
-.name {
-  font-family: 'Nunito', sans-serif;
-  text-align: center;
-}
-
-.category {
-  padding: 3px
-}
-
-.price {
-  padding: 3px
-}
 
 .ModalContainer {
   border: solid;
@@ -164,6 +152,8 @@
 .leftArrowIcon {
   height: 40px;
   width: 40px;
+  float: right;
+  margin-top: 200px;
 }
 
 .rightArrowIcon {
@@ -278,17 +268,20 @@ height: 200px; */
 */
 .card-component {
   border: 1px solid #ede0d4;
-  height: 300px;
+  height: 400px;
   width: 300px;
   padding: 10px;
   background-color: #ede0d4;
+  transition: all 1s ease-in-out;
 }
 
 .card-component:hover {
   background-color: rgb(62, 62, 62);
   cursor: pointer;
   color: white;
-  transition: all 1s ease;
+  transition: all 1s ease-in-out;
+  height: 450px;
+  width: 350px;
 }
 
 .relatedProductsContainer {
@@ -297,7 +290,8 @@ height: 200px; */
   gap: 20px;
 }
 
-.upper-part {
+
+.product-image {
   height: 75%;
   border: 3px solid #ede0d4;
   border-radius: 7px;
@@ -311,10 +305,36 @@ height: 200px; */
   margin-top: 10px;
 }
 
-.product-image {
-  height: 100%;
-  width: 100%;
+
+
+.starIconButton {
+/* this will move button from left to right */
+  float: right;
+  padding: 3px;
+  cursor: pointer;
+  background: none;
+  border: transparent;
+  height: 40px;
+  width: 40px;
 }
+
+.starIconButton:hover{
+  background: none;
+  border: transparent;
+}
+
+.starIcon{
+  height: 20px;
+  width:20px;
+}
+
+.starIcon:hover{
+  height: 30px;
+  width:30px;
+  cursor: point;
+}
+
+
 .product-name{
   font-family: 'Nunito', sans-serif;
   font-weight: bold;
@@ -341,7 +361,7 @@ height: 200px; */
 
 .outfit-component{
   border: 1px solid #ede0d4;
-  height: 300px;
+  height: 400px;
   width: 300px;
   padding: 10px;
   background-color: #ede0d4;
@@ -374,4 +394,19 @@ height: 200px; */
   font-size: 13px;
   color:#808080;
   padding: 1.5px;
+}
+
+.rightArrowIcon {
+  /* float: right; */
+  margin-top: 200px;
+  position: absolute;
+  top: -10px;
+  right:-10px;
+}
+
+.relatedProductsOuterContainer{
+  position: relative;
+  /* how to overlay the rightArrowIcon button? */
+  /* The container (WSEDIT) should have position:relative so you can absolutely-position the button.
+The button should be inside the container. The button needs: position:absolute; top:-10px; right:-20px (approximately) */
 }

@@ -41,16 +41,14 @@ const ImageGallery = ({ selectedStyle }) => {
 
 
   return (
-    <div className="image-gallery">
-
-      <FontAwesomeIcon icon={faChevronLeft}
-        className={`slide-arrow left`}
-        onClick={previousSlide} />
+    <>
       <div className="image-slide" style={{
         backgroundImage: `url(${mainImages[currentImageIndex]})`,
         backgroundPosition: 'center',
         backgroundSize: 'cover'
       }} onClick={() => setFullscreen(!fullscreen)}>
+
+
         <div className='thumbnails-container'>
           {thumbnails.map((thumbnail, i) => {
             return (
@@ -72,11 +70,14 @@ const ImageGallery = ({ selectedStyle }) => {
             )
           })}
         </div>
+        <FontAwesomeIcon icon={faChevronLeft}
+          className={`slide-arrow left`}
+          onClick={previousSlide} />
+        <FontAwesomeIcon icon={faChevronRight}
+          className={`slide-arrow right`}
+          onClick={nextSlide} />
       </div>
-      <FontAwesomeIcon icon={faChevronRight}
-        className={`slide-arrow right`}
-        onClick={nextSlide} />
-    </div >
+    </>
   )
 }
 export default ImageGallery;
