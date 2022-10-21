@@ -10,7 +10,7 @@
 .qalist-question {
   display: flex;
   margin-left: 10px;
-  text-shadow: 0px 0px 2px #000000;
+  text-shadow: 0px 0px 2px #1d2731;
   cursor: pointer;
 }
 
@@ -48,7 +48,8 @@
 .showAnswersButton {
   margin-left: 27px;
   border: none;
-  background-color: white;
+  background-color: rgb(11,60,93);
+  color: white;
   font-size: small;
   font-weight: bolder;
   align-self: flex-start;
@@ -56,5 +57,6 @@
 }
 
 .showAnswersButton:hover {
-  color: rgb(26, 24, 33);
+  color: rgb(255, 255, 255);
+  text-shadow: 0px 0px 3px #328CC1;
 }
