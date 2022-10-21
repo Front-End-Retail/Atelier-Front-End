@@ -31,20 +31,21 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter}) => {
       {!isNaN(rating) && <StarAverage rating={rating}/>}
       </div>
       {metaReviews.ratings && <p>{helpfulAverage} % of reviews recommend this product</p>}
-      {ratingTotal && Object.keys(metaReviews.ratings).reverse().map(starNum => {
+      {ratingTotal && Object.keys(metaReviews.ratings).reverse().map((starNum, index) => {
         let ratio = findRatio(ratingTotal, metaReviews.ratings[starNum])
         let ratioTotal = 300 - ratio;
-        return <table className="star-bars">
+        return <table className="star-bars" key={index}><tbody>
         <tr width="300px" height="15px">
-        <span className="star-a-element"><a  name={starNum} onClick={starClick}>{starNum} stars</a></span>
+        <td className="star-a-element"><a  name={starNum} onClick={starClick}>{starNum} stars</a></td>
         <td style={{background: "green", width: ratio, height:10}}></td><td style={{background: "gray", width: ratioTotal, height:10}}></td>
         </tr>
+        </tbody>
         </table>
       })}
       {!starFilter.every(everyFunc) && <StarFilterDesc starFilter={starFilter}/>}
-      {metaReviews.characteristics && Object.keys(metaReviews.characteristics).map(key => {
+      {metaReviews.characteristics && Object.keys(metaReviews.characteristics).map((key, index) => {
         return (
-          <div className="slide-container">{key}
+          <div className="slide-container" key={index}>{key}
           <input type="range" min="10" max="50" value={Math.round(metaReviews.characteristics[key]["value"] * 100) / 10} className="slider" id="myRange">
           </input></div>
         )

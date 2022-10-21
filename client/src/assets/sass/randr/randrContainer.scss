@@ -2,11 +2,16 @@
   display: flex;
   border: solid black 1px;
   flex-direction: row;
-  width: 98vw;
+  width: 95vw;
   height: 3fr;
-  max-height: 3fr;
+  max-height: 100vh;
   gap: 5%;
   background-color: #34699E;
   color: white;
   //
+}
+
+#center-reviews {
+  display: flex;
+  justify-content: center;
 }

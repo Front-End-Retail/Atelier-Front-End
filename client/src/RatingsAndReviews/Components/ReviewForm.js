@@ -1,5 +1,6 @@
 import React from 'react';
 import StarRating from './StarRating.js';
+import {characteristicsDesc} from './helperFuncs'
 // import {Cloudinary} from "@cloudinary/url-gen";
 // import {AdvancedImage} from '@cloudinary/react'
 const axios = require('axios');
@@ -12,6 +13,7 @@ const ReviewForm = ({toggle, metaReviews}) => {
   const [formRating, setFormRating] = useState('')
   const [recommended, setRecommended] = useState(true)
   const [characteristics, setCharacteristics] = useState({})
+  const [charDescription, setCharDescription] = useState({Size: '', Width: '', Comfort: '', Quality: '', Length: '', Fit: ''})
   const [summary, setSummary] = useState('')
   const [body, setBody] = useState('')
   const [photos, setPhotos] = useState([])
@@ -20,7 +22,6 @@ const ReviewForm = ({toggle, metaReviews}) => {
   const [emailValidation, setEmailValidation] = useState(false)
   const [summaryValidation, setSummaryValidation] = useState(false)
   const [bodyValidation, setBodyValidation] = useState(false)
-  // image hook
   const [imageSelected, setImageSelected] = useState("");
   const [fileInputState, setFileInputState] = useState("");
 
@@ -99,11 +100,15 @@ const ReviewForm = ({toggle, metaReviews}) => {
     setFormRating(rating)
   }
   // handle change for the characteristic radio buttons
-  const handleCharChange = (e) => {
+  const handleCharChange = (key, e) => {
     let tempChar = {...characteristics}
     // value needs to be an int, not a string
     tempChar[e.target.name] = Number(e.target.value)
     setCharacteristics(tempChar)
+    let tempCharDesc = {...charDescription}
+    // import description helper object characteristicsDesc
+    tempCharDesc[key] = characteristicsDesc[key][e.target.value]
+    setCharDescription(tempCharDesc)
   }
 
   const postReview = (reviewFormObj) => {
@@ -158,20 +163,20 @@ const ReviewForm = ({toggle, metaReviews}) => {
             <input onChange={handleChange} type="radio" className='helpful-radio' name="helpful" value={false}/>
               <label for="No">No</label>
           <p>Characteristics</p>
-          {metaReviews.characteristics && Object.keys(metaReviews.characteristics).map(key => {
+          {metaReviews.characteristics && Object.keys(metaReviews.characteristics).map((key, index) => {
             let objId = metaReviews.characteristics[key].id
             return (
-              <div>
-                <p>{key}</p>
-                <input onChange={handleCharChange} type="radio" value="1" name={objId}/>
+              <div key={index}>
+                <div className="character-desc-container"><p className="character-title">{key}: </p>{charDescription[key].length > 0 && <p className="character-desc">{charDescription[key]}</p>}</div>
+                <input onChange={(e) => handleCharChange(key, e)} type="radio" value="1" name={objId}/>
                   <label  for="">1</label>
-                <input onChange={handleCharChange} type="radio" value="2" name={objId}/>
+                <input onChange={(e) => handleCharChange(key, e)} type="radio" value="2" name={objId}/>
                   <label for="">2</label>
-                <input onChange={handleCharChange} type="radio" value="3" name={objId}/>
+                <input onChange={(e) => handleCharChange(key, e)} type="radio" value="3" name={objId}/>
                   <label for="">3</label>
-                <input onChange={handleCharChange} type="radio" value="4" name={objId}/>
+                <input onChange={(e) => handleCharChange(key, e)} type="radio" value="4" name={objId}/>
                   <label for="">4</label>
-                <input onChange={handleCharChange} type="radio" value="5" name={objId}/>
+                <input onChange={(e) => handleCharChange(key, e)} type="radio" value="5" name={objId}/>
                   <label for="">5</label>
               </div>
             )})}
@@ -181,11 +186,10 @@ const ReviewForm = ({toggle, metaReviews}) => {
             </label>
             {summaryValidation && <div className="form-warning">Required field</div>}
           <label for="story">Review Body:</label>
-            <textarea onChange={handleChange} id="story" name="body"
+            <textarea placeholder="why did you like the product or not" onChange={handleChange} id="story" name="body"
                       rows="7" cols="60" maxlength="1000">
-            "Why did you like the product or not?"
             </textarea>
-            {bodyValidation && <div className="form-warning">Required field</div>}
+            {(body.length < 50) ? <div className="form-warning">Minimum required characters left: {50 - body.length}</div> : <div className="form-success">Minimum reached</div> }
             {/* Upload files here */}
             <button type="button" onClick={showWidget}>Upload Image</button>
             <div className="thumbnail-div"></div>
