@@ -46,7 +46,7 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter}) => {
       {metaReviews.characteristics && Object.keys(metaReviews.characteristics).map((key, index) => {
         return (
           <div className="slide-container" key={index}>{key}
-          <input type="range" min="10" max="50" value={Math.round(metaReviews.characteristics[key]["value"] * 100) / 10} className="slider" id="myRange">
+          <input readonly type="range" min="10" max="50" value={Math.round(metaReviews.characteristics[key]["value"] * 100) / 10} className="slider" id="myRange">
           </input></div>
         )
       })}
