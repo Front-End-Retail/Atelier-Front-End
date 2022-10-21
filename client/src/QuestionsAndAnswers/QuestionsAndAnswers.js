@@ -110,7 +110,7 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
 
   return (
     <div className={'qandawrapper'}>
-      <h3 className={'qandatitle'}>QUESTIONS & ANSWERS</h3>
+      <h2 className={'qandatitle'}>QUESTIONS & ANSWERS</h2>
       <QASearch newSearchTerm={newSearchTerm} />
       <div className={'qalistwrapper'}>
         {searchedQuestions.length > 0 && searchedQuestions.map((question, index) => {
