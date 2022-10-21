@@ -1,16 +1,17 @@
-.image-gallery {
-  width: 70%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  background-color: #34699E;
-  padding: 0 10px;
-}
+// .image-gallery {
+//   width: 70%;
+//   height: 100%;
+//   display: flex;
+//   align-items: center;
+//   background-color: #34699E;
+//   padding: 0 10px;
+// }
 
 
 .image-slide {
-  height: 70%;
-  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
   background-repeat: no-repeat;
   transition: background-image .5s ease-in-out;
 }
@@ -29,6 +30,7 @@
   overflow-y: scroll;
   margin-left: 10px;
   margin-top: 10px;
+  flex-grow: 2;
 }
 
 .thumbnails-container::-webkit-scrollbar {

@@ -42,7 +42,7 @@ const Product = ({ styles, currentProduct, selectedStyle, changeStyle, metaRevie
       </div >
       <StyleSelector styles={styles} selectedStyle={selectedStyle} changeStyle={changeStyle} />
       <div className="add-to-bag">
-        <form>
+        <form className="dropdowns">
           <select onChange={e => {
             createQtyArray(e.target.value);
           }} className="size-select">
@@ -60,9 +60,11 @@ const Product = ({ styles, currentProduct, selectedStyle, changeStyle, metaRevie
               )
             })}
           </select>
+        </form>
+        <div className="buttons">
           <button type="submit">Add to Bag</button>
           <button type="button">Favorite</button>
-        </form>
+        </div>
       </div>
     </div >
   )
