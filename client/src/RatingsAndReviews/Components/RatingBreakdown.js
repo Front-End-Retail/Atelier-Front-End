@@ -36,7 +36,7 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter}) => {
         let ratioTotal = 300 - ratio;
         return <table className="star-bars">
         <tr width="300px" height="15px">
-        <a  name={starNum} onClick={starClick}><span className="star-a-element">{starNum} stars</span></a>
+        <span className="star-a-element"><a  name={starNum} onClick={starClick}>{starNum} stars</a></span>
         <td style={{background: "green", width: ratio, height:10}}></td><td style={{background: "gray", width: ratioTotal, height:10}}></td>
         </tr>
         </table>

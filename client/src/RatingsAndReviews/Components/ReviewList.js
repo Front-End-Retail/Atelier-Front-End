@@ -26,7 +26,9 @@ const ReviewList = ({reviews, sortReviews, metaReviews}) => {
   const {toggle, visible} = UseReviewModal()
   return (
     <div id="review-list">
+      <div id="sorting">
       {reviews[0] && <p>{reviews.length} reviews, sorted by <Sorting reviews={reviews} passSortingName={passSortingName}/></p>}
+      </div>
       {currentReviews.length > 0 && currentReviews.map((review, index) => {
         return (
           <ReviewEntry key={index} review={review}/>
