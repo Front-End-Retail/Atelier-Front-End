@@ -25,7 +25,7 @@ const ReviewForm = ({toggle, metaReviews}) => {
   const [fileInputState, setFileInputState] = useState("");
 
   const handleChange = (e) => {
-    e.target.name === 'username' && e.target.value.length > 0 ? (setUsername(e.target.value), setNameValidation(true)) :
+    e.target.name === 'username' && e.target.value.length > 0 ? (setUsername(e.target.value)) :
     e.target.name === 'summary' ? setSummary(e.target.value) :
     e.target.name === 'helpful' ? setRecommended((e.target.value=== 'true')) : //converts string to boolean
     e.target.name === 'body' ? setBody(e.target.value) :
@@ -35,6 +35,7 @@ const ReviewForm = ({toggle, metaReviews}) => {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
+
     // create object for post request
     const reviewObject = {
       "product_id": Number(metaReviews.product_id),
@@ -48,16 +49,52 @@ const ReviewForm = ({toggle, metaReviews}) => {
       "characteristics": characteristics
     }
     console.log(reviewObject, photos)
-    postReview(reviewObject)
-    setPhotos([])
-    setUsername('')
-    setSummary('')
-    setRecommended('')
-    setBody('')
-    setEmail('')
-    setCharacteristics({})
+    if (validateReviewForm()) {
+      // post request to API
+      postReview(reviewObject)
+      // reset state values for form
+      setPhotos([])
+      setUsername('')
+      setSummary('')
+      setRecommended('')
+      setBody('')
+      setEmail('')
+      setCharacteristics({})
+    }
 
   }
+  const validateReviewForm = () => {
+    console.log(username)
+    let validated = true
+    if (username.length < 2) {
+      console.log('username fail')
+      setNameValidation(true)
+      validated = false
+    } else {
+      setNameValidation(false)
+    }
+    if (body.length < 50) {
+      setBodyValidation(true)
+      validated = false
+    } else {
+      setBodyValidation(false)
+    }
+    if (email.length < 3) {
+      setEmailValidation(true)
+      validated = false
+    } else {
+      setEmailValidation(false)
+    }
+    if (summary.length < 1) {
+      setSummaryValidation(true)
+      validated = false
+    } else {
+      setSummaryValidation(false)
+    }
+    return validated
+  }
+
+  // get rating from star rating widget
   const handleStarChange =(rating) => {
     setFormRating(rating)
   }
@@ -76,12 +113,13 @@ const ReviewForm = ({toggle, metaReviews}) => {
       console.log('error sending question', err)
     })
   }
+
 // widget for uploading photos
   const showWidget = () => {
 
     let widget = window.cloudinary.createUploadWidget({
-       cloudName: `de2i2agjs`,
-       uploadPreset: `svtvxvjd`,
+       cloudName: 'de2i2agjs',
+       uploadPreset: 'svtvxvjd',
       thumbnails: '.thumbnail-div'},
 
     (error, result) => {
@@ -106,10 +144,11 @@ const ReviewForm = ({toggle, metaReviews}) => {
             <input onChange={handleChange} maxlength="60" type="text" name="username" placeholder="Example: jackson11!"/>
             </label>
             <label>
+            {nameValidation && <div>Required field</div>}
           Email:
           <input onChange={handleChange} maxlength="60" type="email" name="email" placeholder="“Example: jackson11@email.com”"/>
           </label>
-          {/* {setNameValidation ? <p>Required field</p> : null} */}
+          {emailValidation && <div>Required field</div>}
           <p>For authentication reasons, you will not be emailed</p>
           <StarRating handleStarChange={handleStarChange}/>
           <p>Would you recommend this product?</p>
@@ -139,11 +178,13 @@ const ReviewForm = ({toggle, metaReviews}) => {
           <label>Review Summary:
               <input onChange={handleChange} type="text" name="summary" placeholder="Example: Best purchase ever!"/>
             </label>
+            {summaryValidation && <div>Required field</div>}
           <label for="story">Review Body:</label>
             <textarea onChange={handleChange} id="story" name="body"
                       rows="7" cols="60" maxlength="1000">
             "Why did you like the product or not?"
             </textarea>
+            {bodyValidation && <div>Required field</div>}
             {/* Upload files here */}
             <button type="button" onClick={showWidget}>Upload Image</button>
             <div className="thumbnail-div"></div>
