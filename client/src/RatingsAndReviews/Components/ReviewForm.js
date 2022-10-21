@@ -107,7 +107,8 @@ const ReviewForm = ({toggle, metaReviews}) => {
   }
 
   const postReview = (reviewFormObj) => {
-    axios.default.post('http://localhost:3000/review', reviewFormObj).then(() => {
+    axios.default.post('http://localhost:3000/review', reviewFormObj).then((res) => {
+      console.log('posted', res)
       toggle()
     }).catch((err) => {
       console.log('error sending question', err)
@@ -144,11 +145,11 @@ const ReviewForm = ({toggle, metaReviews}) => {
             <input onChange={handleChange} maxlength="60" type="text" name="username" placeholder="Example: jackson11!"/>
             </label>
             <label>
-            {nameValidation && <div>Required field</div>}
+            {nameValidation && <div className="form-warning">Required field</div>}
           Email:
           <input onChange={handleChange} maxlength="60" type="email" name="email" placeholder="“Example: jackson11@email.com”"/>
           </label>
-          {emailValidation && <div>Required field</div>}
+          {emailValidation && <div className="form-warning">Required field</div>}
           <p>For authentication reasons, you will not be emailed</p>
           <StarRating handleStarChange={handleStarChange}/>
           <p>Would you recommend this product?</p>
@@ -178,13 +179,13 @@ const ReviewForm = ({toggle, metaReviews}) => {
           <label>Review Summary:
               <input onChange={handleChange} type="text" name="summary" placeholder="Example: Best purchase ever!"/>
             </label>
-            {summaryValidation && <div>Required field</div>}
+            {summaryValidation && <div className="form-warning">Required field</div>}
           <label for="story">Review Body:</label>
             <textarea onChange={handleChange} id="story" name="body"
                       rows="7" cols="60" maxlength="1000">
             "Why did you like the product or not?"
             </textarea>
-            {bodyValidation && <div>Required field</div>}
+            {bodyValidation && <div className="form-warning">Required field</div>}
             {/* Upload files here */}
             <button type="button" onClick={showWidget}>Upload Image</button>
             <div className="thumbnail-div"></div>

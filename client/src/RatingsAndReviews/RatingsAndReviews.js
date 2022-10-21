@@ -19,7 +19,7 @@ const RatingsAndReviews = ({currentProductID}) => {
 // [true,true,true,true,true]  [false, false, false, false, false]
   const sortReviews = (name) => {
     axios.default.get('http://localhost:3000/review', { params: { specificURL : `reviews?product_id=${currentProductID}&count=500&sort=${name}` }}).then((reviewData) => {
-      // console.log('gotten', reviewData.data)
+      console.log('sortedData', reviewData.data)
       let reviewsArray = reviewData.data.results
       reviewsArray = reviewsArray.map(datum => {
         datum.date = format(parseISO(datum.date), 'MMMM d, yyyy')
@@ -64,7 +64,7 @@ const RatingsAndReviews = ({currentProductID}) => {
 
   const reviewRequest = () => {
     axios.default.get('http://localhost:3000/review', { params: { specificURL : `reviews?product_id=${currentProductID}&count=500` }}).then((reviewData) => {
-      console.log('review data:', reviewData.data)
+      // console.log('review data:', reviewData.data)
       let reviewsArray = reviewData.data.results
       reviewsArray = reviewsArray.map(datum => {
         datum.date = format(parseISO(datum.date), 'MMMM d, yyyy')
