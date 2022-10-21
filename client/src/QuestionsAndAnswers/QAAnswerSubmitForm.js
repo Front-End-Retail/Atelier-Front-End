@@ -10,12 +10,13 @@ const QAAnswerSubmitForm = ({ toggle, questionId, getProductQuestions }) => {
   const [validAnswerText, setValidAnswerText] = useState(false)
   const [validAnswerName, setValidAnswerName] = useState(false)
   const [validAnswerEmail, setValidAnswerEmail] = useState(false)
+  const [photos, setPhotos] = useState([])
 
   let answerFormObject = {
     body: answerText,
     name: answerName,
     email: answerEmail,
-    photos: [],
+    photos: photos,
     question_id: questionId
   }
 
@@ -57,6 +58,30 @@ const QAAnswerSubmitForm = ({ toggle, questionId, getProductQuestions }) => {
     return isValid
   }
 
+  const showWidget = () => {
+    let widget = window.cloudinary.createUploadWidget({
+      cloudName: `dvpmx7xsz`,
+      uploadPreset: `specialname`,
+       thumbnails: '.thumbnail-div'
+    },
+
+      (error, result) => {
+        if (!error && result && result.event === "success") {
+          console.log(result.info.url);
+          if (photos.length < 6) {
+            let tempPhotos = [...photos]
+            tempPhotos.push(result.info.url)
+            setPhotos(tempPhotos)
+          }
+
+        }
+      });
+    if (photos.length < 6) {
+      widget.open()
+    }
+
+  }
+
   return (
     <div className={'QAAnswerSubmitForm'}>
       <form>
@@ -77,6 +102,8 @@ const QAAnswerSubmitForm = ({ toggle, questionId, getProductQuestions }) => {
           {!validAnswerEmail && <div className={"modal-subtext"}>For authentication reasons, you will not be emailed</div>}
           {validAnswerEmail && <><div className={"warning-text"}>*Required, must be correctly formated email address*</div></>}
         </label>
+        <button className={"modalPhotoButton"} type="button" onClick={showWidget}>Upload Image</button>
+        <div className="thumbnail-div"></div>
         <div className={"modal-button-container"}>
           <button type="button" onClick={() => { submitAnswerForm() }} className={"modalSubmissionButton"}>Submit</button>
         </div>

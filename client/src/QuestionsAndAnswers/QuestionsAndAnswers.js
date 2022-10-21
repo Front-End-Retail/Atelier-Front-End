@@ -3,7 +3,7 @@ import QASearch from './QASearch.js'
 import QAListItem from './QAListItem.js'
 import QAAddQuestionModal from './QAAddQuestionModal.js'
 import useModal from './useModal'
-import SortbyHelpfulness from './QAHelpers.js'
+import { SortbyHelpfulness, addQuestionHelpfulness, addAnswerHelpfulness } from './QAHelpers.js'
 // import '../assets/stylesqanda.css';
 const axios = require('axios');
 
@@ -39,6 +39,15 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
       getProductQuestions()
     }).catch((err) => {
       console.log('error put to helpfullness', err)
+    })
+  }
+
+  const reportAnAnswer = (answerId) => {
+    axios.default.put('http://localhost:3000/qanda/areport', { answerId: answerId }).then((data) => {
+      console.log("NARC")
+      getProductQuestions()
+    }).catch((err) => {
+      console.log('error put to answer report', err)
     })
   }
 
@@ -101,14 +110,14 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
 
   return (
     <div className={'qandawrapper'}>
-      <h3 className={'qandatitle'}>QUESTIONS & ANSWERS</h3>
+      <h2 className={'qandatitle'}>QUESTIONS & ANSWERS</h2>
       <QASearch newSearchTerm={newSearchTerm} />
       <div className={'qalistwrapper'}>
         {searchedQuestions.length > 0 && searchedQuestions.map((question, index) => {
-          return <QAListItem question={question} key={index} addQuestionHelpfulness={addQuestionHelpfulness} addAnswerHelpfulness={addAnswerHelpfulness} currentProductName={currentProductName} currentId={currentId} getProductQuestions={getProductQuestions} />
+          return <QAListItem question={question} key={index} addQuestionHelpfulness={addQuestionHelpfulness} addAnswerHelpfulness={addAnswerHelpfulness} currentProductName={currentProductName} currentId={currentId} getProductQuestions={getProductQuestions} reportAnAnswer={reportAnAnswer} />
         })}
         {displayedQuestions.length > 0 && searchedQuestions.length < 1 && displayedQuestions.map((question, index) => {
-          return <QAListItem question={question} key={index} addQuestionHelpfulness={addQuestionHelpfulness} addAnswerHelpfulness={addAnswerHelpfulness} currentProductName={currentProductName} currentId={currentId} getProductQuestions={getProductQuestions} />
+          return <QAListItem question={question} key={index} addQuestionHelpfulness={addQuestionHelpfulness} addAnswerHelpfulness={addAnswerHelpfulness} currentProductName={currentProductName} currentId={currentId} getProductQuestions={getProductQuestions} reportAnAnswer={reportAnAnswer} />
         })}
       </div>
       {displayedQuestions.length < currentQuestions.length && <button onClick={() => {addMoreQuestions()}} className={"qanda-button"}>MORE ANSWERED QUESTIONS</button>}
