@@ -36,6 +36,19 @@
 	content: "\f005";
 }
 
+.star-bars {
+  padding-bottom: 5px;
+}
+
+.star-a-element {
+  font-size: .8em;
+}
+
+.star-a-element:hover {
+  cursor: pointer;
+  color:blue;
+}
+
 // #star-average {
 //   padding-top: 23%;
 //   padding-left: 5%;
