@@ -11,6 +11,13 @@
   width: 100%;
   display: block;
   margin-bottom: 1%;
+  border: 1px solid #F9F6EE;
+  background-color: #328CC1;
+  color: white;
+}
+
+.qModalInput::placeholder {
+  color: white;
 }
 
 .warning-text {
@@ -51,6 +58,15 @@
 .form-input-textblock {
   display: block;
   width: 100%;
+  border: 1px solid #F9F6EE;
+  background-color: #328CC1;
+  color: white;
+}
+
+.form-input-textblock:focus {
+  outline: none !important;
+  border-color: #F9F6EE;
+  box-shadow: 0 0 5px #328CC1;
 }
 
 .modal-button-container {
@@ -60,19 +76,33 @@
 }
 
 .modalSubmissionButton {
+  background-color: #328CC1;
+  border-style: 1px solid;
+  border-color: #F9F6EE;
+  font-size: larger;
   color: white;
-  margin-top: 10px;
-  padding: 10px;
-  background-color: grey;
+  margin-top: 25px;
+  padding: 15px;
   border-radius: 5%;
 }
 
 .modalSubmissionButton:hover {
-  background-color: rgb(56, 56, 56)
+  background-color: rgb(18, 18, 18);
+  border: 1px solid #328CC1;
+  font-weight: bolder;
 }
 
 .modalPhotoButton {
+  background-color: #328CC1;
+  border-style: 1px solid;
+  border-color: #F9F6EE;
   color: white;
-  background-color: grey;
+  padding: 5px;
   border-radius: 5%;
+}
+
+.modalPhotoButton:hover {
+  background-color: rgb(18, 18, 18);
+  border: 1px solid #328CC1;
+  font-weight: bolder;
 }
