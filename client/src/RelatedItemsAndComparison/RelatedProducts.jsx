@@ -6,7 +6,7 @@ import '../assets/related.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
-const RelatedProducts = ({relatedProductsID, changeCurrentProduct}) => {
+const RelatedProducts = ({relatedProductsID, currentProductID, changeCurrentProduct}) => {
 
   // console.log('relatedProductsID array passed in RelatedProducts.jsx', relatedProductsID)//[37313, 37314, 37317, 37319, 37320]
 
@@ -52,7 +52,8 @@ if (currCarousel.length >=4) {
       {/* //this is container before */}
       {relatedProductsID.length>4 && <button className='leftArrowIcon' onClick={handleLeftArrowClick}><FontAwesomeIcon icon={faArrowLeft}/></button>}
     {currCarousel.map((relatedProductID, index)=>{
-      return <RelatedProduct key={index} relatedProductID={relatedProductID} relatedProductsID={relatedProductsID} changeCurrentProduct={changeCurrentProduct}></RelatedProduct>
+      return <RelatedProduct key={index} relatedProductID={relatedProductID} relatedProductsID={relatedProductsID}
+       currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct}></RelatedProduct>
     })}
     </div>
   );

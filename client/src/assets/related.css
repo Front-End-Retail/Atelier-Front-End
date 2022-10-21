@@ -272,13 +272,14 @@ height: 200px; */
   width: 300px;
   padding: 10px;
   background-color: #ede0d4;
+  transition: all 1s ease-in-out;
 }
 
 .card-component:hover {
   background-color: rgb(62, 62, 62);
   cursor: pointer;
   color: white;
-  transition: all 1s ease;
+  transition: all 1s ease-in-out;
   height: 450px;
   width: 350px;
 }

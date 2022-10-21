@@ -101,7 +101,7 @@ const updateOutfitList = (currentStyleID) =>{
   return (
     <div>
       <h2 className='YouMightAlsoLike'>YOU MIGHT ALSO LIKE</h2>
-      <RelatedProducts relatedProductsID={relatedProductsID} changeCurrentProduct={changeCurrentProduct}></RelatedProducts>
+      <RelatedProducts relatedProductsID={relatedProductsID} currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct}></RelatedProducts>
       <h3 className='CompleteYourOutfit'>COMPLETE YOUR OUTFIT</h3>
       <YourOutfitList outfitList = {outfitList} handlePlusIconClick={handlePlusIconClick} updateOutfitList={updateOutfitList}></YourOutfitList>
     </div>

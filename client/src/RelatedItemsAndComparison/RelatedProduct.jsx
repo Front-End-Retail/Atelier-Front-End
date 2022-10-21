@@ -10,7 +10,7 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
 
 
-const RelatedProduct = ({ relatedProductID, relatedProductsID, changeCurrentProduct }) => {
+const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProductID, changeCurrentProduct }) => {
 
   // console.log('each relatedProductID received in RelatedProduct.jsx: ', relatedProductID) //dont console.log here
 
@@ -84,7 +84,7 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, changeCurrentProd
              <div className='product-price'>USD {relatedProduct.price}</div>
       </div>
       {/* <div style={{ backgroundImage: `url(${relatedProduct.image})` }}> */}
-      {openModal && <Modal closeModal={setOpenModal} />}
+      {openModal && <Modal closeModal={setOpenModal} currentProductID={currentProductID} relatedProductID={relatedProductID} />}
     </div>
   )
 
