@@ -67,7 +67,7 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProductID,
   return (
 
 
-    <div className='card-component' onClick={() => { changeCurrentProduct(relatedProductID) }} >
+    <div className='card-component' >
 
         <div className="product-image" style={{
           backgroundImage: `url(${relatedProduct.image})`,
@@ -78,13 +78,13 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProductID,
        </div>
         {/* cant add listeners to react icons */}
         {/* <button className='starIcon' onClick={() => { setOpenModal(true) }}><FontAwesomeIcon icon={faStar}/></button>*/}
-       <div className='lower-part'>
+       <div className='lower-part' onClick={() => { changeCurrentProduct(relatedProductID) }}>
              <div className='product-name'>{relatedProduct.name}</div>
              <div className='product-category'>{relatedProduct.category}</div>
              <div className='product-price'>USD {relatedProduct.price}</div>
       </div>
       {/* <div style={{ backgroundImage: `url(${relatedProduct.image})` }}> */}
-      {openModal && <Modal closeModal={setOpenModal} currentProductID={currentProductID} relatedProductID={relatedProductID} />}
+      {currentProductID && relatedProductID && openModal && <Modal closeModal={setOpenModal} currentProductID={currentProductID} relatedProductID={relatedProductID} />}
     </div>
   )
 

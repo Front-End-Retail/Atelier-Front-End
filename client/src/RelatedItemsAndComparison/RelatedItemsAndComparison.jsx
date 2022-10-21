@@ -9,15 +9,16 @@ import Modal from './Modal.jsx';
 const { useState, useEffect } = React;
 
 //I need a style_id to be passed to me, i need to use it on handlePlusIconClick
-const RelatedItemsAndComparison = ({currentProductID, changeCurrentProduct}) => {
+const RelatedItemsAndComparison = ({currentProductID, changeCurrentProduct, selectedStyle}) => {
 // console.log('currentProductID passed in: ', currentProductID) //its first 0 and then 37311 //DONT CONSOLE.LOG here, console.log inside of fetch
   const [relatedProductsID, setRelatedProductsID] = useState([]);
   const dummyProductID = 37311;
   const dummyStyleID = 220998;
   const [outfitList, setOutfitList] = useState([]);
   const [currentOutfit, setCurrentOutfit] = useState({});
-
+  console.log('selectedStyle: ', selectedStyle)
     const fetchAllRelatedProductsID = () => {
+      // console.log('selectedStyle: ', selectedStyle)
       console.log('currentProductID passed in: ', currentProductID)
       const temp = [];
       // console.log('currentProductID in fetchAllRelatedProducts: ', currentProductID);//0
@@ -50,17 +51,17 @@ const RelatedItemsAndComparison = ({currentProductID, changeCurrentProduct}) => 
 
 
 const handlePlusIconClick = () =>{
-  axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${dummyProductID}` } })
+  axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${currentProductID}` } })
     .then(response=>{
       // console.log('detail info retrieved with product_id', response.data);
       const tempOutfit = {};
       tempOutfit.name = response.data.name;
       tempOutfit.category = response.data.category;
-      axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${dummyProductID}/styles` } })
+      axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${currentProductID}/styles` } })
         .then((response)=>{
           // console.log('style info ', response.data);
           response.data.results.forEach(result=>{
-            if (result.style_id === 221002) {
+            if (result.style_id === selectedStyle.style_id) {
               tempOutfit.styleID = result.style_id;
               tempOutfit.style = result.name;
               tempOutfit.image = result.photos[0].url;

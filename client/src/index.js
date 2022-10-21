@@ -77,7 +77,7 @@ const App = () => {
       <header className={'logo'}><h1>Atelier</h1> <h2>Search ________</h2></header>
       {currentProductName !== '' && currentProductID !== 0 && <div>
         <Overview currentProductID={currentProductID} styles={styles} selectedStyle={selectedStyle} changeStyle={changeSelectedStyle} />
-        <RelatedItemsAndComparison currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct} />
+        <RelatedItemsAndComparison currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct} selectedStyle={selectedStyle}  />
         <QuestionsAndAnswers currentProductID={currentProductID} currentProductName={currentProductName} />
         <RatingsAndReviews currentProductID={currentProductID} />
       </div>}

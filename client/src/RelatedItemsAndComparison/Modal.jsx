@@ -7,15 +7,17 @@ import Feature from './Feature.jsx';
 
 const Modal = ({closeModal, currentProductID, relatedProductID}) =>{
 
-const [featureList, setFeatureList] = useState([])
+const [featureList, setFeatureList] = useState([]);
 const [currProductFeatures, setCurrProductFeatures] = useState([]); //[{'feature': 'Buttons', 'value': 'brass'}, {'feature': '..', 'value': '...'}]
 const [comparedProductFeatures, setComparedProductFeatures] = useState([]);
+const [currProductName, setCurrProductName] = useState('');
+const [comparedProductName, setComparedProductName] = useState('');
 
 //nested API call, is this really good practice???
-
   const fetchAllFeatures = () => {
-    axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/37311` } })
+    axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${currentProductID}` } })
     .then(response=> {
+      setCurrProductName(response.data.name);
       console.log('response.data inside of Modal:' , response.data);
       const currFeatures = response.data.features;
       setCurrProductFeatures(response.data.features);
@@ -24,8 +26,9 @@ const [comparedProductFeatures, setComparedProductFeatures] = useState([]);
         featureStorage.push(currObj.feature);
       })
       console.log('featureStorage after pushing current: ', featureStorage)
-      axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/37313` } })
+      axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${relatedProductID}` } })
         .then(response => {
+          setComparedProductName(response.data.name);
           const relatedFeatures = response.data.features;
           relatedFeatures.forEach(relatedObj=>{ //[fabric, button]
              //[fabric, cut]
@@ -50,7 +53,8 @@ const [comparedProductFeatures, setComparedProductFeatures] = useState([]);
 
   useEffect(()=>{
     fetchAllFeatures();
-  }, [relatedProductID])
+  }, [currentProductID, relatedProductID])
+
 
   return (
     <div className='modalBackground'>
@@ -59,29 +63,23 @@ const [comparedProductFeatures, setComparedProductFeatures] = useState([]);
       <table>
           <tr>
               <th>PRODUCT NAME</th>
-              <th>    FEATURE     </th>
-               <th>PRODUCT NAME</th>
+              <th>FEATURE</th>
+              <th>PRODUCT NAME</th>
+          </tr>
+          <tr>
+              <th>{currProductName}</th>
+              <th></th>
+              <th>{comparedProductName}</th>
           </tr>
 
 
-    <div>
     {featureList.map((feature, index)=>{
        return <Feature key={index} feature={feature}
         comparedProductFeatures={comparedProductFeatures} currProductFeatures={currProductFeatures}></Feature>
     })}
-   </div>
 
-   <tr>
-    <td>Cotton</td>
-    <td>Fabric</td>
-    <td>Canvas</td>
-   </tr>
-   <tr>
-    <td>Cotton</td>
-    <td>Fabric</td>
-    <td>Canvas</td>
-   </tr>
       </table>
+
       <div className='titleCloseBtn'><button onClick={()=>{closeModal(false)}}>x</button> </div>
       </div>
     </div>
