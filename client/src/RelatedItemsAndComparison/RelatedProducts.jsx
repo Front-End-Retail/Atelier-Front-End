@@ -13,8 +13,8 @@ const RelatedProducts = ({relatedProductsID, currentProductID, changeCurrentProd
 
   // console.log('relatedProductsID array passed in RelatedProducts.jsx', relatedProductsID)//[37313, 37314, 37317, 37319, 37320]
 
-  const [currCarousel, setCurrCarousel] = useState(relatedProductsID);
-  console.log('currCarousel after initilizing: ', currCarousel);//[]
+  const [currCarousel, setCurrCarousel] = useState([]);
+  // console.log('currCarousel after initilizing: ', currCarousel);//[]
 
 useEffect(()=>{
   setCurrCarousel(relatedProductsID);
@@ -49,7 +49,7 @@ if (currCarousel.length >=4) {
     </div>
   );
 } else {
-  console.log('currCarousel inside of else : ', currCarousel);//[]
+  // console.log('currCarousel inside of else : ', currCarousel);//[]
   return (
     <div className='relatedProductsContainer'>
       {/* //this is container before */}
