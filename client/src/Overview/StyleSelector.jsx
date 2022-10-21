@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const StyleSelector = ({ styles, selectedStyle, setSelectedStyle }) => {
+const StyleSelector = ({ styles, selectedStyle, changeStyle }) => {
 
   return (
     <div className="style-selector">
@@ -11,7 +11,7 @@ const StyleSelector = ({ styles, selectedStyle, setSelectedStyle }) => {
             <div key={i} className="image-container">
               <img onClick={e => {
                 e.preventDefault();
-                setSelectedStyle(style)
+                changeStyle(style)
               }
               } className="style-image" src={style.photos[0].thumbnail_url} />
             </div>

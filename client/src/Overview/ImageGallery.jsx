@@ -52,9 +52,9 @@ const ImageGallery = ({ selectedStyle }) => {
         backgroundSize: 'cover'
       }} onClick={() => setFullscreen(!fullscreen)}>
         <div className='thumbnails-container'>
-          {thumbnails.map(thumbnail => {
+          {thumbnails.map((thumbnail, i) => {
             return (
-              <div onClick={() => {
+              <div key={i} onClick={() => {
                 setCurrentImageIndex(thumbnails.indexOf(thumbnail));
                 handleSelected(thumbnail);
               }} className='thumbnail-overview' style={isSelected === thumbnail ? {
