@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import StyleSelector from './StyleSelector.jsx';
 import StarAverage from '../RatingsAndReviews/components/StarAverage.js';
 import { findAverage, findTotal } from '../RatingsAndReviews/components/helperFuncs.js';
-const Product = ({ styles, currentProduct, selectedStyle, setSelectedStyle, metaReviews }) => {
+const Product = ({ styles, currentProduct, selectedStyle, changeStyle, metaReviews }) => {
   const [bulkQuantity, setBulkQuantity] = useState([]);
   const [sizes, setSizes] = useState([]);
   const [qty, setQty] = useState([]);
@@ -40,7 +40,7 @@ const Product = ({ styles, currentProduct, selectedStyle, setSelectedStyle, meta
         {selectedStyle.sale_price ? <div className="sale-price"><p style={{ color: 'red' }}>{selectedStyle.sale_price}</p><p style={{ textDecoration: 'line-through' }}>{selectedStyle.original_price}</p></div> : <p>${selectedStyle.original_price}</p>}
 
       </div >
-      <StyleSelector styles={styles} selectedStyle={selectedStyle} setSelectedStyle={setSelectedStyle} />
+      <StyleSelector styles={styles} selectedStyle={selectedStyle} changeStyle={changeStyle} />
       <div className="add-to-bag">
         <form>
           <select onChange={e => {

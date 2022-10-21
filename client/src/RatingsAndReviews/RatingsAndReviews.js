@@ -2,7 +2,7 @@ import React from 'react';
 import ReviewList from './components/ReviewList.js'
 import RatingBreakdown from './components/RatingBreakdown.js'
 import { format, parseISO } from "date-fns";
-import '../assets/ratingsStyles.css';
+// import '../assets/ratingsStyles.css';
 import {helpfulPerc, everyFunc} from './components/helperFuncs';
 // import axios from 'axios';
 const axios = require('axios');
@@ -64,7 +64,7 @@ const RatingsAndReviews = ({currentProductID}) => {
 
   const reviewRequest = () => {
     axios.default.get('http://localhost:3000/review', { params: { specificURL : `reviews?product_id=${currentProductID}&count=500` }}).then((reviewData) => {
-      // console.log('review data:', reviewData.data)
+      console.log('review data:', reviewData.data)
       let reviewsArray = reviewData.data.results
       reviewsArray = reviewsArray.map(datum => {
         datum.date = format(parseISO(datum.date), 'MMMM d, yyyy')

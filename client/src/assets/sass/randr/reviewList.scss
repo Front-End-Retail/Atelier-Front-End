@@ -1,0 +1,43 @@
+#review-list {
+  margin-left: auto;
+  display: flex;
+  flex-shrink: 1;
+  flex-direction: column;
+  margin:4px, 4px;
+  padding:4px;
+  width: 70%;
+  height: 800px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align:justify;
+}
+
+.review-button {
+  padding: 20px;
+  margin: 1%;
+  background-color: white;
+  font-weight: bold;
+}
+
+#button-cont {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+// is this connected to anything
+.toggle-line {
+  border-left: .5px solid green;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+// is this connected to anything
+.review-links {
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+.thumbnail-container {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
