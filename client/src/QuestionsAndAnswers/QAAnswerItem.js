@@ -5,20 +5,29 @@ const axios = require('axios');
 
 const { useState, useEffect } = React;
 
-const QAAnswerItem = ({ answer, addAnswerHelpfulness, updateHelpfulCount }) => {
+const QAAnswerItem = ({ answer, addAnswerHelpfulness, updateHelpfulCount, reportAnAnswer }) => {
   const [answerId, setAnswerId] =useState(answer.answer_id)
   const [photos, setPhotos] = useState([])
   const [votedAHelpful, setVotedAHelpful] = useState(false)
+  const [reported, setReported] = useState(false)
 
   useEffect(() => {
     setPhotos(answer.photos)
-  }, [])
+    setVotedAHelpful(false)
+  }, [answer])
 
   const voteAHelpful = () => {
     if (!votedAHelpful) {
       addAnswerHelpfulness(answerId)
       updateHelpfulCount(answerId)
       setVotedAHelpful(true)
+    }
+  }
+
+  const reportIfNot = () => {
+    if (!reported) {
+      reportAnAnswer(answerId)
+      setReported(true)
     }
   }
 
@@ -42,7 +51,7 @@ const QAAnswerItem = ({ answer, addAnswerHelpfulness, updateHelpfulCount }) => {
           <p>Helpful?</p>
           <p className={"underlined"}onClick={() => {voteAHelpful()}}>Yes </p><p>({answer.helpfulness})</p>
           <p> | </p>
-          <p> Report </p>
+          <p className={"underlined"} onClick={() => {reportIfNot()}}> Report </p>
         </div>
       </div>
     </div>

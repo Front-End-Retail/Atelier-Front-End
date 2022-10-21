@@ -9,8 +9,20 @@
   margin-left: 3px;
   margin-right: 3px;
   border: none;
-  border: 1px solid black;
+  border: 1px solid #D9B310;
+  background-color: #328CC1;
+  color: white;
   font-weight: bold;
+}
+
+.search-field:focus {
+  outline: none !important;
+  border-color: #D9B310;
+  box-shadow: 0 0 5px #328CC1;
+}
+
+.search-field::placeholder {
+  color: white;
 }
 
 .search-button {
