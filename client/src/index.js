@@ -74,6 +74,7 @@ const App = () => {
 
   return (
     <div>
+      <header className={'logo'}><h1>Atelier</h1> <h2>Search ________</h2></header>
       {currentProductName !== '' && currentProductID !== 0 && <div>
         <Overview currentProductID={currentProductID} styles={styles} selectedStyle={selectedStyle} changeStyle={changeSelectedStyle} />
         <RelatedItemsAndComparison currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct} />
