@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import StyleSelector from './StyleSelector.jsx';
 import StarAverage from '../RatingsAndReviews/components/StarAverage.js';
 import { findAverage, findTotal } from '../RatingsAndReviews/components/helperFuncs.js';
-const Product = ({ styles, currentProduct, selectedStyle, changeStyle, metaReviews }) => {
+const Product = ({ styles, currentProduct, selectedStyle, changeStyle, metaReviews, fullscreen }) => {
   const [bulkQuantity, setBulkQuantity] = useState([]);
   const [sizes, setSizes] = useState([]);
   const [qty, setQty] = useState([]);
@@ -30,7 +30,7 @@ const Product = ({ styles, currentProduct, selectedStyle, changeStyle, metaRevie
   }, [selectedStyle]);
 
   return (
-    <div className="product-container">
+    <div className={fullscreen ? 'product-hidden' : "product-container"}>
       <div className="product-info">
         <StarAverage rating={findAverage(metaReviews.ratings)} />
         <span>Read all <a href="#review-list">{findTotal(metaReviews.ratings)}</a> reviews</span>

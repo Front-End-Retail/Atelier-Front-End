@@ -8,6 +8,7 @@ const Overview = ({ currentProductID, styles, selectedStyle, changeStyle }) => {
   //States
   const [currentProduct, setCurrentProduct] = useState({});
   const [metaReviews, setMetaReviews] = useState({});
+  const [fullscreen, setFullscreen] = useState(false);
   //grabs all product info for current product
   const fetchProductInfo = () => {
     axios({
@@ -41,8 +42,8 @@ const Overview = ({ currentProductID, styles, selectedStyle, changeStyle }) => {
 
   return (
     <div className='overview-container'>
-      {selectedStyle && Object.keys(selectedStyle).length !== 0 && <ImageGallery selectedStyle={selectedStyle} />}
-      {selectedStyle && <Product metaReviews={metaReviews} styles={styles} selectedStyle={selectedStyle} changeStyle={changeStyle} currentProduct={currentProduct} />}
+      {selectedStyle && Object.keys(selectedStyle).length !== 0 && <ImageGallery selectedStyle={selectedStyle} setFullscreen={setFullscreen} fullscreen={fullscreen} />}
+      {selectedStyle && <Product fullscreen={fullscreen} metaReviews={metaReviews} styles={styles} selectedStyle={selectedStyle} changeStyle={changeStyle} currentProduct={currentProduct} />}
     </div>
   )
 }
