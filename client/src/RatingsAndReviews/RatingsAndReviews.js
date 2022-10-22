@@ -117,7 +117,7 @@ useEffect(() => {
         {/* <button onClick={testButton} name="test-button">Rating Test</button> */}
         <div id="center-reviews">
         <div id="randr">
-        <RatingBreakdown metaReviews={metaReviews} ratingSort={ratingSort} starFilter={starFilter}/>
+        <RatingBreakdown metaReviews={metaReviews} ratingSort={ratingSort} starFilter={starFilter} reviewRequest={reviewRequest}/>
         <ReviewList reviews={starReviews} sortReviews={sortReviews} metaReviews={metaReviews} putRequest={putRequest}/>
         </div>
       </div>

@@ -8,7 +8,7 @@ import {findAverage, helpfulPerc, findTotal, findRatio, everyFunc} from './helpe
 const axios = require('axios');
 const { useState, useEffect } = React;
 
-const RatingBreakdown = ({metaReviews, ratingSort, starFilter}) => {
+const RatingBreakdown = ({metaReviews, ratingSort, starFilter, reviewRequest}) => {
   const [rating, setRating] = useState()
   const [ratingTotal, setRatingTotal] = useState()
   const [helpfulAverage, setHelpfulAverage] = useState()
@@ -21,6 +21,10 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter}) => {
 
   const starClick = (event) => {
     ratingSort(event.target.name)
+  }
+
+  const removeFilterButton = () => {
+    reviewRequest()
   }
 
   return (
@@ -43,6 +47,7 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter}) => {
         </table>
       })}
       {!starFilter.every(everyFunc) && <StarFilterDesc starFilter={starFilter}/>}
+      {!starFilter.every(everyFunc) && <button onClick={removeFilterButton}>Remove Filters</button>}
       {metaReviews.characteristics && Object.keys(metaReviews.characteristics).map((key, index) => {
         return (
           <div className="slide-container" key={index}>{key}
