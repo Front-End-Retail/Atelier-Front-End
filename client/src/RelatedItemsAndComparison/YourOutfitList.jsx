@@ -26,9 +26,24 @@ if (currCarousel.length === 0) {
     </div>
    </div>
   )
-} else {
+}
 // if (currCarousel.length > 0 && currCarousel.length < 3 ) {
+ if (currCarousel.length > 0 && currCarousel.length < 3) {
+  return (
+    <div className='yourOutfitListContainer'>
+        <div className='addMoreOutfit'>
+             <p className='addMoreOutfit-word'>Add this style?</p>
+             <div onClick={handlePlusIconClick} className='plusIconInAddMore'>
+                 <FontAwesomeIcon className='plus'icon={faPlus} />
+             </div>
+        </div>
+        {currCarousel.map((outfit, index)=>{
+              return <YourOutfit key={index} outfit={outfit} updateOutfitList={updateOutfitList}></YourOutfit>})}
+    </div>
+    )
+ }
 
+ if (currCarousel.length >=3) {
     return (
       <div className='yourOutfitListContainer'>
           <div className='addMoreOutfit'>
@@ -37,24 +52,24 @@ if (currCarousel.length === 0) {
                    <FontAwesomeIcon className='plus'icon={faPlus} />
                </div>
           </div>
-          {currCarousel.length > 0 && currCarousel.length < 3 &&
-          <div className='innerOutfitContainer'>
-          {currCarousel.map((outfit, index)=>{
-            return <YourOutfit key={index} outfit={outfit} updateOutfitList={updateOutfitList}></YourOutfit>
-          })}
-          </div>
-          }
-          {currCarousel.length >=3 &&
-          <div>
           {currCarousel.slice(0, 3).map((outfit, index)=>{
-            return <YourOutfit key={index} outfit={outfit} updateOutfitList={updateOutfitList}></YourOutfit>
+              return <YourOutfit key={index} outfit={outfit} updateOutfitList={updateOutfitList}></YourOutfit>
           })}
-          </div>
-          }
-          {currCarousel.length >=3 && <button className='rightArrowIcon'><FontAwesomeIcon icon={faArrowRight}/></button>}
+          {currCarousel.length>3 && <button className='rightArrowIcon-outfitList'><FontAwesomeIcon icon={faArrowRight}/></button>}
+     </div>
+     )
+}
 
-      </div>
-    );
+
+
+
+
+
+
+
+
+
+
 
 
   // if (currCarousel.length>=3) {
@@ -80,7 +95,7 @@ if (currCarousel.length === 0) {
   // }
 
 
-}
+
 
 
 
@@ -121,3 +136,22 @@ export default YourOutfitList;
 //       );
 //     }
 //   };
+
+
+//just wrap a <div> and it would work---------------------
+// {currCarousel.length > 0 && currCarousel.length < 3 &&
+
+//   {/* <div className='innerOutfitContainer'> */}
+// currCarousel.map((outfit, index)=>{
+// return <YourOutfit key={index} outfit={outfit} updateOutfitList={updateOutfitList}></YourOutfit>
+// })}
+
+
+// {currCarousel.length >=3 &&
+// <div>
+// {currCarousel.slice(0, 3).map((outfit, index)=>{
+// return <YourOutfit key={index} outfit={outfit} updateOutfitList={updateOutfitList}></YourOutfit>
+// })}
+// {currCarousel.length>3 && <button className='rightArrowIcon-outfitList'><FontAwesomeIcon icon={faArrowRight}/></button>}
+// </div>
+// }
