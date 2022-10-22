@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const UseReviewModal = () => {
+const useReviewModal = () => {
   const [visible, setVisible] = useState(false);
   function toggle() {
     setVisible(!visible);
@@ -8,4 +8,4 @@ const UseReviewModal = () => {
   return { toggle, visible }
 };
 
-export default UseReviewModal;
+export default useReviewModal;

@@ -103,11 +103,6 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
   //the basic modal logic, custom hook
   const {toggle, visible} = useModal();
 
-  // const submitQuestionForm = () => {
-  //   event.preventDefault()
-  //   toggle()
-  // }
-
   return (
     <div className={'qandawrapper'}>
       <h2 className={'qandatitle'}>QUESTIONS & ANSWERS</h2>

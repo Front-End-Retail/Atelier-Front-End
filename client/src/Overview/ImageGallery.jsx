@@ -48,27 +48,28 @@ const ImageGallery = ({ selectedStyle }) => {
         backgroundSize: 'cover'
       }} onClick={() => setFullscreen(!fullscreen)}>
 
-
-        <div className='thumbnails-container'>
-          {thumbnails.map((thumbnail, i) => {
-            return (
-              <div key={i} onClick={() => {
-                setCurrentImageIndex(thumbnails.indexOf(thumbnail));
-                handleSelected(thumbnail);
-              }} className='thumbnail-overview' style={isSelected === thumbnail ? {
-                backgroundImage: `url(${thumbnail})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                border: '2px solid #8DB7E0'
-              } :
-                {
+        <div className='container-of-containers'>
+          <div className='thumbnails-container'>
+            {thumbnails.map((thumbnail, i) => {
+              return (
+                <div key={i} onClick={() => {
+                  setCurrentImageIndex(thumbnails.indexOf(thumbnail));
+                  handleSelected(thumbnail);
+                }} className='thumbnail-overview' style={isSelected === thumbnail ? {
                   backgroundImage: `url(${thumbnail})`,
                   backgroundSize: 'cover',
-                  backgroundPosition: 'center'
-                }
-              } />
-            )
-          })}
+                  backgroundPosition: 'center',
+                  border: '2px solid #8DB7E0'
+                } :
+                  {
+                    backgroundImage: `url(${thumbnail})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }
+                } />
+              )
+            })}
+          </div>
         </div>
         <FontAwesomeIcon icon={faChevronLeft}
           className={`slide-arrow left`}

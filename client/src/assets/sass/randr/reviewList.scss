@@ -14,9 +14,14 @@
 #review-list {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 100%;
   max-height: 800px;
-  overflow-x: scroll;
+  overflow-x: auto;
+}
+#review-list-all {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
 }
 
 .review-button {
@@ -38,7 +43,7 @@
 }
 // is this connected to anything
 .toggle-line {
-  border-left: .5px solid green;
+  border-left: .5px solid white;
   padding-left: 1%;
   padding-right: 1%;
 }

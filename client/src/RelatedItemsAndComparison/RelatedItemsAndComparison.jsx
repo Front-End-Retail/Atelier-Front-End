@@ -14,11 +14,13 @@ const RelatedItemsAndComparison = ({currentProductID, changeCurrentProduct, sele
   const [relatedProductsID, setRelatedProductsID] = useState([]);
   const [outfitList, setOutfitList] = useState([]);
   const [currentOutfit, setCurrentOutfit] = useState({});
+
   const [styleIDList, setStyleIDList] = useState([]);
 
     const fetchAllRelatedProductsID = () => {
       // console.log('selectedStyle: ', selectedStyle)
       // console.log('currentProductID passed in: ', currentProductID)
+
       const temp = [];
       axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${currentProductID}/related` } })
         .then((response) => {
@@ -50,7 +52,9 @@ const RelatedItemsAndComparison = ({currentProductID, changeCurrentProduct, sele
 
 const handlePlusIconClick = () =>{
 
+
   if (styleIDList.indexOf(selectedStyle.style_id) === -1) {
+
   axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${currentProductID}` } })
     .then(response=>{
       // console.log('detail info retrieved with product_id', response.data);
@@ -61,9 +65,11 @@ const handlePlusIconClick = () =>{
         .then((response)=>{
           // console.log('style info ', response.data);
           response.data.results.forEach(result=>{
+
             if (result.style_id === selectedStyle.style_id && styleIDList.indexOf(selectedStyle.style_id)===-1) {
               console.log('styleIDList.indexOf(selectedStyle.style_id: ', styleIDList.indexOf(selectedStyle.style_id))
               console.log('outfitList before: ', outfitList)
+
               tempOutfit.styleID = result.style_id;
               tempOutfit.style = result.name;
               tempOutfit.image = result.photos[0].url;

@@ -86,7 +86,9 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProductID,
              {/* <StarAverage rating={findAverage(metaReviews.ratings)} /> */}
       </div>
       {/* <div style={{ backgroundImage: `url(${relatedProduct.image})` }}> */}
+
       { relatedProductID && openModal && <Modal closeModal={setOpenModal} currentProductID={currentProductID} relatedProductID={relatedProductID} />}
+
     </div>
   )
 
