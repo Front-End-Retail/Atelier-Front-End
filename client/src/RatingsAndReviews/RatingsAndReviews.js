@@ -16,7 +16,8 @@ const RatingsAndReviews = ({currentProductID}) => {
   const [metaReviews, setMetaReviews] = useState({})
   const [ratingAverage, setRatingAverage] = useState()
   const [starFilter, setStarFilter] = useState([false, false, false, false, false]  )
-// [true,true,true,true,true]  [false, false, false, false, false]
+  const [currentSort, setCurrentSort] = useState('relevant')
+
   const sortReviews = (name) => {
     axios.default.get('http://localhost:3000/review', { params: { specificURL : `reviews?product_id=${currentProductID}&count=500&sort=${name}` }}).then((reviewData) => {
       // console.log('sortedData', reviewData.data)
@@ -27,6 +28,7 @@ const RatingsAndReviews = ({currentProductID}) => {
       })
       setReviews(reviewsArray)
       setStarReviews(reviewsArray)
+      setCurrentSort(name)
     }).catch(err => {
       console.log('error getting', err)
     })
@@ -117,7 +119,8 @@ useEffect(() => {
         {/* <button onClick={testButton} name="test-button">Rating Test</button> */}
         <div id="center-reviews">
         <div id="randr">
-        <RatingBreakdown metaReviews={metaReviews} ratingSort={ratingSort} starFilter={starFilter} reviewRequest={reviewRequest}/>
+        <RatingBreakdown metaReviews={metaReviews} ratingSort={ratingSort} starFilter={starFilter}
+         sortReviews={sortReviews} currentSort={currentSort}/>
         <ReviewList reviews={starReviews} sortReviews={sortReviews} metaReviews={metaReviews} putRequest={putRequest}/>
         </div>
       </div>

@@ -8,7 +8,7 @@ import {findAverage, helpfulPerc, findTotal, findRatio, everyFunc} from './helpe
 const axios = require('axios');
 const { useState, useEffect } = React;
 
-const RatingBreakdown = ({metaReviews, ratingSort, starFilter, reviewRequest}) => {
+const RatingBreakdown = ({metaReviews, ratingSort, starFilter, sortReviews, currentSort}) => {
   const [rating, setRating] = useState()
   const [ratingTotal, setRatingTotal] = useState()
   const [helpfulAverage, setHelpfulAverage] = useState()
@@ -24,7 +24,7 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter, reviewRequest}) =
   }
 
   const removeFilterButton = () => {
-    reviewRequest()
+    sortReviews(currentSort)
   }
 
   return (
