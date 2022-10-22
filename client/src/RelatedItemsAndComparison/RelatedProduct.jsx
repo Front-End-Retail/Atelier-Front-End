@@ -8,7 +8,8 @@ import { faHeart as faHeartActive } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartInactive } from '@fortawesome/free-regular-svg-icons';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
-
+import StarAverage from '../RatingsAndReviews/components/StarAverage.js';
+import { findAverage, findTotal } from '../RatingsAndReviews/components/helperFuncs.js';
 
 const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProductID, changeCurrentProduct }) => {
 
@@ -82,6 +83,7 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProductID,
              <div className='product-name'>{relatedProduct.name}</div>
              <div className='product-category'>{relatedProduct.category}</div>
              <div className='product-price'>USD {relatedProduct.price}</div>
+             {/* <StarAverage rating={findAverage(metaReviews.ratings)} /> */}
       </div>
       {/* <div style={{ backgroundImage: `url(${relatedProduct.image})` }}> */}
       { relatedProductID && openModal && <Modal closeModal={setOpenModal} currentProductID={currentProductID} relatedProductID={relatedProductID} />}
