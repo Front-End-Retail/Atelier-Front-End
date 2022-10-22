@@ -6,9 +6,11 @@ import Sorting from './Sorting.js';
 import ReviewModal from './ReviewModal.js';
 import UseReviewModal from './UseReviewModal.js';
 
-const ReviewList = ({reviews, sortReviews, metaReviews}) => {
+const ReviewList = ({reviews, sortReviews, metaReviews, putRequest}) => {
   const [displayNum, setDisplayNum] = useState(2)
   const [currentReviews, setCurrentReviews] = useState([])
+
+
   const passSortingName = (name) => {
     sortReviews(name)
   }
@@ -32,7 +34,7 @@ const ReviewList = ({reviews, sortReviews, metaReviews}) => {
       <div id="review-list">
       {currentReviews.length > 0 && currentReviews.map((review, index) => {
         return (
-          <ReviewEntry key={index} review={review}/>
+          <ReviewEntry key={index} review={review} putRequest={putRequest}/>
         )
       })}<div id="button-cont">
 

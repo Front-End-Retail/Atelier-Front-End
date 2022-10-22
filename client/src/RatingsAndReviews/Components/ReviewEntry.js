@@ -4,7 +4,32 @@ import StarAverage from './StarAverage.js'
 const axios = require('axios');
 const { useState, useEffect } = React;
 
-const ReviewEntry = ({review}) => {
+
+const ReviewEntry = ({review, putRequest}) => {
+  const [toggleBody, setToggleBody] = useState(false)
+  const [toggleHelp, setToggleHelp] = useState(false)
+  const [toggleReport, setToggleReport] = useState(false)
+
+  const expandBody = (e) => {
+    setToggleBody(true)
+  }
+  // handle report and help in one function
+  const handlePutRequest = (e) => {
+    if (e.target.textContent === "Report") {
+      console.log('reported')
+      !toggleReport ? (setToggleReport(true), putRequest(review.review_id, "report")) : null;
+    } else if (!toggleHelp) {
+      setToggleHelp(true)
+      putRequest(review.review_id, "helpful")
+    }
+  }
+  const handleReport = () => {
+    if (!toggleReport) {
+      setToggleReport(true)
+      helpfulRequest(review.review_id)
+    }
+
+  }
   return (
     <div className="review-entry">
       <div className="entry-top-container">
@@ -13,7 +38,8 @@ const ReviewEntry = ({review}) => {
       </div>
       <h3 className="review-tile-summary">{review.summary}</h3>
 
-      <p>{review.body}</p>
+      {!toggleBody ? <div><p>{review.body}{review.body.length > 250 && <button className="show-more" onClick={expandBody}>show more</button>}</p></div> : null}
+      {toggleBody && <p>{review.body}{console.log(review.body.length)}</p>}
       {review.response && <div className="response"><h4>Response:</h4>{review.response}</div>}
       <div className="thumbnail-container">
       {review.photos.length > 0 && review.photos.map((photo, index) => {
@@ -22,7 +48,7 @@ const ReviewEntry = ({review}) => {
       })}
       </div>
       {review.recommend && <p className="review-tile-recommend">&#10003; I recommend this product!</p>}
-      <p>Helpful?<a className="review-links">Yes</a><a className="review-links toggle-line">Report</a></p>
+      <p >Helpful?<a onClick={handlePutRequest} className="review-links">Yes({review.helpfulness})</a><a onClick={handlePutRequest} className="review-links toggle-line">Report</a></p>
     </div>
   )
 }

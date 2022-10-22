@@ -25,10 +25,10 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter}) => {
 
   return (
     <div id="breakdown-container">
-      <h3>Ratings and Reviews</h3>
+      <p id="breakdown-title">Ratings and Reviews</p>
       <div id="rating-breakdown-num">
-      <h1 id="average-rating">{metaReviews.ratings && rating}</h1>
-      {!isNaN(rating) && <StarAverage rating={rating}/>}
+        <div id="average-rating">{metaReviews.ratings && rating}</div>
+        {!isNaN(rating) && <StarAverage rating={rating}/>}
       </div>
       {metaReviews.ratings && <p>{helpfulAverage} % of reviews recommend this product</p>}
       {ratingTotal && Object.keys(metaReviews.ratings).reverse().map((starNum, index) => {

@@ -61,6 +61,16 @@ const RatingsAndReviews = ({currentProductID}) => {
     }
 
   }
+// update helpful variable in the API
+  const putRequest = (reviewId, path) => {
+    console.log(reviewId)
+    axios.default.put('http://localhost:3000/review/put', { review_id: reviewId, path: path }).then((data) => {
+      console.log('successfully added')
+      reviewRequest()
+    }).catch((err) => {
+      console.log('error adding to helpfulness', err)
+    })
+  }
 
   const reviewRequest = () => {
     axios.default.get('http://localhost:3000/review', { params: { specificURL : `reviews?product_id=${currentProductID}&count=500` }}).then((reviewData) => {
@@ -105,7 +115,7 @@ useEffect(() => {
         <div id="center-reviews">
         <div id="randr">
         <RatingBreakdown metaReviews={metaReviews} ratingSort={ratingSort} starFilter={starFilter}/>
-        <ReviewList reviews={starReviews} sortReviews={sortReviews} metaReviews={metaReviews}/>
+        <ReviewList reviews={starReviews} sortReviews={sortReviews} metaReviews={metaReviews} putRequest={putRequest}/>
         </div>
       </div>
       </div>
