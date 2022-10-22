@@ -13,6 +13,7 @@ const [comparedProductFeatures, setComparedProductFeatures] = useState([]);
 const [currProductName, setCurrProductName] = useState('');
 const [comparedProductName, setComparedProductName] = useState('');
 
+
 //nested API call, is this really good practice???
   const fetchAllFeatures = () => {
     axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${currentProductID}` } })
@@ -53,6 +54,8 @@ const [comparedProductName, setComparedProductName] = useState('');
 
   useEffect(()=>{
     fetchAllFeatures();
+    console.log('currentProductID in Modal useEffect: ', currentProductID)
+    console.log('relatedProductID in Modal useEffect: ', relatedProductID)
   }, [currentProductID, relatedProductID])
 
 

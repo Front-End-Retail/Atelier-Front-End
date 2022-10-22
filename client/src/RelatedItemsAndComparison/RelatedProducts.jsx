@@ -42,7 +42,7 @@ if (currCarousel.length >=4) {
     <div className='relatedProductsOuterContainer'>
     <div className='relatedProductsContainer'>
     {sizedCarousel.map((relatedProductID, index)=>{
-      return <RelatedProduct key={index} relatedProductID={relatedProductID} relatedProductsID={relatedProductsID} changeCurrentProduct={changeCurrentProduct}></RelatedProduct>
+      return <RelatedProduct key={index} relatedProductID={relatedProductID} relatedProductsID={relatedProductsID} currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct}></RelatedProduct>
     })}
     </div>
     <button className='rightArrowIcon' onClick={handleRightArrowClick}><FontAwesomeIcon icon={faArrowRight}/></button>

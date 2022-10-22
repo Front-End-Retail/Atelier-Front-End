@@ -12,16 +12,14 @@ const { useState, useEffect } = React;
 const RelatedItemsAndComparison = ({currentProductID, changeCurrentProduct, selectedStyle}) => {
 // console.log('currentProductID passed in: ', currentProductID) //its first 0 and then 37311 //DONT CONSOLE.LOG here, console.log inside of fetch
   const [relatedProductsID, setRelatedProductsID] = useState([]);
-  const dummyProductID = 37311;
-  const dummyStyleID = 220998;
   const [outfitList, setOutfitList] = useState([]);
   const [currentOutfit, setCurrentOutfit] = useState({});
-  console.log('selectedStyle: ', selectedStyle)
+  const [styleIDList, setStyleIDList] = useState([]);
+
     const fetchAllRelatedProductsID = () => {
       // console.log('selectedStyle: ', selectedStyle)
-      console.log('currentProductID passed in: ', currentProductID)
+      // console.log('currentProductID passed in: ', currentProductID)
       const temp = [];
-      // console.log('currentProductID in fetchAllRelatedProducts: ', currentProductID);//0
       axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${currentProductID}/related` } })
         .then((response) => {
           // console.log('response.data from calling API/products: ', response.data);
@@ -61,7 +59,9 @@ const handlePlusIconClick = () =>{
         .then((response)=>{
           // console.log('style info ', response.data);
           response.data.results.forEach(result=>{
-            if (result.style_id === selectedStyle.style_id) {
+            if (result.style_id === selectedStyle.style_id && styleIDList.indexOf(selectedStyle.style_id)===-1) {
+              console.log('styleIDList.indexOf(selectedStyle.style_id: ', styleIDList.indexOf(selectedStyle.style_id))
+              console.log('outfitList before: ', outfitList)
               tempOutfit.styleID = result.style_id;
               tempOutfit.style = result.name;
               tempOutfit.image = result.photos[0].url;
@@ -72,7 +72,8 @@ const handlePlusIconClick = () =>{
             }
           })
           // console.log('temp after assigning properties: ', temp);
-          setOutfitList([...outfitList, tempOutfit]); //setCurrentOutfit(tempOutfit);
+          setOutfitList([...outfitList, tempOutfit]);
+          setStyleIDList([...styleIDList,selectedStyle.style_id]); //setCurrentOutfit(tempOutfit);
         })
         .catch(err=>{
           console.log('failed to get style info', err);
@@ -83,19 +84,22 @@ const handlePlusIconClick = () =>{
     })
 }
 
+//this is more like a delete, instead of updating
 const updateOutfitList = (currentStyleID) =>{
    //[{styleID=...}, {styleID=...}]
   //  console.log('hey look, it got in updateOutfitList()!!!')
    const copyOutfitList = outfitList.slice(); //dont manipulate with the state directly, make a copy! i have a bug here
    copyOutfitList.forEach((outfit, index)=>{
-    console.log('outfit.styleID:', outfit.styleID)
-    console.log('currentStyleID being passed in:', currentStyleID)
-    if (outfit.styleID= currentStyleID) {
+    // console.log('outfit.styleID:', outfit.styleID)
+    // console.log('currentStyleID being passed in:', currentStyleID)
+    if (outfit.styleID=== currentStyleID) {
       copyOutfitList.splice(index, 1);
     //  console.log('copyOutfitList after splicing: ', copyOutfitList) //yeah its correct up till here//[]
     }
    })
-   setOutfitList(copyOutfitList);//everytime there is a state change, it re-renders?
+   setOutfitList(copyOutfitList);
+
+   //everytime there is a state change, it re-renders?
 }
 
 

@@ -84,7 +84,7 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProductID,
              <div className='product-price'>USD {relatedProduct.price}</div>
       </div>
       {/* <div style={{ backgroundImage: `url(${relatedProduct.image})` }}> */}
-      {currentProductID && relatedProductID && openModal && <Modal closeModal={setOpenModal} currentProductID={currentProductID} relatedProductID={relatedProductID} />}
+      { relatedProductID && openModal && <Modal closeModal={setOpenModal} currentProductID={currentProductID} relatedProductID={relatedProductID} />}
     </div>
   )
 

@@ -34,6 +34,7 @@
   font-weight: bold;
   font-size: medium;
   text-align: center;
+  padding: 20px;
 }
 
 .CompleteYourOutfit {
@@ -41,6 +42,7 @@
   font-size: medium;
   text-align: center;
   font-weight: bold;
+  padding: 20px;
 }
 
 .relatedProduct {
@@ -132,7 +134,6 @@
   display: flex;
   justify-content: center;
   font-family: 'Pacifico', cursive;
-  ;
   font-size: medium;
 }
 
@@ -334,7 +335,6 @@ height: 200px; */
   cursor: point;
 }
 
-
 .product-name{
   font-family: 'Nunito', sans-serif;
   font-weight: bold;
@@ -357,7 +357,9 @@ height: 200px; */
   display:flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap:20px;
 }
+
 
 .outfit-component{
   border: 1px solid #ede0d4;
@@ -365,6 +367,47 @@ height: 200px; */
   width: 300px;
   padding: 10px;
   background-color: #ede0d4;
+  transition: all 1s ease-in-out;
+}
+
+.outfit-component:hover {
+  background-color: rgb(62, 62, 62);
+  cursor: pointer;
+  color: white;
+  transition: all 1s ease-in-out;
+  height: 450px;
+  width: 350px;
+}
+
+.addMoreOutfit {
+  border: 1px solid #ede0d4;
+  height: 400px;
+  width: 300px;
+  padding: 10px;
+  background-color: #ede0d4;
+}
+.addMoreOutfit-word {
+  padding: 90px;
+  font-family: 'Pacifico', cursive;
+  font-size: 18px;
+}
+
+.plusIcon {
+  display: flex;
+  justify-content: center;
+  font-family: 'Nunito', sans-serif;
+  padding-bottom: 30px;
+}
+
+.plusIconInAddMore{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.plus{
+  height: 30px;
+  width: 30px;
 }
 
 .outfit-pic {

@@ -24,13 +24,19 @@ if (outfitList.length === 0) {
 } else {
     return (
       <div className='yourOutfitListContainer'>
-          <button className='leftArrowIcon'><FontAwesomeIcon icon={faArrowLeft}/></button>
-          <div>
+          <div className='addMoreOutfit'>
+               <p className='addMoreOutfit-word'>Add more style?</p>
+               <div onClick={handlePlusIconClick} className='plusIconInAddMore'>
+                   <FontAwesomeIcon className='plus'icon={faPlus} />
+               </div>
+          </div>
+          {/* <button className='leftArrowIcon'><FontAwesomeIcon icon={faArrowLeft}/></button> */}
+          {console.log('outfitList right before mapping: ', outfitList)}
           {outfitList.map((outfit, index)=>{
             return <YourOutfit key={index} outfit={outfit} updateOutfitList={updateOutfitList}></YourOutfit>
           })}
-         </div>
-         <button className='rightArrowIcon'><FontAwesomeIcon icon={faArrowRight}/></button>
+
+         {/* <button className='rightArrowIcon'><FontAwesomeIcon icon={faArrowRight}/></button> */}
       </div>
     );
   }
