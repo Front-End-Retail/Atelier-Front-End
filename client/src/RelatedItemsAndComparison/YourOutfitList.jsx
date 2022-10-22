@@ -25,7 +25,7 @@ if (outfitList.length === 0) {
     return (
       <div className='yourOutfitListContainer'>
           <div className='addMoreOutfit'>
-               <p className='addMoreOutfit-word'>Add more style?</p>
+               <p className='addMoreOutfit-word'>Add this style?</p>
                <div onClick={handlePlusIconClick} className='plusIconInAddMore'>
                    <FontAwesomeIcon className='plus'icon={faPlus} />
                </div>

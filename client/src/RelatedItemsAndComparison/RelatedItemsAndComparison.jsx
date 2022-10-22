@@ -49,6 +49,8 @@ const RelatedItemsAndComparison = ({currentProductID, changeCurrentProduct, sele
 
 
 const handlePlusIconClick = () =>{
+
+  if (styleIDList.indexOf(selectedStyle.style_id) === -1) {
   axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${currentProductID}` } })
     .then(response=>{
       // console.log('detail info retrieved with product_id', response.data);
@@ -82,6 +84,8 @@ const handlePlusIconClick = () =>{
     .catch(err=>{
       console.log('yourOutfitList failed to retrieve style with style_id:' , err)
     })
+  }
+
 }
 
 //this is more like a delete, instead of updating
