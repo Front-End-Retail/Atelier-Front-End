@@ -9,6 +9,8 @@ const ReviewEntry = ({review, putRequest}) => {
   const [toggleBody, setToggleBody] = useState(false)
   const [toggleHelp, setToggleHelp] = useState(false)
   const [toggleReport, setToggleReport] = useState(false)
+  const [reportText, setReportText] = useState('Report')
+  const [helpfulText, setHelpfulText] = useState('Report')
 
   const expandBody = (e) => {
     setToggleBody(true)
@@ -16,8 +18,7 @@ const ReviewEntry = ({review, putRequest}) => {
   // handle report and help in one function
   const handlePutRequest = (e) => {
     if (e.target.textContent === "Report") {
-      console.log('reported')
-      !toggleReport ? (setToggleReport(true), putRequest(review.review_id, "report")) : null;
+      !toggleReport ? (setToggleReport(true), putRequest(review.review_id, "report"), setReportText('Reported')) : null;
     } else if (!toggleHelp) {
       setToggleHelp(true)
       putRequest(review.review_id, "helpful")
@@ -48,7 +49,7 @@ const ReviewEntry = ({review, putRequest}) => {
       })}
       </div>
       {review.recommend && <p className="review-tile-recommend">&#10003; I recommend this product!</p>}
-      <p >Helpful?<a onClick={handlePutRequest} className="review-links">Yes({review.helpfulness})</a><a onClick={handlePutRequest} className="review-links toggle-line">Report</a></p>
+      <p >Helpful?<a onClick={handlePutRequest} className="review-links">Yes({review.helpfulness})</a><a onClick={handlePutRequest} className="review-links toggle-line">{reportText}</a></p>
     </div>
   )
 }

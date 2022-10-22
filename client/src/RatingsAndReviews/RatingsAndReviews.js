@@ -66,7 +66,10 @@ const RatingsAndReviews = ({currentProductID}) => {
     console.log(reviewId)
     axios.default.put('http://localhost:3000/review/put', { review_id: reviewId, path: path }).then((data) => {
       console.log('successfully added')
-      reviewRequest()
+      if(path === 'helpful') {
+        reviewRequest()
+      }
+
     }).catch((err) => {
       console.log('error adding to helpfulness', err)
     })
