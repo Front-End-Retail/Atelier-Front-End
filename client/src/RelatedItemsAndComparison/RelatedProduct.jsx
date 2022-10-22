@@ -82,7 +82,7 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProductID,
        <div className='lower-part' onClick={() => { changeCurrentProduct(relatedProductID) }}>
              <div className='product-name'>{relatedProduct.name}</div>
              <div className='product-category'>{relatedProduct.category}</div>
-             <div className='product-price'>USD {relatedProduct.price}</div>
+             <div className='product-price'>$ {relatedProduct.price}</div>
              {/* <StarAverage rating={findAverage(metaReviews.ratings)} /> */}
       </div>
       {/* <div style={{ backgroundImage: `url(${relatedProduct.image})` }}> */}

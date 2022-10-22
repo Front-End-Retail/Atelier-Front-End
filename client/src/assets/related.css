@@ -422,6 +422,11 @@ height: 200px; */
   padding: 3px;
 }
 
+.innerOutfitContainer{
+  display: flex;
+  justify-content: center;
+  gap:20px;
+}
 .outfit-name {
   font-family: 'Nunito', sans-serif;
   font-weight: bold;
@@ -430,6 +435,9 @@ height: 200px; */
 
 .outfit-regularPrice {
   text-decoration: line-through;
+}
+.outfit-regularPrice-no-linethrough {
+
 }
 
 .outfit-category{
