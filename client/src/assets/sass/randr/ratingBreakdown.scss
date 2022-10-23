@@ -13,23 +13,23 @@
   appearance: none;
   width: 100%; /* Full-width */
   height: 25px; /* Specified height */
-  background: gray; /* Grey background */
+  background: transparent; /* Grey background */
   outline: none; /* Remove outline */
   opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
   -webkit-transition: .2s; /* 0.2 seconds transition on hover */
   transition: opacity .2s;
+  z-index: 9; //This ensures the triangle is on TOP of the three boxes
 }
 
 
-// .slider::-webkit-slider-thumb {
-//   -webkit-appearance: none;
-//     width: 0;
-//     height: 0;
-//     border-left: 100% solid transparent;
-//     border-right: 100% solid transparent;
-//     border-top: 10% solid #1D2731;
-
-// }
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 14px solid #1D2731;
+}
 .slide-container {
   width: 100%; /* Width of the outside container */
   height: 100%;
@@ -40,9 +40,9 @@
 .triangle {
   width: 0;
   height: 0;
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  border-top: 20px solid #1D2731;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 16px solid #1D2731;
   position: absolute;
   left: 55%;
 }
@@ -55,9 +55,29 @@
   position: relative;
 }
 
-.char-child {
+.char-child1 {
   width:32%;
+  height: 10px;
   background-color: gray;
+  position: absolute;
+  left: 0%;
+  top: 50%;
+}
+.char-child2 {
+  width:32%;
+  height: 10px;
+  background-color: gray;
+  position: absolute;
+  left: 33%;
+  top: 50%;
+}
+.char-child3 {
+  width:32%;
+  height: 10px;
+  background-color: gray;
+  position: absolute;
+  left: 66%;
+  top: 50%;
 }
 
 #rating-breakdown-num {

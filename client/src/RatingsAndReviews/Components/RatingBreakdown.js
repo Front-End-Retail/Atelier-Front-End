@@ -1,7 +1,7 @@
 import React from 'react';
 import { format, parseISO } from "date-fns";
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faStarHalf, faTriangleCircleSquare } from '@fortawesome/free-solid-svg-icons';
 import StarAverage from './StarAverage.js'
 import StarFilterDesc from './StarFilterDesc.js'
 import {findAverage, helpfulPerc, findTotal, findRatio, everyFunc, characteristicsDesc} from './helperFuncs'
@@ -29,6 +29,7 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter, sortReviews, curr
 
   return (
     <div id="breakdown-container">
+      <FontAwesomeIcon icon={faTriangleCircleSquare} size="xs" />
       <p id="breakdown-title">Ratings and Reviews</p>
       <div id="rating-breakdown-num">
         <div id="average-rating">{metaReviews.ratings && rating}</div>
@@ -51,13 +52,18 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter, sortReviews, curr
       {metaReviews.characteristics && Object.keys(metaReviews.characteristics).map((key, index) => {
         return (
           <div className="slide-container" key={index}>{key}
-          {/* <input readonly type="range" min="10" max="50" value={Math.round(metaReviews.characteristics[key]["value"] * 100) / 10} className="slider" id="myRange"></input> */}
-          <div className="char-bar"><div className="triangle"></div><div className='char-child'></div><div className='char-child'></div><div className='char-child'></div></div>
-          <div className="char-bar-desc">
-            <p>{characteristicsDesc[key]["1"]}</p>
-            <p>{characteristicsDesc[key]["3"]}</p>
-            <p>{characteristicsDesc[key]["5"]}</p>
+          {/* <input className="char-slider" readonly type="range" min="10" max="50" value={Math.round(metaReviews.characteristics[key]["value"] * 100) / 10} className="slider" id="myRange"></input> */}
+            <div className="char-bar">
+              <input className="slider" readonly type="range" min="10" max="50" value={Math.round(metaReviews.characteristics[key]["value"] * 100) / 10} className="slider" id="myRange"></input>
+              <div className='char-child1'></div>
+              <div className='char-child2'></div>
+              <div className='char-child3'></div>
             </div>
+            <div className="char-bar-desc">
+                <p>{characteristicsDesc[key]["1"]}</p>
+                <p>{characteristicsDesc[key]["3"]}</p>
+                <p>{characteristicsDesc[key]["5"]}</p>
+              </div>
           </div>
         )
       })}
@@ -66,3 +72,6 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter, sortReviews, curr
 }
 
 export default RatingBreakdown;
+
+// triangle
+{/* <div className="triangle"></div> */}
