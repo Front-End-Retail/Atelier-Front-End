@@ -51,7 +51,7 @@ const QAAnswerItem = ({ answer, addAnswerHelpfulness, updateHelpfulCount, report
           <p>Helpful?</p>
           <p className={"underlined"}onClick={() => {voteAHelpful()}}>Yes </p><p>({answer.helpfulness})</p>
           <p> | </p>
-          <p className={"underlined"} onClick={() => {reportIfNot()}}> Report </p>
+          {reported ? <p className={"reportedItalics"}> Reported </p> : <p className={"underlined"} onClick={() => {reportIfNot()}}> Report </p>}
         </div>
       </div>
     </div>
