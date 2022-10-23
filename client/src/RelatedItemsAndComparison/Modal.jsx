@@ -56,8 +56,6 @@ const [comparedProductName, setComparedProductName] = useState('');
 
   useEffect(()=>{
     fetchAllFeatures();
-    console.log('currentProductID in Modal useEffect: ', currentProductID)
-    console.log('relatedProductID in Modal useEffect: ', relatedProductID)
   }, [currentProductID, relatedProductID])
 
 
