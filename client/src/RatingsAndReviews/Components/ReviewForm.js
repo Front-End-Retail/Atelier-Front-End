@@ -156,12 +156,14 @@ const ReviewForm = ({toggle, metaReviews}) => {
           </label>
           {emailValidation && <div className="form-warning">Required field</div>}
           <p>For authentication reasons, you will not be emailed</p>
+          <div className="rating-recommend-container">
           <StarRating handleStarChange={handleStarChange}/>
           <p>Would you recommend this product?</p>
             <input onChange={handleChange} type="radio" className="helpful radio" name="helpful" value={true}/>
               <label for="yes">Yes</label>
             <input onChange={handleChange} type="radio" className='helpful-radio' name="helpful" value={false}/>
               <label for="No">No</label>
+          </div>
           <p>Characteristics</p>
           {metaReviews.characteristics && Object.keys(metaReviews.characteristics).map((key, index) => {
             let objId = metaReviews.characteristics[key].id
