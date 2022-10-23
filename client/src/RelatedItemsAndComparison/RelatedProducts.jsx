@@ -40,12 +40,12 @@ if (currCarousel.length >=4) {
   console.log('sizedCarousel: ', sizedCarousel)
   return (
     <div className='relatedProductsOuterContainer'>
-    <div className='relatedProductsContainer'>
-    {sizedCarousel.map((relatedProductID, index)=>{
-      return <RelatedProduct key={index} relatedProductID={relatedProductID} relatedProductsID={relatedProductsID} changeCurrentProduct={changeCurrentProduct}></RelatedProduct>
-    })}
-    </div>
-    <button className='rightArrowIcon' onClick={handleRightArrowClick}><FontAwesomeIcon icon={faArrowRight}/></button>
+          <div className='relatedProductsContainer'>
+                {sizedCarousel.map((relatedProductID, index)=>{
+                 return <RelatedProduct key={index} relatedProductID={relatedProductID} relatedProductsID={relatedProductsID} currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct}></RelatedProduct>
+                 })}
+           </div>
+           <button className='rightArrowIcon' onClick={handleRightArrowClick}><FontAwesomeIcon icon={faArrowRight}/></button>
     </div>
   );
 } else {
@@ -54,7 +54,7 @@ if (currCarousel.length >=4) {
     <div className='relatedProductsContainer'>
       {/* //this is container before */}
       {relatedProductsID.length>4 && <button className='leftArrowIcon' onClick={handleLeftArrowClick}><FontAwesomeIcon icon={faArrowLeft}/></button>}
-    {currCarousel.map((relatedProductID, index)=>{
+      {currCarousel.map((relatedProductID, index)=>{
 
       return <RelatedProduct key={index} relatedProductID={relatedProductID} relatedProductsID={relatedProductsID}
        currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct}></RelatedProduct>
