@@ -1,6 +1,7 @@
 import React from 'react';
 import ReviewList from './components/ReviewList.js'
 import RatingBreakdown from './components/RatingBreakdown.js'
+import SearchReviews from './components/SearchReviews.js'
 import { format, parseISO } from "date-fns";
 // import '../assets/ratingsStyles.css';
 import {helpfulPerc, everyFunc} from './components/helperFuncs';
@@ -118,6 +119,8 @@ useEffect(() => {
       <div >
         {/* <button onClick={testButton} name="test-button">Rating Test</button> */}
         <div id="center-reviews">
+          {/* <div>search goes here</div> */}
+          <SearchReviews />
         <div id="randr">
         <RatingBreakdown metaReviews={metaReviews} ratingSort={ratingSort} starFilter={starFilter}
          sortReviews={sortReviews} currentSort={currentSort}/>
