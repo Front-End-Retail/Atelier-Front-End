@@ -6,6 +6,10 @@
   width: 20%;
   // min-width: 20%;
   padding-left: 1%;
+  overflow-y: auto ;
+}
+@media (max-width: 800px) {
+  #breakdown-container {display: none}
 }
 
 // characteristic sliders
