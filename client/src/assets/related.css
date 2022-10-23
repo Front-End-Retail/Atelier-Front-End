@@ -1,34 +1,7 @@
-/* @keyframes heartbeat{
+.relatedItemsAndComparison{
+  background-image: url('./skyBackground.jpeg');
 
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.25);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-} */
-
-/* .heart {
-  color:black;
-  opacity: 0.3;
-  cursor: point;
-  width: 25px;
-  height: 25px;
-  padding: 10px;
 }
-
-.heart:hover{
-  animation: heartbeat 1s infinite;
-  fill:red;
-  color:red;
-  opacity: 1;
-  transition: opacity 500ms;
-} */
 .YouMightAlsoLike {
   font-family: 'Lobster', sans-serif;
   font-weight: bold;
@@ -77,16 +50,6 @@
   border-radius: 12px;
   position: fixed;
 }
-
-/* .modalBackground {
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(200, 200, 200);
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
 
 .modalContainer {
   width: 500px;
@@ -188,88 +151,14 @@ height: 200px; */
   /* object-fit: cover; */
 /* } */
 
-/* .starIcon{
-  position: absolute;
-  backface-visibility: hidden;
-  text-transform: capitalize;
-} */
 
-/* .product-info{
-  width: 100%;
-  height: 10px;
-  padding-top: 10px;
-}
-
-.price{
-  font-weight: 900;
-  font-size: 10px;
-}
-
-.product-name{
-  font-size: 10px;
-}
-
-.product-category{
-  font-size: 10px;
-} */
-
-/* .relatedProductsContainer{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.card-component{
-  display: flex;
-  /* position: relative;
-  place-self: center; */
-/* height: 300px;
-  width: 200px;
-  /* align-self:flex-start; */
-
-
-/* .upper-part{
-  display: flex;
-  height: 180px;
-  width: 200px;
-} */
-
-/* .product-image{
-  height: 100%;
-  width: 100%;
-  max-height: 100%;
-  max-width: 100%;
-  object-fit:cover;
-  overflow:auto;
-} */
-
-/* .product-category{
-  font-size: 14px;
-  padding-left: 5px;
-}
-
-.product-name{
-  font-weight: 600;
-  font-size: 15px;
-  height: fit-content;
-  padding-left: 5px;
-} */
-
-/* .product-price{
-  color: #d00000;
-  font-weight: 600;
-  padding-top: 4px;
-  align-self: center;
-  padding-left: 5px;
-}
-*/
 .card-component {
   /* border: 1px solid #ede0d4; */
   height: 400px;
   width: 300px;
   padding: 10px;
-  background-color: #34699E;
-  /* background-color: #ede0d4; */
+  background-color: whitesmoke;
+  /* background-color: #ede0d4; #34699E;*/
   transition: all 1s ease-in-out;
 }
 
@@ -362,7 +251,7 @@ height: 200px; */
   height: 400px;
   width: 300px;
   padding: 10px;
-  background-color: #34699E;
+  background-color: whitesmoke;
   transition: all 1s ease-in-out;
 }
 
