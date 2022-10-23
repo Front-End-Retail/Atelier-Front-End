@@ -1,7 +1,8 @@
 import React from 'react';
 import { format, parseISO } from "date-fns";
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faStar, faStarHalf, faTriangleCircleSquare } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
+import {FaStar} from "react-icons/fa";
 import StarAverage from './StarAverage.js'
 import StarFilterDesc from './StarFilterDesc.js'
 import {findAverage, helpfulPerc, findTotal, findRatio, everyFunc, characteristicsDesc} from './helperFuncs'
@@ -26,14 +27,15 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter, sortReviews, curr
   const removeFilterButton = () => {
     sortReviews(currentSort)
   }
-
+  let iconStyles = { color: "black", fontSize: "6em" };
   return (
     <div id="breakdown-container">
-      <FontAwesomeIcon icon={faTriangleCircleSquare} size="xs" />
+
       <p id="breakdown-title">Ratings and Reviews</p>
+        <FaStar style={iconStyles}/>
       <div id="rating-breakdown-num">
         <div id="average-rating">{metaReviews.ratings && rating}</div>
-        {!isNaN(rating) && <StarAverage rating={rating}/>}
+        <div className="star-avg-main">{!isNaN(rating) && <StarAverage rating={rating}/>}</div>
       </div>
       {metaReviews.ratings && <p>{helpfulAverage} % of reviews recommend this product</p>}
       {ratingTotal && Object.keys(metaReviews.ratings).reverse().map((starNum, index) => {
@@ -54,7 +56,7 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter, sortReviews, curr
           <div className="slide-container" key={index}>{key}
           {/* <input className="char-slider" readonly type="range" min="10" max="50" value={Math.round(metaReviews.characteristics[key]["value"] * 100) / 10} className="slider" id="myRange"></input> */}
             <div className="char-bar">
-              <input className="slider" readonly type="range" min="10" max="50" value={Math.round(metaReviews.characteristics[key]["value"] * 100) / 10} className="slider" id="myRange"></input>
+              <input className="slider" readOnly type="range" min="10" max="50" value={Math.round(metaReviews.characteristics[key]["value"] * 100) / 10} className="slider" id="myRange"></input>
               <div className='char-child1'></div>
               <div className='char-child2'></div>
               <div className='char-child3'></div>

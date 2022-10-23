@@ -7,6 +7,7 @@
   // min-width: 20%;
   padding-left: 1%;
 }
+
 // characteristic sliders
 .slider {
   -webkit-appearance: none;  /* Override default CSS styles */
@@ -84,13 +85,17 @@
   display: flex;
   flex: column;
   justify-content: left;
+  align-items: center;
 }
 
 #breakdown-title {
-  font-size: 1em;
+  font-size: 1.5em;
+  align-self: center;
 }
 #average-rating {
   font-size: 1em;
+  align-self: flex-start;
+
 }
 
 .char-bar-desc {
