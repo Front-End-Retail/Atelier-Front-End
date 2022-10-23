@@ -19,6 +19,7 @@
   max-width:100%;
   // overflow-x: auto;
   overflow-y: auto;
+  overflow-wrap: break-word;
 }
 #review-list-all {
   display: flex;
@@ -55,6 +56,8 @@
 .review-links {
   padding-left: 1%;
   padding-right: 1%;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .thumbnail-container {
@@ -73,10 +76,10 @@
   min-width: 10em;
   padding: 0.5em 1em;
   background: transparent;
-  border: #444 solid;
+  // border: #444 solid;
   border-radius: 1em;
-  text-decoration: underline;
+  // text-decoration: underline;
   color: inherit;
   font: inherit;
-  border: 0px
+  border: 1px solid white;
 }

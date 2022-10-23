@@ -48,5 +48,13 @@
   font-weight: bold;
 }
 
-.character-desc {
+.review-submit-btn {
+  padding: 10px;
+  margin: 1%;
+  background-color: white;
+  font-weight: bold;
+}
+.review-submit-btn:hover {
+    box-shadow: 0 5px 11px rgba(33,33,33,.2);
+    cursor: pointer;
 }

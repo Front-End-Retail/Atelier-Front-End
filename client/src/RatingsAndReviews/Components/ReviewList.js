@@ -36,13 +36,14 @@ const ReviewList = ({reviews, sortReviews, metaReviews, putRequest}) => {
         return (
           <ReviewEntry key={index} review={review} putRequest={putRequest}/>
         )
-      })}<div id="button-cont">
-
-      {displayNum !== reviews.length && <button className="review-button" onClick={moreReviews}>More Reviews</button>}
-      <button className="review-button" onClick={toggle}>Add Review +</button>
-      <ReviewModal visible={visible} toggle={toggle} reviews={reviews} metaReviews={metaReviews}/>
-      </div>
+      })}
     </div>
+      <div id="button-cont">
+
+        {displayNum !== reviews.length && <button className="review-button" onClick={moreReviews}>More Reviews</button>}
+        <button className="review-button" onClick={toggle}>Add Review +</button>
+        <ReviewModal visible={visible} toggle={toggle} reviews={reviews} metaReviews={metaReviews}/>
+        </div>
     </div>
   )
 }

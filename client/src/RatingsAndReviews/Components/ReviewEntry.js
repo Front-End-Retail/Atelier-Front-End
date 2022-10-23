@@ -10,7 +10,7 @@ const ReviewEntry = ({review, putRequest}) => {
   const [toggleHelp, setToggleHelp] = useState(false)
   const [toggleReport, setToggleReport] = useState(false)
   const [reportText, setReportText] = useState('Report')
-  const [helpfulText, setHelpfulText] = useState('Report')
+  const [helpfulText, setHelpfulText] = useState('Yes')
 
   const expandBody = (e) => {
     setToggleBody(true)
@@ -19,11 +19,13 @@ const ReviewEntry = ({review, putRequest}) => {
   const handlePutRequest = (e) => {
     if (e.target.textContent === "Report") {
       !toggleReport ? (setToggleReport(true), putRequest(review.review_id, "report"), setReportText('Reported')) : null;
-    } else if (!toggleHelp) {
+    } else if (e.target.textContent.slice(0,3) === 'Yes') {
       setToggleHelp(true)
+      setHelpfulText('No')
       putRequest(review.review_id, "helpful")
     }
   }
+
   const handleReport = () => {
     if (!toggleReport) {
       setToggleReport(true)
@@ -39,8 +41,8 @@ const ReviewEntry = ({review, putRequest}) => {
       </div>
       <h3 className="review-tile-summary">{review.summary}</h3>
 
-      {!toggleBody ? <div><p>{review.body}{review.body.length > 250 && <button className="show-more" onClick={expandBody}>show more</button>}</p></div> : null}
-      {toggleBody && <p>{review.body}{console.log(review.body.length)}</p>}
+      {!toggleBody ? <div className="review-body">{review.body.length > 250 && <p className="review-body">{review.body.slice(0,250)} <button className="show-more" onClick={expandBody}>show more</button></p>}</div> : null}
+      {toggleBody && <div className="review-body">{review.body}</div>}
       {review.response && <div className="response"><h4>Response:</h4>{review.response}</div>}
       <div className="thumbnail-container">
       {review.photos.length > 0 && review.photos.map((photo, index) => {
@@ -49,7 +51,7 @@ const ReviewEntry = ({review, putRequest}) => {
       })}
       </div>
       {review.recommend && <p className="review-tile-recommend">&#10003; I recommend this product!</p>}
-      <p >Helpful?<a onClick={handlePutRequest} className="review-links">Yes({review.helpfulness})</a><a onClick={handlePutRequest} className="review-links toggle-line">{reportText}</a></p>
+      <p>Helpful?<a onClick={handlePutRequest} className="review-links">{helpfulText} ({review.helpfulness})</a><a onClick={handlePutRequest} className="review-links toggle-line">{reportText}</a></p>
     </div>
   )
 }

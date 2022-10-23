@@ -14,9 +14,8 @@ ReactDOM.createPortal(
       <ReviewForm toggle={toggle} metaReviews={metaReviews}/>
       {/* Perhaps close the form on successful submission? Or trigger rerendering of modal on successful submission with something like "Thanks
       for the reviews!" */}
-      <button type="button" onClick={toggle}>Close</button>
     </div>
-    <div className="modal-overlay"></div>
+    <div onClick={toggle} className="modal-overlay"></div>
   </div>, container
 ) : null;
 

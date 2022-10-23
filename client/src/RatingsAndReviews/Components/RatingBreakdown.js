@@ -4,7 +4,7 @@ import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 import StarAverage from './StarAverage.js'
 import StarFilterDesc from './StarFilterDesc.js'
-import {findAverage, helpfulPerc, findTotal, findRatio, everyFunc} from './helperFuncs'
+import {findAverage, helpfulPerc, findTotal, findRatio, everyFunc, characteristicsDesc} from './helperFuncs'
 const axios = require('axios');
 const { useState, useEffect } = React;
 
@@ -53,6 +53,11 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter, sortReviews, curr
           <div className="slide-container" key={index}>{key}
           {/* <input readonly type="range" min="10" max="50" value={Math.round(metaReviews.characteristics[key]["value"] * 100) / 10} className="slider" id="myRange"></input> */}
           <div className="char-bar"><div className="triangle"></div><div className='char-child'></div><div className='char-child'></div><div className='char-child'></div></div>
+          <div className="char-bar-desc">
+            <p>{characteristicsDesc[key]["1"]}</p>
+            <p>{characteristicsDesc[key]["3"]}</p>
+            <p>{characteristicsDesc[key]["5"]}</p>
+            </div>
           </div>
         )
       })}
