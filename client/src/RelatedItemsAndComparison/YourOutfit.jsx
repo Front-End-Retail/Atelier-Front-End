@@ -25,10 +25,14 @@ const YourOutfit = ({outfit, updateOutfitList}) =>{
                <div className='outfit-style'>{outfit.style}</div>
                <div className='outfit-category'>{outfit.category}</div>
                {/* <div>{outfit.styleID}</div>  I dont want to display this to users but i need it*/}
-              <span className='outfit-regularPrice'>USD {outfit.regularPrice}</span><span className='outfit-discountPrice' style={{ color: 'red' }}>USD {outfit.price}</span>
+               {outfit.price
+                 ? <div><span className='outfit-regularPrice'>${outfit.regularPrice}</span><span className='outfit-discountPrice' style={{ color: 'red' }}>${outfit.price}</span></div>
+                 : <div><span className='outfit-regularPrice-no-linethrough'>${outfit.regularPrice}</span></div>
+               }
          </div>
     </div>
-  );
+ )
 }
 
 export default YourOutfit;
+//<span className='outfit-discountPrice' style={{ color: 'red' }}>$ {outfit.price}</span>
