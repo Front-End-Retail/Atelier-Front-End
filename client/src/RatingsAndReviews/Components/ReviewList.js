@@ -4,6 +4,7 @@ const { useState, useEffect } = React;
 import ReviewEntry from './ReviewEntry.js';
 import Sorting from './Sorting.js';
 import ReviewModal from './ReviewModal.js';
+import SearchReviews from './SearchReviews.js'
 import UseReviewModal from './UseReviewModal.js';
 
 const ReviewList = ({reviews, sortReviews, metaReviews, putRequest}) => {
@@ -28,6 +29,7 @@ const ReviewList = ({reviews, sortReviews, metaReviews, putRequest}) => {
   const {toggle, visible} = UseReviewModal()
   return (
     <div id="review-list-all">
+      <SearchReviews />
       <div id="sorting">
       {reviews[0] && <p>{reviews.length} reviews, sorted by <Sorting reviews={reviews} passSortingName={passSortingName}/></p>}
       </div>
