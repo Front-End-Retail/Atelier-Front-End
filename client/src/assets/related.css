@@ -99,10 +99,6 @@
   padding: 25px;
 }
 
-.titleCloseBtn {
-  display: flex;
-  justify-content: flex-end;
-}
 
 .heartIcon {
   padding: 5px;
