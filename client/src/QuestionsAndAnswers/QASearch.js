@@ -1,5 +1,4 @@
 import React from 'react';
-import magnifyingGlass from '../assets/search.png';
 const axios = require('axios');
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
