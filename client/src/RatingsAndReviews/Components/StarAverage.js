@@ -17,9 +17,9 @@ const StarAverage = ({rating}) => {
       if (rating - i < 1 && rating - i >= .5 ) {
         content.push(<FontAwesomeIcon key={i} icon={faStarHalf} style={{ height: "10px" }}></FontAwesomeIcon>)
       } else if (tempRating > 0) {
-      content.push(<FontAwesomeIcon icon={faStar} style={{ height: "10px" }}></FontAwesomeIcon>)
+      content.push(<FontAwesomeIcon key={i} icon={faStar} style={{ height: "10px" }}></FontAwesomeIcon>)
       } else {
-        content.push(<FontAwesomeIcon icon={faStarReg} style={{ height: "10px" }}></FontAwesomeIcon>)
+        content.push(<FontAwesomeIcon key={i} icon={faStarReg} style={{ height: "10px" }}></FontAwesomeIcon>)
       }
       tempRating--;
     }

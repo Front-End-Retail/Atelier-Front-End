@@ -25,10 +25,11 @@ const ReviewList = ({reviews, sortReviews, metaReviews}) => {
   }
   const {toggle, visible} = UseReviewModal()
   return (
-    <div id="review-list">
+    <div id="review-list-all">
       <div id="sorting">
       {reviews[0] && <p>{reviews.length} reviews, sorted by <Sorting reviews={reviews} passSortingName={passSortingName}/></p>}
       </div>
+      <div id="review-list">
       {currentReviews.length > 0 && currentReviews.map((review, index) => {
         return (
           <ReviewEntry key={index} review={review}/>
@@ -39,6 +40,7 @@ const ReviewList = ({reviews, sortReviews, metaReviews}) => {
       <button className="review-button" onClick={toggle}>Add Review +</button>
       <ReviewModal visible={visible} toggle={toggle} reviews={reviews} metaReviews={metaReviews}/>
       </div>
+    </div>
     </div>
   )
 }
