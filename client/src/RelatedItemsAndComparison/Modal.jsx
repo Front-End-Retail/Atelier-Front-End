@@ -65,19 +65,18 @@ const [comparedProductName, setComparedProductName] = useState('');
     <div className='modalBackground'>
       <div className='modalContainer'>
       <button className='closeBtn' onClick={()=>{closeModal(false)}}><FontAwesomeIcon id='exit-icon' icon={faTimes}/></button>
-      <span className='comparing'>Comparing</span>
+      <span className='comparing'>COMPARING</span>
       <table>
           <tr>
-              <th>PRODUCT NAME</th>
-              <th>FEATURE</th>
-              <th>PRODUCT NAME</th>
+              <th className='first-row'>PRODUCT NAME</th>
+              <th className='first-row'>FEATURE</th>
+              <th className='first-row'>PRODUCT NAME</th>
           </tr>
           <tr>
               <th>{currProductName}</th>
               <th></th>
               <th>{comparedProductName}</th>
           </tr>
-
 
     {featureList.map((feature, index)=>{
        return <Feature key={index} feature={feature}

@@ -6,7 +6,7 @@ import axios from 'axios';
 const Feature = ({feature, comparedProductFeatures, currProductFeatures})=>{
   const [comparedValue, setComparedValue] = useState('');
   const [currValue, setCurrValue] = useState('');
-console.log('hey, look, it got in Feature.jsx!')
+
   const fetchValues = ()=> {
   comparedProductFeatures.forEach(featureObj => {
     if (featureObj.feature === feature){

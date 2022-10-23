@@ -26,7 +26,7 @@
 }
 
 .comparing{
-  font-family: 'Pacifico', cursive;
+  font-family: 'Roboto', cursive;
   padding: 10px;
   font-size: 24px;
   text-decoration-line: underline;
@@ -34,6 +34,9 @@
   text-decoration-color: #34699E;
 }
 
+.first-row{
+  font-size: 20px;
+}
 .td{
   border: 1px solid #7e7a7a;
   text-align: center;
