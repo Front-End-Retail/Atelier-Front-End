@@ -54,8 +54,12 @@
 }
 
 // fix image modal for mobile
-// @media (max-width: 500px) {
-//   .image-modal-pop {
-
-//   }
-// }
+@media (max-width: 500px) {
+  .image-modal-pop {
+    background: transparent;
+    border: none;
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+  }
+}
