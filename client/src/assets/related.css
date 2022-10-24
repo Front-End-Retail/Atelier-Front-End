@@ -1,5 +1,11 @@
 .relatedItemsAndComparison{
   background-image: url('./skyBackground.jpeg');
+  width: 90vw;
+  /* center this div on the page:  */
+  margin-top:0;
+  margin-right:auto;
+  margin-bottom:0;
+  margin-left:auto;
 
 }
 .YouMightAlsoLike {

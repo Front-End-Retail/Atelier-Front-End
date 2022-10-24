@@ -2,7 +2,7 @@ import React from 'react';
 const { useState, useEffect } = React;
 import axios from 'axios';
 import RelatedProduct from './RelatedProduct.jsx';
-import '../assets/related.css';
+// import '../assets/related.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 

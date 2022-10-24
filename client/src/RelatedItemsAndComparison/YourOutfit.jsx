@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/related.css';
+// import '../assets/related.css';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';

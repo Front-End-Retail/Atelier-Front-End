@@ -1,7 +1,7 @@
 import React from 'react';
 const { useState, useEffect } = React;
 import axios from 'axios';
-import '../assets/related.css';
+// import '../assets/related.css';
 import Modal from './Modal.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as faHeartActive } from '@fortawesome/free-solid-svg-icons';
@@ -80,7 +80,7 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProductID,
         {/* cant add listeners to react icons */}
         {/* <button className='starIcon' onClick={() => { setOpenModal(true) }}><FontAwesomeIcon icon={faStar}/></button>*/}
        <div className='lower-part' onClick={() => { changeCurrentProduct(relatedProductID) }}>
-             <div className='product-name'>{relatedProduct.name}</div>
+             <div className='product-name'><a href='#overview-container'>{relatedProduct.name}</a></div>
              <div className='product-category'>{relatedProduct.category}</div>
              <div className='product-price'>$ {relatedProduct.price}</div>
              {/* <StarAverage rating={findAverage(metaReviews.ratings)} /> */}
