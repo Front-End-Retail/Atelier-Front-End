@@ -43,7 +43,7 @@ const Overview = ({ currentProductID, styles, selectedStyle, changeStyle }) => {
 
   return (
     <>
-      <div id='overview-container'>
+      <div data-testid="overview" id='overview-container'>
         {selectedStyle && Object.keys(selectedStyle).length !== 0 && <ImageGallery selectedStyle={selectedStyle} setFullscreen={setFullscreen} fullscreen={fullscreen} />}
         {selectedStyle && <Product fullscreen={fullscreen} metaReviews={metaReviews} styles={styles} selectedStyle={selectedStyle} changeStyle={changeStyle} currentProduct={currentProduct} />}
       </div>
