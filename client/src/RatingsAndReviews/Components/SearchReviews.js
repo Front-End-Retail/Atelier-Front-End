@@ -14,12 +14,11 @@ const SearchReviews = ({toggleSearch}) => {
     } else {
       toggleSearch(false)
     }
-
   }
 
   return (
     <div id="review-search">
-      <input onChange={handleInput} type="text" placeholder="Search..."></input>
+      <input id="search-bar" onChange={handleInput} type="text" placeholder="Search..."></input>
       <FontAwesomeIcon icon={faMagnifyingGlass}/>
     </div>
   )
