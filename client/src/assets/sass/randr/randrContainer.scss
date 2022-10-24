@@ -1,8 +1,7 @@
 #randr {
   display: flex;
-  border: solid black 1px;
   flex-direction: row;
-  width: 95vw;
+  width: 80vw;
   height: 3fr;
   max-height: 100vh;
   gap: 5%;
@@ -14,4 +13,22 @@
 #center-reviews {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  background-color: #34699E;
+  width: 80vw;
+  height: 3fr;
+  max-height: 100vh;
+  border: solid black 1px;
 }
+
+#title {
+  display: flex;
+  justify-content: left;
+  color: white;
+  font-size: 2rem;
+  padding-left: 1%;
+  padding-top: 3%;
+  padding-bottom: 2%;
+  flex-grow: 1;
+}
+

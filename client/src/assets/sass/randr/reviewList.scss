@@ -16,12 +16,29 @@
   flex-direction: column;
   width: 100%;
   max-height: 800px;
-  overflow-x: auto;
+  max-width:100%;
+  // overflow-x: auto;
+  overflow-y: auto;
+  overflow-wrap: break-word;
 }
 #review-list-all {
   display: flex;
   flex-direction: column;
   width: 70%;
+  min-width: 70%;
+  max-width: 70%;
+  // padding-top: 3%;
+}
+
+@media (max-width: 800px) {
+  #review-list-all {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 1em;
+  }
+  #review-list {
+    max-height: 400px;
+  }
 }
 
 .review-button {
@@ -51,6 +68,8 @@
 .review-links {
   padding-left: 1%;
   padding-right: 1%;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .thumbnail-container {
@@ -69,10 +88,13 @@
   min-width: 10em;
   padding: 0.5em 1em;
   background: transparent;
-  border: #444 solid;
+  // border: #444 solid;
   border-radius: 1em;
-  text-decoration: underline;
+  // text-decoration: underline;
   color: inherit;
-  font: inherit;
-  border: 0px
+  // font: inherit;
+  border: 1px solid white;
+  font-size: 1em;
 }
+
+

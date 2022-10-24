@@ -4,11 +4,14 @@ const { useState, useEffect } = React;
 import ReviewEntry from './ReviewEntry.js';
 import Sorting from './Sorting.js';
 import ReviewModal from './ReviewModal.js';
+import SearchReviews from './SearchReviews.js'
 import UseReviewModal from './UseReviewModal.js';
 
-const ReviewList = ({reviews, sortReviews, metaReviews}) => {
+const ReviewList = ({reviews, sortReviews, metaReviews, putRequest}) => {
   const [displayNum, setDisplayNum] = useState(2)
   const [currentReviews, setCurrentReviews] = useState([])
+
+
   const passSortingName = (name) => {
     sortReviews(name)
   }
@@ -26,21 +29,23 @@ const ReviewList = ({reviews, sortReviews, metaReviews}) => {
   const {toggle, visible} = UseReviewModal()
   return (
     <div id="review-list-all">
+      <SearchReviews />
       <div id="sorting">
       {reviews[0] && <p>{reviews.length} reviews, sorted by <Sorting reviews={reviews} passSortingName={passSortingName}/></p>}
       </div>
       <div id="review-list">
       {currentReviews.length > 0 && currentReviews.map((review, index) => {
         return (
-          <ReviewEntry key={index} review={review}/>
+          <ReviewEntry key={index} review={review} putRequest={putRequest}/>
         )
-      })}<div id="button-cont">
-
-      {displayNum !== reviews.length && <button className="review-button" onClick={moreReviews}>More Reviews</button>}
-      <button className="review-button" onClick={toggle}>Add Review +</button>
-      <ReviewModal visible={visible} toggle={toggle} reviews={reviews} metaReviews={metaReviews}/>
-      </div>
+      })}
     </div>
+      <div id="button-cont">
+
+        {displayNum !== reviews.length && <button className="review-button" onClick={moreReviews}>More Reviews</button>}
+        <button className="review-button" onClick={toggle}>Add Review +</button>
+        <ReviewModal visible={visible} toggle={toggle} reviews={reviews} metaReviews={metaReviews}/>
+        </div>
     </div>
   )
 }

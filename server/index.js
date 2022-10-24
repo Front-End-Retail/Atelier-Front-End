@@ -127,6 +127,15 @@ app.post('/review', (req, res) => {
   })
 })
 
+app.put('/review/put', (req, res) => {
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/${req.body.review_id}/${req.body.path}`, {}, { headers: authObject }).then(() => {
+    res.send('helpful updated')
+  }).catch((err) => {
+    res.status(400)
+    res.end()
+  })
+})
+
 
 app.listen(3000);
 console.log('Listening on port 3000');

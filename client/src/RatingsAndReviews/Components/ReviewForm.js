@@ -156,18 +156,20 @@ const ReviewForm = ({toggle, metaReviews}) => {
           </label>
           {emailValidation && <div className="form-warning">Required field</div>}
           <p>For authentication reasons, you will not be emailed</p>
+          <div className="rating-recommend-container">
           <StarRating handleStarChange={handleStarChange}/>
           <p>Would you recommend this product?</p>
             <input onChange={handleChange} type="radio" className="helpful radio" name="helpful" value={true}/>
               <label for="yes">Yes</label>
             <input onChange={handleChange} type="radio" className='helpful-radio' name="helpful" value={false}/>
               <label for="No">No</label>
+          </div>
           <p>Characteristics</p>
           {metaReviews.characteristics && Object.keys(metaReviews.characteristics).map((key, index) => {
             let objId = metaReviews.characteristics[key].id
             return (
               <div key={index}>
-                <div className="character-desc-container"><p className="character-title">{key}: </p>{charDescription[key].length > 0 && <p className="character-desc">{charDescription[key]}</p>}</div>
+                <div className="character-desc-container"><p className="character-title">{key}:{charDescription[key].length < 1 && " None selected"} </p>{charDescription[key].length > 0 && <p className="character-desc">{charDescription[key]}</p>}</div>
                 <input onChange={(e) => handleCharChange(key, e)} type="radio" value="1" name={objId}/>
                   <label  for="">1</label>
                 <input onChange={(e) => handleCharChange(key, e)} type="radio" value="2" name={objId}/>
@@ -191,9 +193,10 @@ const ReviewForm = ({toggle, metaReviews}) => {
             </textarea>
             {(body.length < 50) ? <div className="form-warning">Minimum required characters left: {50 - body.length}</div> : <div className="form-success">Minimum reached</div> }
             {/* Upload files here */}
-            <button type="button" onClick={showWidget}>Upload Image</button>
+
             <div className="thumbnail-div"></div>
-        <input type="submit" value="Submit" multiple="multiple"/>
+        <button className="review-submit-btn" type="button" onClick={showWidget}>Upload Image</button>
+        <input className="review-submit-btn" type="submit" value="Submit" multiple="multiple"/>
 
       </form>
   )
