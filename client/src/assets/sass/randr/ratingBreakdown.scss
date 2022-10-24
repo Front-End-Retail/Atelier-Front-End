@@ -109,3 +109,7 @@
   font-size: small;
   justify-content: space-between;
 }
+
+@media (max-width: 1080px) {
+  .char-bar-desc {display: none}
+}

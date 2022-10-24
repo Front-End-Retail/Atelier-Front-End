@@ -27,13 +27,17 @@
   width: 70%;
   min-width: 70%;
   max-width: 70%;
-  padding-top: 3%;
+  // padding-top: 3%;
 }
 
 @media (max-width: 800px) {
   #review-list-all {
     width: 100%;
-    max-width: 100%
+    max-width: 100%;
+    padding: 0 1em;
+  }
+  #review-list {
+    max-height: 400px;
   }
 }
 
