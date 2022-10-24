@@ -10,12 +10,14 @@ import UseReviewModal from './UseReviewModal.js';
 const ReviewList = ({reviews, sortReviews, metaReviews, putRequest}) => {
   const [displayNum, setDisplayNum] = useState(2)
   const [currentReviews, setCurrentReviews] = useState([])
+  const [searchReviews, setSearchReviews] = useState([])
 
   const passSortingName = (name) => {
     sortReviews(name)
   }
   useEffect(() => {
     setCurrentReviews(reviews.slice(0, displayNum))
+    setSearchReviews(reviews.slice(0, displayNum))
   }, [reviews, displayNum])
 
   const moreReviews = () => {
@@ -25,15 +27,30 @@ const ReviewList = ({reviews, sortReviews, metaReviews, putRequest}) => {
       setDisplayNum(displayNum + 1)
     }
   }
+  const toggleSearch = (term) => {
+    if (term === false) {
+      setSearchReviews(currentReviews)
+    } else {
+      let searchedReviews = [...reviews]
+      searchedReviews = searchedReviews.filter(review => {
+        let reviewBody = review.body.toLowerCase()
+        if (reviewBody.indexOf(term) !== -1) {
+          return review
+        }
+      })
+      console.log('searching...', searchedReviews)
+      setSearchReviews(searchedReviews)
+    }
+  }
   const {toggle, visible} = UseReviewModal()
   return (
     <div id="review-list-all">
-      <SearchReviews />
+      <SearchReviews toggleSearch={toggleSearch}/>
       <div id="sorting">
       {reviews[0] && <p>{reviews.length} reviews, sorted by <Sorting reviews={reviews} passSortingName={passSortingName}/></p>}
       </div>
       <div id="review-list">
-      {currentReviews.length > 0 && currentReviews.map((review, index) => {
+      {searchReviews.length > 0 && searchReviews.map((review, index) => {
         return (
           <ReviewEntry key={index} review={review} putRequest={putRequest}/>
         )
