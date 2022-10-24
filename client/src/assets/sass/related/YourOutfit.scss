@@ -3,14 +3,14 @@
   width: 300px;
   padding: 10px;
   background-color: whitesmoke;
-  transition: all 1s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .outfit-component:hover {
   background-color: rgb(62, 62, 62);
   cursor: pointer;
   color: white;
-  transition: all 1s ease-in-out;
+  transition: all 0.3s ease-in-out;
   height: 450px;
   width: 350px;
 }

@@ -1,3 +1,7 @@
+.image-modal-total {
+  width: 60vw;
+  height: 60vh;
+}
 
 .modal-overlay {
   position: fixed;
@@ -15,16 +19,20 @@
   border: 2px solid #aaa;
   border-radius: 5px;
   z-index: 2;
-  min-width: fit-content;
+  width: 60vw;
+  height: 60vh;
   margin: auto;
   padding: 1em 2em 2em;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .image-in-modal {
-  max-height: 95vh;
-  max-width: 95vh;
+  max-height: 60vh;
+  max-width: 60vh;
 }

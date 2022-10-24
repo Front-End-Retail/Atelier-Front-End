@@ -169,7 +169,7 @@ const ReviewForm = ({toggle, metaReviews}) => {
             let objId = metaReviews.characteristics[key].id
             return (
               <div key={index}>
-                <div className="character-desc-container"><p className="character-title">{key}:{charDescription[key].length < 1 && " None selected"} </p>{charDescription[key].length > 0 && <p className="character-desc">{charDescription[key]}</p>}</div>
+                <div className="character-desc-container"><p className="character-title">{key}:{charDescription[key].length < 1 && "None selected"} </p>{charDescription[key].length > 0 && <p className="character-desc">{charDescription[key]}</p>}</div>
                 <input onChange={(e) => handleCharChange(key, e)} type="radio" value="1" name={objId}/>
                   <label  for="">1</label>
                 <input onChange={(e) => handleCharChange(key, e)} type="radio" value="2" name={objId}/>

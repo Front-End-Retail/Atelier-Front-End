@@ -9,9 +9,8 @@
 
 
 .image-slide {
-  width: 60%;
+  width: 60vw;
   background-repeat: no-repeat;
-  transition: background-image .5s ease-in;
   background-size: cover;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -21,7 +20,7 @@
 .fullscreen {
   background-repeat: no-repeat;
   background-size: contain;
-  width: 100%;
+  width: 100vw;
   height: 80vh;
   transition: all .5s ease-in;
   display: grid;
@@ -66,7 +65,7 @@
   color: #0b3c5d;
   cursor: pointer;
   font-size: 2rem;
-  grid-column: 8 / 8;
+  grid-column: 7 / 7;
   margin-right: 10px;
   margin-top: 10px;
 }

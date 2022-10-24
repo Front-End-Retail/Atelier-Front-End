@@ -93,14 +93,12 @@ const QAAnswerSubmitForm = ({ toggle, questionId, getProductQuestions }) => {
         <label>
           <p className={"form-input-title"}>What is your nickname?*</p>
           <input type={"text"} maxLength={"60"} required={"required"} placeholder={"Example: jackson11!"} value={answerName} onChange={(e) => { setAnswerName(e.target.value) }} className={"qModalInput"}></input>
-          {!validAnswerName && <div className={"modal-subtext"}>For privacy reasons, do not use your full name or email address</div>}
-          {validAnswerName && <><div className={"warning-text"}>*Required, must be less than 60 characters*</div></>}
+          {validAnswerName ? <><div className={"warning-text"}>*Required, must be less than 60 characters*</div></> : <div className={"information-text"}>For privacy reasons, do not use your full name or email address</div>}
         </label>
         <label>
           <p className={"form-input-title"}>Your email*</p>
           <input type={"email"} required={"required"} value={answerEmail} onChange={(e) => { setAnswerEmail(e.target.value) }} className={"qModalInput"}></input>
-          {!validAnswerEmail && <div className={"modal-subtext"}>For authentication reasons, you will not be emailed</div>}
-          {validAnswerEmail && <><div className={"warning-text"}>*Required, must be correctly formated email address*</div></>}
+          {validAnswerEmail ? <><div className={"warning-text"}>*Required, must be correctly formated email address*</div></> : <div className={"information-text"}>For authentication reasons, you will not be emailed</div>}
         </label>
         <button className={"modalPhotoButton"} type="button" onClick={showWidget}>Upload Image</button>
         <div className="thumbnail-div"></div>
