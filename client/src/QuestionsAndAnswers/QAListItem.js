@@ -86,7 +86,7 @@ const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness, cu
         </div>
         <div className={"qalist-helpful"}>
           <p>Helpful?</p>
-          <p id={"questionHelpful"} className={"underlined"}onClick={() => {voteHelpful(event)}}>Yes </p><p>({question.question_helpfulness})</p>
+          <p id={"questionHelpful"} className={"underlined"} onClick={() => {voteHelpful(event)}}>Yes </p><p>({question.question_helpfulness})</p>
           <p> | </p>
           <p className={"underlined"} onClick={toggle}> Add Answer </p>
         </div>

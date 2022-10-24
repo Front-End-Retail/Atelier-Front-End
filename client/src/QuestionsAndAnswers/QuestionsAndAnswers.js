@@ -35,7 +35,8 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
     })
   }
 
-  const addAnswerHelpfulness = (answerId) => {
+  const addAnswerHelpfulness = (elementID, answerId) => {
+    clicktracker(elementID, 'QandA', new Date())
     axios.default.put('http://localhost:3000/qanda/ahelp', { answerId: answerId }).then((data) => {
       getProductQuestions()
     }).catch((err) => {
