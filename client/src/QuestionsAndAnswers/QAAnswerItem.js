@@ -10,6 +10,7 @@ const QAAnswerItem = ({ answer, addAnswerHelpfulness, updateHelpfulCount, report
   const [photos, setPhotos] = useState([])
   const [votedAHelpful, setVotedAHelpful] = useState(false)
   const [reported, setReported] = useState(false)
+  const [bySeller, setBySeller] = useState(false)
 
   useEffect(() => {
     setPhotos(answer.photos)
@@ -31,6 +32,13 @@ const QAAnswerItem = ({ answer, addAnswerHelpfulness, updateHelpfulCount, report
     }
   }
 
+  useEffect(() => {
+    console.log(answer.answerer_name.toLowerCase())
+    if (answer.answerer_name.toLowerCase() === 'seller') {
+      setBySeller(true)
+    }
+  }, [answerId])
+
   return (
     <div className={"qalist-totalanswerwrapper"}>
       <div className={"qalist-answer-wrapper"}>
@@ -46,12 +54,12 @@ const QAAnswerItem = ({ answer, addAnswerHelpfulness, updateHelpfulCount, report
           })}
         </div>
         <div className={"qalist-answer-info-wrapper"}>
-          <p>by {answer.answerer_name}, {format(parseISO(answer.date), 'MMMM d, yyyy')}</p>
+          <p>by </p> {bySeller ? <p className={'seller-name'}>{answer.answerer_name}</p> : <p>{answer.answerer_name}</p>}<p>, {format(parseISO(answer.date), 'MMMM d, yyyy')}</p>
           <p> | </p>
           <p>Helpful?</p>
           <p className={"underlined"}onClick={() => {voteAHelpful()}}>Yes </p><p>({answer.helpfulness})</p>
           <p> | </p>
-          <p className={"underlined"} onClick={() => {reportIfNot()}}> Report </p>
+          {reported ? <p className={"reportedItalics"}> Reported </p> : <p className={"underlined"} onClick={() => {reportIfNot()}}> Report </p>}
         </div>
       </div>
     </div>
