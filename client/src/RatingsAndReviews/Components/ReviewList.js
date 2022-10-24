@@ -12,7 +12,9 @@ const ReviewList = ({reviews, sortReviews, metaReviews, putRequest}) => {
   const [currentReviews, setCurrentReviews] = useState([])
   const [searchReviews, setSearchReviews] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
+  const [searchNum, setSearchNum] = useState(-1) //This is used to toggle number of reviews text at the top of the list
 
+  // sort reviews with dropdown menu
   const passSortingName = (name) => {
     sortReviews(name)
   }
@@ -21,6 +23,7 @@ const ReviewList = ({reviews, sortReviews, metaReviews, putRequest}) => {
       setCurrentReviews(reviews.slice(0, displayNum))
     if (searchTerm.length < 3) {
       setSearchReviews(reviews.slice(0, displayNum))
+      setSearchNum(-1)
     } else {
       let searchedReviews = [...reviews]
       searchedReviews = searchedReviews.filter(review => {
@@ -30,6 +33,7 @@ const ReviewList = ({reviews, sortReviews, metaReviews, putRequest}) => {
         }
       })
       console.log('searching...', searchedReviews)
+      setSearchNum(searchedReviews.length)
       setSearchReviews(searchedReviews.slice(0, displayNum))
     }
 
@@ -39,6 +43,7 @@ const ReviewList = ({reviews, sortReviews, metaReviews, putRequest}) => {
   useEffect(() => {
     if (searchTerm.length < 3) {
       setSearchReviews(currentReviews)
+      setSearchNum(-1)
     } else {
       let searchedReviews = [...reviews]
       searchedReviews = searchedReviews.filter(review => {
@@ -47,10 +52,13 @@ const ReviewList = ({reviews, sortReviews, metaReviews, putRequest}) => {
           return review
         }
       })
-      console.log('searching...', searchedReviews)
+      console.log('searchNum', searchedReviews.length)
+      setSearchNum(searchedReviews.length)
       setSearchReviews(searchedReviews.slice(0, displayNum))
     }
   }, [searchTerm])
+
+  // show more reviews on button click
   const moreReviews = () => {
     if (displayNum + 1 < reviews.length) {
       setDisplayNum(displayNum + 2)
@@ -58,32 +66,20 @@ const ReviewList = ({reviews, sortReviews, metaReviews, putRequest}) => {
       setDisplayNum(displayNum + 1)
     }
   }
+  // setting the searchterm used to filter reviews
   const toggleSearch = (term) => {
     if (term === false) {
       setSearchTerm('')
     } else {
       setSearchTerm(term)
     }
-    // if (term === false) {
-    //   setSearchReviews(currentReviews)
-    // } else {
-    //   let searchedReviews = [...reviews]
-    //   searchedReviews = searchedReviews.filter(review => {
-    //     let reviewBody = review.body.toLowerCase()
-    //     if (reviewBody.indexOf(term) !== -1) {
-    //       return review
-    //     }
-    //   })
-    //   console.log('searching...', searchedReviews)
-    //   setSearchReviews(searchedReviews)
-    // }
   }
   const {toggle, visible} = UseReviewModal()
   return (
     <div id="review-list-all">
       <SearchReviews toggleSearch={toggleSearch}/>
       <div id="sorting">
-      {reviews[0] && <p>{reviews.length} reviews, sorted by <Sorting reviews={reviews} passSortingName={passSortingName}/></p>}
+      {reviews[0] && <p>{searchNum < 0 ? reviews.length : searchNum} reviews, sorted by <Sorting reviews={reviews} passSortingName={passSortingName}/></p>}
       </div>
       <div id="review-list">
       {searchReviews.length > 0 && searchReviews.map((review, index) => {
