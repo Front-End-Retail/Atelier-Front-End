@@ -67,9 +67,8 @@ const handlePlusIconClick = () =>{
           response.data.results.forEach(result=>{
 
             if (result.style_id === selectedStyle.style_id && styleIDList.indexOf(selectedStyle.style_id)===-1) {
-              console.log('styleIDList.indexOf(selectedStyle.style_id: ', styleIDList.indexOf(selectedStyle.style_id))
-              console.log('outfitList before: ', outfitList)
-
+              // console.log('styleIDList.indexOf(selectedStyle.style_id: ', styleIDList.indexOf(selectedStyle.style_id))
+              // console.log('outfitList before: ', outfitList)
               tempOutfit.styleID = result.style_id;
               tempOutfit.style = result.name;
               tempOutfit.image = result.photos[0].url;
