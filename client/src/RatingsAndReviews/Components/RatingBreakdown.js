@@ -42,15 +42,15 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter, sortReviews, curr
         // let ratioTotal = 300 - ratio;
         let singleStarVotes = metaReviews.ratings[starNum]
         return <div className="star-bars">
-          <div className="star-a-element" style={{maxWidth: "30%"}}><a  name={starNum} onClick={starClick}>{starNum} stars</a></div>
+          <div className="star-a-element" style={{width: "20%"}}><a  name={starNum} onClick={starClick}>{starNum} stars</a></div>
             {/* <div style={{height: "10", width: `${(singleStarVotes/ratingTotal) * 100}%`, background: "green"}}></div> */}
-            <div className="bar-container" style={{minWidth: "60%"}}>
+            <div className="bar-container" style={{width: "75%"}}>
             <div style={{height: "15px", width: `${100}%`, background: "#F9F6EE"}}>
             <div style={{height: "15px", width: `${(singleStarVotes/ratingTotal) * 100}%`, background: "#D9B310"}}></div></div> {/*(1 - (singleStarVotes/ratingTotal)) *  */}
           </div>
           {/* <div>{metaReviews.ratings[starNum]}</div> */}
         <>
-        <div style={{maxWidth: "10%"}}>{metaReviews.ratings[starNum]}</div>
+        <div style={{width: "15%"}}>{metaReviews.ratings[starNum]}</div>
         </>
         </div>
       })}
