@@ -1,8 +1,7 @@
 #randr {
   display: flex;
-
   flex-direction: row;
-  width: 95vw;
+  width: 80vw;
   height: 3fr;
   max-height: 100vh;
   gap: 5%;
@@ -16,7 +15,7 @@
   justify-content: center;
   flex-direction: column;
   background-color: #34699E;
-  width: 95vw;
+  width: 80vw;
   height: 3fr;
   max-height: 100vh;
   border: solid black 1px;

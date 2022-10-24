@@ -15,6 +15,8 @@ export const findAverage = (ratingsObj) => {
   }
 }
 
+
+
 export const propComparator = (name) => {
   if (name === 'helpfulness') {
   return function (a, b)  {

@@ -113,3 +113,13 @@
 @media (max-width: 1080px) {
   .char-bar-desc {display: none}
 }
+
+.star-bars {
+  display: flex;
+  flex-direction: row;
+  // flex-wrap: nowrap;
+}
+
+.individual-rating {
+  padding-left: 1%
+}

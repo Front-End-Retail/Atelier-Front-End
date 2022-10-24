@@ -94,7 +94,7 @@ const RatingsAndReviews = ({currentProductID}) => {
   }
   const metaRequest = () => {
     axios.default.get('http://localhost:3000/review', { params: { specificURL : `reviews/meta?product_id=${currentProductID}` }}).then((reviewData) => {
-      // console.log('meta data:', reviewData.data)
+      console.log('meta data:', reviewData.data)
       setMetaReviews(reviewData.data)
     }).catch(err => {
       console.log('error getting', err)
@@ -116,9 +116,9 @@ useEffect(() => {
 
 
   return (
-      <div >
+      <div id="center-reviews">
         {/* <button onClick={testButton} name="test-button">Rating Test</button> */}
-        <div id="center-reviews">
+        {/* <div > */}
           {/* <div>search goes here</div> */}
         <div id="title">Ratings and Reviews</div>
         <div id="randr">
@@ -126,7 +126,7 @@ useEffect(() => {
          sortReviews={sortReviews} currentSort={currentSort}/>
         <ReviewList reviews={starReviews} sortReviews={sortReviews} metaReviews={metaReviews} putRequest={putRequest}/>
         </div>
-      </div>
+      {/* </div> */}
       </div>
   )
 }

@@ -40,13 +40,17 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter, sortReviews, curr
       {ratingTotal && Object.keys(metaReviews.ratings).reverse().map((starNum, index) => {
         let ratio = findRatio(ratingTotal, metaReviews.ratings[starNum])
         let ratioTotal = 300 - ratio;
-        return <table className="star-bars" key={index}><tbody>
+        return <div className="star-bars">
+          <table  key={index}><tbody>
         <tr width="300px" height="15px">
         <td className="star-a-element"><a  name={starNum} onClick={starClick}>{starNum} stars</a></td>
         <td style={{background: "green", width: ratio, height:10}}></td><td style={{background: "gray", width: ratioTotal, height:10}}></td>
+
         </tr>
         </tbody>
         </table>
+        <div>{metaReviews.ratings[starNum]}</div>
+        </div>
       })}
       {!starFilter.every(everyFunc) && <StarFilterDesc starFilter={starFilter}/>}
       {!starFilter.every(everyFunc) && <button onClick={removeFilterButton}>Remove Filters</button>}
