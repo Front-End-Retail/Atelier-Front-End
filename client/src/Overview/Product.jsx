@@ -37,7 +37,7 @@ const Product = ({ styles, currentProduct, selectedStyle, changeStyle, metaRevie
         <span className="category">{currentProduct.category}</span>
         <h2>{currentProduct.name}</h2>
 
-        {selectedStyle.sale_price ? <div className="sale-price"><p style={{ color: 'red' }}>{selectedStyle.sale_price}</p><p style={{ textDecoration: 'line-through' }}>{selectedStyle.original_price}</p></div> : <p>${selectedStyle.original_price}</p>}
+        {selectedStyle.sale_price ? <div className="sale-price"><p style={{ color: 'red' }}>${selectedStyle.sale_price}</p><p style={{ textDecoration: 'line-through' }}>{selectedStyle.original_price}</p></div> : <p>${selectedStyle.original_price}</p>}
 
       </div >
       <StyleSelector styles={styles} selectedStyle={selectedStyle} changeStyle={changeStyle} />

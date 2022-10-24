@@ -1,0 +1,54 @@
+.yourOutfitListContainer{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap:20px;
+}
+
+.emptyOutfitList {
+  display: flex;
+  justify-content: center;
+  font-family: 'Pacifico', cursive;
+  font-size: medium;
+}
+
+.plusIcon {
+  display: flex;
+  justify-content: center;
+  font-family: 'Nunito', sans-serif;
+  padding-bottom: 30px;
+}
+
+.addMoreOutfit {
+  /* border: 1px solid #ede0d4; */
+  height: 400px;
+  width: 300px;
+  padding: 10px;
+  background-color: #0b3c5d;
+  color: white;
+}
+
+.addMoreOutfit-word {
+  padding: 90px;
+  font-family: 'Pacifico', cursive;
+  font-size: 18px;
+}
+
+.plusIconInAddMore{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.plus{
+  height: 30px;
+  width: 30px;
+}
+
+// .plusIcon {
+//   display: flex;
+//   justify-content: center;
+//   font-family: 'Nunito', sans-serif;
+//   padding-bottom: 30px;
+// }
+
