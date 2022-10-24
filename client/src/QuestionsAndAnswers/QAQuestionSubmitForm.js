@@ -38,21 +38,18 @@ const QAQuestionSubmitForm = ({ toggle, currentId, getProductQuestions }) => {
     if (questionText.length < 1000 && questionText.length > 0) {
       setValidText(false)
     } else if (questionText.length > 1000 || questionText.length === 0) {
-      console.log('qtext', questionText.length, questionText)
       isValid = false
       setValidText(true)
     }
     if (nickName.length < 60 && nickName.length > 0) {
       setValidName(false)
     } else if (nickName.length > 60 || nickName.length === 0) {
-      console.log('name', nickName.length, nickName)
       isValid = false
       setValidName(true)
     }
     if (emailText.indexOf('@') !== -1 && emailText.indexOf('.') !== -1) {
       setValidEmail(false)
     } else if (emailText.indexOf('@') === -1 || emailText.indexOf('.') === -1) {
-      console.log('email', emailText)
       isValid = false
       setValidEmail(true)
     }
@@ -70,12 +67,12 @@ const QAQuestionSubmitForm = ({ toggle, currentId, getProductQuestions }) => {
         <label>
           <p className={"form-input-title"}>Your nickname*</p>
           <input type={"text"} maxLength={"60"} required={"required"} placeholder={"Example: jackson11!"} value={nickName} onChange={(e) => { setNickName(event.target.value) }} className={"qModalInput"}></input>
-          {validName && <><div className={"warning-text"}>*Required, must be less than 60 characters*</div></>}
+          {validName ? <><div className={"warning-text"}>*Required, must be less than 60 characters*</div></> : <div className={"information-text"}>For privacy reasons, do not use your full name or email address</div>}
         </label>
         <label>
           <p className={"form-input-title"}>Your email*</p>
           <input type={"email"} required={"required"} value={emailText} onChange={(e) => { setEmailText(event.target.value) }} className={"qModalInput"}></input>
-          {validEmail && <><div className={"warning-text"}>*Required, must be correctly formated email address*</div></>}
+          {validEmail ? <><div className={"warning-text"}>*Required, must be correctly formated email address*</div></> : <div className={"information-text"}>For authentication reasons, you will not be emailed</div>}
         </label>
         <div className={"modal-button-container"}>
           <button type="button" onClick={() => { submitQuestionForm() }} className={"modalSubmissionButton"}>Submit</button>
