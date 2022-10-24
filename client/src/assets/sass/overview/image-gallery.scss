@@ -9,7 +9,7 @@
 
 
 .image-slide {
-  width: 60%;
+  width: 60vw;
   background-repeat: no-repeat;
   transition: background-image .5s ease-in;
   background-size: cover;
@@ -21,7 +21,7 @@
 .fullscreen {
   background-repeat: no-repeat;
   background-size: contain;
-  width: 100%;
+  width: 100vw;
   height: 80vh;
   transition: all .5s ease-in;
   display: grid;

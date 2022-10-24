@@ -1,6 +1,7 @@
 import React from 'react';
 import ImageGallery from './ImageGallery.jsx';
 import Product from './Product.jsx';
+import ProductDescription from './ProductDescription.jsx';
 import axios from 'axios';
 const { useState, useEffect } = React;
 
@@ -41,10 +42,13 @@ const Overview = ({ currentProductID, styles, selectedStyle, changeStyle }) => {
   }, [currentProductID]);
 
   return (
-    <div className='overview-container'>
-      {selectedStyle && Object.keys(selectedStyle).length !== 0 && <ImageGallery selectedStyle={selectedStyle} setFullscreen={setFullscreen} fullscreen={fullscreen} />}
-      {selectedStyle && <Product fullscreen={fullscreen} metaReviews={metaReviews} styles={styles} selectedStyle={selectedStyle} changeStyle={changeStyle} currentProduct={currentProduct} />}
-    </div>
+    <>
+      <div className='overview-container'>
+        {selectedStyle && Object.keys(selectedStyle).length !== 0 && <ImageGallery selectedStyle={selectedStyle} setFullscreen={setFullscreen} fullscreen={fullscreen} />}
+        {selectedStyle && <Product fullscreen={fullscreen} metaReviews={metaReviews} styles={styles} selectedStyle={selectedStyle} changeStyle={changeStyle} currentProduct={currentProduct} />}
+      </div>
+      {currentProduct && Object.keys(currentProduct).length !== 0 ? <ProductDescription currentProduct={currentProduct} /> : null}
+    </>
   )
 }
 
