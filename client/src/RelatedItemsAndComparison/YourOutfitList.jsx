@@ -8,7 +8,7 @@ import YourOutfit from './YourOutfit.jsx';
 const { useState, useEffect } = React;
 
 
-const YourOutfitList = ({outfitList, handlePlusIconClick, updateOutfitList}) => {
+const YourOutfitList = ({outfitList, handlePlusIconClick, updateOutfitList, duplicateSelected, closePopUp}) => {
 
   const [currCarousel, setCurrCarousel] = useState([]);
   useEffect(()=>{
@@ -38,7 +38,7 @@ if (currCarousel.length === 0) {
              </div>
         </div>
         {currCarousel.map((outfit, index)=>{
-              return <YourOutfit key={index} outfit={outfit} updateOutfitList={updateOutfitList}></YourOutfit>})}
+              return <YourOutfit key={index} outfit={outfit} updateOutfitList={updateOutfitList} duplicateSelected={duplicateSelected} closePopUp={closePopUp}></YourOutfit>})}
     </div>
     )
  }
@@ -53,7 +53,7 @@ if (currCarousel.length === 0) {
                </div>
           </div>
           {currCarousel.slice(0, 3).map((outfit, index)=>{
-              return <YourOutfit key={index} outfit={outfit} updateOutfitList={updateOutfitList}></YourOutfit>
+              return <YourOutfit key={index} outfit={outfit} updateOutfitList={updateOutfitList} duplicateSelected={duplicateSelected} closePopUp={closePopUp}></YourOutfit>
           })}
           {currCarousel.length>3 && <button className='rightArrowIcon-outfitList'><FontAwesomeIcon icon={faArrowRight}/></button>}
      </div>

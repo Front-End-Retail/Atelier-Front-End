@@ -1,0 +1,17 @@
+.outfitPopUp-container {
+  width: 200px;
+  height: 50px;
+  border-radius: 12px;
+  background-color: white;
+  color: black;
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+  /* display: flex;
+  flex-direction: column; */
+  padding: 25px;
+  position:fixed;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
