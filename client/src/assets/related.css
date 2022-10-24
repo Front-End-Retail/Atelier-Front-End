@@ -1,7 +1,10 @@
-.relatedItemsAndComparison{
-  background-image: url('./skyBackground.jpeg');
+.relatedItemsAndComparison {
+  /* background-image: url('./skyBackground.jpeg'); */
+  width: 90vw;
+  margin: 0 auto;
 
 }
+
 .YouMightAlsoLike {
   font-family: 'Lobster', sans-serif;
   font-weight: bold;
@@ -195,7 +198,7 @@ height: 200px; */
 
 
 .starIconButton {
-/* this will move button from left to right */
+  /* this will move button from left to right */
   float: right;
   padding: 3px;
   cursor: pointer;
@@ -205,49 +208,49 @@ height: 200px; */
   width: 40px;
 }
 
-.starIconButton:hover{
+.starIconButton:hover {
   background: none;
   border: transparent;
 }
 
-.starIcon{
+.starIcon {
   height: 20px;
-  width:20px;
+  width: 20px;
 }
 
-.starIcon:hover{
+.starIcon:hover {
   height: 30px;
-  width:30px;
+  width: 30px;
   cursor: point;
 }
 
-.product-name{
+.product-name {
   font-family: 'Nunito', sans-serif;
   font-weight: bold;
   padding: 3px;
 }
 
-.product-category{
+.product-category {
   font-family: 'Nunito', sans-serif;
   font-size: 13px;
-  color:#808080;
+  color: #808080;
   padding: 1.5px;
 }
 
-.product-price{
+.product-price {
   padding: 3px;
   font-family: 'Nunito', sans-serif;
 }
 
-.yourOutfitListContainer{
-  display:flex;
+.yourOutfitListContainer {
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap:20px;
+  gap: 20px;
 }
 
 
-.outfit-component{
+.outfit-component {
   height: 400px;
   width: 300px;
   padding: 10px;
@@ -286,13 +289,13 @@ height: 200px; */
   padding-bottom: 30px;
 }
 
-.plusIconInAddMore{
+.plusIconInAddMore {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.plus{
+.plus {
   height: 30px;
   width: 30px;
 }
@@ -308,11 +311,12 @@ height: 200px; */
   padding: 3px;
 }
 
-.innerOutfitContainer{
+.innerOutfitContainer {
   display: flex;
   justify-content: center;
-  gap:20px;
+  gap: 20px;
 }
+
 .outfit-name {
   font-family: 'Nunito', sans-serif;
   font-weight: bold;
@@ -322,14 +326,13 @@ height: 200px; */
 .outfit-regularPrice {
   text-decoration: line-through;
 }
-.outfit-regularPrice-no-linethrough {
 
-}
+.outfit-regularPrice-no-linethrough {}
 
-.outfit-category{
+.outfit-category {
   font-family: 'Nunito', sans-serif;
   font-size: 13px;
-  color:#808080;
+  color: #808080;
   padding: 1.5px;
 }
 
@@ -338,10 +341,10 @@ height: 200px; */
   margin-top: 200px;
   position: absolute;
   top: -10px;
-  right:-10px;
+  right: -10px;
 }
 
-.relatedProductsOuterContainer{
+.relatedProductsOuterContainer {
   position: relative;
   /* how to overlay the rightArrowIcon button? */
   /* The container (WSEDIT) should have position:relative so you can absolutely-position the button.
