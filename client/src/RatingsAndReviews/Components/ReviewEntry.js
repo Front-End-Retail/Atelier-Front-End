@@ -40,7 +40,7 @@ const ReviewEntry = ({review, putRequest}) => {
       </div>
       <h3 className="review-tile-summary">{review.summary}</h3>
       {review.body.length < 250 && <p className="review-body">{review.body}</p>}
-      {!toggleBody ? <div className="review-body">{review.body.length > 250 && <p className="review-body">{review.body.slice(0,250)} <button className="show-more" onClick={expandBody}>show more</button></p>}</div> : null}
+      {!toggleBody ? <div className="review-body">{review.body.length > 250 && <p className="review-body">{review.body.slice(0,250)} ... <button className="show-more" onClick={expandBody}>show more</button></p>}</div> : null}
       {toggleBody && <div className="review-body">{review.body}</div>}
       {review.response && <div className="response"><h4>Response:</h4>{review.response}</div>}
       <div className="thumbnail-container">
