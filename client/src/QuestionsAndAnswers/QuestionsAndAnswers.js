@@ -10,7 +10,7 @@ const axios = require('axios');
 const { useState, useEffect } = React;
 
 const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
-  const [currentId, setCurrentId] = useState(currentProductID)
+  const [currentId, setCurrentId] = useState(0)
   const [currentQuestions, setCurrentQuestions] = useState([])
   const [displayedQuestions, setDisplayedQuestions] = useState([])
   const [searchedQuestions, setSearchedQuestions] = useState([])
@@ -71,11 +71,15 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
 
   //will call for question info on initial render
   useEffect(() => {
+    console.log("THE CURRENT ID", typeof currentProductID, currentProductID)
     setCurrentId(currentProductID)
   }, [currentProductID])
 
   useEffect(() => {
-    getProductQuestions()
+    setCurrentQuestions([])
+    if (currentId !== 0) {
+      getProductQuestions()
+    }
   }, [currentId])
 
   //update search term function to be passed down into search bar component

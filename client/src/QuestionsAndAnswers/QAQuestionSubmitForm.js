@@ -1,5 +1,4 @@
 import React from 'react';
-import magnifyingGlass from '../assets/search.png';
 const axios = require('axios');
 
 const { useState, useEffect } = React;
