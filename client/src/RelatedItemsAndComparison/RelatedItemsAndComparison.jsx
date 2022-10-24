@@ -13,8 +13,6 @@ const RelatedItemsAndComparison = ({currentProductID, changeCurrentProduct, sele
 // console.log('currentProductID passed in: ', currentProductID) //its first 0 and then 37311 //DONT CONSOLE.LOG here, console.log inside of fetch
   const [relatedProductsID, setRelatedProductsID] = useState([]);
   const [outfitList, setOutfitList] = useState([]);
-  const [currentOutfit, setCurrentOutfit] = useState({});
-
   const [styleIDList, setStyleIDList] = useState([]);
   const [duplicateSelected, setDuplicateSelected] = useState(false);
 
@@ -113,8 +111,13 @@ const updateOutfitList = (currentStyleID) =>{
     }
    })
    setOutfitList(copyOutfitList);
-
-   //everytime there is a state change, it re-renders?
+   const copyStyleIDList = styleIDList.slice();
+   styleIDList.forEach((styleID, index) => {
+    if (styleID === currentStyleID) {
+      copyStyleIDList.splice(index, 1);
+    }
+   })
+   setStyleIDList(copyStyleIDList);
 }
 
 
