@@ -1,0 +1,30 @@
+.relatedProductsOuterContainer{
+  position: relative;
+  /* how to overlay the rightArrowIcon button? */
+  /* The container (WSEDIT) should have position:relative so you can absolutely-position the button.
+The button should be inside the container. The button needs: position:absolute; top:-10px; right:-20px (approximately) */
+}
+
+.relatedProductsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.rightArrowIcon {
+  /* float: right; */
+  height: 40px;
+  width: 40px;
+  margin-top: 200px;
+  position: absolute;
+  top: -10px;
+  right:-10px;
+}
+
+.leftArrowIcon {
+  height: 40px;
+  width: 40px;
+  float: right;
+  margin-top: 200px;
+}
+

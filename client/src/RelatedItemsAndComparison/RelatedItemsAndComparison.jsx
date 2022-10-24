@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import RelatedProducts from './RelatedProducts.jsx';
 import YourOutfitList from './YourOutfitList.jsx';
-import '../assets/related.css';
+// import '../assets/related.css';
 import Modal from './Modal.jsx';
 
 
