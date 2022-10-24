@@ -13,9 +13,8 @@ const RelatedItemsAndComparison = ({currentProductID, changeCurrentProduct, sele
 // console.log('currentProductID passed in: ', currentProductID) //its first 0 and then 37311 //DONT CONSOLE.LOG here, console.log inside of fetch
   const [relatedProductsID, setRelatedProductsID] = useState([]);
   const [outfitList, setOutfitList] = useState([]);
-  const [currentOutfit, setCurrentOutfit] = useState({});
-
   const [styleIDList, setStyleIDList] = useState([]);
+  const [duplicateSelected, setDuplicateSelected] = useState(false);
 
     const fetchAllRelatedProductsID = () => {
       // console.log('selectedStyle: ', selectedStyle)
@@ -51,8 +50,9 @@ const RelatedItemsAndComparison = ({currentProductID, changeCurrentProduct, sele
 
 
 const handlePlusIconClick = () =>{
-
-
+  if  (styleIDList.indexOf(selectedStyle.style_id)!==-1) {
+    setDuplicateSelected(true);
+  }
   if (styleIDList.indexOf(selectedStyle.style_id) === -1) {
 
   axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${currentProductID}` } })
@@ -67,9 +67,8 @@ const handlePlusIconClick = () =>{
           response.data.results.forEach(result=>{
 
             if (result.style_id === selectedStyle.style_id && styleIDList.indexOf(selectedStyle.style_id)===-1) {
-              console.log('styleIDList.indexOf(selectedStyle.style_id: ', styleIDList.indexOf(selectedStyle.style_id))
-              console.log('outfitList before: ', outfitList)
-
+              // console.log('styleIDList.indexOf(selectedStyle.style_id: ', styleIDList.indexOf(selectedStyle.style_id))
+              // console.log('outfitList before: ', outfitList)
               tempOutfit.styleID = result.style_id;
               tempOutfit.style = result.name;
               tempOutfit.image = result.photos[0].url;
@@ -91,7 +90,10 @@ const handlePlusIconClick = () =>{
       console.log('yourOutfitList failed to retrieve style with style_id:' , err)
     })
   }
+}
 
+const closePopUp = () => {
+  setDuplicateSelected(false);
 }
 
 //this is more like a delete, instead of updating
@@ -108,17 +110,22 @@ const updateOutfitList = (currentStyleID) =>{
     }
    })
    setOutfitList(copyOutfitList);
-
-   //everytime there is a state change, it re-renders?
+   const copyStyleIDList = styleIDList.slice();
+   styleIDList.forEach((styleID, index) => {
+    if (styleID === currentStyleID) {
+      copyStyleIDList.splice(index, 1);
+    }
+   })
+   setStyleIDList(copyStyleIDList);
 }
 
 
   return (
-    <div>
+    <div className='relatedItemsAndComparison'>
       <h2 className='YouMightAlsoLike'>YOU MIGHT ALSO LIKE</h2>
       <RelatedProducts relatedProductsID={relatedProductsID} currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct}></RelatedProducts>
       <h3 className='CompleteYourOutfit'>COMPLETE YOUR OUTFIT</h3>
-      <YourOutfitList outfitList = {outfitList} handlePlusIconClick={handlePlusIconClick} updateOutfitList={updateOutfitList}></YourOutfitList>
+      <YourOutfitList outfitList = {outfitList} handlePlusIconClick={handlePlusIconClick} updateOutfitList={updateOutfitList} duplicateSelected={duplicateSelected} closePopUp={closePopUp}></YourOutfitList>
     </div>
   );
 };

@@ -3,6 +3,8 @@ import './Modal.css';
 const { useState, useEffect } = React;
 import axios from 'axios';
 import Feature from './Feature.jsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
  // check if the value of feature is null
 
 const Modal = ({closeModal, currentProductID, relatedProductID}) =>{
@@ -60,12 +62,13 @@ const [comparedProductName, setComparedProductName] = useState('');
   return (
     <div className='modalBackground'>
       <div className='modalContainer'>
-      <span>FIND YOUR FIT</span>
+      <button className='closeBtn' onClick={()=>{closeModal(false)}}><FontAwesomeIcon id='exit-icon' icon={faTimes}/></button>
+      <span className='comparing'>COMPARING</span>
       <table>
           <tr>
-              <th>PRODUCT NAME</th>
-              <th>FEATURE</th>
-              <th>PRODUCT NAME</th>
+              <th className='first-row'>PRODUCT NAME</th>
+              <th className='first-row'>FEATURE</th>
+              <th className='first-row'>PRODUCT NAME</th>
           </tr>
           <tr>
               <th>{currProductName}</th>
@@ -73,15 +76,12 @@ const [comparedProductName, setComparedProductName] = useState('');
               <th>{comparedProductName}</th>
           </tr>
 
-
     {featureList.map((feature, index)=>{
        return <Feature key={index} feature={feature}
         comparedProductFeatures={comparedProductFeatures} currProductFeatures={currProductFeatures}></Feature>
     })}
 
       </table>
-
-      <div className='titleCloseBtn'><button onClick={()=>{closeModal(false)}}>x</button> </div>
       </div>
     </div>
   );

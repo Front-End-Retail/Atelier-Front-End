@@ -3,11 +3,11 @@ import '../assets/related.css';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import OutfitPopUp from './OutfitPopUp.jsx';
 
 const { useState, useEffect } = React;
 
-const YourOutfit = ({outfit, updateOutfitList}) =>{
-
+const YourOutfit = ({outfit, updateOutfitList, duplicateSelected, closePopUp}) =>{
 
   return (
     <div className='outfit-component'>
@@ -30,6 +30,7 @@ const YourOutfit = ({outfit, updateOutfitList}) =>{
                  : <div><span className='outfit-regularPrice-no-linethrough'>${outfit.regularPrice}</span></div>
                }
          </div>
+         {duplicateSelected && <OutfitPopUp closePopUp={closePopUp}></OutfitPopUp>}
     </div>
  )
 }

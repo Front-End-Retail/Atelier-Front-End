@@ -10,7 +10,6 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 const RelatedProducts = ({relatedProductsID, currentProductID, changeCurrentProduct}) => {
 
 
-
   // console.log('relatedProductsID array passed in RelatedProducts.jsx', relatedProductsID)//[37313, 37314, 37317, 37319, 37320]
 
   const [currCarousel, setCurrCarousel] = useState([]);

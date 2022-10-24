@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
-const ImageGallery = ({ selectedStyle }) => {
+import { faChevronRight, faChevronLeft, faExpand } from '@fortawesome/free-solid-svg-icons'
+const ImageGallery = ({ selectedStyle, fullscreen, setFullscreen }) => {
   const [mainImages, setMainImages] = useState([]);
   const [thumbnails, setThumbnails] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [fullscreen, setFullscreen] = useState(false);
   const [isSelected, setIsSelected] = useState('');
 
   const previousSlide = () => {
@@ -13,6 +12,7 @@ const ImageGallery = ({ selectedStyle }) => {
     const shouldResetIndex = currentImageIndex === 0
     const index = shouldResetIndex ? lastIndex : currentImageIndex - 1;
     setCurrentImageIndex(index);
+    setIsSelected(thumbnails[index]);
   }
 
   const nextSlide = () => {
@@ -20,6 +20,7 @@ const ImageGallery = ({ selectedStyle }) => {
     const shouldResetIndex = currentImageIndex === lastIndex
     const index = shouldResetIndex ? lastIndex : currentImageIndex + 1;
     setCurrentImageIndex(index);
+    setIsSelected(thumbnails[index]);
   }
 
   const handleSelected = (selection) => {
@@ -36,18 +37,14 @@ const ImageGallery = ({ selectedStyle }) => {
     setMainImages(tempMain)
     setThumbnails(tempThumb);
     setCurrentImageIndex(0);
-    setIsSelected(currentImageIndex);
   }, [selectedStyle])
-
 
   return (
     <>
-      <div className="image-slide" style={{
+      <div className={fullscreen ? 'fullscreen' : "image-slide"} style={{
         backgroundImage: `url(${mainImages[currentImageIndex]})`,
         backgroundPosition: 'center',
-        backgroundSize: 'cover'
-      }} onClick={() => setFullscreen(!fullscreen)}>
-
+      }}>
         <div className='container-of-containers'>
           <div className='thumbnails-container'>
             {thumbnails.map((thumbnail, i) => {
@@ -77,6 +74,7 @@ const ImageGallery = ({ selectedStyle }) => {
         <FontAwesomeIcon icon={faChevronRight}
           className={`slide-arrow right`}
           onClick={nextSlide} />
+        <FontAwesomeIcon className='fullscreenIcon' icon={faExpand} onClick={() => setFullscreen(!fullscreen)} />
       </div>
     </>
   )

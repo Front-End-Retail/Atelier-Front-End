@@ -1,34 +1,10 @@
-/* @keyframes heartbeat{
+.relatedItemsAndComparison {
+  /* background-image: url('./skyBackground.jpeg'); */
+  width: 90vw;
+  margin: 0 auto;
 
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.25);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-} */
-
-/* .heart {
-  color:black;
-  opacity: 0.3;
-  cursor: point;
-  width: 25px;
-  height: 25px;
-  padding: 10px;
 }
 
-.heart:hover{
-  animation: heartbeat 1s infinite;
-  fill:red;
-  color:red;
-  opacity: 1;
-  transition: opacity 500ms;
-} */
 .YouMightAlsoLike {
   font-family: 'Lobster', sans-serif;
   font-weight: bold;
@@ -78,16 +54,6 @@
   position: fixed;
 }
 
-/* .modalBackground {
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(200, 200, 200);
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-
 .modalContainer {
   width: 500px;
   height: 500px;
@@ -99,10 +65,6 @@
   padding: 25px;
 }
 
-.titleCloseBtn {
-  display: flex;
-  justify-content: flex-end;
-}
 
 .heartIcon {
   padding: 5px;
@@ -192,92 +154,20 @@ height: 200px; */
   /* object-fit: cover; */
 /* } */
 
-/* .starIcon{
-  position: absolute;
-  backface-visibility: hidden;
-  text-transform: capitalize;
-} */
 
-/* .product-info{
-  width: 100%;
-  height: 10px;
-  padding-top: 10px;
-}
-
-.price{
-  font-weight: 900;
-  font-size: 10px;
-}
-
-.product-name{
-  font-size: 10px;
-}
-
-.product-category{
-  font-size: 10px;
-} */
-
-/* .relatedProductsContainer{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.card-component{
-  display: flex;
-  /* position: relative;
-  place-self: center; */
-/* height: 300px;
-  width: 200px;
-  /* align-self:flex-start; */
-
-
-/* .upper-part{
-  display: flex;
-  height: 180px;
-  width: 200px;
-} */
-
-/* .product-image{
-  height: 100%;
-  width: 100%;
-  max-height: 100%;
-  max-width: 100%;
-  object-fit:cover;
-  overflow:auto;
-} */
-
-/* .product-category{
-  font-size: 14px;
-  padding-left: 5px;
-}
-
-.product-name{
-  font-weight: 600;
-  font-size: 15px;
-  height: fit-content;
-  padding-left: 5px;
-} */
-
-/* .product-price{
-  color: #d00000;
-  font-weight: 600;
-  padding-top: 4px;
-  align-self: center;
-  padding-left: 5px;
-}
-*/
 .card-component {
-  border: 1px solid #ede0d4;
+  /* border: 1px solid #ede0d4; */
   height: 400px;
   width: 300px;
   padding: 10px;
-  background-color: #ede0d4;
+  background-color: whitesmoke;
+  /* background-color: #ede0d4; #34699E;*/
   transition: all 1s ease-in-out;
 }
 
 .card-component:hover {
   background-color: rgb(62, 62, 62);
+  /* background-color: #34699E; */
   cursor: pointer;
   color: white;
   transition: all 1s ease-in-out;
@@ -294,7 +184,6 @@ height: 200px; */
 
 .product-image {
   height: 75%;
-  border: 3px solid #ede0d4;
   border-radius: 7px;
 }
 
@@ -309,7 +198,7 @@ height: 200px; */
 
 
 .starIconButton {
-/* this will move button from left to right */
+  /* this will move button from left to right */
   float: right;
   padding: 3px;
   cursor: pointer;
@@ -319,54 +208,53 @@ height: 200px; */
   width: 40px;
 }
 
-.starIconButton:hover{
+.starIconButton:hover {
   background: none;
   border: transparent;
 }
 
-.starIcon{
+.starIcon {
   height: 20px;
-  width:20px;
+  width: 20px;
 }
 
-.starIcon:hover{
+.starIcon:hover {
   height: 30px;
-  width:30px;
+  width: 30px;
   cursor: point;
 }
 
-.product-name{
+.product-name {
   font-family: 'Nunito', sans-serif;
   font-weight: bold;
   padding: 3px;
 }
 
-.product-category{
+.product-category {
   font-family: 'Nunito', sans-serif;
   font-size: 13px;
-  color:#808080;
+  color: #808080;
   padding: 1.5px;
 }
 
-.product-price{
+.product-price {
   padding: 3px;
   font-family: 'Nunito', sans-serif;
 }
 
-.yourOutfitListContainer{
-  display:flex;
+.yourOutfitListContainer {
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap:20px;
+  gap: 20px;
 }
 
 
-.outfit-component{
-  border: 1px solid #ede0d4;
+.outfit-component {
   height: 400px;
   width: 300px;
   padding: 10px;
-  background-color: #ede0d4;
+  background-color: whitesmoke;
   transition: all 1s ease-in-out;
 }
 
@@ -380,12 +268,14 @@ height: 200px; */
 }
 
 .addMoreOutfit {
-  border: 1px solid #ede0d4;
+  /* border: 1px solid #ede0d4; */
   height: 400px;
   width: 300px;
   padding: 10px;
-  background-color: #ede0d4;
+  background-color: #0b3c5d;
+  color: white;
 }
+
 .addMoreOutfit-word {
   padding: 90px;
   font-family: 'Pacifico', cursive;
@@ -399,20 +289,19 @@ height: 200px; */
   padding-bottom: 30px;
 }
 
-.plusIconInAddMore{
+.plusIconInAddMore {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.plus{
+.plus {
   height: 30px;
   width: 30px;
 }
 
 .outfit-pic {
   height: 75%;
-  border: 3px solid #ede0d4;
   border-radius: 7px;
 }
 
@@ -422,11 +311,12 @@ height: 200px; */
   padding: 3px;
 }
 
-.innerOutfitContainer{
+.innerOutfitContainer {
   display: flex;
   justify-content: center;
-  gap:20px;
+  gap: 20px;
 }
+
 .outfit-name {
   font-family: 'Nunito', sans-serif;
   font-weight: bold;
@@ -436,14 +326,13 @@ height: 200px; */
 .outfit-regularPrice {
   text-decoration: line-through;
 }
-.outfit-regularPrice-no-linethrough {
 
-}
+.outfit-regularPrice-no-linethrough {}
 
-.outfit-category{
+.outfit-category {
   font-family: 'Nunito', sans-serif;
   font-size: 13px;
-  color:#808080;
+  color: #808080;
   padding: 1.5px;
 }
 
@@ -452,10 +341,10 @@ height: 200px; */
   margin-top: 200px;
   position: absolute;
   top: -10px;
-  right:-10px;
+  right: -10px;
 }
 
-.relatedProductsOuterContainer{
+.relatedProductsOuterContainer {
   position: relative;
   /* how to overlay the rightArrowIcon button? */
   /* The container (WSEDIT) should have position:relative so you can absolutely-position the button.
