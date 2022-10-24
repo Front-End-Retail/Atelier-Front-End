@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft, faExpand } from '@fortawesome/free-solid-svg-icons'
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
 const ImageGallery = ({ selectedStyle, fullscreen, setFullscreen }) => {
   const [mainImages, setMainImages] = useState([]);
   const [thumbnails, setThumbnails] = useState([]);
@@ -43,7 +45,8 @@ const ImageGallery = ({ selectedStyle, fullscreen, setFullscreen }) => {
     <>
       <div className={fullscreen ? 'fullscreen' : "image-slide"} style={{
         backgroundImage: `url(${mainImages[currentImageIndex]})`,
-        backgroundPosition: 'center',
+        backgroundSize: 'contain',
+        backgroundPosition: 'center'
       }}>
         <div className='container-of-containers'>
           <div className='thumbnails-container'>

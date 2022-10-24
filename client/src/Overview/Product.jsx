@@ -62,8 +62,8 @@ const Product = ({ styles, currentProduct, selectedStyle, changeStyle, metaRevie
           </select>
         </form>
         <div className="buttons">
-          <button type="submit">Add to Bag</button>
-          <button type="button">Favorite</button>
+          <button className="submit" type="submit">Add to Bag</button>
+          <button className="favorite" type="button">Favorite</button>
         </div>
       </div>
     </div >
