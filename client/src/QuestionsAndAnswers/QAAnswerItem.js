@@ -33,7 +33,6 @@ const QAAnswerItem = ({ answer, addAnswerHelpfulness, updateHelpfulCount, report
   }
 
   useEffect(() => {
-    console.log(answer.answerer_name.toLowerCase())
     if (answer.answerer_name.toLowerCase() === 'seller') {
       setBySeller(true)
     }
