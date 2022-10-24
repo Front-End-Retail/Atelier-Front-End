@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  border-bottom: rgb(65, 61, 61) solid 1px;
+  border-bottom: white solid 1px;
   width: 100%;
   height: 1fr;
   max-width: 100%;
@@ -38,6 +38,9 @@
   cursor: pointer;
   margin: 0;
   padding: 0;
+  color: white;
+  text-decoration: underline;
+  font-size: 1.2em;
 }
 
 .review-body {
