@@ -11,7 +11,6 @@ const ReviewList = ({reviews, sortReviews, metaReviews, putRequest}) => {
   const [displayNum, setDisplayNum] = useState(2)
   const [currentReviews, setCurrentReviews] = useState([])
 
-
   const passSortingName = (name) => {
     sortReviews(name)
   }
