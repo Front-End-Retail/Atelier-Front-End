@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 const StyleSelector = ({ styles, selectedStyle, changeStyle }) => {
 
   return (
@@ -8,13 +9,15 @@ const StyleSelector = ({ styles, selectedStyle, changeStyle }) => {
       <div className="style-thumbnails">
         {styles.map((style, i) => {
           return (
-            <div key={i} className="image-container">
+            <>
               <img onClick={e => {
                 e.preventDefault();
                 changeStyle(style)
               }
-              } className="style-image" src={style.photos[0].thumbnail_url} />
-            </div>
+              } style={{ borderColor: selectedStyle === style ? '#34699E' : '#fff' }} className="style-image" src={style.photos[0].thumbnail_url} />
+
+              <FontAwesomeIcon className="check-mark" icon={faCircleCheck} style={{ visibility: selectedStyle === style ? 'visible' : 'hidden' }} />
+            </>
           )
         })}
       </div>
