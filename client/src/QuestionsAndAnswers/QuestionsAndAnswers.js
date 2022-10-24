@@ -3,8 +3,8 @@ import QASearch from './QASearch.js'
 import QAListItem from './QAListItem.js'
 import QAAddQuestionModal from './QAAddQuestionModal.js'
 import useModal from './useModal'
-import { SortbyHelpfulness, addQuestionHelpfulness, addAnswerHelpfulness } from './QAHelpers.js'
-// import '../assets/stylesqanda.css';
+import { SortbyHelpfulness } from './QAHelpers.js'
+import clicktracker from '../clicktracker.js'
 const axios = require('axios');
 
 const { useState, useEffect } = React;
@@ -26,7 +26,8 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
     })
   }
 
-  const addQuestionHelpfulness = (questionId) => {
+  const addQuestionHelpfulness = (elementID, questionId) => {
+    clicktracker(elementID, 'QandA', new Date())
     axios.default.put('http://localhost:3000/qanda/qhelp', { questionId: questionId }).then((data) => {
       getProductQuestions()
     }).catch((err) => {
