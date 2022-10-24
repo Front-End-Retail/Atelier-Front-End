@@ -54,9 +54,9 @@ const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness, cu
   }, [questionId, setQuestionId])
 
   //vote helpful if hasn't already voted helpful
-  const voteHelpful = () => {
+  const voteHelpful = (event) => {
     if (!votedHelpful) {
-      addQuestionHelpfulness(questionId)
+      addQuestionHelpfulness(event.target.id, questionId)
       setVotedHelpful(true)
     }
   }
@@ -86,7 +86,7 @@ const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness, cu
         </div>
         <div className={"qalist-helpful"}>
           <p>Helpful?</p>
-          <p className={"underlined"}onClick={() => {voteHelpful()}}>Yes </p><p>({question.question_helpfulness})</p>
+          <p id={"questionHelpful"} className={"underlined"}onClick={() => {voteHelpful(event)}}>Yes </p><p>({question.question_helpfulness})</p>
           <p> | </p>
           <p className={"underlined"} onClick={toggle}> Add Answer </p>
         </div>
