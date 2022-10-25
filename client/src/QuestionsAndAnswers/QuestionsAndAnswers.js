@@ -35,7 +35,8 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
     })
   }
 
-  const addAnswerHelpfulness = (answerId) => {
+  const addAnswerHelpfulness = (elementID, answerId) => {
+    clicktracker(elementID, 'QandA', new Date())
     axios.default.put('http://localhost:3000/qanda/ahelp', { answerId: answerId }).then((data) => {
       getProductQuestions()
     }).catch((err) => {
@@ -109,7 +110,7 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
   const {toggle, visible} = useModal();
 
   return (
-    <div className={'qandawrapper'}>
+    <div className={'qandawrapper'} data-testid="qandacomponent">
       <h2 className={'qandatitle'}>QUESTIONS & ANSWERS</h2>
       <QASearch newSearchTerm={newSearchTerm} />
       <div className={'qalistwrapper'}>
