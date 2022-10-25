@@ -39,7 +39,7 @@ const QAAnswerItem = ({ answer, addAnswerHelpfulness, updateHelpfulCount, report
   }, [answerId])
 
   return (
-    <div className={"qalist-totalanswerwrapper"}>
+    <div className={"qalist-totalanswerwrapper"} data-testid="answersList">
       <div className={"qalist-answer-wrapper"}>
         <h3 className={"qalist-largea"}>A:</h3>
       </div>
