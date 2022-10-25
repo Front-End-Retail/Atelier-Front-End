@@ -11,30 +11,30 @@ const { useState, useEffect } = React;
 const StarAverage = ({rating}) => {
   const  [starRating, setStarRating] = useState(rating)
   let test = rating + 1;
-  const makeStarAverage = (rating) => {
-    let content = []
-    let tempRating = rating;
-    for (let i = 0; i < 5; i++) {
-      if (rating - i < 1 && rating - i >= .5 ) {
-        // content.push(<FontAwesomeIcon key={i} icon={faStarHalf} style={{ height: "10px" }}></FontAwesomeIcon>)
-        <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 576 512" className="one,star" color="#ffc107" size="10" height="10" width="10" xmlns="http://www.w3.org/2000/svg" style={{color: "rgb(255, 193, 7)"}}>
-          <path fill= "url(#half-star)" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
-        </svg>
-      } else if (test > 1) {
-      // content.push(<FontAwesomeIcon key={i} icon={faStar} style={{ height: "10px" }}></FontAwesomeIcon>)
-      <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 576 512" className="one,star" color="#ffc107" size="10" height="10" width="10" xmlns="http://www.w3.org/2000/svg" style={{color: "rgb(255, 193, 7)"}}>
-        <path fill= "url(#full-star)" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
-      </svg>
-      } else {
-        // content.push(<FontAwesomeIcon key={i} icon={faStarReg} style={{ height: "10px" }}></FontAwesomeIcon>)
-        <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 576 512" className="one,star" color="#ffc107" size="10" height="10" width="10" xmlns="http://www.w3.org/2000/svg" style={{color: "rgb(255, 193, 7)"}}>
-        <path fill= "url(#full-star)" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
-      </svg>
-      }
-      tempRating--;
-    }
-    return content
-  }
+  // const makeStarAverage = (rating) => {
+  //   let content = []
+  //   let tempRating = rating;
+  //   for (let i = 0; i < 5; i++) {
+  //     if (rating - i < 1 && rating - i >= .5 ) {
+  //       // content.push(<FontAwesomeIcon key={i} icon={faStarHalf} style={{ height: "10px" }}></FontAwesomeIcon>)
+  //       <svg key={i} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 576 512" className="one,star" color="#ffc107" size="10" height="10" width="10" xmlns="http://www.w3.org/2000/svg" style={{color: "rgb(255, 193, 7)"}}>
+  //         <path fill= "url(#half-star)" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+  //       </svg>
+  //     } else if (test > 1) {
+  //     // content.push(<FontAwesomeIcon key={i} icon={faStar} style={{ height: "10px" }}></FontAwesomeIcon>)
+  //     <svg key={i} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 576 512" className="one,star" color="#ffc107" size="10" height="10" width="10" xmlns="http://www.w3.org/2000/svg" style={{color: "rgb(255, 193, 7)"}}>
+  //       <path fill= "url(#full-star)" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+  //     </svg>
+  //     } else {
+  //       // content.push(<FontAwesomeIcon key={i} icon={faStarReg} style={{ height: "10px" }}></FontAwesomeIcon>)
+  //       <svg key={i} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 576 512" className="one,star" color="#ffc107" size="10" height="10" width="10" xmlns="http://www.w3.org/2000/svg" style={{color: "rgb(255, 193, 7)"}}>
+  //       <path fill= "url(#full-star)" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+  //     </svg>
+  //     }
+  //     tempRating--;
+  //   }
+  //   return content
+  // }
   return (
     <div id="star-average">
     {/* {makeStarAverage(rating)} */}
@@ -74,7 +74,7 @@ const StarAverage = ({rating}) => {
         if (rating - i < .5 && rating - i >= .25 ) {
           // content.push(<FontAwesomeIcon key={i} icon={faStarHalf} style={{ height: "10px" }}></FontAwesomeIcon>)
           return(
-          <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 576 512" className="one,star" color="#ffc107" size="10" height="10" width="10" xmlns="http://www.w3.org/2000/svg" style={{color: "rgb(255, 193, 7)"}}>
+          <svg key={i} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 576 512" className="one,star" color="#ffc107" size="10" height="10" width="10" xmlns="http://www.w3.org/2000/svg" style={{color: "rgb(255, 193, 7)"}}>
             <path fill= "url(#quarter-star)" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
           </svg>
           )
@@ -83,7 +83,7 @@ const StarAverage = ({rating}) => {
         // content.push(<FontAwesomeIcon key={i} icon={faStar} style={{ height: "10px" }}></FontAwesomeIcon>)
 
         return (
-        <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 576 512" className="one,star" color="#ffc107" size="10" height="10" width="10" xmlns="http://www.w3.org/2000/svg" style={{color: "rgb(255, 193, 7)"}}>
+        <svg key={i} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 576 512" className="one,star" color="#ffc107" size="10" height="10" width="10" xmlns="http://www.w3.org/2000/svg" style={{color: "rgb(255, 193, 7)"}}>
           <path fill= "url(#half-star)" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
         </svg>
         )
@@ -92,7 +92,7 @@ const StarAverage = ({rating}) => {
           // content.push(<FontAwesomeIcon key={i} icon={faStar} style={{ height: "10px" }}></FontAwesomeIcon>)
 
           return (
-          <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 576 512" className="one,star" color="#ffc107" size="10" height="10" width="10" xmlns="http://www.w3.org/2000/svg" style={{color: "rgb(255, 193, 7)"}}>
+          <svg key={i} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 576 512" className="one,star" color="#ffc107" size="10" height="10" width="10" xmlns="http://www.w3.org/2000/svg" style={{color: "rgb(255, 193, 7)"}}>
             <path fill= "url(#three-quarter-star)" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
           </svg>
           )
@@ -101,7 +101,7 @@ const StarAverage = ({rating}) => {
             // content.push(<FontAwesomeIcon key={i} icon={faStar} style={{ height: "10px" }}></FontAwesomeIcon>)
 
             return (
-            <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 576 512" className="one,star" color="#ffc107" size="10" height="10" width="10" xmlns="http://www.w3.org/2000/svg" style={{color: "rgb(255, 193, 7)"}}>
+            <svg key={i} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 576 512" className="one,star" color="#ffc107" size="10" height="10" width="10" xmlns="http://www.w3.org/2000/svg" style={{color: "rgb(255, 193, 7)"}}>
               <path fill= "url(#full-star)" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
             </svg>
             )
@@ -110,7 +110,7 @@ const StarAverage = ({rating}) => {
           // content.push(<FontAwesomeIcon key={i} icon={faStarReg} style={{ height: "10px" }}></FontAwesomeIcon>)
 
           return(
-          <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 576 512" className="one,star" color="#ffc107" size="10" height="10" width="10" xmlns="http://www.w3.org/2000/svg" style={{color: "rgb(255, 193, 7)"}}>
+          <svg key={i} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 576 512" className="one,star" color="#ffc107" size="10" height="10" width="10" xmlns="http://www.w3.org/2000/svg" style={{color: "rgb(255, 193, 7)"}}>
             <path fill= "url(#empty-star)" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
         </svg>
           )

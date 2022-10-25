@@ -41,7 +41,7 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter, sortReviews, curr
         // let ratio = findRatio(ratingTotal, metaReviews.ratings[starNum])
         // let ratioTotal = 300 - ratio;
         let singleStarVotes = metaReviews.ratings[starNum]
-        return <div className="star-bars">
+        return <div key={index} className="star-bars">
           <div className="star-a-element" style={{width: "20%"}}><a  name={starNum} onClick={starClick}>{starNum} stars</a></div>
             {/* <div style={{height: "10", width: `${(singleStarVotes/ratingTotal) * 100}%`, background: "green"}}></div> */}
             <div className="bar-container" style={{width: "75%"}}>
