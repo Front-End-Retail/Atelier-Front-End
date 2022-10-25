@@ -78,7 +78,7 @@ const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness, cu
   const {toggle, visible} = useModal();
 
   return (
-    <div className={'qalist-item-wrapper'}>
+    <div className={'qalist-item-wrapper'} data-testid="questionsList">
       <div className={"qalist-q-line-wrapper"}>
         <div onClick={() => setIsActive(!isActive)} className={"qalist-question"}>
           <h3>Q:</h3>
