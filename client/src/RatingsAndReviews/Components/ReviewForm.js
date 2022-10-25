@@ -146,6 +146,7 @@ const ReviewForm = ({toggle, metaReviews}) => {
   return (
     <div>
     <form  id="review-form-container" onSubmit={handleSubmit}>
+      <div classname="user-email-div">
           <label>
             Username:
             <input onChange={handleChange} maxlength="60" type="text" name="username" placeholder="Example: jackson11!"/>
@@ -157,6 +158,7 @@ const ReviewForm = ({toggle, metaReviews}) => {
           </label>
           {emailValidation && <div className="form-warning">Required field</div>}
           <p>For authentication reasons, you will not be emailed</p>
+          </div>
           <div className="rating-recommend-container">
           <StarRating handleStarChange={handleStarChange}/>
           <p>Would you recommend this product?</p>
@@ -183,11 +185,12 @@ const ReviewForm = ({toggle, metaReviews}) => {
                   <label for="">5</label>
               </div>
             )})}
-
+          <div className="summary-input-div">
           <label>Review Summary:
-              <input className="review-summary-form" onChange={handleChange} type="text" name="summary" placeholder="Example: Best purchase ever!"/>
+              <input classname="review-summary-form" onChange={handleChange} type="text" name="summary" placeholder="Example: Best purchase ever!"/>
             </label>
             {summaryValidation && <div className="form-warning">Required field</div>}
+            </div>
 
           <label for="story">Review Body:</label>
             <textarea placeholder="why did you like the product or not" onChange={handleChange} id="story" name="body"
