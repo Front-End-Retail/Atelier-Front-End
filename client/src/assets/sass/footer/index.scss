@@ -1,0 +1,107 @@
+
+.footer-container {
+  background-color: rgb(62, 62, 62);
+
+}
+.list{
+  // margin-top: 50px;
+  height: 250px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  color: white;
+}
+
+ul{
+  list-style: none;
+  line-height: 30px;
+}
+
+.get-help{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  color: white;
+  padding: 5px;
+}
+
+.get-help a{
+  text-decoration: none;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.company{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.company a{
+  text-decoration: none;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+
+#footer-email {
+  width: 250px;
+  height: 40px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+}
+
+#footer-email-btn{
+  width: 100px;
+  height: 40px;
+  border-radius: 4px;
+  background-color: #34699E;
+  color: white;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  margin: 15px;
+}
+
+.social-links{
+  height: 40px;
+  // display: flex;
+  // justify-content: center;
+  color: white;
+  margin: 0 8px;
+  display: flex;
+  justify-content: center;
+
+}
+
+.facebookIcon {
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  display: inline-block;
+  padding-right: 50px;
+}
+
+.twitterIcon {
+  height: 40px;
+  width: 40px;
+  padding-right: 50px;
+}
+
+.instaIcon {
+  height: 40px;
+  width: 40px;
+}
+
+.trade-mark{
+  margin-top: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+// @media screen and (max-)
