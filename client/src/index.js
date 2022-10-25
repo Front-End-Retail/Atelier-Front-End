@@ -110,7 +110,7 @@ const App = () => {
             <FontAwesomeIcon className='twitterIcon' icon={faTwitter} />
             <FontAwesomeIcon className='instaIcon' icon={faInstagram} />
           </div>
-          <span className='trade-mark'>Atelier ® 2022</span>
+          <span className='trade-mark'>Atelier Lannister ® 2022</span>
         </div>
       </footer>
     </div>
