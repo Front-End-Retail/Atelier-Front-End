@@ -33,7 +33,7 @@
     height: 0;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-top: 14px solid #1D2731;
+    border-top: 14px solid #D9B310;
 }
 .slide-container {
   width: 100%; /* Width of the outside container */
@@ -42,15 +42,15 @@
   flex-direction: column;
 }
 
-.triangle {
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 16px solid #1D2731;
-  position: absolute;
-  left: 55%;
-}
+// .triangle {
+//   width: 0;
+//   height: 0;
+//   border-left: 8px solid transparent;
+//   border-right: 8px solid transparent;
+//   border-top: 16px solid #D9B310;
+//   position: absolute;
+//   left: 55%;
+// }
 
 .char-bar {
   display: flex;
