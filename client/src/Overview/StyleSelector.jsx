@@ -11,7 +11,7 @@ const StyleSelector = ({ styles, selectedStyle, changeStyle }) => {
           return (
             // <FontAwesomeIcon className="check-mark" icon={faCircleCheck} style={{ visibility: selectedStyle === style ? 'visible' : 'hidden' }} />
             <div className="check-container">
-              <div className="image-container" style={{ borderColor: selectedStyle === style ? '#34699E' : '#fff' }}>
+              <div data-testid="styles" className="image-container" style={{ borderColor: selectedStyle === style ? '#34699E' : '#fff' }}>
                 <img onClick={e => {
                   e.preventDefault();
                   changeStyle(style)

@@ -2,7 +2,7 @@ import React from 'react';
 import ImageGallery from './ImageGallery.jsx';
 import Product from './Product.jsx';
 import ProductDescription from './ProductDescription.jsx';
-import axios from 'axios';
+const axios = require('axios');
 const { useState, useEffect } = React;
 
 const Overview = ({ currentProductID, styles, selectedStyle, changeStyle }) => {
@@ -12,28 +12,21 @@ const Overview = ({ currentProductID, styles, selectedStyle, changeStyle }) => {
   const [fullscreen, setFullscreen] = useState(false);
   //grabs all product info for current product
   const fetchProductInfo = () => {
-    axios({
-      method: 'get',
-      url: 'http://localhost:3000/products',
-      params: {
-        specificURL: `products/${currentProductID}`
-      }
+    axios.default.get('http://localhost:3000/products', { params: { specificURL: `products/${currentProductID}` } }).then(response => {
+      setCurrentProduct(response.data);
     })
-      .then(response => {
-        setCurrentProduct(response.data);
-      })
       .catch(err => {
         console.log('ignore this, it works', err);
       })
   }
 
   const metaRequest = () => {
-    axios.get('http://localhost:3000/products', { params: { specificURL: `reviews/meta?product_id=${currentProductID}` } }).then((reviewData) => {
-      // console.log('gotten', reviewData.data)
-      setMetaReviews(reviewData.data)
-    }).catch(err => {
-      console.log('error getting', err)
+    axios.default.get('http://localhost:3000/review', { params: { specificURL: `reviews/meta?product_id=${currentProductID}` } }).then(response => {
+      setMetaReviews(response.data);
     })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   useEffect(() => {
