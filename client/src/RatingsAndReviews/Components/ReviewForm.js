@@ -6,7 +6,7 @@ import {characteristicsDesc} from './helperFuncs'
 const axios = require('axios');
 const { useState, useEffect } = React;
 
-const ReviewForm = ({toggle, metaReviews}) => {
+const ReviewForm = ({toggle, metaReviews, currentProductName}) => {
   // Hooks for the form entries
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
@@ -143,9 +143,10 @@ const ReviewForm = ({toggle, metaReviews}) => {
     }
 
   }
+
   return (
     <div>
-    <form  id="review-form-container" onSubmit={handleSubmit}>
+    <form data-testid="randr-form"  id="review-form-container" onSubmit={handleSubmit}>
       <div classname="user-email-div">
           <label>
             Username:
@@ -154,7 +155,7 @@ const ReviewForm = ({toggle, metaReviews}) => {
             <label>
             {nameValidation && <div className="form-warning">Required field</div>}
           Email:
-          <input onChange={handleChange} maxlength="60" type="email" name="email" placeholder="“Example: jackson11@email.com”"/>
+          <input onChange={handleChange} maxlength="60" type="email" name="email" placeholder="“Example: jackson1 1@email.com”"/>
           </label>
           {emailValidation && <div className="form-warning">Required field</div>}
           <p>For authentication reasons, you will not be emailed</p>

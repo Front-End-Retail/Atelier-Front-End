@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 // import Overview from '../Overview/Overview.js';
 import RatingsAndReviews from '../RatingsAndReviews/RatingsAndReviews.js';
-import QuestionsAndAnswers from '../QuestionsAndAnswers/QuestionsAndAnswers.js'
+// import QuestionsAndAnswers from '../QuestionsAndAnswers/QuestionsAndAnswers.js'
 // import {App} from '../index.js'
 // test('loads items eventually', () => {
 
@@ -111,25 +111,59 @@ describe('load the review entries with data from axios request', function() {
   it("Should render 2 reviews after loading", async () => {
     axios.get.mockResolvedValue({ data: dummyReviews });
 
-    render(<RatingsAndReviews currentProductID={37311}/>);
+    render(<RatingsAndReviews currentProductID={37311} currentProductName={'camo onesie'}/>);
     const reviewInstances = await waitFor(() => screen.findAllByTestId('randr-entry'))
     expect(reviewInstances).toHaveLength(2);
   });
   it("Should render 5 star bars after loading", async () => {
     axios.get.mockResolvedValue({ data: dummyMetaData });
 
-    render(<RatingsAndReviews currentProductID={37311}/>);
+    render(<RatingsAndReviews currentProductID={37311} currentProductName={'camo onesie'}/>);
     const reviewInstances = await waitFor(() => screen.findAllByTestId("randr-star-bar"))
     expect(reviewInstances).toHaveLength(5);
   });
+  it("Should render 5 char bars after loading", async () => {
+    axios.get.mockResolvedValue({ data: dummyMetaData });
+
+    render(<RatingsAndReviews currentProductID={37311} currentProductName={'camo onesie'}/>);
+    const reviewInstances = await waitFor(() => screen.findAllByTestId("randr-char-slider"))
+    expect(reviewInstances).toHaveLength(4);
+    expect(screen.getByTestId('randr-div')).toBeTruthy();
+  });
   it('should return true for main randr div', () => {
+
     render(<RatingsAndReviews />)
     expect(screen.getByTestId('randr-div')).toBeTruthy();
   })
 
 })
 
+describe('load the form modal on click', function() {
+  const user = userEvent.setup();
+  beforeAll(() => {
+    ReactDOM.createPortal = jest.fn((element, node) => {
+      return element;
+    });
+    axios.get.mockResolvedValue({ data: dummyReviews });
+  });
+  afterEach(() => {
+    ReactDOM.createPortal.mockClear();
+    cleanup()
+  });
+  it('should return true for the form id ', async () => {
 
+    // axios.get.mockResolvedValue({ data: dummyReviews });
+    render(<RatingsAndReviews currentProductID={37311} currentProductName={'camo onesie'}/>);
+
+    // await expect(screen.getByTestId("randr-add-button"))
+    // const reviewInstances = await waitFor(() => screen.getByTestId("randr-add-button"))
+    await user.click(screen.getByTestId("randr-add-button")).then(() => {
+      expect(screen.getByTestId("randr-form")).toBeTruthy()
+
+    })
+    // expect(reviewInstances).toBeTruthy()
+  })
+})
 
 
 

@@ -1,11 +1,12 @@
 import React from 'react';
 import RandRImage from './RandRImage.js'
 import StarAverage from './StarAverage.js'
+import {highlightWord} from './helperFuncs'
 const axios = require('axios');
 const { useState, useEffect } = React;
 
 
-const ReviewEntry = ({review, putRequest}) => {
+const ReviewEntry = ({review, putRequest, searchTerm}) => {
   const [toggleBody, setToggleBody] = useState(false)
   const [toggleHelp, setToggleHelp] = useState(false)
   const [toggleReport, setToggleReport] = useState(false)

@@ -82,7 +82,7 @@ const App = () => {
         <Overview currentProductID={currentProductID} styles={styles} selectedStyle={selectedStyle} changeStyle={changeSelectedStyle} />
         <RelatedItemsAndComparison currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct} selectedStyle={selectedStyle} />
         <QuestionsAndAnswers currentProductID={currentProductID} currentProductName={currentProductName} />
-        <RatingsAndReviews currentProductID={currentProductID} />
+        <RatingsAndReviews currentProductID={currentProductID} currentProductName={currentProductName} />
       </div>}
       <footer className='footer'>
         <div className='footer-container'>
