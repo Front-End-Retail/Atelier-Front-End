@@ -26,8 +26,8 @@ const YourOutfit = ({outfit, updateOutfitList, duplicateSelected, closePopUp}) =
                <div className='outfit-category'>{outfit.category}</div>
                {/* <div>{outfit.styleID}</div>  I dont want to display this to users but i need it*/}
                {outfit.price
-                 ? <div><span className='outfit-regularPrice'>${outfit.regularPrice}</span><span className='outfit-discountPrice' style={{ color: 'red' }}>${outfit.price}</span></div>
-                 : <div><span className='outfit-regularPrice-no-linethrough'>${outfit.regularPrice}</span></div>
+                 ? <div><span className='outfit-regularPrice' style={{ color: 'white' }}>${outfit.regularPrice}</span><span className='outfit-discountPrice' style={{ color: 'red' }}> ${outfit.price}</span></div>
+                 : <div><span className='outfit-regularPrice-no-linethrough' style={{ color: 'white' }}>${outfit.regularPrice}</span></div>
                }
          </div>
          {duplicateSelected && <OutfitPopUp closePopUp={closePopUp}></OutfitPopUp>}
