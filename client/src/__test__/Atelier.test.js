@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 // import Overview from '../Overview/Overview.js';
 import RatingsAndReviews from '../RatingsAndReviews/RatingsAndReviews.js';
-import QuestionsAndAnswers from '../QuestionsAndAnswers/QuestionsAndAnswers.js'
+import QuestionsAndAnswers from '../QuestionsAndAnswers/QuestionsAndAnswers.js';
 // import {App} from '../index.js'
 // test('loads items eventually', () => {
 
