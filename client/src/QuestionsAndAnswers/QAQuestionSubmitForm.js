@@ -57,7 +57,7 @@ const QAQuestionSubmitForm = ({ toggle, currentId, getProductQuestions }) => {
   }
 
   return (
-    <div>
+    <div data-testid="questionsSubmitForm">
       <form>
         <label>
           <p className={"form-input-title"}>Your question*</p>

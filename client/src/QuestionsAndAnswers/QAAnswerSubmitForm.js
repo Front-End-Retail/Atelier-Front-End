@@ -83,7 +83,7 @@ const QAAnswerSubmitForm = ({ toggle, questionId, getProductQuestions }) => {
   }
 
   return (
-    <div className={'QAAnswerSubmitForm'}>
+    <div className={'QAAnswerSubmitForm'} data-testid="answersSubmitForm">
       <form>
         <label>
           <p className={"form-input-title"}>Your Answer*</p>

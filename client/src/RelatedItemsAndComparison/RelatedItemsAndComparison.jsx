@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import mockAxios from 'axios';
 import RelatedProducts from './RelatedProducts.jsx';
 import YourOutfitList from './YourOutfitList.jsx';
 // import '../assets/related.css';

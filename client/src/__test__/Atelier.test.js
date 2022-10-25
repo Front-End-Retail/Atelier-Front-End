@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 // import Overview from '../Overview/Overview.js';
 import RatingsAndReviews from '../RatingsAndReviews/RatingsAndReviews.js';
-// import QuestionsAndAnswers from '../QuestionsAndAnswers/QuestionsAndAnswers.js'
+import QuestionsAndAnswers from '../QuestionsAndAnswers/QuestionsAndAnswers.js';
 // import {App} from '../index.js'
 // test('loads items eventually', () => {
 
@@ -31,13 +31,13 @@ const dummyReviews = {
       "reviewer_name": "shortandsweeet",
       "helpfulness": 5,
       "photos": [{
-          "id": 1,
-          "url": "urlplaceholder/review_5_photo_number_1.jpg"
-        },
-        {
-          "id": 2,
-          "url": "urlplaceholder/review_5_photo_number_2.jpg"
-        },
+        "id": 1,
+        "url": "urlplaceholder/review_5_photo_number_1.jpg"
+      },
+      {
+        "id": 2,
+        "url": "urlplaceholder/review_5_photo_number_2.jpg"
+      },
         // ...
       ]
     },
@@ -91,6 +91,7 @@ const dummyMetaData = {
 
 jest.mock('axios')
 
+
 // describe('simply load randr div', function() {
 
 // })
@@ -114,6 +115,7 @@ describe('load the review entries with data from axios request', function() {
     render(<RatingsAndReviews currentProductID={37311} currentProductName={'camo onesie'}/>);
     const reviewInstances = await waitFor(() => screen.findAllByTestId('randr-entry'))
     expect(reviewInstances).toHaveLength(2);
+
   });
   it("Should render 5 star bars after loading", async () => {
     axios.get.mockResolvedValue({ data: dummyMetaData });
