@@ -17,9 +17,9 @@ const QAAnswerItem = ({ answer, addAnswerHelpfulness, updateHelpfulCount, report
     setVotedAHelpful(false)
   }, [answer])
 
-  const voteAHelpful = () => {
+  const voteAHelpful = (event) => {
     if (!votedAHelpful) {
-      addAnswerHelpfulness(answerId)
+      addAnswerHelpfulness(event.target.id, answerId)
       updateHelpfulCount(answerId)
       setVotedAHelpful(true)
     }
@@ -56,7 +56,7 @@ const QAAnswerItem = ({ answer, addAnswerHelpfulness, updateHelpfulCount, report
           <p>by </p> {bySeller ? <p className={'seller-name'}>{answer.answerer_name}</p> : <p>{answer.answerer_name}</p>}<p>, {format(parseISO(answer.date), 'MMMM d, yyyy')}</p>
           <p> | </p>
           <p>Helpful?</p>
-          <p className={"underlined"}onClick={() => {voteAHelpful()}}>Yes </p><p>({answer.helpfulness})</p>
+          <p id={"answerHelpful"} className={"underlined"}onClick={() => {voteAHelpful(event)}}>Yes </p><p>({answer.helpfulness})</p>
           <p> | </p>
           {reported ? <p className={"reportedItalics"}> Reported </p> : <p className={"underlined"} onClick={() => {reportIfNot()}}> Report </p>}
         </div>
