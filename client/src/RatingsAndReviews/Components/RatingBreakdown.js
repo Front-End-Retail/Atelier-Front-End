@@ -3,9 +3,9 @@ import { format, parseISO } from "date-fns";
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 import {FaStar} from "react-icons/fa";
-import StarAverage from './StarAverage.js'
-import StarFilterDesc from './StarFilterDesc.js'
-import {findAverage, helpfulPerc, findTotal, findRatio, everyFunc, characteristicsDesc} from './helperFuncs'
+import StarAverage from './StarAverage.js';
+import StarFilterDesc from './StarFilterDesc.js';
+import {findAverage, helpfulPerc, findTotal, findRatio, everyFunc, characteristicsDesc} from './helperFuncs';
 const axios = require('axios');
 const { useState, useEffect } = React;
 
@@ -41,7 +41,7 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter, sortReviews, curr
         // let ratio = findRatio(ratingTotal, metaReviews.ratings[starNum])
         // let ratioTotal = 300 - ratio;
         let singleStarVotes = metaReviews.ratings[starNum]
-        return <div key={index} className="star-bars">
+        return <div key={index} className="star-bars" data-testid="randr-star-bar">
           <div className="star-a-element" style={{width: "20%"}}><a  name={starNum} onClick={starClick}>{starNum} stars</a></div>
             {/* <div style={{height: "10", width: `${(singleStarVotes/ratingTotal) * 100}%`, background: "green"}}></div> */}
             <div className="bar-container" style={{width: "75%"}}>
@@ -58,7 +58,7 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter, sortReviews, curr
       {!starFilter.every(everyFunc) && <button onClick={removeFilterButton}>Remove Filters</button>}
       {metaReviews.characteristics && Object.keys(metaReviews.characteristics).map((key, index) => {
         return (
-          <div className="slide-container" key={index}>{key}
+          <div className="slide-container" data-testid="randr-char-slider" key={index}>{key}
           {/* <input className="char-slider" readonly type="range" min="10" max="50" value={Math.round(metaReviews.characteristics[key]["value"] * 100) / 10} className="slider" id="myRange"></input> */}
             <div className="char-bar">
               <input className="slider" readOnly type="range" min="10" max="50" value={Math.round(metaReviews.characteristics[key]["value"] * 100) / 10} className="slider" id="myRange"></input>

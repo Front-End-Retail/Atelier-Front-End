@@ -1,5 +1,5 @@
 import React from 'react';
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom';
 import { render, screen, waitFor, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ReactDOM from 'react-dom';
@@ -56,24 +56,116 @@ const dummyReviews = {
     // ...
   ]
 }
+const dummyMetaData = {
+  "product_id": "37311",
+  "ratings": {
+      "1": "50",
+      "2": "28",
+      "3": "79",
+      "4": "113",
+      "5": "282"
+  },
+  "recommended": {
+      "false": "92",
+      "true": "460"
+  },
+  "characteristics": {
+      "Fit": {
+          "id": 125031,
+          "value": "3.0751445086705202"
+      },
+      "Length": {
+          "id": 125032,
+          "value": "3.1448467966573816"
+      },
+      "Comfort": {
+          "id": 125033,
+          "value": "3.2379518072289157"
+      },
+      "Quality": {
+          "id": 125034,
+          "value": "3.2848297213622291"
+      }
+  }
+}
 
 jest.mock('axios')
 
-describe('load the main container div', function () {
+
+// describe('simply load randr div', function() {
+
+// })
+
+
+
+describe('load the review entries with data from axios request', function() {
+  beforeAll(() => {
+    // ReactDOM.createPortal = jest.fn((element, node) => {
+    //   return element;
+    // });
+    // axios.get.mockResolvedValue({ data: dummyReviews });
+  });
+  afterEach(() => {
+    // ReactDOM.createPortal.mockClear();
+    cleanup()
+  });
   it("Should render 2 reviews after loading", async () => {
     axios.get.mockResolvedValue({ data: dummyReviews });
 
-    render(<RatingsAndReviews currentProductID={37311} />);
-    // const reviewInstances = await waitFor(() => screen.findAllByTestId('randr-entry'))
-    // expect(reviewInstances).toHaveLength(2);
+    render(<RatingsAndReviews currentProductID={37311} currentProductName={'camo onesie'}/>);
+    const reviewInstances = await waitFor(() => screen.findAllByTestId('randr-entry'))
+    expect(reviewInstances).toHaveLength(2);
+
   });
-  // it('should return true for main randr div', () => {
-  //   render(<RatingsAndReviews />)
-  //   expect(screen.getByTestId('randr-div')).toBeTruthy();
-  // })
+  it("Should render 5 star bars after loading", async () => {
+    axios.get.mockResolvedValue({ data: dummyMetaData });
+
+    render(<RatingsAndReviews currentProductID={37311} currentProductName={'camo onesie'}/>);
+    const reviewInstances = await waitFor(() => screen.findAllByTestId("randr-star-bar"))
+    expect(reviewInstances).toHaveLength(5);
+  });
+  it("Should render 5 char bars after loading", async () => {
+    axios.get.mockResolvedValue({ data: dummyMetaData });
+
+    render(<RatingsAndReviews currentProductID={37311} currentProductName={'camo onesie'}/>);
+    const reviewInstances = await waitFor(() => screen.findAllByTestId("randr-char-slider"))
+    expect(reviewInstances).toHaveLength(4);
+    expect(screen.getByTestId('randr-div')).toBeTruthy();
+  });
+  it('should return true for main randr div', () => {
+
+    render(<RatingsAndReviews />)
+    expect(screen.getByTestId('randr-div')).toBeTruthy();
+  })
+
 })
 
+describe('load the form modal on click', function() {
+  const user = userEvent.setup();
+  beforeAll(() => {
+    ReactDOM.createPortal = jest.fn((element, node) => {
+      return element;
+    });
+    axios.get.mockResolvedValue({ data: dummyReviews });
+  });
+  afterEach(() => {
+    ReactDOM.createPortal.mockClear();
+    cleanup()
+  });
+  it('should return true for the form id ', async () => {
 
+    // axios.get.mockResolvedValue({ data: dummyReviews });
+    render(<RatingsAndReviews currentProductID={37311} currentProductName={'camo onesie'}/>);
+
+    // await expect(screen.getByTestId("randr-add-button"))
+    // const reviewInstances = await waitFor(() => screen.getByTestId("randr-add-button"))
+    await user.click(screen.getByTestId("randr-add-button")).then(() => {
+      expect(screen.getByTestId("randr-form")).toBeTruthy()
+
+    })
+    // expect(reviewInstances).toBeTruthy()
+  })
+})
 
 
 

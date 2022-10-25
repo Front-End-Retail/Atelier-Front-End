@@ -17,7 +17,7 @@ const SearchReviews = ({toggleSearch}) => {
   }
 
   return (
-    <div id="review-search">
+    <div id="review-search" data-testid="randr-search">
       <input id="search-bar" onChange={handleInput} type="text" placeholder="Search..."></input>
       <FontAwesomeIcon icon={faMagnifyingGlass}/>
     </div>
