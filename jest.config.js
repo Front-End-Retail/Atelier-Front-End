@@ -5,7 +5,7 @@
 
 module.exports = {
   // All imported modules in your tests should be mocked automatically
-  automock: true,
+  // automock: true,
 
   // Stop running tests after `n` failures
   // bail: 0,
@@ -88,7 +88,10 @@ module.exports = {
   // ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  // moduleNameMapper: {},
+  moduleNameMapper: {
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+    '\\.(css|less|scss)$': "<rootDir>/__mocks__/styleMock.js",
+  },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
@@ -176,10 +179,10 @@ module.exports = {
   // transform: undefined,
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-  // transformIgnorePatterns: [
-  //   "/node_modules/",
-  //   "\\.pnp\\.[^\\/]+$"
-  // ],
+  transformIgnorePatterns: [
+    "/node_modules/(?!(axios|react-medium-image-zoom)/)"
+    // "\\.pnp\\.[^\\/]+$"
+  ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,

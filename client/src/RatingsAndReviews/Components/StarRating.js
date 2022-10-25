@@ -5,6 +5,11 @@ const axios = require('axios');
 const { useState, useEffect } = React;
 
 const StarRating = ({handleStarChange}) => {
+  const [style1, setStyle1] = useState('empty-star')
+  const [style2, setStyle2] = useState('empty-star')
+  const [style3, setStyle3] = useState('empty-star')
+  const [style4, setStyle4] = useState('empty-star')
+  const [style5, setStyle5] = useState('empty-star')
   const handleChange = (e) => {
     // e.preventDefault()
     handleStarChange(e.target.value)
