@@ -34,23 +34,23 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter, sortReviews, curr
       {/* <p id="breakdown-title">Ratings and Reviews</p> */}
       <div id="rating-breakdown-num">
         <div id="average-rating">{metaReviews.ratings && rating}</div>
-        <div className="star-avg-main">{!isNaN(rating) && <StarAverage rating={4.76}/>}</div>
+        <div className="star-avg-main">{!isNaN(rating) && <StarAverage rating={rating}/>}</div>
       </div>
       {metaReviews.ratings && <p>{helpfulAverage} % of reviews recommend this product</p>}
       {ratingTotal && Object.keys(metaReviews.ratings).reverse().map((starNum, index) => {
         // let ratio = findRatio(ratingTotal, metaReviews.ratings[starNum])
         // let ratioTotal = 300 - ratio;
         let singleStarVotes = metaReviews.ratings[starNum]
-        return <div className="star-bars">
-          <div className="star-a-element" style={{maxWidth: "30%"}}><a  name={starNum} onClick={starClick}>{starNum} stars</a></div>
+        return <div key={index} className="star-bars">
+          <div className="star-a-element" style={{width: "20%"}}><a  name={starNum} onClick={starClick}>{starNum} stars</a></div>
             {/* <div style={{height: "10", width: `${(singleStarVotes/ratingTotal) * 100}%`, background: "green"}}></div> */}
-            <div className="bar-container" style={{minWidth: "60%"}}>
+            <div className="bar-container" style={{width: "75%"}}>
             <div style={{height: "15px", width: `${100}%`, background: "#F9F6EE"}}>
             <div style={{height: "15px", width: `${(singleStarVotes/ratingTotal) * 100}%`, background: "#D9B310"}}></div></div> {/*(1 - (singleStarVotes/ratingTotal)) *  */}
           </div>
           {/* <div>{metaReviews.ratings[starNum]}</div> */}
         <>
-        <div style={{maxWidth: "10%"}}>{metaReviews.ratings[starNum]}</div>
+        <div style={{width: "15%"}}>{metaReviews.ratings[starNum]}</div>
         </>
         </div>
       })}

@@ -8,7 +8,7 @@ const ReviewModal = ({ visible, toggle, metaReviews }) => visible ?
 
 ReactDOM.createPortal(
   <div className="modal">
-    <div className="modal-pop" role="dialog" aria-modal="true">
+    <div className="modal-pop-review" role="dialog" aria-modal="true">
       <div id="form-title">Write Your Review</div>
       <p><b>Need product name here</b></p>
       <ReviewForm toggle={toggle} metaReviews={metaReviews}/>

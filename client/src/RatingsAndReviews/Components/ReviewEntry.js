@@ -33,7 +33,7 @@ const ReviewEntry = ({review, putRequest}) => {
     }
   }
   return (
-    <div className="review-entry">
+    <div className="review-entry" data-testid="randr-entry">
       <div className="entry-top-container">
         <StarAverage rating={review.rating} />
         <p>{review.reviewer_name}, {review.date}</p>
