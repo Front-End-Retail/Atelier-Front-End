@@ -1,9 +1,10 @@
-.modal-pop {
+.modal-pop-review {
   background: #fff;
   border: 2px solid #aaa;
   border-radius: 5px;
   z-index: 2;
-  max-width: 60%;
+  max-width: 80%;
+  min-width: 50%;
   margin: auto;
   padding: 1em 2em 2em;
   position: fixed;
@@ -64,8 +65,15 @@
   justify-content: left;
   gap: 10px;
 }
-.character-title {
+.char-form-title {
   font-weight: bold;
+  margin:  0 auto;
+  font-size: 1em;
+}
+
+.character-title {
+  // font-weight: bold;
+
 }
 
 .review-submit-btn {
@@ -90,3 +98,12 @@
 //   flex-direction: row;
 //   justify-content: space-between;
 // }
+
+#review-form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-summary-form {
+  width: 70%;
+}

@@ -144,7 +144,8 @@ const ReviewForm = ({toggle, metaReviews}) => {
 
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
+    <form  id="review-form-container" onSubmit={handleSubmit}>
           <label>
             Username:
             <input onChange={handleChange} maxlength="60" type="text" name="username" placeholder="Example: jackson11!"/>
@@ -164,12 +165,12 @@ const ReviewForm = ({toggle, metaReviews}) => {
             <input onChange={handleChange} type="radio" className='helpful-radio' name="helpful" value={false}/>
               <label for="No">No</label>
           </div>
-          <p>Characteristics</p>
+          <div className="char-form-title">Characteristics</div>
           {metaReviews.characteristics && Object.keys(metaReviews.characteristics).map((key, index) => {
             let objId = metaReviews.characteristics[key].id
             return (
               <div key={index}>
-                <div className="character-desc-container"><p className="character-title">{key}:{charDescription[key].length < 1 && "None selected"} </p>{charDescription[key].length > 0 && <p className="character-desc">{charDescription[key]}</p>}</div>
+                <div className="character-desc-container"><p className="character-title">{key}:{charDescription[key].length < 1 && " None selected"} </p>{charDescription[key].length > 0 && <p className="character-desc">{charDescription[key]}</p>}</div>
                 <input onChange={(e) => handleCharChange(key, e)} type="radio" value="1" name={objId}/>
                   <label  for="">1</label>
                 <input onChange={(e) => handleCharChange(key, e)} type="radio" value="2" name={objId}/>
@@ -184,9 +185,10 @@ const ReviewForm = ({toggle, metaReviews}) => {
             )})}
 
           <label>Review Summary:
-              <input onChange={handleChange} type="text" name="summary" placeholder="Example: Best purchase ever!"/>
+              <input className="review-summary-form" onChange={handleChange} type="text" name="summary" placeholder="Example: Best purchase ever!"/>
             </label>
             {summaryValidation && <div className="form-warning">Required field</div>}
+
           <label for="story">Review Body:</label>
             <textarea placeholder="why did you like the product or not" onChange={handleChange} id="story" name="body"
                       rows="7" cols="60" maxlength="1000">
@@ -199,6 +201,7 @@ const ReviewForm = ({toggle, metaReviews}) => {
         <input className="review-submit-btn" type="submit" value="Submit" multiple="multiple"/>
 
       </form>
+      </div>
   )
 }
 

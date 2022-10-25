@@ -121,7 +121,7 @@ useEffect(() => {
         {/* <div > */}
           {/* <div>search goes here</div> */}
         <div id="title">Ratings and Reviews</div>
-        <div id="randr">
+        <div id="randr" data-testid="randr-div">
         <RatingBreakdown metaReviews={metaReviews} ratingSort={ratingSort} starFilter={starFilter}
          sortReviews={sortReviews} currentSort={currentSort}/>
         <ReviewList reviews={starReviews} sortReviews={sortReviews} metaReviews={metaReviews} putRequest={putRequest}/>
