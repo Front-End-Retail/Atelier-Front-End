@@ -42,7 +42,7 @@ describe('relatedItemsAndComparison component', () => {
      it('fetches related items for the given current product', async ()=>{
       const data = [];
       axios.get.mockImplementationOnce(()=>Promise.resolve({data:data}));
-      await expect(fetchAllRelatedProductsID(37320)).resolves.toEqual(data);
+      await expect(fetchAllRelatedProductsID(dummyCurrentProductID)).resolves.toEqual(data);
       });
 
 
@@ -51,6 +51,11 @@ describe('relatedItemsAndComparison component', () => {
     await expect(screen.getByText('YOU MIGHT ALSO LIKE')).toBeInTheDocument();
   })
 });
+
+
+
+
+
   // test('it renders', () => {
   //   render(<RelatedItemsAndComparison />)
   //   expect(screen.getByText('YOU MIGHT ALSO LIKE')).toBeInTheDocument();
