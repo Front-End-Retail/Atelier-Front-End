@@ -14,7 +14,7 @@ const Overview = ({ currentProduct, styles, selectedStyle, changeStyle, metaRevi
         {selectedStyle && Object.keys(selectedStyle).length !== 0 && <ImageGallery selectedStyle={selectedStyle} setFullscreen={setFullscreen} fullscreen={fullscreen} />}
         {selectedStyle && <Product fullscreen={fullscreen} metaReviews={metaReviews} styles={styles} selectedStyle={selectedStyle} changeStyle={changeStyle} currentProduct={currentProduct} />}
       </div>
-      {currentProduct && Object.keys(currentProduct).length !== 0 && <ProductDescription currentProduct={currentProduct} />}
+      <ProductDescription currentProduct={currentProduct} />
     </>
   )
 }
