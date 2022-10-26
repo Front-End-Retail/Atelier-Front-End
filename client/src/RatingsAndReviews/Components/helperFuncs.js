@@ -75,7 +75,7 @@ export const makeReviewObj = (...objs) => {
 // !searchTerm ? review.body : highlightWord(review.body, searchTerm)  ----what you'll need in review entry if you ahve time to implement highlight
 export const highlightWord = (review_body, searchTerm) => {
   review_body = review_body.split(' ').map(word => {
-    return (word === searchTerm ? word : `<span className="highlight-word">${word}</span>`)
+    return ((word === searchTerm) ? `<span className="highlight-word">${word}</span>` : word  )
   }).join(' ')
   return review_body
 }

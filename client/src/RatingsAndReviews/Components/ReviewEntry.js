@@ -1,7 +1,6 @@
 import React from 'react';
 import RandRImage from './RandRImage.js'
 import StarAverage from './StarAverage.js'
-import {highlightWord} from './helperFuncs'
 const axios = require('axios');
 const { useState, useEffect } = React;
 
@@ -34,12 +33,13 @@ const ReviewEntry = ({review, putRequest, searchTerm}) => {
     setToggleHelp(true)
   }, [review])
 
-  const handleReport = () => {
-    // if (!toggleReport) {
-    //   setToggleReport(true)
-    //   helpfulRequest(review.review_id)
-    // }
+  const highlightWord = (review_body, searchTerm) => {
+    review_body = review_body.split(' ').map(word => {
+      return ((word.indexOf(searchTerm) !== -1) ? <span className="highlight-word">{word} </span> : `${word} `)
+    })
+    return review_body
   }
+
   return (
     <div className="review-entry" data-testid="randr-entry">
       <div className="entry-top-container">
@@ -47,7 +47,7 @@ const ReviewEntry = ({review, putRequest, searchTerm}) => {
         <p>{review.reviewer_name}, {review.date}</p>
       </div>
       <h3 className="review-tile-summary">{review.summary}</h3>
-      {review.body.length < 250 && <p className="review-body">{review.body}</p>}
+      {review.body.length < 250 && <p className="review-body">{searchTerm.length < 2 ? review.body : highlightWord(review.body, searchTerm)}</p>}
       {!toggleBody ? <div className="review-body">{review.body.length > 250 && <p className="review-body">{review.body.slice(0,250)} ... <button className="show-more" onClick={expandBody}>show more</button></p>}</div> : null}
       {toggleBody && <div className="review-body">{review.body}</div>}
       {review.response && <div className="response"><h4>Response:</h4>{review.response}</div>}
@@ -64,3 +64,7 @@ const ReviewEntry = ({review, putRequest, searchTerm}) => {
 }
 
 export default ReviewEntry
+
+// review.body.split(' ').map(word => {
+//   return ((word.indexOf(searchTerm) !== -1) ? <span className="highlight-word">{word} </span> : `${word} `)
+// })
