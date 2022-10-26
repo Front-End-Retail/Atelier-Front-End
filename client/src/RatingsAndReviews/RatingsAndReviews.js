@@ -1,10 +1,10 @@
 import React from 'react';
-import ReviewList from './components/ReviewList.js';
-import RatingBreakdown from './components/RatingBreakdown.js';
+import ReviewList from './Components/ReviewList.js';
+import RatingBreakdown from './Components/RatingBreakdown.js';
 // import SearchReviews from './components/SearchReviews.js'
 import { format, parseISO } from "date-fns";
 // import '../assets/ratingsStyles.css';
-import {helpfulPerc, everyFunc} from './components/helperFuncs';
+import {helpfulPerc, everyFunc} from './Components/helperFuncs';
 // import axios from 'axios';
 const axios = require('axios');
 

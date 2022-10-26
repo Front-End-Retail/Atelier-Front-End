@@ -8,8 +8,8 @@ import { faHeart as faHeartActive } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartInactive } from '@fortawesome/free-regular-svg-icons';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
-import StarAverage from '../RatingsAndReviews/components/StarAverage.js';
-import { findAverage, findTotal } from '../RatingsAndReviews/components/helperFuncs.js';
+import StarAverage from '../RatingsAndReviews/Components/StarAverage.js';
+import { findAverage, findTotal } from '../RatingsAndReviews/Components/helperFuncs.js';
 
 const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProductID, changeCurrentProduct }) => {
 
