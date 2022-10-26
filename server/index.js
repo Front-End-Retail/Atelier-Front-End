@@ -11,10 +11,10 @@ app.use(express.static(path.join(__dirname, '/../client/dist')));
 app.use(express.json());
 app.use(cors())
 // allow the client at port 3001 to send requests to the server
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3001")
-  next()
-})
+// app.use(function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*")
+//   next()
+// })
 
 //other option for default author headers in axios
 // axios.defaults.headers.common['Authorization'] = `process.env.GITHUB_API_KEY`;
