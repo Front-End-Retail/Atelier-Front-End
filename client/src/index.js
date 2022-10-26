@@ -5,8 +5,9 @@ import { createRoot } from 'react-dom/client';
 import Overview from './Overview/Overview.js';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.js';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.js';
-// import RelatedItemsAndComparison from './RelatedItemsAndComparison/RelatedItemsAndComparison.jsx'
+import RelatedItemsAndComparison from './RelatedItemsAndComparison/RelatedItemsAndComparison.jsx'
 import axios from 'axios';
+const axiosDef = require('axios');
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
@@ -14,12 +15,11 @@ import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg
 //Dear Amazon/Google/Apple etc Don't lowball me.
 const App = () => {
   const [products, setProducts] = useState([]);
+  const [metaReviews, setMetaReviews] = useState({})
   const [currentProductID, setCurrentProductID] = useState(0);
   const [currentProductName, setCurrentProductName] = useState('');
   const [styles, setStyles] = useState([]);
   const [selectedStyle, setSelectedStyle] = useState({});
-  console.log(styles);
-  console.log(selectedStyle);
   //fetches initial product data and assigns the currentProductID state
   const fetchAllProducts = () => {
     axios({
@@ -55,6 +55,14 @@ const App = () => {
         console.log(err);
       })
   }
+  const fetchMetaData = () => {
+    axiosDef.default.get('http://localhost:3000/review', { params: { specificURL : `reviews/meta?product_id=${currentProductID}` }}).then((reviewData) => {
+      console.log('meta data:', reviewData.data)
+      setMetaReviews(reviewData.data)
+    }).catch(err => {
+      console.log('error getting', err)
+    })
+  }
 
   const changeCurrentProduct = (newProductID) => {
     setCurrentProductID(newProductID);
@@ -70,6 +78,7 @@ const App = () => {
 
   useEffect(() => {
     fetchAllStyles()
+    fetchMetaData()
   }, [currentProductID])
 
   useEffect(() => {
@@ -83,7 +92,7 @@ const App = () => {
         <Overview currentProductID={currentProductID} styles={styles} selectedStyle={selectedStyle} changeStyle={changeSelectedStyle} />
         <RelatedItemsAndComparison currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct} selectedStyle={selectedStyle} />
         <QuestionsAndAnswers currentProductID={currentProductID} currentProductName={currentProductName} />
-        <RatingsAndReviews currentProductID={currentProductID} currentProductName={currentProductName} />
+        <RatingsAndReviews currentProductID={currentProductID} currentProductName={currentProductName} metaReviews={metaReviews}/>
       </div>}
       <footer className='footer'>
         <div className='footer-container'>
