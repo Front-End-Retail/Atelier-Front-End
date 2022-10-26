@@ -5,7 +5,7 @@ import { createRoot } from 'react-dom/client';
 import Overview from './Overview/Overview.js';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.js';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.js';
-// import RelatedItemsAndComparison from './RelatedItemsAndComparison/RelatedItemsAndComparison.jsx'
+import RelatedItemsAndComparison from './RelatedItemsAndComparison/RelatedItemsAndComparison.jsx'
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -18,8 +18,7 @@ const App = () => {
   const [currentProductName, setCurrentProductName] = useState('');
   const [styles, setStyles] = useState([]);
   const [selectedStyle, setSelectedStyle] = useState({});
-  console.log(styles);
-  console.log(selectedStyle);
+
   //fetches initial product data and assigns the currentProductID state
   const fetchAllProducts = () => {
     axios({

@@ -9,15 +9,12 @@ const StyleSelector = ({ styles, selectedStyle, changeStyle }) => {
       <div className="style-thumbnails">
         {styles.map((style, i) => {
           return (
-            // <FontAwesomeIcon className="check-mark" icon={faCircleCheck} style={{ visibility: selectedStyle === style ? 'visible' : 'hidden' }} />
-            <div className="check-container">
-              <div data-testid="styles" className="image-container" style={{ borderColor: selectedStyle === style ? '#34699E' : '#fff' }}>
-                <img onClick={e => {
-                  e.preventDefault();
-                  changeStyle(style)
-                }
-                } className="style-image" src={style.photos[0].thumbnail_url} />
-              </div>
+            <div data-testid="styles" className="image-container" style={{ borderColor: selectedStyle === style ? '#34699E' : '#fff' }}>
+              <img onClick={e => {
+                e.preventDefault();
+                changeStyle(style)
+              }
+              } className="style-image" src={style.photos[0].thumbnail_url} />
             </div>
           )
         })}
