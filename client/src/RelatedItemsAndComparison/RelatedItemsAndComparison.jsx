@@ -5,7 +5,7 @@ import RelatedProducts from './RelatedProducts.jsx';
 import YourOutfitList from './YourOutfitList.jsx';
 // import '../assets/related.css';
 import Modal from './Modal.jsx';
-
+import baseURL from '../baseURL.js';
 
 const { useState, useEffect } = React;
 
@@ -22,7 +22,7 @@ const RelatedItemsAndComparison = ({currentProductID, changeCurrentProduct, sele
       // console.log('currentProductID passed in: ', currentProductID)
 
       const temp = [];
-      axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${currentProductID}/related` } })
+      axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${currentProductID}/related` } })
         .then((response) => {
           // console.log('response.data from calling API/products: ', response.data);
           //do the forEach below to filter out 37312 because it has no images
@@ -56,13 +56,13 @@ const handlePlusIconClick = () =>{
   }
   if (styleIDList.indexOf(selectedStyle.style_id) === -1) {
 
-  axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${currentProductID}` } })
+  axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${currentProductID}` } })
     .then(response=>{
       // console.log('detail info retrieved with product_id', response.data);
       const tempOutfit = {};
       tempOutfit.name = response.data.name;
       tempOutfit.category = response.data.category;
-      axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${currentProductID}/styles` } })
+      axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${currentProductID}/styles` } })
         .then((response)=>{
           // console.log('style info ', response.data);
           response.data.results.forEach(result=>{

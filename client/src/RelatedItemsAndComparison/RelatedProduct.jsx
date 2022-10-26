@@ -10,6 +10,7 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
 import StarAverage from '../RatingsAndReviews/Components/StarAverage.js';
 import { findAverage, findTotal } from '../RatingsAndReviews/Components/helperFuncs.js';
+import baseURL from '../baseURL.js'
 
 const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProductID, changeCurrentProduct }) => {
 
@@ -26,7 +27,7 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProductID,
   const likeIcon = (liked) => (liked ? faHeartActive : faHeartInactive);
 
   const fetchCard = () => {
-    axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${relatedProductID}` } })
+    axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${relatedProductID}` } })
       .then((response) => {
         // console.log('relatedProductID', relatedProductID)
         // console.log('product details in RelatedProduct.jsx', response.data);
@@ -35,7 +36,7 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProductID,
         newProduct.category = response.data.category;
         newProduct.price = response.data.default_price;
         // console.log('newProduct ', newProduct)
-        axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${relatedProductID}/styles` } })
+        axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${relatedProductID}/styles` } })
           .then(response => {
             newProduct.image = response.data.results[0].photos[0].url;
             setRelatedProduct(newProduct);
