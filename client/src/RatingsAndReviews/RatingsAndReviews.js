@@ -1,11 +1,9 @@
 import React from 'react';
 import ReviewList from './Components/ReviewList.js';
 import RatingBreakdown from './Components/RatingBreakdown.js';
-// import SearchReviews from './components/SearchReviews.js'
 import { format, parseISO } from "date-fns";
-// import '../assets/ratingsStyles.css';
 import {helpfulPerc, everyFunc} from './Components/helperFuncs';
-// import axios from 'axios';
+import baseURL from '../baseURL.js'
 const axios = require('axios');
 
 const { useState, useEffect } = React;
@@ -19,7 +17,7 @@ const RatingsAndReviews = ({currentProductID, currentProductName, metaReviews}) 
   const [currentSort, setCurrentSort] = useState('relevant')
 
   const sortReviews = (name) => {
-    axios.default.get('http://localhost:3000/review', { params: { specificURL : `reviews?product_id=${currentProductID}&count=500&sort=${name}` }}).then((reviewData) => {
+    axios.default.get(`/review`, { params: { specificURL : `reviews?product_id=${currentProductID}&count=500&sort=${name}` }}).then((reviewData) => {
       // console.log('sortedData', reviewData.data)
       let reviewsArray = reviewData.data.results
       reviewsArray = reviewsArray.map(datum => {

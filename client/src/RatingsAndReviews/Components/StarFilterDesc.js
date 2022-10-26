@@ -19,7 +19,7 @@ const StarFilterDesc = ({starFilter}) => {
     return string.split(',').reverse().join(', ');
   }
   return (
-    <div>
+    <div className="filter-desc-div">
       Filtering for {makeStarString(starFilter)} star reviews
     </div>
     )

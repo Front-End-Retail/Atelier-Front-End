@@ -25,7 +25,7 @@ const QAAnswerSubmitForm = ({ toggle, questionId, getProductQuestions }) => {
     event.preventDefault()
     if (answerFormValidation()) {
       console.log("A Valid answer form!")
-      axios.default.post(`${baseURL}/qanda/answer`, answerFormObject).then(() => {
+      axios.default.post(`/qanda/answer`, answerFormObject).then(() => {
         getProductQuestions()
         toggle()
       }).catch((err) => {
