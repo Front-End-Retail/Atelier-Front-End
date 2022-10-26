@@ -112,7 +112,7 @@ const ReviewForm = ({toggle, metaReviews, currentProductName}) => {
   }
 
   const postReview = (reviewFormObj) => {
-    axios.default.post('http://localhost:3000/review', reviewFormObj).then((res) => {
+    axios.default.post('/review', reviewFormObj).then((res) => {
       console.log('posted', res)
       toggle()
     }).catch((err) => {

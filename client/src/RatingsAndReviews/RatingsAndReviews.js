@@ -64,7 +64,7 @@ const RatingsAndReviews = ({currentProductID, currentProductName, metaReviews}) 
 // update helpful variable in the API
   const putRequest = (reviewId, path) => {
     console.log(reviewId)
-    axios.default.put('http://localhost:3000/review/put', { review_id: reviewId, path: path }).then((data) => {
+    axios.default.put('/review/put', { review_id: reviewId, path: path }).then((data) => {
       console.log('successfully added')
       if(path === 'helpful') {
         // reviewRequest()
@@ -76,7 +76,7 @@ const RatingsAndReviews = ({currentProductID, currentProductName, metaReviews}) 
   }
 
   const reviewRequest = () => {
-    axios.default.get('http://localhost:3000/review', { params: { specificURL : `reviews?product_id=${currentProductID}&count=500&sort=relevance` }}).then((reviewData) => {
+    axios.default.get('/review', { params: { specificURL : `reviews?product_id=${currentProductID}&count=500&sort=relevance` }}).then((reviewData) => {
       // console.log('review data:', reviewData.data)
       let reviewsArray = reviewData.data.results
       reviewsArray = reviewsArray.map(datum => {
