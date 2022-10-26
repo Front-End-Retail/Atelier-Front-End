@@ -26,12 +26,19 @@ const ReviewEntry = ({review, putRequest, searchTerm}) => {
       putRequest(review.review_id, "helpful")
     }
   }
+// temporary fix, it would allow a user to vote the same message if they rerender the page. Decent enough though
+  useEffect(() => {
+    setHelpfulText("Yes")
+    setToggleReport(true)
+    setReportText('Report')
+    setToggleHelp(true)
+  }, [review])
 
   const handleReport = () => {
-    if (!toggleReport) {
-      setToggleReport(true)
-      helpfulRequest(review.review_id)
-    }
+    // if (!toggleReport) {
+    //   setToggleReport(true)
+    //   helpfulRequest(review.review_id)
+    // }
   }
   return (
     <div className="review-entry" data-testid="randr-entry">
