@@ -19,6 +19,7 @@ const App = () => {
   const [products, setProducts] = useState([]);
   const [metaReviews, setMetaReviews] = useState({})
   const [currentProductID, setCurrentProductID] = useState(0);
+  const [currentProduct, setCurrentProduct] = useState({});
   const [currentProductName, setCurrentProductName] = useState('');
   const [styles, setStyles] = useState([]);
   const [selectedStyle, setSelectedStyle] = useState({});
@@ -27,11 +28,9 @@ const App = () => {
   console.log("ENVIRONMENT IN THE APP", baseURL)
 
   const fetchAllProducts = () => {
-    axios({
-      method: 'get',
-      url: `${baseURL}/products`,
+    axiosDef.default.get('http://localhost:3000/products', {
       params: {
-        specificURL: 'products'
+        specificURL: `products`
       }
     })
       .then(response => {
@@ -46,9 +45,7 @@ const App = () => {
 
   //grabs all the styles for current product
   const fetchAllStyles = () => {
-    axios({
-      method: 'get',
-      url: `${baseURL}/products`,
+    axiosDef.default.get('http://localhost:3000/products', {
       params: {
         specificURL: `products/${currentProductID}/styles`
       }
@@ -61,12 +58,21 @@ const App = () => {
       })
   }
   const fetchMetaData = () => {
-    axiosDef.default.get(`${baseURL}/review`, { params: { specificURL : `reviews/meta?product_id=${currentProductID}` }}).then((reviewData) => {
-      console.log('meta data:', reviewData.data)
+    axiosDef.default.get('http://localhost:3000/review', { params: { specificURL: `reviews/meta?product_id=${currentProductID}` } }).then((reviewData) => {
       setMetaReviews(reviewData.data)
     }).catch(err => {
       console.log('error getting', err)
     })
+  }
+
+  const fetchCurrentProduct = () => {
+    axiosDef.default.get('http://localhost:3000/products', { params: { specificURL: `products/${currentProductID}` } })
+      .then(response => {
+        setCurrentProduct(response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   const changeCurrentProduct = (newProductID) => {
@@ -82,6 +88,7 @@ const App = () => {
   }, [])
 
   useEffect(() => {
+    fetchCurrentProduct();
     fetchAllStyles()
     fetchMetaData()
   }, [currentProductID])
@@ -93,11 +100,11 @@ const App = () => {
   return (
     <div className="lord-of-all-divs">
       <header className={'logo'}><div className={'titleLogo'}><h1>One Stop Onesie Shop</h1><img src={LannisterLion}></img></div> <h2>Search ________</h2></header>
-      {currentProductName !== '' && currentProductID !== 0 && <div>
+      {currentProduct && Object.keys(currentProduct).length !== 0 && currentProductName !== '' && currentProductID !== 0 && <div>
         <Overview currentProductID={currentProductID} styles={styles} selectedStyle={selectedStyle} changeStyle={changeSelectedStyle} />
         <RelatedItemsAndComparison currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct} selectedStyle={selectedStyle} />
         <QuestionsAndAnswers currentProductID={currentProductID} currentProductName={currentProductName} />
-        <RatingsAndReviews currentProductID={currentProductID} currentProductName={currentProductName} metaReviews={metaReviews}/>
+        <RatingsAndReviews currentProductID={currentProductID} currentProductName={currentProductName} metaReviews={metaReviews} />
       </div>}
       <footer className='footer'>
         <div className='footer-container'>
@@ -128,7 +135,7 @@ const App = () => {
           <span className='trade-mark'>Atelier Lannister ® 2022</span>
         </div>
       </footer>
-    </div>
+    </div >
   );
 }
 const container = document.getElementById('root');

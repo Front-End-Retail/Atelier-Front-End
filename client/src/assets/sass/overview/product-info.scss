@@ -50,32 +50,37 @@
   max-width: 60%
 }
 
-.check-container {
+.style-container {
   width: 20%;
   height: 20%;
+  display: absolute;
+  border-radius: 50%;
 }
 
 .check-mark {
   position: relative;
-  left: -35px;
-  top: 100%;
-  font-size: 24px;
+  left: 55px;
+  top: -100px;
   border-radius: 50%;
+  font-size: 24px;
   background-color: #fff;
+
 }
 
 .image-container {
   border: 2px solid #FFF;
   border-radius: 50%;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
-
+  aspect-ratio: 1/1;
 }
 
 .style-image {
   margin: 0 auto;
   height: 100%;
   width: 100%;
-  aspect-ratio: 1/1;
+
 }
 
 
@@ -153,7 +158,8 @@
       display: block;
       font-size: 16px;
       height: 3em;
-      width: 5em;
+      width: 4em;
+      padding: 2px;
       border-radius: 6px;
       background: #34699E;
       border-color: rgba(34, 34, 34, 0.15);

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 const ProductDescription = ({ currentProduct }) => {
-  console.log(currentProduct);
   return (
     <div className="product-description">
       <div className="description">
