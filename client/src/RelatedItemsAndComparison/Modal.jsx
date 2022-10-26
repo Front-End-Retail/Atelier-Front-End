@@ -5,56 +5,56 @@ import axios from 'axios';
 import Feature from './Feature.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
- // check if the value of feature is null
+// check if the value of feature is null
 
-const Modal = ({closeModal, currentProductID, relatedProductID}) =>{
+const Modal = ({ closeModal, currentProductID, relatedProductID }) => {
 
-const [featureList, setFeatureList] = useState([]);
-const [currProductFeatures, setCurrProductFeatures] = useState([]); //[{'feature': 'Buttons', 'value': 'brass'}, {'feature': '..', 'value': '...'}]
-const [comparedProductFeatures, setComparedProductFeatures] = useState([]);
-const [currProductName, setCurrProductName] = useState('');
-const [comparedProductName, setComparedProductName] = useState('');
+  const [featureList, setFeatureList] = useState([]);
+  const [currProductFeatures, setCurrProductFeatures] = useState([]); //[{'feature': 'Buttons', 'value': 'brass'}, {'feature': '..', 'value': '...'}]
+  const [comparedProductFeatures, setComparedProductFeatures] = useState([]);
+  const [currProductName, setCurrProductName] = useState('');
+  const [comparedProductName, setComparedProductName] = useState('');
 
 
-//nested API call, is this really good practice???
+  //nested API call, is this really good practice???
   const fetchAllFeatures = () => {
     axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${currentProductID}` } })
-    .then(response=> {
-      setCurrProductName(response.data.name);
-      console.log('response.data inside of Modal:' , response.data);
-      const currFeatures = response.data.features;
-      setCurrProductFeatures(response.data.features);
-      const featureStorage = [];
-      currFeatures.forEach(currObj=>{
-        featureStorage.push(currObj.feature);
-      })
-      console.log('featureStorage after pushing current: ', featureStorage)
-      axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${relatedProductID}` } })
-        .then(response => {
-          setComparedProductName(response.data.name);
-          const relatedFeatures = response.data.features;
-          relatedFeatures.forEach(relatedObj=>{ //[fabric, button]
-             //[fabric, cut]
-            if (featureStorage.indexOf(relatedObj.feature) === -1){
+      .then(response => {
+        setCurrProductName(response.data.name);
+        console.log('response.data inside of Modal:', response.data);
+        const currFeatures = response.data.features;
+        setCurrProductFeatures(response.data.features);
+        const featureStorage = [];
+        currFeatures.forEach(currObj => {
+          featureStorage.push(currObj.feature);
+        })
+        console.log('featureStorage after pushing current: ', featureStorage)
+        axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${relatedProductID}` } })
+          .then(response => {
+            setComparedProductName(response.data.name);
+            const relatedFeatures = response.data.features;
+            relatedFeatures.forEach(relatedObj => { //[fabric, button]
+              //[fabric, cut]
+              if (featureStorage.indexOf(relatedObj.feature) === -1) {
                 featureStorage.push(relatedObj.feature);
-            }
+              }
+            })
+            console.log('featureStorage after pushing related: ', featureStorage)
+            //['Fabric', 'Buttons', 'Cut']
+            setFeatureList(featureStorage);
+            setComparedProductFeatures(response.data.features);
           })
-          console.log('featureStorage after pushing related: ', featureStorage)
-          //['Fabric', 'Buttons', 'Cut']
-          setFeatureList(featureStorage);
-          setComparedProductFeatures(response.data.features);
-        })
-        .catch(err=>{
-          console.log('failed to retrieve features for related item', err)
-        })
-    })
-    .catch(err=>{
-      console.log('failed to retrieve features for current item', err)
-    })
+          .catch(err => {
+            console.log('failed to retrieve features for related item', err)
+          })
+      })
+      .catch(err => {
+        console.log('failed to retrieve features for current item', err)
+      })
   }
 
 
-  useEffect(()=>{
+  useEffect(() => {
     fetchAllFeatures();
   }, [currentProductID, relatedProductID])
 
@@ -62,26 +62,26 @@ const [comparedProductName, setComparedProductName] = useState('');
   return (
     <div className='modalBackground'>
       <div className='modalContainer'>
-      <button className='closeBtn' onClick={()=>{closeModal(false)}}><FontAwesomeIcon id='exit-icon' icon={faTimes}/></button>
-      <span className='comparing'>COMPARING</span>
-      <table>
+        <button className='closeBtn' onClick={() => { closeModal(false) }}><FontAwesomeIcon id='exit-icon' icon={faTimes} /></button>
+        <span className='comparing'>COMPARING</span>
+        <table>
           <tr>
-              <th className='first-row'>PRODUCT NAME</th>
-              <th className='first-row'>FEATURE</th>
-              <th className='first-row'>PRODUCT NAME</th>
+            <th className='first-row'>PRODUCT NAME</th>
+            <th className='first-row'>FEATURE</th>
+            <th className='first-row'>PRODUCT NAME</th>
           </tr>
           <tr>
-              <th>{currProductName}</th>
-              <th></th>
-              <th>{comparedProductName}</th>
+            <th>{currProductName}</th>
+            <th></th>
+            <th>{comparedProductName}</th>
           </tr>
 
-    {featureList.map((feature, index)=>{
-       return <Feature key={index} feature={feature}
-        comparedProductFeatures={comparedProductFeatures} currProductFeatures={currProductFeatures}></Feature>
-    })}
+          {featureList.map((feature, index) => {
+            return <Feature key={index} feature={feature}
+              comparedProductFeatures={comparedProductFeatures} currProductFeatures={currProductFeatures}></Feature>
+          })}
 
-      </table>
+        </table>
       </div>
     </div>
   );
