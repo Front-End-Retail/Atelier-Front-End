@@ -107,6 +107,7 @@ app.post('/qanda/answer', (req, res) => {
 })
 
 app.get('/review', (req, res) => {
+  console.log('reviews pulled here', req.params)
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/' + req.query.specificURL, { headers: authObject }).then(data => {
     res.send(data.data)
   }).catch(err => {
