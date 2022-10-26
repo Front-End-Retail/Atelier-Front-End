@@ -6,6 +6,7 @@ import useModal from './useModal'
 import { SortbyHelpfulness } from './QAHelpers.js'
 import clicktracker from '../clicktracker.js'
 const axios = require('axios');
+import baseURL from '../baseURL.js'
 
 const { useState, useEffect } = React;
 
@@ -18,7 +19,7 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
   const [qsOnPage, setQsOnPage] = useState(4)
 
   const getProductQuestions = () => {
-    axios.default.get('http://localhost:3000/qanda', { params: { specificURL: `qa/questions?product_id=${currentId}&count=100` } }).then((data) => {
+    axios.default.get(`${baseURL}/qanda`, { params: { specificURL: `qa/questions?product_id=${currentId}&count=100` } }).then((data) => {
       let sortedData = SortbyHelpfulness(data.data.results, "question_helpfulness")
       setCurrentQuestions(sortedData)
     }).catch(err => {
@@ -28,7 +29,7 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
 
   const addQuestionHelpfulness = (elementID, questionId) => {
     clicktracker(elementID, 'QandA', new Date())
-    axios.default.put('http://localhost:3000/qanda/qhelp', { questionId: questionId }).then((data) => {
+    axios.default.put(`${baseURL}/qanda/qhelp`, { questionId: questionId }).then((data) => {
       getProductQuestions()
     }).catch((err) => {
       console.log('error put to helpfullness', err)
@@ -37,7 +38,7 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
 
   const addAnswerHelpfulness = (elementID, answerId) => {
     clicktracker(elementID, 'QandA', new Date())
-    axios.default.put('http://localhost:3000/qanda/ahelp', { answerId: answerId }).then((data) => {
+    axios.default.put(`${baseURL}/qanda/ahelp`, { answerId: answerId }).then((data) => {
       getProductQuestions()
     }).catch((err) => {
       console.log('error put to helpfullness', err)
@@ -45,7 +46,7 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
   }
 
   const reportAnAnswer = (answerId) => {
-    axios.default.put('http://localhost:3000/qanda/areport', { answerId: answerId }).then((data) => {
+    axios.default.put(`${baseURL}/qanda/areport`, { answerId: answerId }).then((data) => {
       console.log("NARC")
       getProductQuestions()
     }).catch((err) => {

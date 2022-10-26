@@ -2,6 +2,7 @@ import React from 'react';
 import QAAnswerItem from './QAAnswerItem.js'
 import QAAddAnswerModal from './QAAddAnswerModal.js'
 import useModal from './useModal.js'
+import baseURL from '../baseURL.js'
 
 const axios = require('axios');
 
@@ -17,7 +18,7 @@ const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness, cu
   const [displayedAnswersLength, setDisplayedAnswersLength] = useState(2)
 
   const getAnswersArray = (questionIdPassedIn) => {
-    axios.default.get('http://localhost:3000/qanda', { params: { specificURL: `qa/questions/${questionIdPassedIn}/answers` } }).then((data) => {
+    axios.default.get(`${baseURL}/qanda`, { params: { specificURL: `qa/questions/${questionIdPassedIn}/answers` } }).then((data) => {
       setAnswersForQ(data.data.results)
     }).catch(err => {
       console.log('error getting answers', err)
