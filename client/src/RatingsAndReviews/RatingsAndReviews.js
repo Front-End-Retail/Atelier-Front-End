@@ -1,6 +1,6 @@
 import React from 'react';
-import ReviewList from './components/ReviewList.js'
-import RatingBreakdown from './components/RatingBreakdown.js'
+import ReviewList from './components/ReviewList.js';
+import RatingBreakdown from './components/RatingBreakdown.js';
 // import SearchReviews from './components/SearchReviews.js'
 import { format, parseISO } from "date-fns";
 // import '../assets/ratingsStyles.css';
@@ -10,7 +10,7 @@ const axios = require('axios');
 
 const { useState, useEffect } = React;
 
-const RatingsAndReviews = ({currentProductID}) => {
+const RatingsAndReviews = ({currentProductID, currentProductName}) => {
   // const [currentProduct, setCurrentProduct] = useState(37311)
   const [reviews, setReviews] = useState([])
   const [starReviews, setStarReviews] = useState([])
@@ -124,7 +124,8 @@ useEffect(() => {
         <div id="randr" data-testid="randr-div">
         <RatingBreakdown metaReviews={metaReviews} ratingSort={ratingSort} starFilter={starFilter}
          sortReviews={sortReviews} currentSort={currentSort}/>
-        <ReviewList reviews={starReviews} sortReviews={sortReviews} metaReviews={metaReviews} putRequest={putRequest}/>
+        <ReviewList reviews={starReviews} sortReviews={sortReviews} metaReviews={metaReviews} putRequest={putRequest}
+        currentProductName={currentProductName}/>
         </div>
       {/* </div> */}
       </div>

@@ -72,6 +72,14 @@ export const makeReviewObj = (...objs) => {
   return postObj
 }
 
+// !searchTerm ? review.body : highlightWord(review.body, searchTerm)  ----what you'll need in review entry if you ahve time to implement highlight
+export const highlightWord = (review_body, searchTerm) => {
+  review_body = review_body.split(' ').map(word => {
+    return (word === searchTerm ? word : `<span className="highlight-word">${word}</span>`)
+  }).join(' ')
+  return review_body
+}
+
 export  const characteristicsDesc = {
     "Size": {1: "A size too small", 2: "1/2 a size too small", 3: "Perfect", 4: "1/2 a size too big", 5: "A size too wide"},
     "Width": {1: "Too narrow", 2: "Slightly narrow", 3: "Perfect", 4:"SLightly wide", 5:"Too wide"},
@@ -80,3 +88,4 @@ export  const characteristicsDesc = {
     "Length": {1:"Runs short", 2:"Runs slightly short", 3:"Perfect",4:"Runs slightly long",5:"Runs long"},
     "Fit": {1:"Runs tight", 2: "Runs slightly tight", 3:"Perfect",4:"Runs slightly long",5:"Runs long"}
 }
+

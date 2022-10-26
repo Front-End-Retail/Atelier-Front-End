@@ -4,14 +4,14 @@ import ReviewForm from './ReviewForm.js'
 
 const container = document.getElementById('root');
 
-const ReviewModal = ({ visible, toggle, metaReviews }) => visible ?
+const ReviewModal = ({ visible, toggle, metaReviews, currentProductName }) => visible ?
 
 ReactDOM.createPortal(
   <div className="modal">
     <div className="modal-pop-review" role="dialog" aria-modal="true">
       <div id="form-title">Write Your Review</div>
-      <p><b>Need product name here</b></p>
-      <ReviewForm toggle={toggle} metaReviews={metaReviews}/>
+      <p data-testid="product-title-form" ><b>How was the {currentProductName}?</b></p>
+      <ReviewForm toggle={toggle} metaReviews={metaReviews} currentProductName={currentProductName}/>
       {/* Perhaps close the form on successful submission? Or trigger rerendering of modal on successful submission with something like "Thanks
       for the reviews!" */}
     </div>

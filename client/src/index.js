@@ -5,7 +5,7 @@ import { createRoot } from 'react-dom/client';
 import Overview from './Overview/Overview.js';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.js';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.js';
-// import RelatedItemsAndComparison from './RelatedItemsAndComparison/RelatedItemsAndComparison.jsx'
+import RelatedItemsAndComparison from './RelatedItemsAndComparison/RelatedItemsAndComparison.jsx'
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -18,7 +18,8 @@ const App = () => {
   const [currentProductName, setCurrentProductName] = useState('');
   const [styles, setStyles] = useState([]);
   const [selectedStyle, setSelectedStyle] = useState({});
-
+  console.log(styles);
+  console.log(selectedStyle);
   //fetches initial product data and assigns the currentProductID state
   const fetchAllProducts = () => {
     axios({
@@ -82,23 +83,23 @@ const App = () => {
         <Overview currentProductID={currentProductID} styles={styles} selectedStyle={selectedStyle} changeStyle={changeSelectedStyle} />
         <RelatedItemsAndComparison currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct} selectedStyle={selectedStyle} />
         <QuestionsAndAnswers currentProductID={currentProductID} currentProductName={currentProductName} />
-        <RatingsAndReviews currentProductID={currentProductID} />
+        <RatingsAndReviews currentProductID={currentProductID} currentProductName={currentProductName} />
       </div>}
       <footer className='footer'>
         <div className='footer-container'>
           <div className='list'>
             <div className='company'>
-            <h3>Company</h3>
-                <a href='#'>about us</a>
-                <a href='#'>privacy policy</a>
+              <h3>Company</h3>
+              <a href='#'>about us</a>
+              <a href='#'>privacy policy</a>
             </div>
             <div className='get-help'>
-            <h3>Get help</h3>
-                <a href='#'>FAQ</a>
-                <a href='#'>shipping</a>
-                <a href='#'>returns</a>
-                <a href='#'>order status</a>
-                <a href='#'>payment options</a>
+              <h3>Get help</h3>
+              <a href='#'>FAQ</a>
+              <a href='#'>shipping</a>
+              <a href='#'>returns</a>
+              <a href='#'>order status</a>
+              <a href='#'>payment options</a>
             </div>
             <div className='footer-email-form'>
               <h3>Join our newsletter</h3>

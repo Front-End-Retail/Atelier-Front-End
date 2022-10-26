@@ -7,7 +7,7 @@ import ReviewModal from './ReviewModal.js';
 import SearchReviews from './SearchReviews.js';
 import UseReviewModal from './UseReviewModal.js';
 
-const ReviewList = ({reviews, sortReviews, metaReviews, putRequest}) => {
+const ReviewList = ({reviews, sortReviews, metaReviews, putRequest, currentProductName}) => {
   const [displayNum, setDisplayNum] = useState(2)
   const [currentReviews, setCurrentReviews] = useState([])
   const [searchReviews, setSearchReviews] = useState([])
@@ -84,15 +84,15 @@ const ReviewList = ({reviews, sortReviews, metaReviews, putRequest}) => {
       <div id="review-list">
       {searchReviews.length > 0 && searchReviews.map((review, index) => {
         return (
-          <ReviewEntry key={index} review={review} putRequest={putRequest}/>
+          <ReviewEntry key={index} review={review} putRequest={putRequest} searchTerm={searchTerm}/>
         )
       })}
     </div>
       <div id="button-cont">
 
         {displayNum !== reviews.length && <button className="review-button" onClick={moreReviews}>More Reviews</button>}
-        <button className="review-button" onClick={toggle}>Add Review +</button>
-        <ReviewModal visible={visible} toggle={toggle} reviews={reviews} metaReviews={metaReviews}/>
+        <button data-testid="randr-add-button" className="review-button" onClick={toggle}>Add Review +</button>
+        <ReviewModal  currentProductName={currentProductName} visible={visible} toggle={toggle} reviews={reviews} metaReviews={metaReviews}/>
         </div>
     </div>
   )
