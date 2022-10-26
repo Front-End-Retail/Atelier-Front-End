@@ -18,8 +18,8 @@ const SearchReviews = ({toggleSearch}) => {
 
   return (
     <div id="review-search" data-testid="randr-search">
-      <input id="search-bar" onChange={handleInput} type="text" placeholder="Search..."></input>
-      <FontAwesomeIcon icon={faMagnifyingGlass}/>
+      <input id="search-bar" onChange={handleInput} type="text" placeholder="Search Reviews..."></input>
+      <button type={"submit"} className={"search-button-reviews"}><FontAwesomeIcon icon={faMagnifyingGlass} className={"search-icon"}></FontAwesomeIcon></button>
     </div>
   )
 }
