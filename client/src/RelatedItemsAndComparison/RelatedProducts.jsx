@@ -5,7 +5,7 @@ import RelatedProduct from './RelatedProduct.jsx';
 // import '../assets/related.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-
+import baseURL from '../baseURL.js'
 
 const RelatedProducts = ({relatedProductsID, currentProductID, changeCurrentProduct}) => {
 

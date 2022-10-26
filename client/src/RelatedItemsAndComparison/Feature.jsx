@@ -3,6 +3,7 @@ import React from 'react';
 const { useState, useEffect } = React;
 import axios from 'axios';
 
+
 const Feature = ({feature, comparedProductFeatures, currProductFeatures})=>{
   const [comparedValue, setComparedValue] = useState('');
   const [currValue, setCurrValue] = useState('');
