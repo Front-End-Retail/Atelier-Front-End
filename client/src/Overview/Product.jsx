@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import StyleSelector from './StyleSelector.jsx';
-import StarAverage from '../RatingsAndReviews/components/StarAverage.js';
-import { findAverage, findTotal } from '../RatingsAndReviews/components/helperFuncs.js';
+import StarAverage from '../RatingsAndReviews/Components/StarAverage.js';
+import { findAverage, findTotal } from '../RatingsAndReviews/Components/helperFuncs.js';
 const Product = ({ styles, currentProduct, selectedStyle, changeStyle, metaReviews, fullscreen }) => {
   const [bulkQuantity, setBulkQuantity] = useState([]);
   const [sizes, setSizes] = useState([]);
