@@ -10,6 +10,8 @@ import axios from 'axios';
 const axiosDef = require('axios');
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import LannisterLion from './assets/LannisterLion.png'
+import baseURL from './baseURL.js'
 
 
 //Dear Amazon/Google/Apple etc Don't lowball me.
@@ -22,8 +24,11 @@ const App = () => {
   const [styles, setStyles] = useState([]);
   const [selectedStyle, setSelectedStyle] = useState({});
   //fetches initial product data and assigns the currentProductID state
+
+  console.log("ENVIRONMENT IN THE APP", baseURL)
+
   const fetchAllProducts = () => {
-    axiosDef.default.get('http://localhost:3000/products', {
+    axiosDef.default.get(`${baseURL}/products`, {
       params: {
         specificURL: `products`
       }
@@ -40,7 +45,7 @@ const App = () => {
 
   //grabs all the styles for current product
   const fetchAllStyles = () => {
-    axiosDef.default.get('http://localhost:3000/products', {
+    axiosDef.default.get(`${baseURL}/products`, {
       params: {
         specificURL: `products/${currentProductID}/styles`
       }
@@ -53,7 +58,7 @@ const App = () => {
       })
   }
   const fetchMetaData = () => {
-    axiosDef.default.get('http://localhost:3000/review', { params: { specificURL: `reviews/meta?product_id=${currentProductID}` } }).then((reviewData) => {
+    axiosDef.default.get(`${baseURL}/review`, { params: { specificURL: `reviews/meta?product_id=${currentProductID}` } }).then((reviewData) => {
       setMetaReviews(reviewData.data)
     }).catch(err => {
       console.log('error getting', err)
@@ -61,7 +66,7 @@ const App = () => {
   }
 
   const fetchCurrentProduct = () => {
-    axiosDef.default.get('http://localhost:3000/products', { params: { specificURL: `products/${currentProductID}` } })
+    axiosDef.default.get(`${baseURL}/products`, { params: { specificURL: `products/${currentProductID}` } })
       .then(response => {
         setCurrentProduct(response.data);
       })
@@ -94,7 +99,7 @@ const App = () => {
 
   return (
     <div className="lord-of-all-divs">
-      <header className={'logo'}><h1>Atelier</h1> <h2>Search ________</h2></header>
+      <header className={'logo'}><div className={'titleLogo'}><h1>One Stop Onesie Shop</h1><img src={LannisterLion}></img></div> <h2>Search ________</h2></header>
       {currentProductID !== 0 && currentProductName !== '' && currentProduct && Object.keys(currentProduct).length !== 0 && < div >
         <Overview currentProduct={currentProduct} styles={styles} selectedStyle={selectedStyle} changeStyle={changeSelectedStyle} metaReviews={metaReviews} />
         <RelatedItemsAndComparison currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct} selectedStyle={selectedStyle} />
