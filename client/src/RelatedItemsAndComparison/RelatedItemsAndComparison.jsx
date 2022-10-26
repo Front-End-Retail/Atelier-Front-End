@@ -132,3 +132,5 @@ const updateOutfitList = (currentStyleID) =>{
 };
 
 export default RelatedItemsAndComparison;
+
+
