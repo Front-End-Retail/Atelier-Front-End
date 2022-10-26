@@ -35,7 +35,8 @@ const ReviewEntry = ({review, putRequest, searchTerm}) => {
 
   const highlightWord = (review_body, searchTerm) => {
     review_body = review_body.split(' ').map(word => {
-      return ((word.indexOf(searchTerm) !== -1) ? <span className="highlight-word">{word} </span> : `${word} `)
+      return ((word.indexOf(searchTerm) !== -1) ? <><span className="highlight-word">{word}</span><span> </span></>
+      : `${word} `)
     })
     return review_body
   }
