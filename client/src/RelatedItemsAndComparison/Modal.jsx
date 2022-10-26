@@ -6,6 +6,7 @@ import Feature from './Feature.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 // check if the value of feature is null
+import baseURL from '../baseURL.js';
 
 const Modal = ({ closeModal, currentProductID, relatedProductID }) => {
 
@@ -18,7 +19,7 @@ const Modal = ({ closeModal, currentProductID, relatedProductID }) => {
 
   //nested API call, is this really good practice???
   const fetchAllFeatures = () => {
-    axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${currentProductID}` } })
+    axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${currentProductID}` } })
       .then(response => {
         setCurrProductName(response.data.name);
         console.log('response.data inside of Modal:', response.data);
@@ -29,7 +30,7 @@ const Modal = ({ closeModal, currentProductID, relatedProductID }) => {
           featureStorage.push(currObj.feature);
         })
         console.log('featureStorage after pushing current: ', featureStorage)
-        axios.get('http://localhost:3000/comparison', { params: { specificURL: `products/${relatedProductID}` } })
+        axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${relatedProductID}` } })
           .then(response => {
             setComparedProductName(response.data.name);
             const relatedFeatures = response.data.features;

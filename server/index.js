@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cors())
 // allow the client at port 3001 to send requests to the server
 // app.use(function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "http://localhost:3001")
+//   res.header("Access-Control-Allow-Origin", "*")
 //   next()
 // })
 

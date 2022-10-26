@@ -4,6 +4,56 @@
   justify-content: center;
 }
 
+// #search-bar {
+//   width: 50%
+// }
+
+#review-search {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+}
+
 #search-bar {
-  width: 50%
+  width: 97%;
+  height: 50px;
+  padding: 10px 35px 10px 15px;
+  margin-left: 3px;
+  margin-right: 3px;
+  border: none;
+  border: 1px solid #F9F6EE;
+  background-color: #328CC1;
+  color: white;
+  font-weight: bold;
+  border-radius: 2px;
+}
+
+#search-bar:focus {
+  outline: none !important;
+  border-color: #F9F6EE;
+  box-shadow: 0 0 5px #328CC1;
+}
+
+#search-bar::placeholder {
+  color: white;
+}
+
+.search-button-reviews {
+  background: transparent;
+  border: none;
+  outline: none;
+  margin-left: -45px;
+}
+
+// .search-reviews img {
+//   // width: 20px;
+//   // height: 20px;
+//   margin-top: auto;
+//   margin-bottom: auto;
+//   object-fit: cover;
+// }
+
+.search-icon {
+  color: white;
+  font-size: x-large;
 }
