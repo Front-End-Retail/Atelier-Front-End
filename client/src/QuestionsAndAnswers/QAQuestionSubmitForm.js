@@ -1,5 +1,6 @@
 import React from 'react';
 const axios = require('axios');
+import baseURL from '../baseURL.js'
 
 const { useState, useEffect } = React;
 
@@ -22,7 +23,7 @@ const QAQuestionSubmitForm = ({ toggle, currentId, getProductQuestions }) => {
     event.preventDefault()
     if (validateQuestionForm()) {
       console.log("A valid form", questionSubmission)
-      axios.default.post('http://localhost:3000/qanda/question', questionSubmission).then(() => {
+      axios.default.post(`${baseURL}/qanda/question`, questionSubmission).then(() => {
         getProductQuestions()
         toggle()
       }).catch((err) => {
