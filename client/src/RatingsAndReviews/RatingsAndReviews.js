@@ -1,20 +1,19 @@
 import React from 'react';
-import ReviewList from './components/ReviewList.js';
-import RatingBreakdown from './components/RatingBreakdown.js';
+import ReviewList from './Components/ReviewList.js';
+import RatingBreakdown from './Components/RatingBreakdown.js';
 // import SearchReviews from './components/SearchReviews.js'
 import { format, parseISO } from "date-fns";
 // import '../assets/ratingsStyles.css';
-import {helpfulPerc, everyFunc} from './components/helperFuncs';
+import {helpfulPerc, everyFunc} from './Components/helperFuncs';
 // import axios from 'axios';
 const axios = require('axios');
 
 const { useState, useEffect } = React;
 
-const RatingsAndReviews = ({currentProductID, currentProductName}) => {
+const RatingsAndReviews = ({currentProductID, currentProductName, metaReviews}) => {
   // const [currentProduct, setCurrentProduct] = useState(37311)
   const [reviews, setReviews] = useState([])
   const [starReviews, setStarReviews] = useState([])
-  const [metaReviews, setMetaReviews] = useState({})
   const [ratingAverage, setRatingAverage] = useState()
   const [starFilter, setStarFilter] = useState([false, false, false, false, false]  )
   const [currentSort, setCurrentSort] = useState('relevant')
@@ -70,7 +69,7 @@ const RatingsAndReviews = ({currentProductID, currentProductName}) => {
     axios.default.put('http://localhost:3000/review/put', { review_id: reviewId, path: path }).then((data) => {
       console.log('successfully added')
       if(path === 'helpful') {
-        reviewRequest()
+        // reviewRequest()
       }
 
     }).catch((err) => {
@@ -92,14 +91,14 @@ const RatingsAndReviews = ({currentProductID, currentProductName}) => {
       console.log('error getting', err)
     })
   }
-  const metaRequest = () => {
-    axios.default.get('http://localhost:3000/review', { params: { specificURL : `reviews/meta?product_id=${currentProductID}` }}).then((reviewData) => {
-      console.log('meta data:', reviewData.data)
-      setMetaReviews(reviewData.data)
-    }).catch(err => {
-      console.log('error getting', err)
-    })
-  }
+  // const metaRequest = () => {
+  //   axios.default.get('http://localhost:3000/review', { params: { specificURL : `reviews/meta?product_id=${currentProductID}` }}).then((reviewData) => {
+  //     console.log('meta data:', reviewData.data)
+  //     setMetaReviews(reviewData.data)
+  //   }).catch(err => {
+  //     console.log('error getting', err)
+  //   })
+  // }
   // const testButton = () => {
   //   reviewRequest()
   //   metaRequest()
@@ -107,7 +106,7 @@ const RatingsAndReviews = ({currentProductID, currentProductName}) => {
 
 useEffect(() => {
   reviewRequest()
-  metaRequest()
+  // metaRequest()
 }, [currentProductID])
 // need this to reset starfilter when reviews are reset to all with sort function. Refactor to work with sort function if you can!
 useEffect(() => {
