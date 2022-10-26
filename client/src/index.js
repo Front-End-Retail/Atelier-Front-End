@@ -11,6 +11,7 @@ const axiosDef = require('axios');
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import LannisterLion from './assets/LannisterLion.png'
+import baseURL from './baseURL.js'
 
 
 //Dear Amazon/Google/Apple etc Don't lowball me.
@@ -22,10 +23,13 @@ const App = () => {
   const [styles, setStyles] = useState([]);
   const [selectedStyle, setSelectedStyle] = useState({});
   //fetches initial product data and assigns the currentProductID state
+
+  console.log("ENVIRONMENT IN THE APP", baseURL)
+
   const fetchAllProducts = () => {
     axios({
       method: 'get',
-      url: 'http://localhost:3000/products',
+      url: `${baseURL}/products`,
       params: {
         specificURL: 'products'
       }
@@ -44,7 +48,7 @@ const App = () => {
   const fetchAllStyles = () => {
     axios({
       method: 'get',
-      url: 'http://localhost:3000/products',
+      url: `${baseURL}/products`,
       params: {
         specificURL: `products/${currentProductID}/styles`
       }
@@ -57,7 +61,7 @@ const App = () => {
       })
   }
   const fetchMetaData = () => {
-    axiosDef.default.get('http://localhost:3000/review', { params: { specificURL : `reviews/meta?product_id=${currentProductID}` }}).then((reviewData) => {
+    axiosDef.default.get(`${baseURL}/review`, { params: { specificURL : `reviews/meta?product_id=${currentProductID}` }}).then((reviewData) => {
       console.log('meta data:', reviewData.data)
       setMetaReviews(reviewData.data)
     }).catch(err => {
