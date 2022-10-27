@@ -78,9 +78,9 @@ const ReviewList = ({reviews, sortReviews, metaReviews, putRequest, currentProdu
   return (
     <div id="review-list-all">
       <SearchReviews toggleSearch={toggleSearch}/>
-      <div id="sorting">
-      {reviews[0] && <p>{searchNum < 0 ? reviews.length : searchNum} reviews, sorted by <Sorting reviews={reviews} passSortingName={passSortingName}/></p>}
-      </div>
+
+      {reviews[0] && <div id="sorting"> <p style={{paddingRight: "1%"}}>{searchNum < 0 ? reviews.length : searchNum} reviews, sorted by</p> <Sorting reviews={reviews} passSortingName={passSortingName}/></div>}
+
       <div id="review-list">
       {searchReviews.length > 0 && searchReviews.map((review, index) => {
         return (
