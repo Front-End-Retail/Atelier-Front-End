@@ -74,7 +74,6 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
 
   //will call for question info on initial render
   useEffect(() => {
-    console.log("THE CURRENT ID", typeof currentProductID, currentProductID)
     setCurrentId(currentProductID)
   }, [currentProductID])
 
@@ -108,7 +107,7 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
   }, [searchTerm])
 
   //the basic modal logic, custom hook
-  const {toggle, visible} = useModal();
+  const { toggle, visible } = useModal();
 
   return (
     <div className={'qandawrapper'} data-testid="qandacomponent">
@@ -122,7 +121,7 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
           return <QAListItem question={question} key={index} addQuestionHelpfulness={addQuestionHelpfulness} addAnswerHelpfulness={addAnswerHelpfulness} currentProductName={currentProductName} currentId={currentId} getProductQuestions={getProductQuestions} reportAnAnswer={reportAnAnswer} />
         })}
       </div>
-      {displayedQuestions.length < currentQuestions.length && <button onClick={() => {addMoreQuestions()}} className={"qanda-button"}>MORE ANSWERED QUESTIONS</button>}
+      {displayedQuestions.length < currentQuestions.length && <button onClick={() => { addMoreQuestions() }} className={"qanda-button"}>MORE ANSWERED QUESTIONS</button>}
       <button onClick={toggle} className={"qanda-button"}>ADD A QUESTION +</button>
       <QAAddQuestionModal visible={visible} toggle={toggle} currentId={currentId} getProductQuestions={getProductQuestions} currentProductName={currentProductName} />
     </div>
