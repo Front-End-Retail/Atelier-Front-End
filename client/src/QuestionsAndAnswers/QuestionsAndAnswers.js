@@ -117,7 +117,7 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
         {searchedQuestions.length > 0 && searchedQuestions.map((question, index) => {
           return <QAListItem question={question} key={index} addQuestionHelpfulness={addQuestionHelpfulness} addAnswerHelpfulness={addAnswerHelpfulness} currentProductName={currentProductName} currentId={currentId} getProductQuestions={getProductQuestions} reportAnAnswer={reportAnAnswer} />
         })}
-        {displayedQuestions.length > 0 && searchedQuestions.length < 1 && displayedQuestions.map((question, index) => {
+        {displayedQuestions.length > 0 && searchedQuestions.length < 1 && searchTerm.length < 4 && displayedQuestions.map((question, index) => {
           return <QAListItem question={question} key={index} addQuestionHelpfulness={addQuestionHelpfulness} addAnswerHelpfulness={addAnswerHelpfulness} currentProductName={currentProductName} currentId={currentId} getProductQuestions={getProductQuestions} reportAnAnswer={reportAnAnswer} />
         })}
       </div>
