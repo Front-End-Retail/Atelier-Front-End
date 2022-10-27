@@ -44,7 +44,7 @@ const ReviewEntry = ({review, putRequest, searchTerm}) => {
   return (
     <div className="review-entry" data-testid="randr-entry">
       <div className="entry-top-container">
-        <StarAverage rating={review.rating} colorOn={"rgb(255, 193, 7)"} colorOff={"rgb(255,255,255)"} />
+        <StarAverage id={"-list"} rating={review.rating} colorOn={"rgb(255, 193, 7)"} colorOff={"rgb(255,255,255)"} />
         <p>{review.reviewer_name}, {review.date}</p>
       </div>
       <h3 className="review-tile-summary">{review.summary}</h3>
