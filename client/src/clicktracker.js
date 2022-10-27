@@ -10,7 +10,9 @@ const clicktracker = (clickElementId, widget, time) => {
     time: time
   }
 
-  axios.default.post(`${baseURL}/tracking`, clickedObject).then(() => {
+
+  axios.default.post('/tracking', clickedObject).then(() => {
+
     console.log('succesfully sent', clickedObject)
   }).catch((err) => {
     console.log('err in tracking post', err)

@@ -1,11 +1,10 @@
 import React from 'react';
 import ReviewList from './Components/ReviewList.js';
 import RatingBreakdown from './Components/RatingBreakdown.js';
-// import SearchReviews from './components/SearchReviews.js'
 import { format, parseISO } from "date-fns";
-// import '../assets/ratingsStyles.css';
 import {helpfulPerc, everyFunc} from './Components/helperFuncs';
-// import axios from 'axios';
+import clicktracker from '../clicktracker.js'
+import baseURL from '../baseURL.js'
 const axios = require('axios');
 
 const { useState, useEffect } = React;
@@ -19,7 +18,7 @@ const RatingsAndReviews = ({currentProductID, currentProductName, metaReviews}) 
   const [currentSort, setCurrentSort] = useState('relevant')
 
   const sortReviews = (name) => {
-    axios.default.get('http://localhost:3000/review', { params: { specificURL : `reviews?product_id=${currentProductID}&count=500&sort=${name}` }}).then((reviewData) => {
+    axios.default.get(`/review`, { params: { specificURL : `reviews?product_id=${currentProductID}&count=500&sort=${name}` }}).then((reviewData) => {
       // console.log('sortedData', reviewData.data)
       let reviewsArray = reviewData.data.results
       reviewsArray = reviewsArray.map(datum => {
@@ -64,9 +63,10 @@ const RatingsAndReviews = ({currentProductID, currentProductName, metaReviews}) 
 
   }
 // update helpful variable in the API
-  const putRequest = (reviewId, path) => {
+  const putRequest = (reviewId, path, clickedId) => {
+    clicktracker(clickedId, 'RandR', new Date())
     console.log(reviewId)
-    axios.default.put('http://localhost:3000/review/put', { review_id: reviewId, path: path }).then((data) => {
+    axios.default.put('/review/put', { review_id: reviewId, path: path }).then((data) => {
       console.log('successfully added')
       if(path === 'helpful') {
         // reviewRequest()
@@ -78,7 +78,7 @@ const RatingsAndReviews = ({currentProductID, currentProductName, metaReviews}) 
   }
 
   const reviewRequest = () => {
-    axios.default.get('http://localhost:3000/review', { params: { specificURL : `reviews?product_id=${currentProductID}&count=500&sort=relevance` }}).then((reviewData) => {
+    axios.default.get('/review', { params: { specificURL : `reviews?product_id=${currentProductID}&count=500&sort=relevance` }}).then((reviewData) => {
       // console.log('review data:', reviewData.data)
       let reviewsArray = reviewData.data.results
       reviewsArray = reviewsArray.map(datum => {
