@@ -75,6 +75,7 @@ const Modal = ({ closeModal, currentProductID, relatedProductID, currentProduct 
 
         </table>
       </div>
+      <div className="modal-overlay" onClick={() => {closeModal()}}></div>
     </div>
   );
 }
