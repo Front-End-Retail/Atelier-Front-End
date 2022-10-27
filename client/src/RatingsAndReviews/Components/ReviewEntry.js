@@ -22,7 +22,7 @@ const ReviewEntry = ({review, putRequest, searchTerm}) => {
     } else if (e.target.textContent.slice(0,3) === 'Yes') {
       setToggleHelp(true)
       setHelpfulText('No')
-      putRequest(review.review_id, "helpful")
+      putRequest(review.review_id, "helpful", e.target.id)
     }
   }
 // temporary fix, it would allow a user to vote the same message if they rerender the page. Decent enough though
@@ -59,7 +59,8 @@ const ReviewEntry = ({review, putRequest, searchTerm}) => {
       })}
       </div>
       {review.recommend && <p className="review-tile-recommend">&#10003; I recommend this product!</p>}
-      <p>Helpful?<a onClick={handlePutRequest} className="review-links">{helpfulText} ({review.helpfulness})</a><a onClick={handlePutRequest} className="review-links toggle-line">{reportText}</a></p>
+      <p>Helpful?<a onClick={handlePutRequest} id="helpfulness-button" className=" review-links">{helpfulText} ({review.helpfulness})</a><a onClick={handlePutRequest}
+      id="report-button" className="review-links toggle-line">{reportText}</a></p>
     </div>
   )
 }

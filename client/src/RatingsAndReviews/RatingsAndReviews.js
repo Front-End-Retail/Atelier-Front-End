@@ -3,6 +3,7 @@ import ReviewList from './Components/ReviewList.js';
 import RatingBreakdown from './Components/RatingBreakdown.js';
 import { format, parseISO } from "date-fns";
 import {helpfulPerc, everyFunc} from './Components/helperFuncs';
+import clicktracker from '../clicktracker.js'
 import baseURL from '../baseURL.js'
 const axios = require('axios');
 
@@ -62,7 +63,8 @@ const RatingsAndReviews = ({currentProductID, currentProductName, metaReviews}) 
 
   }
 // update helpful variable in the API
-  const putRequest = (reviewId, path) => {
+  const putRequest = (reviewId, path, clickedId) => {
+    clicktracker(clickedId, 'RandR', new Date())
     console.log(reviewId)
     axios.default.put('/review/put', { review_id: reviewId, path: path }).then((data) => {
       console.log('successfully added')
