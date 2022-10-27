@@ -1,5 +1,6 @@
 .modal-pop-review {
-  background: #fff;
+  background: #0B3C5D;
+  color: white;
   border: 2px solid #aaa;
   border-radius: 5px;
   z-index: 2;
@@ -118,9 +119,25 @@
   flex-wrap: wrap;
 }
 
+.review-modal-input {
+  width: 100%;
+  display: block;
+  margin-bottom: 1%;
+  border: 1px solid #F9F6EE;
+  background-color: #328CC1;
+  color: white;
+}
+.review-modal-input::placeholder {
+  color: white
+}
+
+
 .form-star-rating {
   display: flex;
   flex-direction: row;
   gap: 3%;
 }
+
+
+
 

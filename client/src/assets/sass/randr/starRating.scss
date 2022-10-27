@@ -87,3 +87,16 @@
   display: flex;
   flex-direction: row;
 }
+
+.star-button-form {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.on {
+  color: #D9B310;
+}
+.off {
+  color: white;
+}
