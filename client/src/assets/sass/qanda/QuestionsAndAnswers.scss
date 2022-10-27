@@ -33,6 +33,10 @@
   overflow-y: scroll;
 }
 
+.qalistwrapper::-webkit-scrollbar {
+  display: none;
+}
+
 .qanda-button {
   padding: 20px;
   margin-left: 11px;
