@@ -15,8 +15,6 @@ export const findAverage = (ratingsObj) => {
   }
 }
 
-
-
 export const propComparator = (name) => {
   if (name === 'helpfulness') {
   return function (a, b)  {
@@ -72,7 +70,7 @@ export const makeReviewObj = (...objs) => {
   return postObj
 }
 
-
+// for the characteristics desc in the form modal
 export  const characteristicsDesc = {
     "Size": {1: "A size too small", 2: "1/2 a size too small", 3: "Perfect", 4: "1/2 a size too big", 5: "A size too wide"},
     "Width": {1: "Too narrow", 2: "Slightly narrow", 3: "Perfect", 4:"SLightly wide", 5:"Too wide"},
@@ -82,3 +80,14 @@ export  const characteristicsDesc = {
     "Fit": {1:"Runs tight", 2: "Runs slightly tight", 3:"Perfect",4:"Runs slightly long",5:"Runs long"}
 }
 
+// for the rating desc in the form modal
+export const ratingDesc = (rating) => {
+  let ratingObj = {
+  1: "Poor",
+	2: "Fair",
+	3: "Average",
+	4: "Good",
+	5: "Great",
+  }
+  return ratingObj[rating]
+}

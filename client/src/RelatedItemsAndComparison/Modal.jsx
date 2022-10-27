@@ -18,7 +18,7 @@ const [comparedProductName, setComparedProductName] = useState('');
 
 console.log('currentProduct.features inside of modal: ', currentProduct.features)
 
-//nested API call, is this really good practice???
+
   const fetchAllFeatures = () => {
 
       const featureStorage = [];
@@ -30,7 +30,7 @@ console.log('currentProduct.features inside of modal: ', currentProduct.features
         featureStorage.push(currObj.feature);
 
       console.log('featureStorage after pushing current: ', featureStorage)
-      axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${relatedProductID}` } })
+      axios.get(`/comparison`, { params: { specificURL: `products/${relatedProductID}` } })
         .then(response => {
           setComparedProductName(response.data.name);
           const relatedFeatures = response.data.features;

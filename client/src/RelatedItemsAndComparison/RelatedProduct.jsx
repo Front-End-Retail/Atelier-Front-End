@@ -28,7 +28,7 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProduct, c
   const likeIcon = (liked) => (liked ? faHeartActive : faHeartInactive);
 
   const fetchCard = () => {
-    axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${relatedProductID}` } })
+    axios.get(`/comparison`, { params: { specificURL: `products/${relatedProductID}` } })
       .then((response) => {
         // console.log('relatedProductID', relatedProductID)
         // console.log('product details in RelatedProduct.jsx', response.data);
@@ -37,7 +37,7 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProduct, c
         newProduct.category = response.data.category;
         newProduct.price = response.data.default_price;
         // console.log('newProduct ', newProduct)
-        axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${relatedProductID}/styles` } })
+        axios.get(`/comparison`, { params: { specificURL: `products/${relatedProductID}/styles` } })
           .then(response => {
             newProduct.image = response.data.results[0].photos[0].url;
             setRelatedProduct(newProduct);

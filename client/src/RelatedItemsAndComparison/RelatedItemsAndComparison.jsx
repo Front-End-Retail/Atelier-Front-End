@@ -22,7 +22,7 @@ const RelatedItemsAndComparison = ({currentProductID, currentProduct, changeCurr
       // console.log('currentProductID passed in: ', currentProductID)
 
       const temp = [];
-      axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${currentProductID}/related` } })
+      axios.get(`/comparison`, { params: { specificURL: `products/${currentProductID}/related` } })
         .then((response) => {
           // console.log('response.data from calling API/products: ', response.data);
           //do the forEach below to filter out 37312 because it has no images
@@ -72,7 +72,7 @@ const handlePlusIconClick = () =>{
       tempOutfit.price = selectedStyle.sales_price;
     }
     setOutfitList([...outfitList, tempOutfit]);
-    setStyleIDList([...styleIDList, tempOutfit.styleID]);
+    setStyleIDList([...styleIDList, tempOutfit.styleID]);  
   }
 }
 
