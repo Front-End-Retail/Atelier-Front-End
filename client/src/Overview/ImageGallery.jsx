@@ -41,12 +41,12 @@ const ImageGallery = ({ selectedStyle, fullscreen, setFullscreen }) => {
     setCurrentImageIndex(0);
   }, [selectedStyle])
 
+
   return (
     <>
       <div className={fullscreen ? 'fullscreen' : "image-slide"} style={{
         backgroundImage: `url(${mainImages[currentImageIndex]})`,
-        backgroundSize: 'contain',
-        backgroundPosition: 'center'
+        backgroundSize: 'contain'
       }}>
         <div className='container-of-containers'>
           <div className='thumbnails-container'>
