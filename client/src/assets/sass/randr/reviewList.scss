@@ -62,8 +62,10 @@
   font-size: 1em;
 }
 .review-button:hover {
-    box-shadow: 0 5px 11px rgba(33,33,33,.2);
-    cursor: pointer;
+  background-color: #1D2731;
+  border: 1px solid #328CC1;
+  color: white;
+  font-weight: bolder;
 }
 
 
@@ -97,6 +99,7 @@
   justify-content: left;
   flex-wrap: nowrap;
   flex-direction: row;
+
 }
 #dropdown {
   min-width: 10em;

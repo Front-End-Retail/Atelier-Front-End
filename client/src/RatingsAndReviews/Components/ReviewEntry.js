@@ -59,7 +59,9 @@ const ReviewEntry = ({review, putRequest, searchTerm}) => {
       })}
       </div>
       {review.recommend && <p className="review-tile-recommend">&#10003; I recommend this product!</p>}
-      <p>Helpful?<a onClick={handlePutRequest} id="helpfulness-button" className=" review-links">{helpfulText} ({review.helpfulness})</a><a onClick={handlePutRequest}
+      <p>Helpful? {helpfulText === "No" ? <a onClick={handlePutRequest} id="helpfulness-button" className=" review-links">{helpfulText} {review.helpfulness + 1}</a> :
+      <a onClick={handlePutRequest} id="helpfulness-button" className=" review-links">{helpfulText} {review.helpfulness}</a>}
+      <a onClick={handlePutRequest}
       id="report-button" className="review-links toggle-line">{reportText}</a></p>
     </div>
   )

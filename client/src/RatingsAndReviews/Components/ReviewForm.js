@@ -150,14 +150,14 @@ const ReviewForm = ({toggle, metaReviews, currentProductName}) => {
       <div classname="user-email-div">
           <label>
             Username*:
-            <input className="review-modal-input" onChange={handleChange} maxlength="60" type="text" name="username" placeholder="Example: tombombadillo97"/>
+            <input required  className="review-modal-input" onChange={handleChange} maxlength="60" type="text" name="username" placeholder="Example: jackson11!"/>
             </label>
             <label>
-            {nameValidation && <div className="form-warning">Required field</div>}
+            {/* {nameValidation && <div className="form-warning">Required field</div>} */}
           Email*:
-          <input className="review-modal-input" onChange={handleChange} maxlength="60" type="email" name="email" placeholder="“Example: weirdolddude@email.com”"/>
+          <input required className="review-modal-input" onChange={handleChange} maxlength="60" type="email" name="email" placeholder="“Example: jackson125@email.com”"/>
           </label>
-          {emailValidation && <div className="form-warning">Required field</div>}
+          {/* {emailValidation && <div className="form-warning">Required field</div>} */}
           <p>For authentication reasons, you will not be emailed</p>
           </div>
           <div className="rating-recommend-container">
@@ -190,13 +190,13 @@ const ReviewForm = ({toggle, metaReviews, currentProductName}) => {
             )})}
           <div className="summary-input-div">
           <label>Review Summary*:
-              <input className="review-summary-form review-modal-input" onChange={handleChange} type="text" name="summary" placeholder="Example: Best purchase ever!"/>
+              <input required className="review-summary-form review-modal-input" onChange={handleChange} type="text" name="summary" placeholder="Example: Best purchase ever!"/>
             </label>
-            {summaryValidation && <div className="form-warning">Required field</div>}
+            {/* {summaryValidation && <div className="form-warning">Required field</div>} */}
             </div>
 
           <label for="review-body">Review Body*:</label>
-            <textarea className="review-modal-input" placeholder="why did you like the product or not" onChange={handleChange} name="body"
+            <textarea required className="review-modal-input" placeholder="why did you like the product or not" onChange={handleChange} name="body"
                       rows="7" cols="60" maxlength="1000">
             </textarea>
             {(body.length < 50) ? <div className="form-warning">Minimum required characters left: {50 - body.length}</div> : <div className="form-success">Minimum reached</div> }
@@ -205,7 +205,7 @@ const ReviewForm = ({toggle, metaReviews, currentProductName}) => {
             <div className="thumbnail-div"></div>
             <div className>
         <button className="review-photo-btn" type="button" onClick={showWidget}>Upload Image</button>
-        <input className="review-submit-btn" type="submit" value="Submit" multiple="multiple"/>
+        <div className="submit-btn-container"><input className="review-submit-btn" type="submit" value="Submit" multiple="multiple"/></div>
         </div>
       </form>
       </div>

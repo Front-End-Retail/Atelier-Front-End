@@ -90,27 +90,30 @@
 }
 
 .review-submit-btn {
-  background-color: #328CC1;
+  width: 30%;
+  background-color: #F9F6EE;
   border-style: 1px solid;
   border-color: #F9F6EE;
+  color: rgb(0, 0, 0);
   font-size: larger;
-  color: white;
   margin-top: 25px;
   padding: 15px;
+  margin-right: 10%;
   border-radius: 5%;
 }
 
 .review-submit-btn:hover {
   background-color: #1D2731;
   border: 1px solid #328CC1;
+  color: #F9F6EE;
   font-weight: bolder;
 }
 
 .review-photo-btn {
-  background-color: #328CC1;
+  background-color: #F9F6EE;
   border-style: 1px solid;
   border-color: #F9F6EE;
-  color: white;
+  color: rgb(0, 0, 0);
   padding: 5px;
   border-radius: 5%;
 }
@@ -118,6 +121,7 @@
 .review-photo-btn:hover {
   background-color: #1D2731;
   border: 1px solid #328CC1;
+  color: #F9F6EE;
   font-weight: bolder;
 }
 
@@ -171,6 +175,10 @@
   gap: 3%;
 }
 
+.submit-btn-container {
+  display: flex;
+  justify-content: center;
+}
 
 
 
