@@ -89,6 +89,38 @@
     cursor: pointer;
 }
 
+.review-submit-btn {
+  background-color: #328CC1;
+  border-style: 1px solid;
+  border-color: #F9F6EE;
+  font-size: larger;
+  color: white;
+  margin-top: 25px;
+  padding: 15px;
+  border-radius: 5%;
+}
+
+.review-submit-btn:hover {
+  background-color: #1D2731;
+  border: 1px solid #328CC1;
+  font-weight: bolder;
+}
+
+.review-photo-btn {
+  background-color: #328CC1;
+  border-style: 1px solid;
+  border-color: #F9F6EE;
+  color: white;
+  padding: 5px;
+  border-radius: 5%;
+}
+
+.review-photo-btn:hover {
+  background-color: #1D2731;
+  border: 1px solid #328CC1;
+  font-weight: bolder;
+}
+
 #form-title {
   display: flex;
   justify-content:  center;

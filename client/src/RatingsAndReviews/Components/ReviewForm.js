@@ -149,12 +149,12 @@ const ReviewForm = ({toggle, metaReviews, currentProductName}) => {
     <form data-testid="randr-form"  id="review-form-container" onSubmit={handleSubmit}>
       <div classname="user-email-div">
           <label>
-            Username:
+            Username*:
             <input className="review-modal-input" onChange={handleChange} maxlength="60" type="text" name="username" placeholder="Example: tombombadillo97"/>
             </label>
             <label>
             {nameValidation && <div className="form-warning">Required field</div>}
-          Email:
+          Email*:
           <input className="review-modal-input" onChange={handleChange} maxlength="60" type="email" name="email" placeholder="“Example: weirdolddude@email.com”"/>
           </label>
           {emailValidation && <div className="form-warning">Required field</div>}
@@ -189,13 +189,13 @@ const ReviewForm = ({toggle, metaReviews, currentProductName}) => {
               </div>
             )})}
           <div className="summary-input-div">
-          <label>Review Summary:
+          <label>Review Summary*:
               <input className="review-summary-form review-modal-input" onChange={handleChange} type="text" name="summary" placeholder="Example: Best purchase ever!"/>
             </label>
             {summaryValidation && <div className="form-warning">Required field</div>}
             </div>
 
-          <label for="review-body">Review Body:</label>
+          <label for="review-body">Review Body*:</label>
             <textarea className="review-modal-input" placeholder="why did you like the product or not" onChange={handleChange} name="body"
                       rows="7" cols="60" maxlength="1000">
             </textarea>
@@ -204,7 +204,7 @@ const ReviewForm = ({toggle, metaReviews, currentProductName}) => {
 
             <div className="thumbnail-div"></div>
             <div className>
-        <button className="review-submit-btn" type="button" onClick={showWidget}>Upload Image</button>
+        <button className="review-photo-btn" type="button" onClick={showWidget}>Upload Image</button>
         <input className="review-submit-btn" type="submit" value="Submit" multiple="multiple"/>
         </div>
       </form>
