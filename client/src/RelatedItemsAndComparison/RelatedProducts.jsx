@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import baseURL from '../baseURL.js'
 
-const RelatedProducts = ({relatedProductsID, currentProductID, changeCurrentProduct}) => {
+const RelatedProducts = ({relatedProductsID, currentProductID, currentProduct, changeCurrentProduct}) => {
 
 
   // console.log('relatedProductsID array passed in RelatedProducts.jsx', relatedProductsID)//[37313, 37314, 37317, 37319, 37320]
@@ -41,7 +41,7 @@ if (currCarousel.length >=4) {
     <div className='relatedProductsOuterContainer'>
           <div className='relatedProductsContainer'>
                 {sizedCarousel.map((relatedProductID, index)=>{
-                 return <RelatedProduct key={index} relatedProductID={relatedProductID} relatedProductsID={relatedProductsID} currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct}></RelatedProduct>
+                 return <RelatedProduct key={index} relatedProductID={relatedProductID} relatedProductsID={relatedProductsID} currentProductID={currentProductID} currentProduct={currentProduct} changeCurrentProduct={changeCurrentProduct}></RelatedProduct>
                  })}
            </div>
            <button className='rightArrowIcon' onClick={handleRightArrowClick}><FontAwesomeIcon icon={faArrowRight}/></button>
@@ -56,7 +56,7 @@ if (currCarousel.length >=4) {
       {currCarousel.map((relatedProductID, index)=>{
 
       return <RelatedProduct key={index} relatedProductID={relatedProductID} relatedProductsID={relatedProductsID}
-       currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct}></RelatedProduct>
+       currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct} currentProduct={currentProduct}></RelatedProduct>
 
     })}
     </div>

@@ -11,8 +11,9 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
 import StarAverage from '../RatingsAndReviews/Components/StarAverage.js';
 import { findAverage, findTotal } from '../RatingsAndReviews/Components/helperFuncs.js';
 import baseURL from '../baseURL.js'
+import clicktracker from '../clicktracker.js'
 
-const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProductID, changeCurrentProduct }) => {
+const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProduct, currentProductID, changeCurrentProduct }) => {
 
   // console.log('each relatedProductID received in RelatedProduct.jsx: ', relatedProductID) //dont console.log here
 
@@ -69,8 +70,12 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProductID,
   return (
 
 
-    <div className='card-component' >
-
+    <div className='card-component'>
+          {/* //  onClick={(event)=>{
+      // console.log('event inside of product<card-component: ', event)
+      // console.log('event.target inside of product<card-component: ', event.target)
+      // console.log('event.target.id inside of product<card-component: ', event.target.id)
+      // clicktracker(event.target.id, 'relatedItemsModule', new Date())}}> */}
         <div className="product-image" style={{
           backgroundImage: `url(${relatedProduct.image})`,
           backgroundSize: 'cover',
@@ -80,7 +85,13 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProductID,
        </div>
         {/* cant add listeners to react icons */}
         {/* <button className='starIcon' onClick={() => { setOpenModal(true) }}><FontAwesomeIcon icon={faStar}/></button>*/}
-        <a href='#overview-container'><div className='lower-part' onClick={() => { changeCurrentProduct(relatedProductID) }}>
+        <a href='#overview-container'><div className='lower-part' onClick={() => {
+          changeCurrentProduct(relatedProductID)
+          console.log('event inside of product<card-component: ', event)
+          console.log('event.target inside of product<card-component: ', event.target)
+          console.log('event.target.id inside of product<card-component: ', event.target.id)
+          clicktracker(event.target.id, 'relatedItemsModule' , new Date())
+          }}>
              <div className='product-name'>{relatedProduct.name}</div>
              {/* <div className='product-name'><a href='#overview-container'>{relatedProduct.name}</a></div> */}
              <div className='product-category'>{relatedProduct.category}</div>
@@ -89,7 +100,7 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProductID,
       </div></a>
       {/* <div style={{ backgroundImage: `url(${relatedProduct.image})` }}> */}
 
-      { relatedProductID && openModal && <Modal closeModal={setOpenModal} currentProductID={currentProductID} relatedProductID={relatedProductID} />}
+      { relatedProductID && openModal && <Modal closeModal={setOpenModal} currentProductID={currentProductID} relatedProductID={relatedProductID} currentProduct={currentProduct}/>}
 
     </div>
   )

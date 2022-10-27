@@ -10,7 +10,7 @@ import baseURL from '../baseURL.js';
 const { useState, useEffect } = React;
 
 //I need a style_id to be passed to me, i need to use it on handlePlusIconClick
-const RelatedItemsAndComparison = ({currentProductID, changeCurrentProduct, selectedStyle}) => {
+const RelatedItemsAndComparison = ({currentProductID, currentProduct, changeCurrentProduct, selectedStyle, metaReviews}) => {
 // console.log('currentProductID passed in: ', currentProductID) //its first 0 and then 37311 //DONT CONSOLE.LOG here, console.log inside of fetch
   const [relatedProductsID, setRelatedProductsID] = useState([]);
   const [outfitList, setOutfitList] = useState([]);
@@ -49,47 +49,30 @@ const RelatedItemsAndComparison = ({currentProductID, changeCurrentProduct, sele
   fetchAllRelatedProductsID();
  },[currentProductID])
 
+const setLocalStorage = (index, outfit) => {
+//setItem
+}
+
+const removeFromLocalStorage = (index, outfit) => {
+//localStorage.removeItem()
+}
 
 const handlePlusIconClick = () =>{
   if  (styleIDList.indexOf(selectedStyle.style_id)!==-1) {
     setDuplicateSelected(true);
-  }
-  if (styleIDList.indexOf(selectedStyle.style_id) === -1) {
-
-  axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${currentProductID}` } })
-    .then(response=>{
-      // console.log('detail info retrieved with product_id', response.data);
-      const tempOutfit = {};
-      tempOutfit.name = response.data.name;
-      tempOutfit.category = response.data.category;
-      axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${currentProductID}/styles` } })
-        .then((response)=>{
-          // console.log('style info ', response.data);
-          response.data.results.forEach(result=>{
-
-            if (result.style_id === selectedStyle.style_id && styleIDList.indexOf(selectedStyle.style_id)===-1) {
-              // console.log('styleIDList.indexOf(selectedStyle.style_id: ', styleIDList.indexOf(selectedStyle.style_id))
-              // console.log('outfitList before: ', outfitList)
-              tempOutfit.styleID = result.style_id;
-              tempOutfit.style = result.name;
-              tempOutfit.image = result.photos[0].url;
-              tempOutfit.regularPrice = result.original_price;
-              if (result.sale_price) {
-                tempOutfit.price = result.sale_price;
-              }
-            }
-          })
-          // console.log('temp after assigning properties: ', temp);
-          setOutfitList([...outfitList, tempOutfit]);
-          setStyleIDList([...styleIDList,selectedStyle.style_id]); //setCurrentOutfit(tempOutfit);
-        })
-        .catch(err=>{
-          console.log('failed to get style info', err);
-        })
-      })
-    .catch(err=>{
-      console.log('yourOutfitList failed to retrieve style with style_id:' , err)
-    })
+  } else {
+    const tempOutfit = {};
+    tempOutfit.name = currentProduct.name;
+    tempOutfit.category = currentProduct.category;
+    tempOutfit.styleID =  selectedStyle.style_id;
+    tempOutfit.style = selectedStyle.name;
+    tempOutfit.regularPrice = selectedStyle.original_price;
+    tempOutfit.image = selectedStyle.photos[0].url;
+    if (selectedStyle.sales_price) {
+      tempOutfit.price = selectedStyle.sales_price;
+    }
+    setOutfitList([...outfitList, tempOutfit]);
+    setStyleIDList([...styleIDList, tempOutfit.styleID]);
   }
 }
 
@@ -124,7 +107,7 @@ const updateOutfitList = (currentStyleID) =>{
   return (
     <div className='relatedItemsAndComparison'>
       <h2 className='YouMightAlsoLike'>YOU MIGHT ALSO LIKE</h2>
-      <RelatedProducts relatedProductsID={relatedProductsID} currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct}></RelatedProducts>
+      <RelatedProducts relatedProductsID={relatedProductsID} currentProductID={currentProductID} currentProduct={currentProduct} changeCurrentProduct={changeCurrentProduct}></RelatedProducts>
       <h3 className='CompleteYourOutfit'>COMPLETE YOUR OUTFIT</h3>
       <YourOutfitList outfitList = {outfitList} handlePlusIconClick={handlePlusIconClick} updateOutfitList={updateOutfitList} duplicateSelected={duplicateSelected} closePopUp={closePopUp}></YourOutfitList>
     </div>
