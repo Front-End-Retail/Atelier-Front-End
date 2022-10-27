@@ -10,9 +10,9 @@
   margin-left: 3px;
   margin-right: 3px;
   border: none;
-  border: 1px solid #F9F6EE;
-  background-color: #328CC1;
-  color: white;
+  border: 1px solid #000000;
+  background-color: #F9F6EE;
+  color: rgb(0, 0, 0);
   font-weight: bold;
   border-radius: 2px;
 }
@@ -24,7 +24,7 @@
 }
 
 .search-field::placeholder {
-  color: white;
+  color: rgb(44, 44, 44);
 }
 
 .search-button {
@@ -43,6 +43,6 @@
 }
 
 .magnifying-glass {
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: x-large;
 }
