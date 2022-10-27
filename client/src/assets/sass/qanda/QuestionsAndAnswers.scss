@@ -38,10 +38,10 @@
   margin-left: 11px;
   margin-top: 10px;
   margin-bottom: 10px;
-  background-color: #328CC1;
+  background-color: #F9F6EE;
   border-style: 1px solid;
   border-color: #F9F6EE;
-  color: white;
+  color: rgb(0, 0, 0);
   font-weight: bold;
   border-radius: 2px;
 }
@@ -49,5 +49,6 @@
 .qanda-button:hover {
   background-color: #1D2731;
   border: 1px solid #328CC1;
+  color: #F9F6EE;
   font-weight: bolder;
 }

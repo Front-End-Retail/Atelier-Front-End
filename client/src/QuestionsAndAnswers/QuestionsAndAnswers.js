@@ -74,7 +74,6 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
 
   //will call for question info on initial render
   useEffect(() => {
-    console.log("THE CURRENT ID", typeof currentProductID, currentProductID)
     setCurrentId(currentProductID)
   }, [currentProductID])
 
