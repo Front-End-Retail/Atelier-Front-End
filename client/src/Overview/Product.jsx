@@ -35,7 +35,7 @@ const Product = ({ styles, currentProduct, selectedStyle, changeStyle, metaRevie
     <div className={fullscreen ? 'product-hidden' : "product-container"}>
       <div className="product-info">
         <StarAverage id={"-product"} rating={findAverage(metaReviews.ratings)} colorOn={"rgb(255, 193, 7)"} colorOff={"rgb(105,105,105)"} />
-        <span>Read all <a href="#review-list">{findTotal(metaReviews.ratings)}</a> reviews</span>
+        <span>Read all <a href="#center-reviews">{findTotal(metaReviews.ratings)}</a> reviews</span>
         <span className="category">{currentProduct.category}</span>
         <h2>{currentProduct.name}</h2>
 
