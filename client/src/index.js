@@ -96,44 +96,45 @@ const App = () => {
   }, [styles]);
 
   return (
-    <div className="lord-of-all-divs">
-      <header className={'logo'}><div className={'titleLogo'}><h1>One Stop Onesie Shop</h1><img className={'theLion'} src={LannisterLion}></img></div> <div className={'titleLogo'}><h2>Search</h2><input className={'headerSearch'}></input></div></header>
-      {currentProductID !== 0 && currentProductName !== '' && currentProduct && Object.keys(currentProduct).length !== 0 && < div >
-        <Overview currentProduct={currentProduct} styles={styles} selectedStyle={selectedStyle} changeStyle={changeSelectedStyle} metaReviews={metaReviews} />
-        <RelatedItemsAndComparison currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct} selectedStyle={selectedStyle} currentProduct={currentProduct} metaReviews={metaReviews} />
-        <QuestionsAndAnswers currentProductID={currentProductID} currentProductName={currentProductName} />
-        <RatingsAndReviews currentProductID={currentProductID} currentProductName={currentProductName} metaReviews={metaReviews} />
-      </div>}
-      <footer className='footer'>
-        <div className='footer-container'>
-          <div className='list'>
-            <div className='company'>
-              <h3>Company</h3>
-              <a href='#'>about us</a>
-              <a href='#'>privacy policy</a>
+    <><header className={'logo'}><div className={'titleLogo'}><h1>One Stop Onesie Shop</h1><img className={'theLion'} src={LannisterLion}></img></div> <div className={'titleLogo'}><h2>Search</h2><input className={'headerSearch'}></input></div></header>
+      <div className="lord-of-all-divs">
+        {currentProductID !== 0 && currentProductName !== '' && currentProduct && Object.keys(currentProduct).length !== 0 && < div >
+          <Overview currentProduct={currentProduct} styles={styles} selectedStyle={selectedStyle} changeStyle={changeSelectedStyle} metaReviews={metaReviews} />
+          <RelatedItemsAndComparison currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct} selectedStyle={selectedStyle} currentProduct={currentProduct} metaReviews={metaReviews} />
+          <QuestionsAndAnswers currentProductID={currentProductID} currentProductName={currentProductName} />
+          <RatingsAndReviews currentProductID={currentProductID} currentProductName={currentProductName} metaReviews={metaReviews} />
+        </div>}
+        <footer className='footer'>
+          <div className='footer-container'>
+            <div className='list'>
+              <div className='company'>
+                <h3>Company</h3>
+                <a href='#'>about us</a>
+                <a href='#'>privacy policy</a>
+              </div>
+              <div className='get-help'>
+                <h3>Get help</h3>
+                <a href='#'>FAQ</a>
+                <a href='#'>shipping</a>
+                <a href='#'>returns</a>
+                <a href='#'>order status</a>
+                <a href='#'>payment options</a>
+              </div>
+              <div className='footer-email-form'>
+                <h3>Join our newsletter</h3>
+                <input type='email' placeholder='enter your email address' id='footer-email'></input>
+                <input type='submit' value='Sign Up' id='footer-email-btn' ></input>
+              </div>
             </div>
-            <div className='get-help'>
-              <h3>Get help</h3>
-              <a href='#'>FAQ</a>
-              <a href='#'>shipping</a>
-              <a href='#'>returns</a>
-              <a href='#'>order status</a>
-              <a href='#'>payment options</a>
+            <div className='social-links'><FontAwesomeIcon className='facebookIcon' icon={faFacebook} />
+              <FontAwesomeIcon className='twitterIcon' icon={faTwitter} />
+              <FontAwesomeIcon className='instaIcon' icon={faInstagram} />
             </div>
-            <div className='footer-email-form'>
-              <h3>Join our newsletter</h3>
-              <input type='email' placeholder='enter your email address' id='footer-email'></input>
-              <input type='submit' value='Sign Up' id='footer-email-btn' ></input>
-            </div>
+            <span className='trade-mark'>Atelier Lannister ® 2022</span>
           </div>
-          <div className='social-links'><FontAwesomeIcon className='facebookIcon' icon={faFacebook} />
-            <FontAwesomeIcon className='twitterIcon' icon={faTwitter} />
-            <FontAwesomeIcon className='instaIcon' icon={faInstagram} />
-          </div>
-          <span className='trade-mark'>Atelier Lannister ® 2022</span>
-        </div>
-      </footer>
-    </div >
+        </footer>
+      </div >
+    </>
   );
 }
 const container = document.getElementById('root');

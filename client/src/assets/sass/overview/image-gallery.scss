@@ -46,7 +46,7 @@
 }
 
 .slide-arrow {
-  color: #0b3c5d;
+  color: #fff;
   cursor: pointer;
   font-size: 3rem;
 
@@ -54,17 +54,17 @@
 
 .left {
   grid-row: 3 / 3;
-  filter: drop-shadow(2px 0px 1px white);
+  filter: drop-shadow(2px 0px 1px #0b3c5d);
 }
 
 .right {
   grid-column: 7 / 7;
   grid-row: 3 / 3;
-  filter: drop-shadow(-2px 0px 1px white);
+  filter: drop-shadow(-2px 0px 1px #0b3c5d);
 }
 
 .fullscreenIcon {
-  color: #0b3c5d;
+  color: #fff;
   cursor: pointer;
   font-size: 2rem;
   grid-column: 7 / 7;
