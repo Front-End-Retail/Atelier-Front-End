@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 require('dotenv').config();
-const { getReviews } = require('./controllers/reviewControllers')
+const { getReviews } = require('./controllers/reviewControllers');
 const axios = require('axios');
 var cors = require('cors');
 
@@ -9,7 +9,7 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 // allow the client at port 3001 to send requests to the server
 // app.use(function (req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*")

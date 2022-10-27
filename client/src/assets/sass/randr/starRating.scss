@@ -75,10 +75,28 @@
 //   color:green
 // }
 
-.empty-rating {
+.empty-star {
   color: white
 }
 
 .highlight-star {
   color: #D9B310;
+}
+
+.star-div-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.star-button-form {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.on {
+  color: #D9B310;
+}
+.off {
+  color: white;
 }

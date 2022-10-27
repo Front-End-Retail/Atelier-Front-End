@@ -41,6 +41,7 @@
   max-height: 600px;
   // padding-top: 3%;
 }
+
 @media (max-width: 800px) {
   #review-list-all {
     width: 100%;
@@ -54,7 +55,8 @@
 
 .review-button {
   padding: 20px;
-  margin: 1%;
+  margin-top: 1%;
+  margin-right: 1%;
   background-color: white;
   font-weight: bold;
   font-size: 1em;
