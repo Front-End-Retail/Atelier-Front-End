@@ -78,7 +78,6 @@
   :hover {
     filter: opacity(.5) drop-shadow(0 0 0 black);
     transition: all 0.2s ease-in;
-
   }
 }
 
@@ -98,7 +97,7 @@
 
   form {
     display: flex;
-    gap: 5px;
+    gap: 10px;
   }
 
   .size-select {
@@ -117,7 +116,6 @@
     color: #fff;
     text-indent: 0.01px;
     cursor: pointer;
-    margin-right: 1em;
   }
 
   .qty {
@@ -149,7 +147,7 @@
       display: block;
       font-size: 18px;
       height: 3em;
-      width: 10em;
+      width: 15em;
       border-radius: 6px;
       background: #34699E;
       border-color: rgba(34, 34, 34, 0.15);
@@ -163,9 +161,9 @@
     .favorite {
       box-shadow: 0 1px 6px 0 rgb(34 34 34 / 15%);
       display: block;
-      font-size: 16px;
+      font-size: 18px;
       height: 3em;
-      width: 4em;
+      width: 3em;
       padding: 2px;
       border-radius: 6px;
       background: #34699E;
