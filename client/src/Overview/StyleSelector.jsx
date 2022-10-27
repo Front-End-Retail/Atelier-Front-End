@@ -9,8 +9,8 @@ const StyleSelector = ({ styles, selectedStyle, changeStyle }) => {
       <div className="style-thumbnails">
         {styles.map((style, i) => {
           return (
-            <div className="style-container">
-              <div key={i} data-testid="styles" className="image-container" style={{ borderColor: selectedStyle === style ? '#34699E' : '#fff' }}>
+            <div key={i} className="style-container">
+              <div data-testid="styles" className="image-container" style={{ borderColor: selectedStyle === style ? '#34699E' : '#fff' }}>
                 <img onClick={e => {
                   e.preventDefault();
                   changeStyle(style)
