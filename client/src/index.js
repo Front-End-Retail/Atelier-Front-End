@@ -97,7 +97,7 @@ const App = () => {
 
   return (
     <div className="lord-of-all-divs">
-      <header className={'logo'}><div className={'titleLogo'}><h1>One Stop Onesie Shop</h1><img className={'theLion'} src={LannisterLion}></img></div> <h2>Search ________</h2></header>
+      <header className={'logo'}><div className={'titleLogo'}><h1>One Stop Onesie Shop</h1><img className={'theLion'} src={LannisterLion}></img></div> <div className={'titleLogo'}><h2>Search</h2><input className={'headerSearch'}></input></div></header>
       {currentProductID !== 0 && currentProductName !== '' && currentProduct && Object.keys(currentProduct).length !== 0 && < div >
         <Overview currentProduct={currentProduct} styles={styles} selectedStyle={selectedStyle} changeStyle={changeSelectedStyle} metaReviews={metaReviews} />
         <RelatedItemsAndComparison currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct} selectedStyle={selectedStyle} currentProduct={currentProduct} metaReviews={metaReviews} />

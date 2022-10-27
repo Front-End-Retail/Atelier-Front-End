@@ -104,13 +104,3 @@ const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness, cu
 }
 
 export default QAListItem;
-
-/*
-TODOS:
--Build out the structure
-Still need conditional components:
-  -Image display
-  -Load more answers
-
-
-*/
