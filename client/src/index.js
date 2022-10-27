@@ -56,7 +56,7 @@ const App = () => {
       })
   }
   const fetchMetaData = () => {
-    axiosDef.default.get(`/review`, { params: { specificURL: `reviews/meta?product_id=${currentProductID}` } }).then((reviewData) => {
+    axiosDef.default.get('/review', { params: { specificURL: `reviews/meta?product_id=${currentProductID}` } }).then((reviewData) => {
       setMetaReviews(reviewData.data)
     }).catch(err => {
       console.log('error getting', err)
@@ -100,7 +100,7 @@ const App = () => {
       <header className={'logo'}><div className={'titleLogo'}><h1>One Stop Onesie Shop</h1><img className={'theLion'} src={LannisterLion}></img></div> <h2>Search ________</h2></header>
       {currentProductID !== 0 && currentProductName !== '' && currentProduct && Object.keys(currentProduct).length !== 0 && < div >
         <Overview currentProduct={currentProduct} styles={styles} selectedStyle={selectedStyle} changeStyle={changeSelectedStyle} metaReviews={metaReviews} />
-        <RelatedItemsAndComparison currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct} selectedStyle={selectedStyle} currentProduct={currentProduct} metaReviews={metaReviews}/>
+        <RelatedItemsAndComparison currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct} selectedStyle={selectedStyle} currentProduct={currentProduct} metaReviews={metaReviews} />
         <QuestionsAndAnswers currentProductID={currentProductID} currentProductName={currentProductName} />
         <RatingsAndReviews currentProductID={currentProductID} currentProductName={currentProductName} metaReviews={metaReviews} />
       </div>}

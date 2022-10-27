@@ -20,9 +20,10 @@ app.use(cors());
 // axios.defaults.headers.common['Authorization'] = `process.env.GITHUB_API_KEY`;
 
 let authObject = { 'Authorization': process.env.GITHUB_API_KEY }
-
+let requestCounter = 0;
 //ROUTES BELOW
 app.get('/products', (req, res) => {
+
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/' + req.query.specificURL, { headers: authObject }).then(data => {
     res.send(data.data)
   }).catch(err => {
@@ -32,6 +33,7 @@ app.get('/products', (req, res) => {
 })
 
 app.get('/comparison', (req, res) => {
+
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/' + req.query.specificURL, { headers: authObject }).then(data => {
     res.send(data.data)
   }).catch(err => {
@@ -42,6 +44,7 @@ app.get('/comparison', (req, res) => {
 })
 
 app.get('/qanda', (req, res) => {
+
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/' + req.query.specificURL, { headers: authObject }).then(data => {
     res.send(data.data)
   }).catch(err => {
@@ -107,7 +110,7 @@ app.post('/qanda/answer', (req, res) => {
 })
 
 app.get('/review', (req, res) => {
-  console.log('reviews pulled here', req.params)
+
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/' + req.query.specificURL, { headers: authObject }).then(data => {
     res.send(data.data)
   }).catch(err => {
