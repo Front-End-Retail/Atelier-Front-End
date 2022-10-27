@@ -30,7 +30,7 @@
   display: flex;
 
   img {
-    margin-left: 30px;
+    margin-left: 35px;
     max-height: 80px;
   }
 }
@@ -43,7 +43,7 @@
 .theLion:hover {
   filter: opacity(.5) drop-shadow(0 0 0 red);
   animation-name: rotate;
-  animation-duration: 3s;
+  animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-timing-function: linear;
@@ -51,7 +51,16 @@
 
 @keyframes rotate {
   from {transform: rotate(0deg);}
-  to {transform: rotate(-80deg) scale(1.5);}
+  to {transform: rotate(-75deg) scale(1.5);}
+}
+
+.headerSearch {
+  border:none;
+  border-bottom: 1px solid #ffffff;
+  background-color: #0b3c5d;
+  color: white;
+  padding: 5px 10px;
+  outline: none;
 }
 
 #overview-container {

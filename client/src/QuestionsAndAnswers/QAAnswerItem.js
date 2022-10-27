@@ -1,7 +1,6 @@
 import React from 'react';
 import QAAnswerImage from './QAAnswerImage.js';
 import { format, parseISO } from "date-fns";
-const axios = require('axios');
 
 const { useState, useEffect } = React;
 
@@ -66,9 +65,3 @@ const QAAnswerItem = ({ answer, addAnswerHelpfulness, updateHelpfulCount, report
 }
 
 export default QAAnswerItem;
-
-/*
-TODOs:
---Reformat the "A:" so the answer info wrapper always lines up correctly beneath the answer text
-
-*/
