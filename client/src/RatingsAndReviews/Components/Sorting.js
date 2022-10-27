@@ -3,7 +3,6 @@ const axios = require('axios');
 const { useState, useEffect } = React;
 
 const Sorting = ({reviews, passSortingName}) => {
-  // const [selected, setSelected] =
 
   const handleSelect = (event) => {
     let name = event.target.value
@@ -18,8 +17,6 @@ const Sorting = ({reviews, passSortingName}) => {
 
 
   </select>
-    // <div>
-    // </div>
   )
 }
 
