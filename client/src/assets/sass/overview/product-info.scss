@@ -53,14 +53,14 @@
 .style-container {
   width: 20%;
   height: 20%;
-  display: absolute;
+  position: relative;
   border-radius: 50%;
 }
 
 .check-mark {
-  position: relative;
-  left: 55px;
-  top: -100px;
+  position: absolute;
+  left: 65px;
+  top: 0px;
   border-radius: 50%;
   font-size: 24px;
   background-color: #fff;

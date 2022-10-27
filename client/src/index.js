@@ -58,7 +58,7 @@ const App = () => {
       })
   }
   const fetchMetaData = () => {
-    axiosDef.default.get(`/review`, { params: { specificURL: `reviews/meta?product_id=${currentProductID}` } }).then((reviewData) => {
+    axiosDef.default.get('/review', { params: { specificURL: `reviews/meta?product_id=${currentProductID}` } }).then((reviewData) => {
       setMetaReviews(reviewData.data)
     }).catch(err => {
       console.log('error getting', err)

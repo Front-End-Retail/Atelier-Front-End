@@ -20,7 +20,7 @@ app.use(cors())
 // axios.defaults.headers.common['Authorization'] = `process.env.GITHUB_API_KEY`;
 
 let authObject = { 'Authorization': process.env.GITHUB_API_KEY }
-
+let requestCounter = 0;
 //ROUTES BELOW
 app.get('/products', (req, res) => {
 
@@ -110,8 +110,7 @@ app.post('/qanda/answer', (req, res) => {
 })
 
 app.get('/review', (req, res) => {
-  requestCount++;
-  console.log('request count', requestCount)
+
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/' + req.query.specificURL, { headers: authObject }).then(data => {
     res.send(data.data)
   }).catch(err => {

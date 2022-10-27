@@ -18,7 +18,6 @@ const Modal = ({ closeModal, currentProductID, relatedProductID, currentProduct 
 
   console.log('currentProduct.features inside of modal: ', currentProduct.features)
 
-
   const fetchAllFeatures = () => {
 
     const featureStorage = [];
@@ -45,28 +44,11 @@ const Modal = ({ closeModal, currentProductID, relatedProductID, currentProduct 
           setFeatureList(featureStorage);
           setComparedProductFeatures(response.data.features);
         })
-<<<<<<< HEAD
         .catch(err => {
           console.log('failed to retrieve features for related item', err)
         })
     })
-      .catch(err => {
-        console.log('failed to retrieve features for current item', err)
-      })
-=======
-          console.log('featureStorage after pushing related: ', featureStorage)
-          //['Fabric', 'Buttons', 'Cut']
-          setFeatureList(featureStorage);
-          setComparedProductFeatures(response.data.features);
-        })
-        .catch(err=>{
-          console.log('failed to retrieve features for related item', err)
-        })
-    })
->>>>>>> a1e810f139df03289a5b2dae70805248a7f3e764
   }
-
-
   useEffect(() => {
     fetchAllFeatures();
   }, [currentProductID, relatedProductID])

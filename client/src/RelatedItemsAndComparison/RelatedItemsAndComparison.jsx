@@ -10,7 +10,7 @@ import baseURL from '../baseURL.js';
 const { useState, useEffect } = React;
 
 //I need a style_id to be passed to me, i need to use it on handlePlusIconClick
-const RelatedItemsAndComparison = ({ currentProductID, changeCurrentProduct, selectedStyle }) => {
+const RelatedItemsAndComparison = ({ currentProductID, changeCurrentProduct, selectedStyle, currentProduct }) => {
   // console.log('currentProductID passed in: ', currentProductID) //its first 0 and then 37311 //DONT CONSOLE.LOG here, console.log inside of fetch
   const [relatedProductsID, setRelatedProductsID] = useState([]);
   const [outfitList, setOutfitList] = useState([]);
