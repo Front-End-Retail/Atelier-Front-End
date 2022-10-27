@@ -14,22 +14,39 @@ const StarRating = ({handleStarChange}) => {
     // e.preventDefault()
     handleStarChange(e.target.value)
   }
+  const setStarColor = () => {
+
+  }
+
   return (
 
 
-    <div class="star-rating">
-      <div class="star-rating__wrap">
+    <div className="star-rating">
+      <div className="star-rating__wrap">
         Rating
-        <input  onChange={handleChange} class="star-rating__input" id="star-rating-5" type="radio" name="rating" value="5" />
-        <label class="star-rating__ico" for="star-rating-5" title="5 out of 5 stars"><FontAwesomeIcon icon={faStar}/></label>
-        <input  onChange={handleChange} class="star-rating__input" id="star-rating-4" type="radio" name="rating" value="4"/>
-        <label class="star-rating__ico" for="star-rating-4" title="4 out of 5 stars"><FontAwesomeIcon icon={faStar}/></label>
-        <input  onChange={handleChange} class="star-rating__input" id="star-rating-3" type="radio" name="rating" value="3"/>
-        <label class="star-rating__ico" for="star-rating-3" title="3 out of 5 stars"><FontAwesomeIcon icon={faStar}/></label>
-        <input  onChange={handleChange} class="star-rating__input" id="star-rating-2" type="radio" name="rating" value="2"/>
-        <label class="star-rating__ico" for="star-rating-2" title="2 out of 5 stars"><FontAwesomeIcon icon={faStar}/></label>
-        <input  onChange={handleChange} class="star-rating__input" id="star-rating-1" type="radio" name="rating" value="1"/>
-        <label class="star-rating__ico" for="star-rating-1" title="1 out of 5 stars"><FontAwesomeIcon icon={faStar}/></label>
+        <div className="star-div-container">
+        <div onClick={()=> {console.log('clicked')}}><input onMouseEnter={(e) => {console.log(e.target.value)}} onChange={handleChange} className="star-rating__input"
+         id="star-rating-5" type="radio" name="rating" value="5" />
+       <FontAwesomeIcon icon={faStar} className={style1}
+          onMouseEnter={()=> {
+            style1 === 'empty-star' ? setStyle1('highlight-star') : setStyle1('empty-star')
+          }}
+        /></div>
+               <div onClick={()=> {console.log('clicked')}}><input  onChange={handleChange} className="star-rating__input" id="star-rating-5" type="radio" name="rating" value="5" />
+       <FontAwesomeIcon icon={faStar} className={style2}
+          onMouseEnter={()=> {
+            style1 === 'empty-star' ? setStyle1('highlight-star') : setStyle1('empty-star')
+          }}
+        /></div>
+        </div>
+        <input  onChange={handleChange} className="star-rating__input" id="star-rating-4" type="radio" name="rating" value="4"/>
+        <label className="star-rating__ico" for="star-rating-4" title="4 out of 5 stars"><FontAwesomeIcon icon={faStar}/></label>
+        <input  onChange={handleChange} className="star-rating__input" id="star-rating-3" type="radio" name="rating" value="3"/>
+        <label className="star-rating__ico" for="star-rating-3" title="3 out of 5 stars"><FontAwesomeIcon icon={faStar}/></label>
+        <input  onChange={handleChange} className="star-rating__input" id="star-rating-2" type="radio" name="rating" value="2"/>
+        <label className="star-rating__ico" for="star-rating-2" title="2 out of 5 stars"><FontAwesomeIcon icon={faStar}/></label>
+        <input  onChange={handleChange} className="star-rating__input" id="star-rating-1" type="radio" name="rating" value="1"/>
+        <label className="star-rating__ico" for="star-rating-1" title="1 out of 5 stars"><FontAwesomeIcon icon={faStar}/></label>
       </div>
     </div>
 
@@ -37,3 +54,12 @@ const StarRating = ({handleStarChange}) => {
 }
 
 export default StarRating;
+{/* <label className="star-rating__ico" for="star-rating-5" title="5 out of 5 stars"> </label> */}
+{/* <input  onChange={handleChange} className="star-rating__input" id="star-rating-4" type="radio" name="rating" value="4"/>
+<label className="star-rating__ico" for="star-rating-4" title="4 out of 5 stars"><FontAwesomeIcon icon={faStar}/></label>
+<input  onChange={handleChange} className="star-rating__input" id="star-rating-3" type="radio" name="rating" value="3"/>
+<label className="star-rating__ico" for="star-rating-3" title="3 out of 5 stars"><FontAwesomeIcon icon={faStar}/></label>
+<input  onChange={handleChange} className="star-rating__input" id="star-rating-2" type="radio" name="rating" value="2"/>
+<label className="star-rating__ico" for="star-rating-2" title="2 out of 5 stars"><FontAwesomeIcon icon={faStar}/></label>
+<input  onChange={handleChange} className="star-rating__input" id="star-rating-1" type="radio" name="rating" value="1"/>
+<label className="star-rating__ico" for="star-rating-1" title="1 out of 5 stars"><FontAwesomeIcon icon={faStar}/></label> */}
