@@ -18,7 +18,7 @@ const QAListItem = ({ question, addQuestionHelpfulness, addAnswerHelpfulness, cu
   const [displayedAnswersLength, setDisplayedAnswersLength] = useState(2)
 
   const getAnswersArray = (questionIdPassedIn) => {
-    axios.default.get(`${baseURL}/qanda`, { params: { specificURL: `qa/questions/${questionIdPassedIn}/answers` } }).then((data) => {
+    axios.default.get(`/qanda`, { params: { specificURL: `qa/questions/${questionIdPassedIn}/answers` } }).then((data) => {
       setAnswersForQ(data.data.results)
     }).catch(err => {
       console.log('error getting answers', err)

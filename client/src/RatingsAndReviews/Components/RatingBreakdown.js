@@ -55,7 +55,7 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter, sortReviews, curr
         </div>
       })}
       {!starFilter.every(everyFunc) && <StarFilterDesc starFilter={starFilter}/>}
-      {!starFilter.every(everyFunc) && <button onClick={removeFilterButton}>Remove Filters</button>}
+      {!starFilter.every(everyFunc) && <button className="filter-button" onClick={removeFilterButton}>Remove Filters</button>}
       {metaReviews.characteristics && Object.keys(metaReviews.characteristics).map((key, index) => {
         return (
           <div className="slide-container" data-testid="randr-char-slider" key={index}>{key}
