@@ -203,9 +203,10 @@ const ReviewForm = ({toggle, metaReviews, currentProductName}) => {
             {/* Upload files here */}
 
             <div className="thumbnail-div"></div>
+            <div className>
         <button className="review-submit-btn" type="button" onClick={showWidget}>Upload Image</button>
         <input className="review-submit-btn" type="submit" value="Submit" multiple="multiple"/>
-
+        </div>
       </form>
       </div>
   )

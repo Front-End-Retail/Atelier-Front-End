@@ -8,7 +8,7 @@ import {
 const axios = require('axios');
 const { useState, useEffect } = React;
 
-const StarAverage = ({rating}) => {
+const StarAverage = ({rating, colorOn, colorOff}) => {
   const  [starRating, setStarRating] = useState(rating)
   let test = rating + 1;
   return (
@@ -16,32 +16,32 @@ const StarAverage = ({rating}) => {
     {/* {makeStarAverage(rating)} */}
       <svg className="linear-gradient-template">
         <linearGradient id="empty-star" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style={{stopColor: "rgb(255, 193, 7)"}}></stop>
-            <stop offset="0%" style={{stopColor: "rgb(228, 229, 233)"}}></stop>
+            <stop offset="0%" style={{stopColor: colorOn}}></stop>
+            <stop offset="0%" style={{stopColor: colorOff}}></stop>
         </linearGradient>
       </svg>
       <svg className="linear-gradient-template">
         <linearGradient id="quarter-star" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="33%" style={{stopColor: "rgb(255, 193, 7)"}}></stop>
-            <stop offset="33%" style={{stopColor: "rgb(228, 229, 233)"}}></stop>
+            <stop offset="33%" style={{stopColor: colorOn}}></stop>
+            <stop offset="33%" style={{stopColor: colorOff}}></stop>
         </linearGradient>
       </svg>
       <svg className="linear-gradient-template">
         <linearGradient id="half-star" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="50%" style={{stopColor: "rgb(255, 193, 7)"}}></stop>
-            <stop offset="50%" style={{stopColor: "rgb(228, 229, 233)"}}></stop>
+            <stop offset="50%" style={{stopColor: colorOn}}></stop>
+            <stop offset="50%" style={{stopColor: colorOff}}></stop>
         </linearGradient>
       </svg>
       <svg className="linear-gradient-template">
         <linearGradient id="three-quarter-star" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="67%" style={{stopColor: "rgb(255, 193, 7)"}}></stop>
-            <stop offset="67%" style={{stopColor: "rgb(228, 229, 233)"}}></stop>
+            <stop offset="67%" style={{stopColor: colorOn}}></stop>
+            <stop offset="67%" style={{stopColor: colorOff}}></stop>
         </linearGradient>
       </svg>
       <svg className="linear-gradient-template">
         <linearGradient id="full-star" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="100%" style={{stopColor: "rgb(255, 193, 7)"}}></stop>
-            <stop offset="100%" style={{stopColor: "rgb(228, 229, 233)"}}></stop>
+            <stop offset="100%" style={{stopColor: colorOn}}></stop>
+            <stop offset="100%" style={{stopColor: colorOff}}></stop>
         </linearGradient>
       </svg>
       {[0,1,2,3,4].map(i => {

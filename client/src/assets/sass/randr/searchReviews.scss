@@ -16,14 +16,14 @@
 
 #search-bar {
   width: 97%;
-  height: 50px;
+  height: 40%;
   padding: 10px 35px 10px 15px;
   margin-left: 3px;
   margin-right: 3px;
   border: none;
-  border: 1px solid #F9F6EE;
-  background-color: #328CC1;
-  color: white;
+  border: 1px solid black;
+  background-color: white;
+  color: black;
   font-weight: bold;
   border-radius: 2px;
 }
@@ -35,7 +35,7 @@
 }
 
 #search-bar::placeholder {
-  color: white;
+  color: black;
 }
 
 .search-button-reviews {
@@ -54,6 +54,6 @@
 // }
 
 .search-icon {
-  color: white;
-  font-size: x-large;
+  color: black;
+  font-size: 1em;
 }

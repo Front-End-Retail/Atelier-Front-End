@@ -34,7 +34,7 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter, sortReviews, curr
       {/* <p id="breakdown-title">Ratings and Reviews</p> */}
       <div id="rating-breakdown-num">
         <div id="average-rating">{metaReviews.ratings && rating}</div>
-        <div className="star-avg-main">{!isNaN(rating) && <StarAverage rating={rating}/>}</div>
+        <div className="star-avg-main">{!isNaN(rating) && <StarAverage rating={rating} colorOn={"rgb(255, 193, 7)"} colorOff={"rgb(255,255,255)"}/>}</div>
       </div>
       {metaReviews.ratings && <p>{helpfulAverage} % of reviews recommend this product</p>}
       {ratingTotal && Object.keys(metaReviews.ratings).reverse().map((starNum, index) => {
