@@ -67,7 +67,7 @@
   gap: 10px;
 }
 .char-form-title {
-  font-weight: bold;
+  font-weight: bolder;
   margin:  0 auto;
   font-size: 1em;
 }
@@ -146,8 +146,13 @@
   width: 70%;
 }
 
-.input-summary-dev {
-  padding-bottom: 2%;
+.form-input {
+  margin-top: 1%;
+}
+
+.summary-input-div {
+  padding-top: 1%;
+  padding-bottom: 1%;
 }
 
 .user-email-div {
@@ -178,6 +183,7 @@
 .submit-btn-container {
   display: flex;
   justify-content: center;
+  border-radius: 5px;
 }
 
 
