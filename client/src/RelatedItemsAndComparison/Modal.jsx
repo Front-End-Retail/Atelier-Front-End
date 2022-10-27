@@ -1,5 +1,4 @@
 import React from 'react';
-// import './Modal.css';
 const { useState, useEffect } = React;
 import axios from 'axios';
 import Feature from './Feature.jsx';
@@ -15,8 +14,6 @@ const Modal = ({ closeModal, currentProductID, relatedProductID, currentProduct 
   const [comparedProductFeatures, setComparedProductFeatures] = useState([]);
   const [currProductName, setCurrProductName] = useState('');
   const [comparedProductName, setComparedProductName] = useState('');
-
-  console.log('currentProduct.features inside of modal: ', currentProduct.features)
 
   const fetchAllFeatures = () => {
 
