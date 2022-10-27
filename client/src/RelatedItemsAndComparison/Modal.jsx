@@ -8,7 +8,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 // check if the value of feature is null
 import baseURL from '../baseURL.js';
 
-const Modal = ({ closeModal, currentProductID, relatedProductID }) => {
+const Modal = ({ closeModal, currentProductID, relatedProductID, currentProduct }) => {
 
   const [featureList, setFeatureList] = useState([]);
   const [currProductFeatures, setCurrProductFeatures] = useState([]); //[{'feature': 'Buttons', 'value': 'brass'}, {'feature': '..', 'value': '...'}]
@@ -16,42 +16,54 @@ const Modal = ({ closeModal, currentProductID, relatedProductID }) => {
   const [currProductName, setCurrProductName] = useState('');
   const [comparedProductName, setComparedProductName] = useState('');
 
+  console.log('currentProduct.features inside of modal: ', currentProduct.features)
 
-  //nested API call, is this really good practice???
+
   const fetchAllFeatures = () => {
-    axios.get(`/comparison`, { params: { specificURL: `products/${currentProductID}` } })
-      .then(response => {
-        setCurrProductName(response.data.name);
-        console.log('response.data inside of Modal:', response.data);
-        const currFeatures = response.data.features;
-        setCurrProductFeatures(response.data.features);
-        const featureStorage = [];
-        currFeatures.forEach(currObj => {
-          featureStorage.push(currObj.feature);
+
+    const featureStorage = [];
+    const currFeatures = currentProduct.features;
+    setCurrProductName(currentProduct.name);
+    setCurrProductFeatures(currentProduct.features);
+    console.log('currentProduct.features: ', currentProduct.features)
+    currFeatures.forEach(currObj => {
+      featureStorage.push(currObj.feature);
+
+      console.log('featureStorage after pushing current: ', featureStorage)
+      axios.get(`/comparison`, { params: { specificURL: `products/${relatedProductID}` } })
+        .then(response => {
+          setComparedProductName(response.data.name);
+          const relatedFeatures = response.data.features;
+          relatedFeatures.forEach(relatedObj => { //[fabric, button]
+            //[fabric, cut]
+            if (featureStorage.indexOf(relatedObj.feature) === -1) {
+              featureStorage.push(relatedObj.feature);
+            }
+          })
+          console.log('featureStorage after pushing related: ', featureStorage)
+          //['Fabric', 'Buttons', 'Cut']
+          setFeatureList(featureStorage);
+          setComparedProductFeatures(response.data.features);
         })
-        console.log('featureStorage after pushing current: ', featureStorage)
-        axios.get(`/comparison`, { params: { specificURL: `products/${relatedProductID}` } })
-          .then(response => {
-            setComparedProductName(response.data.name);
-            const relatedFeatures = response.data.features;
-            relatedFeatures.forEach(relatedObj => { //[fabric, button]
-              //[fabric, cut]
-              if (featureStorage.indexOf(relatedObj.feature) === -1) {
-                featureStorage.push(relatedObj.feature);
-              }
-            })
-            console.log('featureStorage after pushing related: ', featureStorage)
-            //['Fabric', 'Buttons', 'Cut']
-            setFeatureList(featureStorage);
-            setComparedProductFeatures(response.data.features);
-          })
-          .catch(err => {
-            console.log('failed to retrieve features for related item', err)
-          })
-      })
+<<<<<<< HEAD
+        .catch(err => {
+          console.log('failed to retrieve features for related item', err)
+        })
+    })
       .catch(err => {
         console.log('failed to retrieve features for current item', err)
       })
+=======
+          console.log('featureStorage after pushing related: ', featureStorage)
+          //['Fabric', 'Buttons', 'Cut']
+          setFeatureList(featureStorage);
+          setComparedProductFeatures(response.data.features);
+        })
+        .catch(err=>{
+          console.log('failed to retrieve features for related item', err)
+        })
+    })
+>>>>>>> a1e810f139df03289a5b2dae70805248a7f3e764
   }
 
 
