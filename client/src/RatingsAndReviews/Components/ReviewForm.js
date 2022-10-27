@@ -1,6 +1,6 @@
 import React from 'react';
 import StarRating from './StarRating.js';
-import {characteristicsDesc} from './helperFuncs'
+import {characteristicsDesc, ratingDesc} from './helperFuncs'
 // import {Cloudinary} from "@cloudinary/url-gen";
 // import {AdvancedImage} from '@cloudinary/react'
 const axios = require('axios');
@@ -150,18 +150,19 @@ const ReviewForm = ({toggle, metaReviews, currentProductName}) => {
       <div classname="user-email-div">
           <label>
             Username:
-            <input onChange={handleChange} maxlength="60" type="text" name="username" placeholder="Example: jackson11!"/>
+            <input onChange={handleChange} maxlength="60" type="text" name="username" placeholder="Example: tombombadillo97"/>
             </label>
             <label>
             {nameValidation && <div className="form-warning">Required field</div>}
           Email:
-          <input onChange={handleChange} maxlength="60" type="email" name="email" placeholder="“Example: jackson1 1@email.com”"/>
+          <input onChange={handleChange} maxlength="60" type="email" name="email" placeholder="“Example: weirdolddude@email.com”"/>
           </label>
           {emailValidation && <div className="form-warning">Required field</div>}
           <p>For authentication reasons, you will not be emailed</p>
           </div>
           <div className="rating-recommend-container">
-          <StarRating handleStarChange={handleStarChange}/>
+          <div className="form-star-rating"><StarRating handleStarChange={handleStarChange}/>{formRating.length > 0 && <div>"{ratingDesc(formRating)}"</div>}
+          </div>
           <p>Would you recommend this product?</p>
             <input onChange={handleChange} type="radio" className="helpful radio" name="helpful" value={true}/>
               <label for="yes">Yes</label>
