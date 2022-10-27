@@ -117,6 +117,15 @@
     color: black;
     text-indent: 0.01px;
     cursor: pointer;
+
+
+  }
+
+  .size-select:hover {
+    background-color: #1D2731;
+    border: 1px solid #328CC1;
+    color: white;
+    font-weight: bolder;
   }
 
   .qty {
@@ -135,6 +144,13 @@
     color: black;
     text-indent: 0.01px;
     cursor: pointer;
+  }
+
+  .qty:hover {
+    background-color: #1D2731;
+    border: 1px solid #328CC1;
+    color: white;
+    font-weight: bolder;
   }
 
   .buttons {
@@ -157,6 +173,7 @@
       color: black;
       text-align: center;
       cursor: pointer;
+
     }
 
     .favorite {
@@ -175,9 +192,25 @@
       text-align: center;
       cursor: pointer;
 
+
     }
   }
+
+  .favorite:hover {
+    background-color: #1D2731;
+    border: 1px solid #328CC1;
+    color: white;
+    font-weight: bolder;
+  }
+
+  .submit:hover {
+    background-color: #1D2731;
+    border: 1px solid #328CC1;
+    color: white;
+    font-weight: bolder;
+  }
 }
+
 
 
 
