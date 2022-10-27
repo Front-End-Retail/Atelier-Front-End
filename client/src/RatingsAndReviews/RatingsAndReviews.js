@@ -107,7 +107,7 @@ useEffect(() => {
         {/* <button onClick={testButton} name="test-button">Rating Test</button> */}
         {/* <div > */}
           {/* <div>search goes here</div> */}
-        <div id="title">RATINGS & REVIEWS</div>
+        <div id="title"><h2 id="review-title">RATINGS & REVIEWS</h2></div>
         <div id="randr" data-testid="randr-div">
         <RatingBreakdown metaReviews={metaReviews} ratingSort={ratingSort} starFilter={starFilter}
          sortReviews={sortReviews} currentSort={currentSort}/>
