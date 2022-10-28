@@ -3,6 +3,8 @@ import StarRating from './StarRating.js';
 import {characteristicsDesc, ratingDesc} from './helperFuncs'
 // import {Cloudinary} from "@cloudinary/url-gen";
 // import {AdvancedImage} from '@cloudinary/react'
+const axios = require('axios');
+
 const { useState, useEffect } = React;
 
 const ReviewForm = ({toggle, metaReviews, currentProductName}) => {
