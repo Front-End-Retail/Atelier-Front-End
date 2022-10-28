@@ -2,12 +2,11 @@ import React from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import { faChevronRight, faChevronLeft} from '@fortawesome/free-solid-svg-icons'
 import YourOutfit from './YourOutfit.jsx';
 
 
 const { useState, useEffect } = React;
-
 const YourOutfitList = ({outfitList, styleIDList, handlePlusIconClick, updateOutfitList, duplicateSelected, closePopUp, metaReviews}) => {
 
   const [currCarousel, setCurrCarousel] = useState([]);
@@ -46,7 +45,10 @@ if (currCarousel.length === 0) {
   return (
     <div className='yourOutfitListContainer'>
         <div className='addMoreOutfit'>
-             <p className='addMoreOutfit-word'>Add this style?</p>
+             {/* <p className='addMoreOutfit-word'>Add this style?</p>
+             <div className='tshirtIcon-div'>
+                   <FontAwesomeIcon className='tshirtIcon'icon={faClothes-hanger} color='white'/>
+             </div> */}
              <div onClick={handlePlusIconClick} className='plusIconInAddMore'>
                  <FontAwesomeIcon className='plus'icon={faPlus} />
              </div>
@@ -61,7 +63,10 @@ if (currCarousel.length === 0) {
     return (
       <div className='yourOutfitListContainer'>
           <div className='addMoreOutfit'>
-               <p className='addMoreOutfit-word'>Add this style?</p>
+               {/* <p className='addMoreOutfit-word'>Add this style?</p>
+               <div className='tshirtIcon-div'>
+                   <FontAwesomeIcon className='tshirtIcon'icon={faClothes-hanger} color='white'/>
+               </div> */}
                <div onClick={handlePlusIconClick} className='plusIconInAddMore'>
                    <FontAwesomeIcon className='plus'icon={faPlus} />
                </div>
@@ -111,7 +116,7 @@ if (styleIDList > 3) {
   return (
     <div className='yourOutfitListContainer'>
     <div className='addMoreOutfit'>
-         <p className='addMoreOutfit-word'>Add this style?</p>
+         <p className='addMoreOutfit-word'>Add this style to your outfit?</p>
          <div onClick={handlePlusIconClick} className='plusIconInAddMore'>
              <FontAwesomeIcon className='plus'icon={faPlus} />
          </div>
