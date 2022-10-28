@@ -3,7 +3,7 @@ import StyleSelector from './StyleSelector.jsx';
 import StarAverage from '../RatingsAndReviews/Components/StarAverage.js';
 import { findAverage, findTotal } from '../RatingsAndReviews/Components/helperFuncs.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-regular-svg-icons';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
 const Product = ({ styles, currentProduct, selectedStyle, changeStyle, metaReviews, fullscreen }) => {
   const [bulkQuantity, setBulkQuantity] = useState([]);
   const [sizes, setSizes] = useState([]);
@@ -34,7 +34,7 @@ const Product = ({ styles, currentProduct, selectedStyle, changeStyle, metaRevie
   return (
     <div className={fullscreen ? 'product-hidden' : "product-container"}>
       <div className="product-info">
-        <StarAverage id={"-product"} rating={findAverage(metaReviews.ratings)} colorOn={"rgb(255, 193, 7)"} colorOff={"rgb(105,105,105)"} />
+        <StarAverage id={"-product"} rating={findAverage(metaReviews.ratings)} colorOn={"rgb(255, 193, 7)"} colorOff={"rgb(255,255,255)"} />
         <span>Read all <a href="#center-reviews">{findTotal(metaReviews.ratings)}</a> reviews</span>
         <span className="category">{currentProduct.category}</span>
         <h2>{currentProduct.name}</h2>
@@ -66,7 +66,7 @@ const Product = ({ styles, currentProduct, selectedStyle, changeStyle, metaRevie
         <div className="buttons">
           <button className="submit" type="submit">Add to Bag</button>
           <button className="favorite" type="button">
-            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faHeart} />
           </button>
         </div>
       </div>
