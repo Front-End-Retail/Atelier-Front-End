@@ -1,9 +1,9 @@
-.relatedProductsOuterContainer{
-  position: relative;
-  /* how to overlay the rightArrowIcon button? */
-  /* The container (WSEDIT) should have position:relative so you can absolutely-position the button.
-The button should be inside the container. The button needs: position:absolute; top:-10px; right:-20px (approximately) */
-}
+// .relatedProductsOuterContainer{
+//   position: relative;
+//   /* how to overlay the rightArrowIcon button? */
+//   /* The container (WSEDIT) should have position:relative so you can absolutely-position the button.
+// The button should be inside the container. The button needs: position:absolute; top:-10px; right:-20px (approximately) */
+// }
 
 .relatedProductsContainer {
   display: flex;
@@ -11,20 +11,60 @@ The button should be inside the container. The button needs: position:absolute; 
   gap: 20px;
 }
 
-.rightArrowIcon {
-  /* float: right; */
-  height: 40px;
-  width: 40px;
-  margin-top: 200px;
-  position: absolute;
-  top: -10px;
-  right:-10px;
+
+// .rightArrowIcon-Btn{
+//   /* float: right; */
+//   height: 40px;
+//   width: 40px;
+//   margin-top: 200px;
+//   position: absolute;
+//   top: -10px;
+//   right:-10px;
+//   border: none;
+//   background-color: transparent;
+// }
+
+// .leftArrowIcon-Btn{
+//   height: 40px;
+//   width: 40px;
+//   float: right;
+//   margin-top: 200px;
+//   border: none;
+//   background-color: transparent;
+// }
+
+
+// .rightArrowIcon-Btn{
+//   /* float: right; */
+//   height: 40px;
+//   width: 40px;
+//   margin-top: 200px;
+//   position: absolute;
+//   top: -10px;
+//   right:-10px;
+//   border: none;
+//   background-color: transparent;
+// }
+
+// .leftArrowIcon-Btn{
+//   height: 40px;
+//   width: 40px;
+//   float: right;
+//   margin-top: 200px;
+//   border: none;
+//   background-color: transparent;
+// }
+
+.rightArrowIcon-Btn{
+  font-size: 3rem;
+  color: #0b3c5d;
+  border: none;
+  background-color: transparent;
 }
 
-.leftArrowIcon {
-  height: 40px;
-  width: 40px;
-  float: right;
-  margin-top: 200px;
+.leftArrowIcon-Btn{
+  font-size: 3rem;
+  color: #0b3c5d;
+  border: none;
+  background-color: transparent;
 }
-
