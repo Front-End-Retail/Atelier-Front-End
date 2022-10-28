@@ -1,5 +1,4 @@
 import React from 'react';
-const axios = require('axios');
 const { useState, useEffect } = React;
 
 // Description for current filter for the star ratings breakdown

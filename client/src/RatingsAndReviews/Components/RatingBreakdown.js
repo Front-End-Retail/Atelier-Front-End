@@ -1,12 +1,11 @@
 import React from 'react';
 import { format, parseISO } from "date-fns";
-import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
-import {FaStar} from "react-icons/fa";
+// import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+// import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
+// import {FaStar} from "react-icons/fa";
 import StarAverage from './StarAverage.js';
 import StarFilterDesc from './StarFilterDesc.js';
 import {findAverage, helpfulPerc, findTotal, findRatio, everyFunc, characteristicsDesc} from './helperFuncs';
-const axios = require('axios');
 const { useState, useEffect } = React;
 
 const RatingBreakdown = ({metaReviews, ratingSort, starFilter, sortReviews, currentSort}) => {
