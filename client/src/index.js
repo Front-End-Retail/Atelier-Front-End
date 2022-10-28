@@ -10,9 +10,9 @@ import axios from 'axios';
 const axiosDef = require('axios');
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import LannisterLion from './assets/LannisterLion.png'
-import baseURL from './baseURL.js'
-
+import LannisterLion from './assets/LannisterLion.png';
+import baseURL from './baseURL.js';
+import clicktracker from './clicktracker.js';
 
 //Dear Amazon/Google/Apple etc Don't lowball me.
 const App = () => {
@@ -73,8 +73,9 @@ const App = () => {
       })
   }
 
-  const changeCurrentProduct = (newProductID) => {
+  const changeCurrentProduct = (event, newProductID) => {
     setCurrentProductID(newProductID);
+    clicktracker(event.target.id, 'relatedItemsModule' , new Date());
   }
 
   const changeSelectedStyle = (style) => {
@@ -130,7 +131,7 @@ const App = () => {
               <FontAwesomeIcon className='twitterIcon' icon={faTwitter} />
               <FontAwesomeIcon className='instaIcon' icon={faInstagram} />
             </div>
-            <span className='trade-mark'>Atelier Lannister ® 2022</span>
+            <span className='trade-mark'>One Stop Onesie Shop ® 2022</span>
           </div>
         </footer>
       </div >

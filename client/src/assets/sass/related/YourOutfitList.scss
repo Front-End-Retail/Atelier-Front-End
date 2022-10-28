@@ -21,24 +21,27 @@
 }
 
 .addMoreOutfit {
-  /* border: 1px solid #ede0d4; */
-  height: 400px;
-  width: 300px;
+  height: 350px;
+  width: 250px;
   padding: 10px;
   background-color: #0b3c5d;
-  color: white;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 5px 5px 5px 2px #555555;
+  border-radius: 5px;
 }
 
 .addMoreOutfit-word {
   padding: 90px;
   font-family: "Roboto", sans-serif;
   font-size: 18px;
+  color: white;
 }
 
 .plusIconInAddMore{
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
 }
 
 .plus{
@@ -46,10 +49,16 @@
   width: 30px;
 }
 
-// .plusIcon {
-//   display: flex;
-//   justify-content: center;
-//   font-family: 'Nunito', sans-serif;
-//   padding-bottom: 30px;
-// }
+.rightArrowIcon-Btn{
+  font-size: 3rem;
+  color: #0b3c5d;
+  border: none;
+  background-color: transparent;
+}
 
+.leftArrowIcon-Btn{
+  font-size: 3rem;
+  color: #0b3c5d;
+  border: none;
+  background-color: transparent;
+}

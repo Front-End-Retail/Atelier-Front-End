@@ -1,13 +1,15 @@
 @use '../globals';
 .card-component {
   /* border: 1px solid #ede0d4; */
-  height: 400px;
-  width: 300px;
+  height: 350px;
+  width: 250px;
   padding: 10px;
   background-color: globals.$primary-color;
   /* background-color: #ede0d4; #34699E;*/
-  transition: all 0.5s ease-in-out;
+  transition: all 0.2s ease-in-out;
   text-decoration: none;
+  box-shadow: 5px 5px 5px 2px #555555;
+  border-radius: 5px;
 }
 
 .card-component:hover {
@@ -16,9 +18,11 @@
   background-color: rgb(62, 62, 62);
   cursor: pointer;
   color: white;
-  transition: all 0.5s ease-in-out;
-  height: 450px;
-  width: 350px;
+  transition: all 0.2s ease-in-out;
+  height: 375px;
+  width: 300px;
+  box-shadow: 5px 5px 5px 2px #555555;
+  border-radius: 5px;
 }
 
 .product-image {
@@ -45,12 +49,14 @@
   .starIcon{
     height: 20px;
     width:20px;
+    filter: drop-shadow(-2px 0px 1px #0b3c5d);
   }
 
   .starIcon:hover{
     height: 30px;
     width:30px;
     cursor: point;
+    filter: drop-shadow(-2px 0px 1px #0b3c5d);
   }
 
   .lower-part {
@@ -74,13 +80,19 @@
     color: white;
     padding: 3px;
     text-decoration: none;
+    font-style: italic;
   }
 
   .product-price{
-    padding: 3px;
+    padding-top: 3px;
+    padding-bottom: 1px;
     font-family: "Roboto", sans-serif;
     text-decoration: none;
     color: white;
+  }
+
+  #star-rating{
+    margin-top: 1px;
   }
 
   a:link { text-decoration: none; }

@@ -4,8 +4,7 @@ import axios from 'axios';
 import Feature from './Feature.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-// check if the value of feature is null
-import baseURL from '../baseURL.js';
+
 
 const Modal = ({ closeModal, currentProductID, relatedProductID, currentProduct }) => {
 
@@ -16,16 +15,12 @@ const Modal = ({ closeModal, currentProductID, relatedProductID, currentProduct 
   const [comparedProductName, setComparedProductName] = useState('');
 
   const fetchAllFeatures = () => {
-
     const featureStorage = [];
     const currFeatures = currentProduct.features;
     setCurrProductName(currentProduct.name);
     setCurrProductFeatures(currentProduct.features);
-    console.log('currentProduct.features: ', currentProduct.features)
     currFeatures.forEach(currObj => {
       featureStorage.push(currObj.feature);
-
-      console.log('featureStorage after pushing current: ', featureStorage)
       axios.get(`/comparison`, { params: { specificURL: `products/${relatedProductID}` } })
         .then(response => {
           setComparedProductName(response.data.name);
@@ -36,8 +31,7 @@ const Modal = ({ closeModal, currentProductID, relatedProductID, currentProduct 
               featureStorage.push(relatedObj.feature);
             }
           })
-          console.log('featureStorage after pushing related: ', featureStorage)
-          //['Fabric', 'Buttons', 'Cut']
+          //featureStorage = ['Fabric', 'Buttons', 'Cut']
           setFeatureList(featureStorage);
           setComparedProductFeatures(response.data.features);
         })
@@ -49,7 +43,6 @@ const Modal = ({ closeModal, currentProductID, relatedProductID, currentProduct 
   useEffect(() => {
     fetchAllFeatures();
   }, [currentProductID, relatedProductID])
-
 
   return (
     <div className='modalBackground'>
@@ -67,12 +60,10 @@ const Modal = ({ closeModal, currentProductID, relatedProductID, currentProduct 
             <th></th>
             <th>{comparedProductName}</th>
           </tr>
-
           {featureList.map((feature, index) => {
             return <Feature key={index} feature={feature}
               comparedProductFeatures={comparedProductFeatures} currProductFeatures={currProductFeatures}></Feature>
           })}
-
         </table>
       </div>
       <div className="modal-overlay" onClick={() => {closeModal()}}></div>

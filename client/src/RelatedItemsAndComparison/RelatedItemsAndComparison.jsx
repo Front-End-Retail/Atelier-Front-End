@@ -10,7 +10,7 @@ import baseURL from '../baseURL.js';
 const { useState, useEffect } = React;
 
 //I need a style_id to be passed to me, i need to use it on handlePlusIconClick
-const RelatedItemsAndComparison = ({ currentProductID, changeCurrentProduct, selectedStyle, currentProduct }) => {
+const RelatedItemsAndComparison = ({ currentProductID, changeCurrentProduct, selectedStyle, currentProduct, metaReviews }) => {
   // console.log('currentProductID passed in: ', currentProductID) //its first 0 and then 37311 //DONT CONSOLE.LOG here, console.log inside of fetch
   const [relatedProductsID, setRelatedProductsID] = useState([]);
   const [outfitList, setOutfitList] = useState([]);
@@ -18,8 +18,6 @@ const RelatedItemsAndComparison = ({ currentProductID, changeCurrentProduct, sel
   const [duplicateSelected, setDuplicateSelected] = useState(false);
 
   const fetchAllRelatedProductsID = () => {
-    // console.log('selectedStyle: ', selectedStyle)
-    // console.log('currentProductID passed in: ', currentProductID)
 
     const temp = [];
     axios.get(`/comparison`, { params: { specificURL: `products/${currentProductID}/related` } })
@@ -74,8 +72,6 @@ const RelatedItemsAndComparison = ({ currentProductID, changeCurrentProduct, sel
               response.data.results.forEach(result => {
 
                 if (result.style_id === selectedStyle.style_id && styleIDList.indexOf(selectedStyle.style_id) === -1) {
-                  // console.log('styleIDList.indexOf(selectedStyle.style_id: ', styleIDList.indexOf(selectedStyle.style_id))
-                  // console.log('outfitList before: ', outfitList)
                   tempOutfit.styleID = result.style_id;
                   tempOutfit.style = result.name;
                   tempOutfit.image = result.photos[0].url;
@@ -130,9 +126,9 @@ const RelatedItemsAndComparison = ({ currentProductID, changeCurrentProduct, sel
   return (
     <div className='relatedItemsAndComparison'>
       <h2 className='YouMightAlsoLike'>YOU MIGHT ALSO LIKE</h2>
-      <RelatedProducts relatedProductsID={relatedProductsID} currentProductID={currentProductID} currentProduct={currentProduct} changeCurrentProduct={changeCurrentProduct}></RelatedProducts>
+      <RelatedProducts relatedProductsID={relatedProductsID} currentProductID={currentProductID} currentProduct={currentProduct} changeCurrentProduct={changeCurrentProduct} metaReviews={metaReviews}></RelatedProducts>
       <h3 className='CompleteYourOutfit'>COMPLETE YOUR OUTFIT</h3>
-      <YourOutfitList outfitList={outfitList} handlePlusIconClick={handlePlusIconClick} updateOutfitList={updateOutfitList} duplicateSelected={duplicateSelected} closePopUp={closePopUp}></YourOutfitList>
+      <YourOutfitList outfitList={outfitList} handlePlusIconClick={handlePlusIconClick} styleIDList={styleIDList} updateOutfitList={updateOutfitList} duplicateSelected={duplicateSelected} closePopUp={closePopUp} metaReviews={metaReviews}></YourOutfitList>
     </div>
   );
 };
