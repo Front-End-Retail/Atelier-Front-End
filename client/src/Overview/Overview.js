@@ -2,7 +2,6 @@ import React from 'react';
 import ImageGallery from './ImageGallery.jsx';
 import Product from './Product.jsx';
 import ProductDescription from './ProductDescription.jsx';
-const axios = require('axios');
 const { useState, useEffect } = React;
 
 const Overview = ({ currentProduct, styles, selectedStyle, changeStyle, metaReviews }) => {
