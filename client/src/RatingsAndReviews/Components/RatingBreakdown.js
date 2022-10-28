@@ -1,8 +1,5 @@
 import React from 'react';
 import { format, parseISO } from "date-fns";
-// import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-// import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
-// import {FaStar} from "react-icons/fa";
 import StarAverage from './StarAverage.js';
 import StarFilterDesc from './StarFilterDesc.js';
 import {findAverage, helpfulPerc, findTotal, findRatio, everyFunc, characteristicsDesc} from './helperFuncs';
@@ -78,15 +75,3 @@ const RatingBreakdown = ({metaReviews, ratingSort, starFilter, sortReviews, curr
 }
 
 export default RatingBreakdown;
-
-// triangle
-{/* <div className="triangle"></div> */}
-
-          {/* <table  key={index}><tbody>
-        <tr width="300px" height="15px">
-        <td className="star-a-element"><a  name={starNum} onClick={starClick}>{starNum} stars</a></td>
-        <td style={{background: "green", width: ratio, height:10}}></td><td style={{background: "gray", width: ratioTotal, height:10}}></td>
-
-        </tr>
-        </tbody>
-        </table> */}
