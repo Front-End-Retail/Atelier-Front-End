@@ -104,4 +104,6 @@ typings/
 
 client/dist/bundle.js
 
+client/dist/bundle.js.gz
+
 **/.DS_Store
