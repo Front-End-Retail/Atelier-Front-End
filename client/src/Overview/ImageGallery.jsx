@@ -40,12 +40,44 @@ const ImageGallery = ({ selectedStyle, fullscreen, setFullscreen }) => {
   }, [selectedStyle])
 
 
+  const turnOnViewMode = (e) => {
+    e.target.style.backgroundSize = "150%";
+    let offsetX, offsetY, x, y
+    // var zoomer = e.currentTarget;
+    // console.log(e.currentTarget.pageX)
+    // e.offsetX ? offsetX = e.offsetX : offsetX = 0
+    // e.offsetY ? offsetY = e.offsetY : offsetX = 0
+    // x = offsetX / zoomer.offsetWidth * 100
+    // y = offsetY / zoomer.offsetHeight * 100
+    // zoomer.style.backgroundPosition = `${x}% ${y}%`;
+    var zoomer = e.currentTarget;
+    console.log(e, e.target.offsetHeight, e.target.offsetWidth, e.nativeEvent.offsetX)
+    e.nativeEvent.offsetX ? offsetX = e.nativeEvent.offsetX : offsetX = 0
+    e.nativeEvent.offsetY ? offsetY = e.nativeEvent.offsetY : offsetY = 0
+    x = offsetX / e.target.offsetWidth * 100
+    y = offsetY / e.target.offsetHeight * 100
+    zoomer.style.backgroundPosition = x + '% ' + y + '%';
+
+  }
+
+  const fullscreenStyles = {
+    backgroundImage: `url(${mainImages[currentImageIndex]})`,
+    cursor: 'zoom-in'
+  }
+
+  const normalImageStyles = {
+    backgroundImage: `url(${mainImages[currentImageIndex]})`,
+    width: '60vw',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'contain',
+    backgroundPosition: '50% 50%',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(7, 1fr)',
+    gridTemplateRows: 'repeat(5, 20%)'
+  }
   return (
     <>
-      <div className={fullscreen ? 'fullscreen' : "image-slide"} style={{
-        backgroundImage: `url(${mainImages[currentImageIndex]})`,
-        backgroundSize: 'contain'
-      }}>
+      <div className={fullscreen ? 'fullscreen' : "image-slide"} style={fullscreen ? fullscreenStyles : normalImageStyles} onClick={fullscreen ? turnOnViewMode : null}>
         <div className='container-of-containers'>
           <div className='thumbnails-container'>
             {thumbnails.map((thumbnail, i) => {
