@@ -19,12 +19,11 @@ useEffect(()=>{
 
   const handleRightArrowClick = () => {
     const leftoverCarousel = currCarousel.slice(4); //relatedProductsID was put to mapping
-    console.log('leftoverCarousel: ', leftoverCarousel) //[4, ...]
+    // console.log('leftoverCarousel: ', leftoverCarousel) //[4, ...]
     setCurrCarousel(leftoverCarousel);
   }
 
   const handleLeftArrowClick = () => {
-    console.log('tell me it did get in handleLeftArrowClick!')
     const prevCarousel = relatedProductsID.slice(0, 4);
     console.log('prevCarousel: ', prevCarousel)
     setCurrCarousel(prevCarousel);
@@ -62,11 +61,10 @@ if (currCarousel.length <=4 && relatedProductsID.length <= 4) {
 }
 
 if (currCarousel.length <=4 && relatedProductsID.length > 4) {
-  console.log('this related list is supposed to have no left arrow');
+  // console.log('this related list is supposed to have no left arrow');
   const arr1 = currCarousel.slice();
   const arr2 = relatedProductsID.slice(0, 4);
-  console.log('arr1: ', arr1)
-  console.log('arr2: ', arr2)
+  //compare if currCarousel is the same with the first 4 elements of relatedProductsID
   if (arraysMatch(arr1, arr2)) {
     console.log('ok, arr1 does match with arr2')
     return (
@@ -86,16 +84,9 @@ if (currCarousel.length <=4 && relatedProductsID.length > 4) {
        currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct} currentProduct={currentProduct} metaReviews={metaReviews}></RelatedProduct>
     })}
     </div>)
-
-
   }
-
-
 }
-
-
 };
-
 
 export default RelatedProducts;
 

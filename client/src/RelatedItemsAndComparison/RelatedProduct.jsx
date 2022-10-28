@@ -1,5 +1,4 @@
 import React from 'react';
-const { useState, useEffect } = React;
 import axios from 'axios';
 import Modal from './Modal.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,6 +11,7 @@ import { findAverage, findTotal } from '../RatingsAndReviews/Components/helperFu
 import baseURL from '../baseURL.js'
 import clicktracker from '../clicktracker.js'
 
+const { useState, useEffect } = React;
 
 const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProduct, currentProductID, changeCurrentProduct, metaReviews }) => {
 
