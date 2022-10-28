@@ -17,8 +17,8 @@ const YourOutfit = ({outfit, updateOutfitList, duplicateSelected, closePopUp}) =
                backgroundSize: 'cover',
                backgroundPosition: 'center'}} alt='your outfit'>
                {/* <img src={outfit.image} alt='outfit.image' height='123px' width='155px'/> */}
-               <div className='timesIcon' onClick={()=>{updateOutfitList(outfit.styleID)}}>
-                    <FontAwesomeIcon icon={faTimes}/>
+               <div className='timesIconButton' onClick={()=>{updateOutfitList(outfit.styleID)}}>
+                    <FontAwesomeIcon className='timesIcon' icon={faTimes}/>
                </div>
           </div>
           <div className='outfit-info'>
