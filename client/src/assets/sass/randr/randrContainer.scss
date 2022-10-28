@@ -28,15 +28,16 @@
   border-radius: 5px;
 }
 
-#title {
+#title-review-container {
   display: flex;
   justify-content: left;
+
+}
+
+#review-title {
   color: white;
-  font-size: 2rem;
-  padding-left: 1%;
-  padding-top: 1%;
-  padding-bottom: 2%;
-  flex-grow: 1;
-  text-shadow: 2px 2px 4px #1d2731;
+  padding: 5px;
+  // font-weight:lighter;
+  margin: 1%;
 }
 
