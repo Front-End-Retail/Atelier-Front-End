@@ -4,6 +4,8 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import OutfitPopUp from './OutfitPopUp.jsx';
+import StarAverage from '../RatingsAndReviews/Components/StarAverage.js';
+import { findAverage, findTotal } from '../RatingsAndReviews/Components/helperFuncs.js';
 
 const { useState, useEffect } = React;
 
