@@ -30,10 +30,20 @@
   border-radius: 5px;
 }
 
+.addMoreOutfit:hover{
+  background-color: rgb(62, 62, 62);
+  height: 375px;
+  width: 300px;
+  padding: 10px;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 5px 5px 5px 2px #555555;
+  border-radius: 5px;
+}
+
 .addMoreOutfit-word {
   padding: 90px;
   font-family: "Roboto", sans-serif;
-  font-size: 18px;
+  font-size: 40px;
   color: white;
 }
 
