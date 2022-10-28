@@ -169,7 +169,7 @@ const ReviewForm = ({toggle, metaReviews, currentProductName}) => {
             <input onChange={handleChange} type="radio" className='helpful-radio' name="helpful" value={false}/>
               <label for="No">No</label>
           </div>
-          <div className="char-form-title">Characteristics</div>
+          <div className="char-form-title">How was the fit?</div>
           {metaReviews.characteristics && Object.keys(metaReviews.characteristics).map((key, index) => {
             let objId = metaReviews.characteristics[key].id
             return (
