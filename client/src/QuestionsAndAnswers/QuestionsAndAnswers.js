@@ -79,6 +79,7 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
 
   useEffect(() => {
     setCurrentQuestions([])
+    setQsOnPage(4)
     if (currentId !== 0) {
       getProductQuestions()
     }
