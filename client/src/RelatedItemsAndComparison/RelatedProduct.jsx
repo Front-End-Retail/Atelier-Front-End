@@ -28,7 +28,6 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProduct, c
         newProduct.name = response.data.name;
         newProduct.category = response.data.category;
         newProduct.price = response.data.default_price;
-        // console.log('newProduct ', newProduct)
         axios.get(`/comparison`, { params: { specificURL: `products/${relatedProductID}/styles` } })
           .then(response => {
             newProduct.image = response.data.results[0].photos[0].url;
@@ -49,9 +48,6 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProduct, c
   //the data does get on the screen on the first go but eventually there are 123 messages and server failed with a response "too many requests"
   //everytime when this hook updates
 
-  // useEffect(()=>{
-  //   console.log('effects everytime relatedProduct changes')
-  // }, [relatedProduct])
   const handleLikeClick = (event) => {
     console.log('event.target inside of handleLikeClick: ', event.target);
     setLiked(true);
@@ -59,9 +55,7 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProduct, c
 
 
   return (
-    <a href='#overview-container'><div className='card-component' id='related-card' onClick={(event) => {
-      changeCurrentProduct(event, relatedProductID)
-      }}>
+      <div className='card-component'>
         <div className="product-image" style={{
           backgroundImage: `url(${relatedProduct.image})`,
           backgroundSize: 'cover',
@@ -69,14 +63,16 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProduct, c
         }} alt='related product' >
               <button className='starIconButton' onClick={() => { setOpenModal(true) }}><FontAwesomeIcon className='starIcon' icon={faStar} color='white'/></button>
        </div>
-       <div className='lower-part'>
+       <a href='#overview-container'><div className='lower-part' id='related-card' onClick={(event) => {
+      changeCurrentProduct(event, relatedProductID)
+      }}>
              <div className='product-name'>{relatedProduct.name}</div>
              <div className='product-category'>{relatedProduct.category}</div>
              <div className='product-price'>$ {relatedProduct.price}</div>
              <StarAverage id={"-product"} rating={findAverage(metaReviews.ratings)} colorOn={"rgb(255, 193, 7)"} colorOff={"rgb(105,105,105)"} />
-      </div>
-      { relatedProductID && openModal && <Modal closeModal={setOpenModal} currentProductID={currentProductID} relatedProductID={relatedProductID} currentProduct={currentProduct}/>}
       </div></a>
+      { relatedProductID && openModal && <Modal closeModal={setOpenModal} currentProductID={currentProductID} relatedProductID={relatedProductID} currentProduct={currentProduct}/>}
+      </div>
   )
 
 };
