@@ -84,10 +84,15 @@
   }
 
   .product-price{
-    padding: 3px;
+    padding-top: 3px;
+    padding-bottom: 1px;
     font-family: "Roboto", sans-serif;
     text-decoration: none;
     color: white;
+  }
+
+  #star-rating{
+    margin-top: 1px;
   }
 
   a:link { text-decoration: none; }

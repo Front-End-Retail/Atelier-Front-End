@@ -69,12 +69,11 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProduct, c
              <div className='product-name'>{relatedProduct.name}</div>
              <div className='product-category'>{relatedProduct.category}</div>
              <div className='product-price'>$ {relatedProduct.price}</div>
-             <StarAverage id={"-product"} rating={findAverage(metaReviews.ratings)} colorOn={"rgb(255, 193, 7)"} colorOff={"rgb(105,105,105)"} />
+             <div className='star-rating'><StarAverage id={"-product"} rating={findAverage(metaReviews.ratings)} colorOn={"rgb(255, 193, 7)"} colorOff={"rgb(105,105,105)"} /></div>
       </div></a>
       { relatedProductID && openModal && <Modal closeModal={setOpenModal} currentProductID={currentProductID} relatedProductID={relatedProductID} currentProduct={currentProduct}/>}
       </div>
   )
-
 };
 
 
