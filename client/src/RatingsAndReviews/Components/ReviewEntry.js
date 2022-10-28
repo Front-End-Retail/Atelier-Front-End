@@ -1,7 +1,6 @@
 import React from 'react';
 import RandRImage from './RandRImage.js'
 import StarAverage from './StarAverage.js'
-const axios = require('axios');
 const { useState, useEffect } = React;
 
 

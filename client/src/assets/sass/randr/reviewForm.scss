@@ -45,9 +45,9 @@
 }
 
 .form-warning {
-  font-size: x-small;
+  font-size: small;
   font-weight: bold;
-  color: red;
+  color: white;
   font-style: italic;
   text-align: right;
 }
@@ -68,8 +68,9 @@
 }
 .char-form-title {
   font-weight: bolder;
-  margin:  0 auto;
-  font-size: 1em;
+  margin-top: 2%;
+  // margin:  0 auto;
+  font-size: 1.2em;
 }
 
 .character-title {

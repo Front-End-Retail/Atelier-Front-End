@@ -1,4 +1,5 @@
 const express = require('express');
+const compression = require('compression')
 const path = require('path');
 require('dotenv').config();
 const { getReviews } = require('./controllers/reviewControllers');
@@ -7,6 +8,8 @@ var cors = require('cors');
 
 const app = express();
 
+
+app.use(compression())
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 app.use(express.json());
 app.use(cors());

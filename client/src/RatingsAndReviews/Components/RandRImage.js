@@ -1,7 +1,6 @@
 import React from 'react';
 import ImageModal from '../..//QuestionsAndAnswers/ImageModal.js'
 import useImageModal from '../../QuestionsAndAnswers/useImageModal.js'
-const axios = require('axios');
 
 const { useState, useEffect } = React;
 
