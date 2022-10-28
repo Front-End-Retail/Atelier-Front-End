@@ -55,24 +55,24 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProduct, c
 
 
   return (
-      <div className='card-component'>
-        <div className="product-image" style={{
-          backgroundImage: `url(${relatedProduct.image})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }} alt='related product' >
-              <button className='starIconButton' onClick={() => { setOpenModal(true) }}><FontAwesomeIcon className='starIcon' icon={faStar} color='white'/></button>
-       </div>
-       <a href='#overview-container'><div className='lower-part' id='related-card' onClick={(event) => {
-      changeCurrentProduct(event, relatedProductID)
-      }}>
-             <div className='product-name'>{relatedProduct.name}</div>
-             <div className='product-category'>{relatedProduct.category}</div>
-             <div className='product-price'>$ {relatedProduct.price}</div>
-             <div className='star-rating'><StarAverage id={"-product"} rating={findAverage(metaReviews.ratings)} colorOn={"rgb(255, 193, 7)"} colorOff={"rgb(105,105,105)"} /></div>
-      </div></a>
-      { relatedProductID && openModal && <Modal closeModal={setOpenModal} currentProductID={currentProductID} relatedProductID={relatedProductID} currentProduct={currentProduct}/>}
+    <div className='card-component'>
+      <div className="product-image" style={{
+        backgroundImage: `url(${relatedProduct.image})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      }} alt='related product' >
+        <button className='starIconButton' onClick={() => { setOpenModal(true) }}><FontAwesomeIcon className='starIcon' icon={faStar} color='white' /></button>
       </div>
+      <a href='#overview-container'><div className='lower-part' id='related-card' onClick={(event) => {
+        changeCurrentProduct(event, relatedProductID)
+      }}>
+        <div className='product-name'>{relatedProduct.name}</div>
+        <div className='product-category'>{relatedProduct.category}</div>
+        <div className='product-price'>$ {relatedProduct.price}</div>
+        <div className='star-rating'><StarAverage id={"-product"} rating={findAverage(metaReviews.ratings)} colorOn={"rgb(255, 193, 7)"} colorOff={"rgb(255,255,255)"} /></div>
+      </div></a>
+      {relatedProductID && openModal && <Modal closeModal={setOpenModal} currentProductID={currentProductID} relatedProductID={relatedProductID} currentProduct={currentProduct} />}
+    </div>
   )
 };
 
