@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faShirt } from '@fortawesome/free-solid-svg-icons';
 import OutfitPopUp from './OutfitPopUp.jsx';
 import StarAverage from '../RatingsAndReviews/Components/StarAverage.js';
 import { findAverage, findTotal } from '../RatingsAndReviews/Components/helperFuncs.js';
@@ -17,9 +17,9 @@ const YourOutfit = ({outfit, updateOutfitList, duplicateSelected, closePopUp}) =
                backgroundSize: 'cover',
                backgroundPosition: 'center'}} alt='your outfit'>
                {/* <img src={outfit.image} alt='outfit.image' height='123px' width='155px'/> */}
-               <div className='timesIconButton' onClick={()=>{updateOutfitList(outfit.styleID)}}>
-                    <FontAwesomeIcon className='timesIcon' icon={faTimes}/>
-               </div>
+               <button className='timesIconButton' onClick={()=>{updateOutfitList(outfit.styleID)}}>
+                    <FontAwesomeIcon className='timesIcon' icon={faTimes} color='white'/>
+               </button>
           </div>
           <div className='outfit-info'>
             <div className='outfit-name'>{outfit.name}</div>
