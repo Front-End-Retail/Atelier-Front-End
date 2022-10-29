@@ -55,6 +55,7 @@ const App = () => {
         console.log(err);
       })
   }
+
   const fetchMetaData = () => {
     axiosDef.default.get('/review', { params: { specificURL: `reviews/meta?product_id=${currentProductID}` } }).then((reviewData) => {
       setMetaReviews(reviewData.data)
@@ -75,7 +76,7 @@ const App = () => {
 
   const changeCurrentProduct = (event, newProductID) => {
     setCurrentProductID(newProductID);
-    clicktracker(event.target.id, 'relatedItemsModule' , new Date());
+    clicktracker(event.target.id, 'relatedItemsModule', new Date());
   }
 
   const changeSelectedStyle = (style) => {
