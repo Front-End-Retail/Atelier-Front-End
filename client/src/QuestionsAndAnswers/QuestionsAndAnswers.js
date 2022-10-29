@@ -18,8 +18,9 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
   const [searchTerm, setSearchTerm] = useState('')
   const [qsOnPage, setQsOnPage] = useState(4)
 
+  //reaches out to the api and retrieves questions for currentId
   const getProductQuestions = () => {
-    axios.default.get(`/qanda`, { params: { specificURL: `qa/questions?product_id=${currentId}&count=100` } }).then((data) => {
+    axios.default.get(`${baseURL}/qanda`, { params: { specificURL: `qa/questions?product_id=${currentId}&count=100` } }).then((data) => {
       let sortedData = SortbyHelpfulness(data.data.results, "question_helpfulness")
       setCurrentQuestions(sortedData)
     }).catch(err => {
@@ -27,18 +28,20 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
     })
   }
 
+  //iterates the 'helpful' count of a question
   const addQuestionHelpfulness = (elementID, questionId) => {
     clicktracker(elementID, 'QandA', new Date())
-    axios.default.put(`/qanda/qhelp`, { questionId: questionId }).then((data) => {
+    axios.default.put(`${baseURL}/qanda/qhelp`, { questionId: questionId }).then((data) => {
       getProductQuestions()
     }).catch((err) => {
       console.log('error put to helpfullness', err)
     })
   }
 
+  //iterates the 'helpful' count of an answer
   const addAnswerHelpfulness = (elementID, answerId) => {
     clicktracker(elementID, 'QandA', new Date())
-    axios.default.put(`/qanda/ahelp`, { answerId: answerId }).then((data) => {
+    axios.default.put(`${baseURL}/qanda/ahelp`, { answerId: answerId }).then((data) => {
       getProductQuestions()
     }).catch((err) => {
       console.log('error put to helpfullness', err)
@@ -46,7 +49,7 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
   }
 
   const reportAnAnswer = (answerId) => {
-    axios.default.put(`/qanda/areport`, { answerId: answerId }).then((data) => {
+    axios.default.put(`${baseURL}/qanda/areport`, { answerId: answerId }).then((data) => {
       console.log("NARC")
       getProductQuestions()
     }).catch((err) => {
@@ -66,6 +69,7 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
     setQsOnPage(qsOnPage + 2)
   }
 
+  //watches the questions on page count, renders more questions as count changes
   useEffect(() => {
     let newQCopy = currentQuestions
     newQCopy = newQCopy.slice(0, qsOnPage)
@@ -77,6 +81,7 @@ const QuestionsAndAnswers = ({ currentProductID, currentProductName }) => {
     setCurrentId(currentProductID)
   }, [currentProductID])
 
+  //watches for a new product Id on page update- resets current question array and display count before getting new data
   useEffect(() => {
     setCurrentQuestions([])
     setQsOnPage(4)

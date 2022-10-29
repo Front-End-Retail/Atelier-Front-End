@@ -10,16 +10,15 @@ const axios = require('axios');
 const { useState, useEffect } = React;
 
 const RatingsAndReviews = ({currentProductID, currentProductName, metaReviews}) => {
-  // const [currentProduct, setCurrentProduct] = useState(37311)
   const [reviews, setReviews] = useState([])
   const [starReviews, setStarReviews] = useState([])
   const [ratingAverage, setRatingAverage] = useState()
-  const [starFilter, setStarFilter] = useState([false, false, false, false, false]  )
+  const [starFilter, setStarFilter] = useState([false, false, false, false, false] )
   const [currentSort, setCurrentSort] = useState('relevant')
 
+  // sort reviews for the dropdown menu, triggers get request with sort param for API
   const sortReviews = (name) => {
     axios.default.get(`/review`, { params: { specificURL : `reviews?product_id=${currentProductID}&count=500&sort=${name}` }}).then((reviewData) => {
-      // console.log('sortedData', reviewData.data)
       let reviewsArray = reviewData.data.results
       reviewsArray = reviewsArray.map(datum => {
         datum.date = format(parseISO(datum.date), 'MMMM d, yyyy')
@@ -32,9 +31,9 @@ const RatingsAndReviews = ({currentProductID, currentProductName, metaReviews}) 
       console.log('error getting', err)
     })
   }
+
 // sort by star rating, 1-5, and toggle filter for each star
   const ratingSort = (toggleStar) => {
-    // console.log(toggleStar)
     // set the starFilter boolean
     let tempStarFilter = [...starFilter]
     tempStarFilter = tempStarFilter.map((star, index) => {
@@ -47,6 +46,7 @@ const RatingsAndReviews = ({currentProductID, currentProductName, metaReviews}) 
     setStarFilter([...tempStarFilter]);
     let tempStarReviews = [...reviews]
 
+    // this function (from helper funcs) returns a boolean if no filters are applied
     let revertToAll = tempStarFilter.every(everyFunc)
     if (revertToAll) {
       setStarReviews([...reviews])
@@ -62,7 +62,7 @@ const RatingsAndReviews = ({currentProductID, currentProductName, metaReviews}) 
     }
 
   }
-// update helpful variable in the API
+// update helpful OR report variable in the API
   const putRequest = (reviewId, path, clickedId) => {
     clicktracker(clickedId, 'RandR', new Date())
     console.log(reviewId)
@@ -77,8 +77,9 @@ const RatingsAndReviews = ({currentProductID, currentProductName, metaReviews}) 
     })
   }
 
+  // sort by relevance on initial render of reviews
   const reviewRequest = () => {
-    axios.default.get('/review', { params: { specificURL : `reviews?product_id=${currentProductID}&count=500&sort=relevance` }}).then((reviewData) => {
+    axios.default.get(`${baseURL}/review`, { params: { specificURL : `reviews?product_id=${currentProductID}&count=500&sort=relevance` }}).then((reviewData) => {
       // console.log('review data:', reviewData.data)
       let reviewsArray = reviewData.data.results
       reviewsArray = reviewsArray.map(datum => {
@@ -91,6 +92,7 @@ const RatingsAndReviews = ({currentProductID, currentProductName, metaReviews}) 
       console.log('error getting', err)
     })
   }
+
 
 useEffect(() => {
   reviewRequest()

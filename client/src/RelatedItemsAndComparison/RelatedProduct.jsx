@@ -15,13 +15,13 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProduct, c
   const [relatedProduct, setRelatedProduct] = useState({});
   const [openModal, setOpenModal] = useState(false);
   const fetchCard = () => {
-    axios.get(`/comparison`, { params: { specificURL: `products/${relatedProductID}` } })
+    axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${relatedProductID}` } })
       .then((response) => {
         const newProduct = {};
         newProduct.name = response.data.name;
         newProduct.category = response.data.category;
         newProduct.price = response.data.default_price;
-        axios.get(`/comparison`, { params: { specificURL: `products/${relatedProductID}/styles` } })
+        axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${relatedProductID}/styles` } })
           .then(response => {
             newProduct.image = response.data.results[0].photos[0].url;
             setRelatedProduct(newProduct);

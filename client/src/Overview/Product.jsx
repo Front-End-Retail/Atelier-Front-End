@@ -5,9 +5,24 @@ import { findAverage, findTotal } from '../RatingsAndReviews/Components/helperFu
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 const Product = ({ styles, currentProduct, selectedStyle, changeStyle, metaReviews, fullscreen }) => {
+
   const [bulkQuantity, setBulkQuantity] = useState([]);
   const [sizes, setSizes] = useState([]);
   const [qty, setQty] = useState([]);
+
+  //sorts the sku object and stores the sizes and qty into two states
+  useEffect(() => {
+    let tempQuantity = [];
+    let tempSizes = [];
+    for (let key in selectedStyle.skus) {
+      tempQuantity.push(selectedStyle.skus[key].quantity)
+      tempSizes.push(selectedStyle.skus[key].size);
+    }
+    setBulkQuantity(tempQuantity);
+    setSizes(tempSizes)
+  }, [selectedStyle]);
+
+
   //this function will take the quantity associated with the selected size and create an array
   const createQtyArray = (size) => {
     let temp = []
@@ -20,16 +35,6 @@ const Product = ({ styles, currentProduct, selectedStyle, changeStyle, metaRevie
     setQty(temp);
   }
 
-  useEffect(() => {
-    let tempQuantity = [];
-    let tempSizes = [];
-    for (let key in selectedStyle.skus) {
-      tempQuantity.push(selectedStyle.skus[key].quantity)
-      tempSizes.push(selectedStyle.skus[key].size);
-    }
-    setBulkQuantity(tempQuantity);
-    setSizes(tempSizes)
-  }, [selectedStyle]);
 
   return (
     <div className={fullscreen ? 'product-hidden' : "product-container"}>

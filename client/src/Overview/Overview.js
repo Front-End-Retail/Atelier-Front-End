@@ -7,6 +7,7 @@ const { useState, useEffect } = React;
 const Overview = ({ currentProduct, styles, selectedStyle, changeStyle, metaReviews }) => {
   //States
   const [fullscreen, setFullscreen] = useState(false);
+
   return (
     <>
       <div data-testid="overview" id='overview-container'>

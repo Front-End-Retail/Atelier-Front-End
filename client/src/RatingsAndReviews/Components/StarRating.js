@@ -14,7 +14,7 @@ const StarRating = ({handleStarChange}) => {
 
     console.log(e.target.value)
   }
-
+// creates the star rating for the form
   return (
     <div className="star-rating">
     {[...Array(5)].map((star, index) => {

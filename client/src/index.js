@@ -23,10 +23,10 @@ const App = () => {
   const [currentProductName, setCurrentProductName] = useState('');
   const [styles, setStyles] = useState([]);
   const [selectedStyle, setSelectedStyle] = useState({});
-  //fetches initial product data and assigns the currentProductID state
 
+  //fetches initial product data and assigns the currentProductID state
   const fetchAllProducts = () => {
-    axiosDef.default.get(`/products`, {
+    axiosDef.default.get(`${baseURL}/products`, {
       params: {
         specificURL: `products`
       }
@@ -40,10 +40,19 @@ const App = () => {
         console.log(err);
       })
   }
+  const fetchCurrentProduct = () => {
+    axiosDef.default.get(`/products`, { params: { specificURL: `products/${currentProductID}` } })
+      .then(response => {
+        setCurrentProduct(response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
 
   //grabs all the styles for current product
   const fetchAllStyles = () => {
-    axiosDef.default.get(`/products`, {
+    axiosDef.default.get(`${baseURL}/products`, {
       params: {
         specificURL: `products/${currentProductID}/styles`
       }
@@ -55,16 +64,19 @@ const App = () => {
         console.log(err);
       })
   }
+
+  //Grabs meta data from api
   const fetchMetaData = () => {
-    axiosDef.default.get('/review', { params: { specificURL: `reviews/meta?product_id=${currentProductID}` } }).then((reviewData) => {
+    axiosDef.default.get(`${baseURL}/review`, { params: { specificURL: `reviews/meta?product_id=${currentProductID}` } }).then((reviewData) => {
       setMetaReviews(reviewData.data)
     }).catch(err => {
       console.log('error getting', err)
     })
   }
 
+
   const fetchCurrentProduct = () => {
-    axiosDef.default.get(`/products`, { params: { specificURL: `products/${currentProductID}` } })
+    axiosDef.default.get(`${baseURL}/products`, { params: { specificURL: `products/${currentProductID}` } })
       .then(response => {
         setCurrentProduct(response.data);
       })
@@ -73,9 +85,10 @@ const App = () => {
       })
   }
 
+
   const changeCurrentProduct = (event, newProductID) => {
     setCurrentProductID(newProductID);
-    clicktracker(event.target.id, 'relatedItemsModule' , new Date());
+    clicktracker(event.target.id, 'relatedItemsModule', new Date());
   }
 
   const changeSelectedStyle = (style) => {

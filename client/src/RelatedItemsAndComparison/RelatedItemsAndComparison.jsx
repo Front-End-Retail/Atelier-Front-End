@@ -15,7 +15,7 @@ const RelatedItemsAndComparison = ({ currentProductID, changeCurrentProduct, sel
 
   const fetchAllRelatedProductsID = () => {
     const temp = [];
-    axios.get(`/comparison`, { params: { specificURL: `products/${currentProductID}/related` } })
+    axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${currentProductID}/related` } })
       .then((response) => {
         const storageObj = {};
         response.data.forEach(id => {
@@ -48,14 +48,16 @@ const RelatedItemsAndComparison = ({ currentProductID, changeCurrentProduct, sel
       setDuplicateSelected(true);
     }
     if (styleIDList.indexOf(selectedStyle.style_id) === -1) {
-      axios.get(`/comparison`, { params: { specificURL: `products/${currentProductID}` } })
+
+
+      axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${currentProductID}` } })
         .then(response => {
           // console.log('detail info retrieved with product_id', response.data);
           const tempOutfit = {};
           tempOutfit.name = response.data.name;
           tempOutfit.category = response.data.category;
-          axios.get(`/comparison`, { params: { specificURL: `products/${currentProductID}/styles` } })
-            .then((response) => {//style info
+          axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${currentProductID}/styles` } })
+            .then((response) => {
               response.data.results.forEach(result => {
                 if (result.style_id === selectedStyle.style_id && styleIDList.indexOf(selectedStyle.style_id) === -1) {
                   tempOutfit.styleID = result.style_id;

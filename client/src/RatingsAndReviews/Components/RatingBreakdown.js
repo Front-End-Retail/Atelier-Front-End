@@ -27,31 +27,31 @@ const RatingBreakdown = ({ metaReviews, ratingSort, starFilter, sortReviews, cur
   return (
     <div id="breakdown-container">
 
-      {/* <p id="breakdown-title">Ratings and Reviews</p> */}
       <div id="rating-breakdown-num">
         <div id="average-rating">{metaReviews.ratings && rating}</div>
         <div className="star-avg-main">{!isNaN(rating) && <StarAverage id={'-main'} rating={rating} colorOn={"rgb(255, 193, 7)"} colorOff={"rgb(255,255,255)"} />}</div>
       </div>
       {metaReviews.ratings && <p>{helpfulAverage} % of reviews recommend this product</p>}
+
+      {/* Creates the bars for each star number by mapping over the ratings object */}
       {ratingTotal && Object.keys(metaReviews.ratings).reverse().map((starNum, index) => {
-        // let ratio = findRatio(ratingTotal, metaReviews.ratings[starNum])
-        // let ratioTotal = 300 - ratio;
         let singleStarVotes = metaReviews.ratings[starNum]
         return <div key={index} className="star-bars" data-testid="randr-star-bar">
           <div className="star-a-element" style={{ width: "20%" }}><a name={starNum} onClick={starClick}>{starNum} stars</a></div>
-          {/* <div style={{height: "10", width: `${(singleStarVotes/ratingTotal) * 100}%`, background: "green"}}></div> */}
           <div className="bar-container" style={{ width: "75%" }}>
             <div style={{ height: "15px", width: `${100}%`, background: "#F9F6EE" }}>
               <div style={{ height: "15px", width: `${(singleStarVotes / ratingTotal) * 100}%`, background: "#D9B310" }}></div></div> {/*(1 - (singleStarVotes/ratingTotal)) *  */}
           </div>
-          {/* <div>{metaReviews.ratings[starNum]}</div> */}
           <>
             <div style={{ width: "15%" }}>{metaReviews.ratings[starNum]}</div>
           </>
         </div>
       })}
+      {/* toggles the description for current filters and remove all filters button */}
       {!starFilter.every(everyFunc) && <StarFilterDesc starFilter={starFilter} />}
       {!starFilter.every(everyFunc) && <button className="filter-button" onClick={removeFilterButton}>Remove Filters</button>}
+
+      {/* creates the sliders for the characteristics ratings */}
       {metaReviews.characteristics && Object.keys(metaReviews.characteristics).map((key, index) => {
         return (
           <div className="slide-container" data-testid="randr-char-slider" key={index}>{key}
@@ -75,15 +75,3 @@ const RatingBreakdown = ({ metaReviews, ratingSort, starFilter, sortReviews, cur
 }
 
 export default RatingBreakdown;
-
-// triangle
-{/* <div className="triangle"></div> */ }
-
-{/* <table  key={index}><tbody>
-        <tr width="300px" height="15px">
-        <td className="star-a-element"><a  name={starNum} onClick={starClick}>{starNum} stars</a></td>
-        <td style={{background: "green", width: ratio, height:10}}></td><td style={{background: "gray", width: ratioTotal, height:10}}></td>
-
-        </tr>
-        </tbody>
-        </table> */}

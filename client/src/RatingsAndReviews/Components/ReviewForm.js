@@ -3,6 +3,11 @@ import StarRating from './StarRating.js';
 import {characteristicsDesc, ratingDesc} from './helperFuncs'
 // import {Cloudinary} from "@cloudinary/url-gen";
 // import {AdvancedImage} from '@cloudinary/react'
+const axios = require('axios');
+
+import baseURL from '../../baseURL.js'
+
+
 const { useState, useEffect } = React;
 
 const ReviewForm = ({toggle, metaReviews, currentProductName}) => {
@@ -22,8 +27,10 @@ const ReviewForm = ({toggle, metaReviews, currentProductName}) => {
   const [summaryValidation, setSummaryValidation] = useState(false)
   const [bodyValidation, setBodyValidation] = useState(false)
   const [imageSelected, setImageSelected] = useState("");
+  // file for photo hook
   const [fileInputState, setFileInputState] = useState("");
 
+  // setting form inputs
   const handleChange = (e) => {
     e.target.name === 'username' && e.target.value.length > 0 ? (setUsername(e.target.value)) :
     e.target.name === 'summary' ? setSummary(e.target.value) :
@@ -63,6 +70,7 @@ const ReviewForm = ({toggle, metaReviews, currentProductName}) => {
     }
 
   }
+  // set state for validating the reviews, CAN REMOVE ALL EXCEPT BODY!
   const validateReviewForm = () => {
     console.log(username)
     let validated = true
@@ -94,24 +102,24 @@ const ReviewForm = ({toggle, metaReviews, currentProductName}) => {
     return validated
   }
 
-  // get rating from star rating widget
+  // get rating from star rating widget, then set the state
   const handleStarChange =(rating) => {
     setFormRating(rating)
   }
   // handle change for the characteristic radio buttons
   const handleCharChange = (key, e) => {
     let tempChar = {...characteristics}
-    // value needs to be an int, not a string
+      // value needs to be an int, not a string
     tempChar[e.target.name] = Number(e.target.value)
     setCharacteristics(tempChar)
     let tempCharDesc = {...charDescription}
-    // import description helper object characteristicsDesc
+      // import description helper object characteristicsDesc
     tempCharDesc[key] = characteristicsDesc[key][e.target.value]
     setCharDescription(tempCharDesc)
   }
 
   const postReview = (reviewFormObj) => {
-    axios.default.post('/review', reviewFormObj).then((res) => {
+    axios.default.post(`${baseURL}/review`, reviewFormObj).then((res) => {
       console.log('posted', res)
       toggle()
     }).catch((err) => {
