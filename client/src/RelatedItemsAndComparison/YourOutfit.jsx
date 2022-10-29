@@ -1,11 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faShirt } from '@fortawesome/free-solid-svg-icons';
+import { faTimes} from '@fortawesome/free-solid-svg-icons';
 import OutfitPopUp from './OutfitPopUp.jsx';
 import StarAverage from '../RatingsAndReviews/Components/StarAverage.js';
-import { findAverage, findTotal } from '../RatingsAndReviews/Components/helperFuncs.js';
-
+import { findAverage } from '../RatingsAndReviews/Components/helperFuncs.js';
+import baseURL from '../baseURL.js'
 const { useState, useEffect } = React;
 
 const YourOutfit = ({outfit, updateOutfitList, duplicateSelected, closePopUp}) =>{
@@ -37,5 +37,5 @@ const YourOutfit = ({outfit, updateOutfitList, duplicateSelected, closePopUp}) =
 }
 
 export default YourOutfit;
-//<span className='outfit-discountPrice' style={{ color: 'red' }}>$ {outfit.price}</span>
+
 
