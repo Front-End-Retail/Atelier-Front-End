@@ -4,7 +4,7 @@ import axios from 'axios';
 import RelatedProduct from './RelatedProduct.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
-
+import baseURL from '../baseURL.js'
 const RelatedProducts = ({relatedProductsID, currentProductID, currentProduct, changeCurrentProduct, metaReviews}) => {
   // relatedProductsID - [37313, 37314, 37317, 37319, 37320]
   const [currCarousel, setCurrCarousel] = useState([]);

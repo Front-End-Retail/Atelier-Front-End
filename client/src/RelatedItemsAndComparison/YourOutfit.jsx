@@ -5,7 +5,7 @@ import { faTimes} from '@fortawesome/free-solid-svg-icons';
 import OutfitPopUp from './OutfitPopUp.jsx';
 import StarAverage from '../RatingsAndReviews/Components/StarAverage.js';
 import { findAverage } from '../RatingsAndReviews/Components/helperFuncs.js';
-
+import baseURL from '../baseURL.js'
 const { useState, useEffect } = React;
 
 const YourOutfit = ({outfit, updateOutfitList, duplicateSelected, closePopUp}) =>{
