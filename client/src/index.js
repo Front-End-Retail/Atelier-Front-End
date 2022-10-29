@@ -26,7 +26,7 @@ const App = () => {
 
   //fetches initial product data and assigns the currentProductID state
   const fetchAllProducts = () => {
-    axiosDef.default.get(`/products`, {
+    axiosDef.default.get(`${baseURL}/products`, {
       params: {
         specificURL: `products`
       }
@@ -40,15 +40,15 @@ const App = () => {
         console.log(err);
       })
   }
-  // const fetchCurrentProduct = () => {
-  //   axiosDef.default.get(`/products`, { params: { specificURL: `products/${currentProductID}` } })
-  //     .then(response => {
-  //       setCurrentProduct(response.data);
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     })
-  // }
+  const fetchCurrentProduct = () => {
+    axiosDef.default.get(`${baseURL}/products`, { params: { specificURL: `products/${currentProductID}` } })
+      .then(response => {
+        setCurrentProduct(response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
 
   //grabs all the styles for current product
   const fetchAllStyles = () => {
