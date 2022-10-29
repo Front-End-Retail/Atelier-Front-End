@@ -8,7 +8,6 @@ const Overview = ({ currentProduct, styles, selectedStyle, changeStyle, metaRevi
   //States
   const [fullscreen, setFullscreen] = useState(false);
 
-
   return (
     <>
       <div data-testid="overview" id='overview-container'>
