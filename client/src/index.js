@@ -66,17 +66,6 @@ const App = () => {
   }
 
 
-  const fetchCurrentProduct = () => {
-    axiosDef.default.get(`${baseURL}/products`, { params: { specificURL: `products/${currentProductID}` } })
-      .then(response => {
-        setCurrentProduct(response.data);
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }
-
-
   const changeCurrentProduct = (event, newProductID) => {
     setCurrentProductID(newProductID);
     clicktracker(event.target.id, 'relatedItemsModule', new Date());
