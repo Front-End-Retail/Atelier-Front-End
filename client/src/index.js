@@ -26,7 +26,7 @@ const App = () => {
 
   //fetches initial product data and assigns the currentProductID state
   const fetchAllProducts = () => {
-    axiosDef.default.get(`/products`, {
+    axiosDef.default.get(`${baseURL}/products`, {
       params: {
         specificURL: `products`
       }
@@ -52,7 +52,7 @@ const App = () => {
 
   //grabs all the styles for current product
   const fetchAllStyles = () => {
-    axiosDef.default.get(`/products`, {
+    axiosDef.default.get(`${baseURL}/products`, {
       params: {
         specificURL: `products/${currentProductID}/styles`
       }
@@ -67,11 +67,22 @@ const App = () => {
 
   //Grabs meta data from api
   const fetchMetaData = () => {
-    axiosDef.default.get('/review', { params: { specificURL: `reviews/meta?product_id=${currentProductID}` } }).then((reviewData) => {
+    axiosDef.default.get(`${baseURL}/review`, { params: { specificURL: `reviews/meta?product_id=${currentProductID}` } }).then((reviewData) => {
       setMetaReviews(reviewData.data)
     }).catch(err => {
       console.log('error getting', err)
     })
+  }
+
+
+  const fetchCurrentProduct = () => {
+    axiosDef.default.get(`${baseURL}/products`, { params: { specificURL: `products/${currentProductID}` } })
+      .then(response => {
+        setCurrentProduct(response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
 

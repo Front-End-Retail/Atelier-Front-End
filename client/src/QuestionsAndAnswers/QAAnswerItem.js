@@ -11,6 +11,7 @@ const QAAnswerItem = ({ answer, addAnswerHelpfulness, updateHelpfulCount, report
   const [reported, setReported] = useState(false)
   const [bySeller, setBySeller] = useState(false)
 
+  //updates photos and helpful vote whenever new questions render, prevents bugs when switching questions on page
   useEffect(() => {
     setPhotos(answer.photos)
     setVotedAHelpful(false)

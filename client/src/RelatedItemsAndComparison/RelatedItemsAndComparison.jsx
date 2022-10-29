@@ -20,7 +20,7 @@ const RelatedItemsAndComparison = ({ currentProductID, changeCurrentProduct, sel
   const fetchAllRelatedProductsID = () => {
 
     const temp = [];
-    axios.get(`/comparison`, { params: { specificURL: `products/${currentProductID}/related` } })
+    axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${currentProductID}/related` } })
       .then((response) => {
         // console.log('response.data from calling API/products: ', response.data);
         //do the forEach below to filter out 37312 because it has no images
@@ -60,13 +60,13 @@ const RelatedItemsAndComparison = ({ currentProductID, changeCurrentProduct, sel
     }
     if (styleIDList.indexOf(selectedStyle.style_id) === -1) {
 
-      axios.get(`/comparison`, { params: { specificURL: `products/${currentProductID}` } })
+      axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${currentProductID}` } })
         .then(response => {
           // console.log('detail info retrieved with product_id', response.data);
           const tempOutfit = {};
           tempOutfit.name = response.data.name;
           tempOutfit.category = response.data.category;
-          axios.get(`/comparison`, { params: { specificURL: `products/${currentProductID}/styles` } })
+          axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${currentProductID}/styles` } })
             .then((response) => {
               // console.log('style info ', response.data);
               response.data.results.forEach(result => {

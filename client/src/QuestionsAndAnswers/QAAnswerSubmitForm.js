@@ -59,6 +59,7 @@ const QAAnswerSubmitForm = ({ toggle, questionId, getProductQuestions }) => {
     return isValid
   }
 
+  //cloudinary widget for photo upload
   const showWidget = () => {
     let widget = window.cloudinary.createUploadWidget({
       cloudName: `dvpmx7xsz`,
