@@ -7,7 +7,11 @@ A complete redesign of the web portal for the online retailer Atelier
 ### Link to usage
 
   * Overview of the application
-    * Overview
+    * Overview, whete the user can view current product images, select different styles, and expand the currently displayed image to full size.
+
+    ![A gift demonstrating functionality for Overview](https://github.com/p-sturtevant/D-D-Class-Builder/blob/main/Oct-29-2022%2016-45-09.gif)
+
+
     * Ratings and Reviews
     * Questions and Answers - The Questions and Answers component allows asking and answering of questions for the product selected. This component extends the ability to view and search questions, ask questions, answer questions and provide feedback on questions about the current product.
     ![A gif demonstrating functionality for Questions and Answers](https://github.com/phodye/RockPaperScissors/blob/main/FEC_QandA_1.gif?raw=true)
