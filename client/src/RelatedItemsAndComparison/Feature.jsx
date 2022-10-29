@@ -1,7 +1,7 @@
 import React from 'react';
 const { useState, useEffect } = React;
 import axios from 'axios';
-
+import baseURL from '../baseURL.js'
 
 const Feature = ({feature, comparedProductFeatures, currProductFeatures}) => {
   const [comparedValue, setComparedValue] = useState('');
@@ -16,7 +16,7 @@ const Feature = ({feature, comparedProductFeatures, currProductFeatures}) => {
       if (featureObj.feature === feature && featureObj.value !== null){
         setCurrValue(featureObj.value)
       }
-    }
+    })
   }
 
   useEffect(()=>{

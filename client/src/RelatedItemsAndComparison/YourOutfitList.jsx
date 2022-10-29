@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight, faChevronLeft} from '@fortawesome/free-solid-svg-icons'
 import YourOutfit from './YourOutfit.jsx';
-
+import baseURL from '../baseURL.js'
 
 const { useState, useEffect } = React;
 const YourOutfitList = ({outfitList, styleIDList, handlePlusIconClick, updateOutfitList, duplicateSelected, closePopUp, metaReviews}) => {
