@@ -11,6 +11,7 @@ const ReviewEntry = ({review, putRequest, searchTerm}) => {
   const [reportText, setReportText] = useState('Report')
   const [helpfulText, setHelpfulText] = useState('Yes')
 
+  // toggle the review body to show all text
   const expandBody = (e) => {
     setToggleBody(true)
   }
@@ -24,6 +25,7 @@ const ReviewEntry = ({review, putRequest, searchTerm}) => {
       putRequest(review.review_id, "helpful", e.target.id)
     }
   }
+
 // temporary fix, it would allow a user to vote the same message if they rerender the page. Decent enough though
   useEffect(() => {
     setHelpfulText("Yes")
