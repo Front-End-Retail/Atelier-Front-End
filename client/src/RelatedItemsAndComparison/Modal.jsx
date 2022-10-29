@@ -4,6 +4,7 @@ import axios from 'axios';
 import Feature from './Feature.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import baseURL from '../baseURL.js'
 
 
 const Modal = ({ closeModal, currentProductID, relatedProductID, currentProduct }) => {
@@ -21,7 +22,7 @@ const Modal = ({ closeModal, currentProductID, relatedProductID, currentProduct 
     setCurrProductFeatures(currentProduct.features);
     currFeatures.forEach(currObj => {
       featureStorage.push(currObj.feature);
-      axios.get(`/comparison`, { params: { specificURL: `products/${relatedProductID}` } })
+      axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${relatedProductID}` } })
         .then(response => {
           setComparedProductName(response.data.name);
           const relatedFeatures = response.data.features;

@@ -5,6 +5,9 @@ import {characteristicsDesc, ratingDesc} from './helperFuncs'
 // import {AdvancedImage} from '@cloudinary/react'
 const axios = require('axios');
 
+import baseURL from '../../baseURL.js'
+
+
 const { useState, useEffect } = React;
 
 const ReviewForm = ({toggle, metaReviews, currentProductName}) => {
@@ -113,7 +116,7 @@ const ReviewForm = ({toggle, metaReviews, currentProductName}) => {
   }
 
   const postReview = (reviewFormObj) => {
-    axios.default.post('/review', reviewFormObj).then((res) => {
+    axios.default.post(`${baseURL}/review`, reviewFormObj).then((res) => {
       console.log('posted', res)
       toggle()
     }).catch((err) => {
