@@ -48,8 +48,6 @@ const RelatedItemsAndComparison = ({ currentProductID, changeCurrentProduct, sel
       setDuplicateSelected(true);
     }
     if (styleIDList.indexOf(selectedStyle.style_id) === -1) {
-
-
       axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${currentProductID}` } })
         .then(response => {
           // console.log('detail info retrieved with product_id', response.data);
