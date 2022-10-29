@@ -77,6 +77,7 @@ const RatingsAndReviews = ({currentProductID, currentProductName, metaReviews}) 
     })
   }
 
+  // sort by relevance on initial render of reviews
   const reviewRequest = () => {
     axios.default.get('/review', { params: { specificURL : `reviews?product_id=${currentProductID}&count=500&sort=relevance` }}).then((reviewData) => {
       // console.log('review data:', reviewData.data)

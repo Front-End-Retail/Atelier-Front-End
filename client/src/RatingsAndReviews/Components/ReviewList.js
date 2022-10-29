@@ -31,7 +31,6 @@ const ReviewList = ({reviews, sortReviews, metaReviews, putRequest, currentProdu
           return review
         }
       })
-      console.log('searching...', searchedReviews)
       setSearchNum(searchedReviews.length)
       setSearchReviews(searchedReviews.slice(0, displayNum))
     }
@@ -51,7 +50,6 @@ const ReviewList = ({reviews, sortReviews, metaReviews, putRequest, currentProdu
           return review
         }
       })
-      console.log('searchNum', searchedReviews.length)
       setSearchNum(searchedReviews.length)
       setSearchReviews(searchedReviews.slice(0, displayNum))
     }
@@ -65,7 +63,7 @@ const ReviewList = ({reviews, sortReviews, metaReviews, putRequest, currentProdu
       setDisplayNum(displayNum + 1)
     }
   }
-  // setting the searchterm used to filter reviews, search reviews changes once a term over 3 chars
+  // setting the searchTerm used to filter reviews, search reviews changes once a term over 3 chars
   // is applied
   const toggleSearch = (term) => {
     if (term === false) {
