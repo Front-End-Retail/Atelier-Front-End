@@ -1,10 +1,10 @@
 import React from 'react';
-const { useState, useEffect } = React;
 import axios from 'axios';
 import Feature from './Feature.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
+const { useState, useEffect } = React;
 
 const Modal = ({ closeModal, currentProductID, relatedProductID, currentProduct }) => {
 
