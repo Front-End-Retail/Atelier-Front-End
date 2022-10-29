@@ -65,7 +65,8 @@ const ReviewList = ({reviews, sortReviews, metaReviews, putRequest, currentProdu
       setDisplayNum(displayNum + 1)
     }
   }
-  // setting the searchterm used to filter reviews
+  // setting the searchterm used to filter reviews, search reviews changes once a term over 3 chars
+  // is applied
   const toggleSearch = (term) => {
     if (term === false) {
       setSearchTerm('')

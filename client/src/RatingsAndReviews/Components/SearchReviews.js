@@ -14,7 +14,7 @@ const SearchReviews = ({toggleSearch}) => {
       toggleSearch(false)
     }
   }
-
+  // simply pass the search term back to review list
   return (
     <div id="review-search" data-testid="randr-search">
       <input id="search-bar" onChange={handleInput} type="text" placeholder="SEARCH REVIEWS..."></input>
