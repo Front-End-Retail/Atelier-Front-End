@@ -23,8 +23,8 @@ const App = () => {
   const [currentProductName, setCurrentProductName] = useState('');
   const [styles, setStyles] = useState([]);
   const [selectedStyle, setSelectedStyle] = useState({});
-  //fetches initial product data and assigns the currentProductID state
 
+  //fetches initial product data and assigns the currentProductID state
   const fetchAllProducts = () => {
     axiosDef.default.get(`${baseURL}/products`, {
       params: {
@@ -35,6 +35,15 @@ const App = () => {
         setProducts(response.data);
         setCurrentProductID(response.data[0].id);
         setCurrentProductName(response.data[0].name);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+  const fetchCurrentProduct = () => {
+    axiosDef.default.get(`/products`, { params: { specificURL: `products/${currentProductID}` } })
+      .then(response => {
+        setCurrentProduct(response.data);
       })
       .catch(err => {
         console.log(err);
@@ -55,6 +64,8 @@ const App = () => {
         console.log(err);
       })
   }
+
+  //Grabs meta data from api
   const fetchMetaData = () => {
     axiosDef.default.get(`${baseURL}/review`, { params: { specificURL: `reviews/meta?product_id=${currentProductID}` } }).then((reviewData) => {
       setMetaReviews(reviewData.data)
@@ -62,6 +73,7 @@ const App = () => {
       console.log('error getting', err)
     })
   }
+
 
   const fetchCurrentProduct = () => {
     axiosDef.default.get(`${baseURL}/products`, { params: { specificURL: `products/${currentProductID}` } })
@@ -73,9 +85,10 @@ const App = () => {
       })
   }
 
+
   const changeCurrentProduct = (event, newProductID) => {
     setCurrentProductID(newProductID);
-    clicktracker(event.target.id, 'relatedItemsModule' , new Date());
+    clicktracker(event.target.id, 'relatedItemsModule', new Date());
   }
 
   const changeSelectedStyle = (style) => {
