@@ -13,13 +13,19 @@ A complete redesign of the web portal for the online retailer Atelier
 
 
     * Ratings and Reviews
+
+   ## ![](https://github.com/mphilip9/rfe2209-databases/blob/master/Oct-29-2022%2016-53-47.gif)
+
+
  ![](https://github.com/mphilip9/rfe2209-databases/blob/master/Oct-29-2022%2016-53-47.gif)
    
+
     * Questions and Answers - The Questions and Answers component allows asking and answering of questions for the product selected. This component extends the ability to view and search questions, ask questions, answer questions and provide feedback on questions about the current product.
     ![A gif demonstrating functionality for Questions and Answers](https://github.com/phodye/RockPaperScissors/blob/main/FEC_QandA_1.gif?raw=true)
     ![A gif demonstrating functionality for Questions and Answers](https://github.com/phodye/RockPaperScissors/blob/main/FEC_QandA_2.gif?raw=true)
     * Related Items and Comparison
-    ## https://d.pr/v/a9Zg8c
+    ![A gif demonstrating functionality for Related Products](https://media.giphy.com/media/DHqp3fXuOinODpXX3J/giphy.gif)
+
 
 ### Link to installation
 
