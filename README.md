@@ -1,6 +1,7 @@
 # Atelier Retail Portal
-Project Description 
-Atelier is an e-commerce site built with React and Express, following a business requirements document and an API provided by the project stakeholders. Working as a team of four engineers, the first phase of our development was becoming acclimated to utilizing project management and ticket management tools, including the Git Feature Branch Workflow and Trello. For the consistency of the codebase, we implemented Airbnb Style Guide. We adapted an agile scrum methodology and held daily standup to keep track of each member's progress on the sub-components of the product. The main strengths of this storefront are a cohesive user experience, clear and easy-to-read usability as well as its sleek and modern design. Our team challenged ourselves by learning new technologies, including React Hooks and SASS, within a day of the sprint planning session.
+Project Description
+
+Atelier is a modern fashion e-commerce site with over 1 million products built with ReactJS and ExpressJS, following a business requirements document and an backend API provided by the project stakeholders. Working as a team of four engineers, the first phase of our development was becoming acclimated to utilizing project management and ticket management tools, including the Git Feature Branch Workflow and Trello. For the consistency of the codebase, we implemented Airbnb Style Guide. We adapted agile methodology and held daily standup to keep track of each member's progress on the sub-components of the product. The site has a clean, minimal and modern design. With end users in mind, it also offers a cohesive user experience, high readability and accessibility. Our team challenged ourselves by learning new technologies, including React Hooks and SASS, within a day of the sprint planning session.
 
 ## Table Of Contents
 
