@@ -1,8 +1,11 @@
 # Atelier Retail Portal
-
-A complete redesign of the web portal for the online retailer Atelier
+Project Description 
+Atelier is an e-commerce site built with React and Express, following a business requirements document and an API provided by the project stakeholders. Working as a team of four engineers, the first phase of our development was becoming acclimated to utilizing project management and ticket management tools, including the Git Feature Branch Workflow and Trello. For the consistency of the codebase, we implemented Airbnb Style Guide. We adapted an agile scrum methodology and held daily standup to keep track of each member's progress on the sub-components of the product. The main strengths of this storefront are a cohesive user experience, clear and easy-to-read usability as well as its sleek and modern design. Our team challenged ourselves by learning new technologies, including React Hooks and SASS, within a day of the sprint planning session.
 
 ## Table Of Contents
+
+### Technologies used 
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 
 ### Link to usage
 
