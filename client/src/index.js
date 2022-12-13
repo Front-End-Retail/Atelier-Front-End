@@ -106,7 +106,7 @@ const App = () => {
         {currentProductID !== 0 && currentProductName !== '' && currentProduct && Object.keys(currentProduct).length !== 0 && < div >
           <Overview currentProduct={currentProduct} styles={styles} selectedStyle={selectedStyle} changeStyle={changeSelectedStyle} metaReviews={metaReviews} />
           <RelatedItemsAndComparison currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct} selectedStyle={selectedStyle} currentProduct={currentProduct} metaReviews={metaReviews} />
-          <QuestionsAndAnswers currentProductID={currentProductID} currentProductName={currentProductName} />
+          <QuestionsAndAnswers currentProductID={1} currentProductName={currentProductName} />
           <RatingsAndReviews currentProductID={currentProductID} currentProductName={currentProductName} metaReviews={metaReviews} />
         </div>}
         <footer className='footer'>
