@@ -31,6 +31,7 @@ Atelier is a modern fashion e-commerce site front end with over 1 million produc
 
 
     * Related Items and Comparison
+    <img width="800px" src="https://media.giphy.com/media/DHqp3fXuOinODpXX3J/giphy.gif" />
     * ![A gif demonstrating functionality for Related Products](https://media.giphy.com/media/DHqp3fXuOinODpXX3J/giphy.gif)
 
 
