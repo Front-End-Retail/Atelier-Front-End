@@ -69,3 +69,5 @@ Here we will display each component. Perhaps a recording or gif for the visually
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
+
+https://media.giphy.com/media/oP8MIJfQbowD6vuyqa/giphy.gif
