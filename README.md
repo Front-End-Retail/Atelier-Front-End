@@ -16,11 +16,9 @@ Atelier is a modern fashion e-commerce site front end with over 1 million produc
    <img width="800px" src="https://github.com/mphilip9/rfe2209-databases/blob/master/Overview.gif" />
 
 
- #### Ratings and Reviews
-
-<img width="800px" src="https://github.com/mphilip9/rfe2209-databases/blob/master/modal_reviews.gif" />
-
-<img width="800px" src="https://github.com/mphilip9/rfe2209-databases/blob/master/reviews_use.gif" />
+ #### Related Items and Comparison
+  
+  <img src="https://media.giphy.com/media/DHqp3fXuOinODpXX3J/giphy.gif" width="800px" height="522px" />
 
 
 #### Questions and Answers 
@@ -34,10 +32,12 @@ Atelier is a modern fashion e-commerce site front end with over 1 million produc
    
    <p> The above gif demonstrates the ability to upload images to be displayed with answers. It also demonstartes the search feature which will filter questions according to user inputs.</p>
 
-
- #### Related Items and Comparison
   
-  <img src="https://media.giphy.com/media/DHqp3fXuOinODpXX3J/giphy.gif" width="800px" height="522px" />
+ #### Ratings and Reviews
+
+<img width="800px" src="https://github.com/mphilip9/rfe2209-databases/blob/master/modal_reviews.gif" />
+
+<img width="800px" src="https://github.com/mphilip9/rfe2209-databases/blob/master/reviews_use.gif" />
 
 
 ### Link to installation
