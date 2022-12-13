@@ -11,7 +11,7 @@ Atelier is a modern fashion e-commerce site front end with over 1 million produc
 ### Features
 
  #### Product Overview
-    * Overview, whete the user can view current product images, select different styles, and expand the currently displayed image to full size.
+ <p> Overview, whete the user can view current product images, select different styles, and expand the currently displayed image to full size.</p>
 
    <img height="540px" src="https://github.com/p-sturtevant/D-D-Class-Builder/blob/main/OVERVIEW.gif?raw=true" />
 
