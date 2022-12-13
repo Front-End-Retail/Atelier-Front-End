@@ -11,28 +11,33 @@ Atelier is a modern fashion e-commerce site front end with over 1 million produc
 ### Features
 
  #### Product Overview
-    * Overview, whete the user can view current product images, select different styles, and expand the currently displayed image to full size.
+  <p>Overview, whete the user can view current product images, select different styles, and expand the currently displayed image to full size.</p>
 
    <img width="800px" src="https://github.com/mphilip9/rfe2209-databases/blob/master/Overview.gif" />
 
 
-    * Ratings and Reviews
+ #### Ratings and Reviews
 
 <img width="800px" src="https://github.com/mphilip9/rfe2209-databases/blob/master/modal_reviews.gif" />
 
 <img width="800px" src="https://github.com/mphilip9/rfe2209-databases/blob/master/reviews_use.gif" />
 
 
-    Questions and Answers - The Questions and Answers component allows asking and answering of questions for the product selected. This component extends the ability to view and search questions, ask questions, answer questions and provide feedback on questions about the current product. Questions and answers are displayed in order of their user voted 'helpfulness'
-    ![A gif demonstrating functionality for Questions and Answers](https://github.com/phodye/RockPaperScissors/blob/main/FEC_QandA_1.gif?raw=true)
-    The above gif demonstrates the ability to view all of the questions related to the currently selected product. By clicking on the individual questions any associated answers will open in an accordion, with the ability to view more answers in groups of five until all of the available ansewrs are displayed. The first modal displayed is the user input for asking a question related to the currently selected product. Also demonstrated is the ability to answer any of the posted questions. A user can open an answer modal and fill out a form. The form incorporates client side validation before sending the information to the database.
-    ![A gif demonstrating functionality for Questions and Answers](https://github.com/phodye/RockPaperScissors/blob/main/FEC_QandA_2.gif?raw=true)
-    The above gif demonstrates the ability to upload images to be displayed with answers. It also demonstartes the search feature which will filter questions according to user inputs.
+#### Questions and Answers 
+<p> The Questions and Answers component allows asking and answering of questions for the product selected. This component extends the ability to view and search questions, ask questions, answer questions and provide feedback on questions about the current product. Questions and answers are displayed in order of their user voted 'helpfulness' </p>
+
+   ![A gif demonstrating functionality for Questions and Answers](https://github.com/phodye/RockPaperScissors/blob/main/FEC_QandA_1.gif?raw=true)
+    
+   <p> The above gif demonstrates the ability to view all of the questions related to the currently selected product. By clicking on the individual questions any associated answers will open in an accordion, with the ability to view more answers in groups of five until all of the available ansewrs are displayed. The first modal displayed is the user input for asking a question related to the currently selected product. Also demonstrated is the ability to answer any of the posted questions. A user can open an answer modal and fill out a form. The form incorporates client side validation before sending the information to the database.</p> 
+   
+   ![A gif demonstrating functionality for Questions and Answers](https://github.com/phodye/RockPaperScissors/blob/main/FEC_QandA_2.gif?raw=true)
+   
+   <p> The above gif demonstrates the ability to upload images to be displayed with answers. It also demonstartes the search feature which will filter questions according to user inputs.</p>
 
 
-    * Related Items and Comparison
-    <img width="800px" src="https://media.giphy.com/media/DHqp3fXuOinODpXX3J/giphy.gif" />
-    * ![A gif demonstrating functionality for Related Products](https://media.giphy.com/media/DHqp3fXuOinODpXX3J/giphy.gif)
+ #### Related Items and Comparison
+  
+  <img src="https://media.giphy.com/media/DHqp3fXuOinODpXX3J/giphy.gif" width="800px" height="522px" />
 
 
 ### Link to installation
