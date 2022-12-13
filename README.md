@@ -11,17 +11,16 @@ Atelier is a modern fashion e-commerce site front end with over 1 million produc
 ### Features
 
  #### Product Overview
- <p> A detailed overview of the current product, where the user can view product images via the carousel, select different sizes and styles, and add their items to the cart.</p>
+    * Overview, whete the user can view current product images, select different styles, and expand the currently displayed image to full size.
 
-   <img height="540px" src="https://github.com/p-sturtevant/D-D-Class-Builder/blob/main/OVERVIEW.gif?raw=true" />
+   <img width="800px" src="https://github.com/mphilip9/rfe2209-databases/blob/master/Overview.gif" />
 
 
     * Ratings and Reviews
 
- 
-<img height="800px" src="https://github.com/mphilip9/rfe2209-databases/blob/master/Oct-29-2022%2016-53-47.gif" />
+<img width="800px" src="https://github.com/mphilip9/rfe2209-databases/blob/master/modal_reviews.gif" />
 
- * ![](https://github.com/mphilip9/rfe2209-databases/blob/master/Oct-29-2022%2016-53-47.gif)
+<img width="800px" src="https://github.com/mphilip9/rfe2209-databases/blob/master/reviews_use.gif" />
 
 
     Questions and Answers - The Questions and Answers component allows asking and answering of questions for the product selected. This component extends the ability to view and search questions, ask questions, answer questions and provide feedback on questions about the current product. Questions and answers are displayed in order of their user voted 'helpfulness'
