@@ -18,9 +18,8 @@ Atelier is a modern fashion e-commerce site front end with over 1 million produc
 
     * Ratings and Reviews
 
- * ![](https://github.com/mphilip9/rfe2209-databases/blob/master/Oct-29-2022%2016-53-47.gif)
  
-<img src="https://github.com/mphilip9/rfe2209-databases/blob/master/Oct-29-2022%2016-53-47.gif" />
+<img height="800px" src="https://github.com/mphilip9/rfe2209-databases/blob/master/Oct-29-2022%2016-53-47.gif" />
 
  * ![](https://github.com/mphilip9/rfe2209-databases/blob/master/Oct-29-2022%2016-53-47.gif)
 
