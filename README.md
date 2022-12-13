@@ -24,9 +24,13 @@ Atelier is a modern fashion e-commerce site front end with over 1 million produc
  * ![](https://github.com/mphilip9/rfe2209-databases/blob/master/Oct-29-2022%2016-53-47.gif)
 
 
-    * Questions and Answers - The Questions and Answers component allows asking and answering of questions for the product selected. This component extends the ability to view and search questions, ask questions, answer questions and provide feedback on questions about the current product.
-    * ![A gif demonstrating functionality for Questions and Answers](https://github.com/phodye/RockPaperScissors/blob/main/FEC_QandA_1.gif?raw=true)
-    * ![A gif demonstrating functionality for Questions and Answers](https://github.com/phodye/RockPaperScissors/blob/main/FEC_QandA_2.gif?raw=true)
+    Questions and Answers - The Questions and Answers component allows asking and answering of questions for the product selected. This component extends the ability to view and search questions, ask questions, answer questions and provide feedback on questions about the current product. Questions and answers are displayed in order of their user voted 'helpfulness'
+    ![A gif demonstrating functionality for Questions and Answers](https://github.com/phodye/RockPaperScissors/blob/main/FEC_QandA_1.gif?raw=true)
+    The above gif demonstrates the ability to view all of the questions related to the currently selected product. By clicking on the individual questions any associated answers will open in an accordion, with the ability to view more answers in groups of five until all of the available ansewrs are displayed. The first modal displayed is the user input for asking a question related to the currently selected product. Also demonstrated is the ability to answer any of the posted questions. A user can open an answer modal and fill out a form. The form incorporates client side validation before sending the information to the database.
+    ![A gif demonstrating functionality for Questions and Answers](https://github.com/phodye/RockPaperScissors/blob/main/FEC_QandA_2.gif?raw=true)
+    The above gif demonstrates the ability to upload images to be displayed with answers. It also demonstartes the search feature which will filter questions according to user inputs.
+
+
     * Related Items and Comparison
     * ![A gif demonstrating functionality for Related Products](https://media.giphy.com/media/DHqp3fXuOinODpXX3J/giphy.gif)
 
