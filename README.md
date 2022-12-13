@@ -70,4 +70,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 
-![txt](https://media.giphy.com/media/oP8MIJfQbowD6vuyqa/giphy.gif)
+
