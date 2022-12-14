@@ -50,6 +50,7 @@ Atelier is a modern fashion e-commerce site front end with over 1 million produc
 
 
 ## Installation
+Ensure that you have node working on version 16.8.2 or higher. If you do not you can install it here https://nodejs.org/en/download/
   * Install all dependencies
   ```javascript
   npm install
