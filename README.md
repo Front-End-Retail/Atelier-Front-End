@@ -62,6 +62,10 @@ Atelier is a modern fashion e-commerce site front end with over 1 million produc
   ```javascript
   npm run dev
   ```
+  * Create .env file and paste your Github personal token like this
+  ```javascript
+  GITHUB_API_KEY = 'YOUR TOKEN GOES HERE'
+  ```
   * Environmental Requirements
 
 
