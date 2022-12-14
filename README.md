@@ -45,29 +45,72 @@ Atelier is a modern fashion e-commerce site front end with over 1 million produc
 <img width="800px" src="https://github.com/mphilip9/rfe2209-databases/blob/master/reviews_use.gif" />
 
 
-### Link to installation
+
 
 
 
 ## Installation
-  * List all dependencies
+  * Install all dependencies
   ```javascript
   npm install
   ```
+  * Start server
+  ```javascript
+  npm run server
+  ```
+  * Start webpack
+  ```javascript
+  npm run dev
+  ```
   * Environmental Requirements
 
-## Usage
-
-```javascript
-Here we will display each component. Perhaps a recording or gif for the visually inclined
-
-```
 
 
+## HIRE US!
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+We hope you enjoy the site! We loved working together, and had tons of fun building Atelier. If you'd like to get in touch with the Atelier developers, please contact us below.
 
-Please make sure to update tests as appropriate.
+<table>
+      <thead>
+        <tr>
+          <th>Full Name</th>
+          <th>Widget</th>
+          <th>GitHub</th>
+          <th>LinkedIn</th>
+          <th>E-Mail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Parker Sturtevant</td>
+          <td>Product Overview</td>
+          <td><a href="">Parker Sturtevant</a></td>
+          <td><a href="">Parker Sturtevant</a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Lei Liang</td>
+          <td>Related Products</td>
+          <td><a href="https://github.com/leiliangmichelle">leiliangmichelle</a></td>
+          <td><a href="https://www.linkedin.com/in/lei-michelle-liang/">Lei Michelle Liang</a></td>
+          <td>m.leiliang@gmail.com</td>
+        </tr>
+        <tr>
+          <td>Andrew Dye</td>
+          <td>Questions and Answers</td>
+          <td><a href=""></a></td>
+          <td><a href=""></a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Max Philip</td>
+          <td>Ratings and Reviews</td>
+          <td><a href=""></a></td>
+          <td><a href=""></a></td>
+          <td></td>
+        </tr>
+      </tbody>
+  </table>
+
 
 
