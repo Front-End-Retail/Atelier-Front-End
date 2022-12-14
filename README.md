@@ -67,7 +67,6 @@ Ensure that you have node working on version 16.8.2 or higher. If you do not you
   ```javascript
   GITHUB_API_KEY = 'YOUR TOKEN GOES HERE'
   ```
-  * Environmental Requirements
 
 
 
