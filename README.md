@@ -102,8 +102,8 @@ We hope you enjoy the site! We loved working together, and had tons of fun build
         <tr>
           <td>Andrew Dye</td>
           <td>Questions and Answers</td>
-          <td><a href=""></a></td>
-          <td><a href=""></a></td>
+          <td><a href="https://github.com/phodye">Andrew Dye</a></td>
+          <td><a href="https://www.linkedin.com/in/andrewdye22/">Andrew Dye</a></td>
           <td></td>
         </tr>
         <tr>
