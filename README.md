@@ -39,11 +39,11 @@ Atelier is a modern fashion e-commerce site front end with over 1 million produc
 
   
  #### Ratings and Reviews
-
-<img width="800px" src="https://github.com/mphilip9/rfe2209-databases/blob/master/modal_reviews.gif" />
-
+The ratings and reviews component allows users to post reviews for any product. Reviews can be filtered by relevancy, date, and helpfulness rating. They can also be sorted by rating in combination with the other filters. The component has a search function to filter reviews by keywords, which will be highlighted when matched. Image thumbnails expand to a full screen modal when clicked. 
 <img width="800px" src="https://github.com/mphilip9/rfe2209-databases/blob/master/reviews_use.gif" />
 
+The gif below displays the modal for adding a review for a product. This includes helpful descriptions for what the different characteristics are and form validation to ensure necessary inputs are entered and the minimum length for a review is met. Users can also attach photos (up to 5) to a review using cloudinary, which will display as thumbnails.
+<img width="800px" src="https://github.com/mphilip9/rfe2209-databases/blob/master/modal_reviews.gif" />
 
 
 
@@ -109,12 +109,17 @@ We hope you enjoy the site! We loved working together, and had tons of fun build
         <tr>
           <td>Max Philip</td>
           <td>Ratings and Reviews</td>
-          <td><a href=""></a></td>
-          <td><a href=""></a></td>
+          <td><a href="https://github.com/mphilip9">Maxwell Philip</a></td>
+          <td><a href="https://www.linkedin.com/in/maxwell-philip/"> Maxwell Philip</a></td>
           <td></td>
         </tr>
       </tbody>
   </table>
+
+### Contributions
+  <a href="https://github.com/Front-End-Retail/Atelier-Front-End/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Front-End-Retail/Atelier-Front-End" />
+</a>
 
 
 
