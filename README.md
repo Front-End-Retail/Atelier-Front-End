@@ -111,7 +111,7 @@ We hope you enjoy the site! We loved working together, and had tons of fun build
           <td>Ratings and Reviews</td>
           <td><a href="https://github.com/mphilip9">Maxwell Philip</a></td>
           <td><a href="https://www.linkedin.com/in/maxwell-philip/"> Maxwell Philip</a></td>
-          <td></td>
+          <td>max.philip1@gmail.com</td>
         </tr>
       </tbody>
   </table>
