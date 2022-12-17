@@ -104,7 +104,7 @@ We hope you enjoy the site! We loved working together, and had tons of fun build
           <td>Questions and Answers</td>
           <td><a href="https://github.com/phodye">Andrew Dye</a></td>
           <td><a href="https://www.linkedin.com/in/andrewdye22/">Andrew Dye</a></td>
-          <td></td>
+          <td>phodye@gmail.com</td>
         </tr>
         <tr>
           <td>Max Philip</td>
