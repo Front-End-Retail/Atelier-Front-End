@@ -23,7 +23,7 @@ Atelier is a modern fashion e-commerce site front end with over 1 million produc
   
    <p> The above gif demonstrates the ability to dynamically render all products related to the main product. When clicking on a specific related product, it will take the user to the overview section to view the details of that product. Upon clicking the star icon, a comparsion table modal which compares features and characteristics of the current product with the main product will open, to help the user decide which product is right for them. Discounted price will also be reflected if the product is on sale.</p>
    
-   <p> The above gif demonstrates the ability to dynamically render the user's customized outfit list which contains all of the user selected items. Upon clicking plus button, the current viewing product will be added to the outfit list. To remove an item from the list, click 'X' button. Users cannot add the same item twice to the collection. When a duplicate selection happens, a modal will pop up showing the style has already been added. </p>
+   <p> It also demonstrates the ability to dynamically render the user's customized outfit list which contains all of the user selected items. Upon clicking plus button, the current viewing product will be added to the outfit list. To remove an item from the list, click 'X' button. Users cannot add the same item twice to the collection. When a duplicate selection happens, a modal will pop up showing the style has already been added. </p>
    
 
 #### Questions and Answers 
