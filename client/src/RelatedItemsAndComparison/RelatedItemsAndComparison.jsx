@@ -22,7 +22,6 @@ const RelatedItemsAndComparison = ({ currentProductID, changeCurrentProduct, sel
     const temp = [];
     axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${currentProductID}/related` } })
       .then((response) => {
-        // console.log('response.data from calling API/products: ', response.data);
         //do the forEach below to filter out 37312 because it has no images
         const storageObj = {};
         response.data.forEach(id => {
@@ -37,10 +36,6 @@ const RelatedItemsAndComparison = ({ currentProductID, changeCurrentProduct, sel
         console.log('client failed to retrieve all products ids: ', err);
       })
   };
-
-  // useEffect(() => {
-  //   fetchAllRelatedProductsID();
-  // }, [])
 
   useEffect(() => {
     fetchAllRelatedProductsID();

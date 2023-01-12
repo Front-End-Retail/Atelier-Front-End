@@ -89,28 +89,3 @@ if (currCarousel.length <=4 && relatedProductsID.length > 4) {
 };
 
 export default RelatedProducts;
-
-// if (currCarousel.length >=4) {
-//   const sizedCarousel = currCarousel.slice(0,4);
-//   return (
-//     <div className='relatedProductsOuterContainer'>
-//           <div className='relatedProductsContainer'>
-//                 {sizedCarousel.map((relatedProductID, index)=>{
-//                  return <RelatedProduct key={index} relatedProductID={relatedProductID} relatedProductsID={relatedProductsID} currentProductID={currentProductID} currentProduct={currentProduct} changeCurrentProduct={changeCurrentProduct} metaReviews={metaReviews}></RelatedProduct>
-//                  })}
-//            </div>
-//            <button className='rightArrowIcon-Btn' onClick={handleRightArrowClick}><FontAwesomeIcon className='rightArrowIcon' icon={faChevronRight}/></button>
-//     </div>
-//   );
-// } else {
-//   return (
-//     <div className='relatedProductsContainer'>
-//       {relatedProductsID.length>4 && <button className='leftArrowIcon-Btn' onClick={handleLeftArrowClick}><FontAwesomeIcon className='leftArrowIcon' icon={faChevronLeft}/></button>}
-//       {currCarousel.map((relatedProductID, index)=>{
-//       return <RelatedProduct key={index} relatedProductID={relatedProductID} relatedProductsID={relatedProductsID}
-//        currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct} currentProduct={currentProduct} metaReviews={metaReviews}></RelatedProduct>
-//     })}
-//     </div>
-//   );
-//   }
-// };

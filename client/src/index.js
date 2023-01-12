@@ -40,15 +40,7 @@ const App = () => {
         console.log(err);
       })
   }
-  const fetchCurrentProduct = () => {
-    axiosDef.default.get(`/products`, { params: { specificURL: `products/${currentProductID}` } })
-      .then(response => {
-        setCurrentProduct(response.data);
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }
+
 
   //grabs all the styles for current product
   const fetchAllStyles = () => {
@@ -110,7 +102,8 @@ const App = () => {
   }, [styles]);
 
   return (
-    <><header className={'logo'}><div className={'titleLogo'}><h1>One Stop Onesie Shop</h1><img className={'theLion'} src={LannisterLion}></img></div> <div className={'titleLogo'}><h2>Search</h2><input className={'headerSearch'}></input></div></header>
+    <>
+    <header className={'logo'}><div className={'titleLogo'}><h1>Atelier</h1><img className={'theLion'} src={LannisterLion}></img></div> <div className={'titleLogo'}><h2>Search</h2><input className={'headerSearch'}></input></div></header>
       <div className="lord-of-all-divs">
         {currentProductID !== 0 && currentProductName !== '' && currentProduct && Object.keys(currentProduct).length !== 0 && < div >
           <Overview currentProduct={currentProduct} styles={styles} selectedStyle={selectedStyle} changeStyle={changeSelectedStyle} metaReviews={metaReviews} />
@@ -144,7 +137,7 @@ const App = () => {
               <FontAwesomeIcon className='twitterIcon' icon={faTwitter} />
               <FontAwesomeIcon className='instaIcon' icon={faInstagram} />
             </div>
-            <span className='trade-mark'>One Stop Onesie Shop ® 2022</span>
+            <span className='trade-mark'>Atelier ® 2022</span>
           </div>
         </footer>
       </div >
