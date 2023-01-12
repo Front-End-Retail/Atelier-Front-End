@@ -122,6 +122,9 @@ if (styleIDList > 3) {
 </div>
   )
 }
-}
+
+};
 
 export default YourOutfitList;
+
+

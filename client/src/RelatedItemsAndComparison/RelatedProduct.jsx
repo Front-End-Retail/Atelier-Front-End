@@ -62,4 +62,3 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProduct, c
 };
 
 export default RelatedProduct;
-

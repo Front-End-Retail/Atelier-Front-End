@@ -1,26 +1,35 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const { useState, useEffect } = React;
 
-const SearchReviews = ({toggleSearch}) => {
-  const [searchTerm, setSearchTerm] = useState('')
+const SearchReviews = ({ toggleSearch }) => {
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleInput = (e) => {
     if (e.target.value.length > 2) {
-      toggleSearch(e.target.value)
+      toggleSearch(e.target.value);
     } else {
-      toggleSearch(false)
+      toggleSearch(false);
     }
-  }
-  // simply pass the search term back to review list
+  };
   return (
     <div id="review-search" data-testid="randr-search">
-      <input id="search-bar" onChange={handleInput} type="text" placeholder="SEARCH REVIEWS..."></input>
-      <button type={"submit"} className={"search-button-reviews"}><FontAwesomeIcon icon={faMagnifyingGlass} className={"search-icon"}></FontAwesomeIcon></button>
+      <input
+        id="search-bar"
+        onChange={handleInput}
+        type="text"
+        placeholder="SEARCH REVIEWS..."
+      ></input>
+      <button type={"submit"} className={"search-button-reviews"}>
+        <FontAwesomeIcon
+          icon={faMagnifyingGlass}
+          className={"search-icon"}
+        ></FontAwesomeIcon>
+      </button>
     </div>
-  )
-}
+  );
+};
 
 export default SearchReviews;

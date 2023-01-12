@@ -85,4 +85,3 @@ if (currCarousel.length <=4 && relatedProductsID.length > 4) {
 
 export default RelatedProducts;
 
-

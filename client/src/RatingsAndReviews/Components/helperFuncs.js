@@ -1,5 +1,5 @@
+// find average review rating from metaReview data
 export const findAverage = (ratingsObj) => {
-  // console.log("findAverage", metaReviews.recommended)
   let average = 0
   let total = 0;
   for (let key in ratingsObj) {
@@ -15,12 +15,11 @@ export const findAverage = (ratingsObj) => {
   }
 }
 
+// to filter by newest/helpful/relevant (not in use, ended up using the api)
 export const propComparator = (name) => {
   if (name === 'helpfulness') {
   return function (a, b)  {
   if ( a[name] < b[name] ){
-    // console.log(a[name])
-    // console.log(b[name])
     return -1;
   }
   if ( a[name] > b[name] ){
@@ -41,8 +40,8 @@ export const propComparator = (name) => {
 }
 }
 
+
 export const findTotal = (ratingsObj) => {
-  // console.log("findAverage", metaReviews.recommended)
   let average = 0
   let total = 0;
   for (let key in ratingsObj) {
@@ -51,11 +50,13 @@ export const findTotal = (ratingsObj) => {
   }
   return total;
 }
+
 // used to make breakdown charts
 export const findRatio = (total, currentNum) => {
   // this should be obsolete once you transition to styled components
   return (Math.round(Number(currentNum) / total * 300))
 }
+
 // use this to check if any star ratings are toggled
 export let everyFunc = (currentStar) => {
   return !currentStar
