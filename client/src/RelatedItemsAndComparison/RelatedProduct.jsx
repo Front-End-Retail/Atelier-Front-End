@@ -2,8 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import Modal from './Modal.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart as faHeartActive } from '@fortawesome/free-solid-svg-icons';
-import { faHeart as faHeartInactive } from '@fortawesome/free-regular-svg-icons';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
 import StarAverage from '../RatingsAndReviews/Components/StarAverage.js';
@@ -14,13 +12,8 @@ import clicktracker from '../clicktracker.js'
 const { useState, useEffect } = React;
 
 const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProduct, currentProductID, changeCurrentProduct, metaReviews }) => {
-
   const [relatedProduct, setRelatedProduct] = useState({});
   const [openModal, setOpenModal] = useState(false);
-  const [liked, setLiked] = useState(false);
-
-  const likeIcon = (liked) => (liked ? faHeartActive : faHeartInactive);
-
   const fetchCard = () => {
     axios.get(`${baseURL}/comparison`, { params: { specificURL: `products/${relatedProductID}` } })
       .then((response) => {
@@ -44,15 +37,7 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProduct, c
 
   useEffect(() => {
     fetchCard();
-  }, [relatedProductID]) //without this useEffect, this get request was ran repeatedly 10 times or more,
-  //the data does get on the screen on the first go but eventually there are 123 messages and server failed with a response "too many requests"
-  //everytime when this hook updates
-
-  const handleLikeClick = (event) => {
-    console.log('event.target inside of handleLikeClick: ', event.target);
-    setLiked(true);
-  }
-
+  }, [relatedProductID])
 
   return (
     <div className='card-component'>
@@ -75,6 +60,5 @@ const RelatedProduct = ({ relatedProductID, relatedProductsID, currentProduct, c
     </div>
   )
 };
-
 
 export default RelatedProduct;

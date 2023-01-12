@@ -15,121 +15,80 @@ app.use(cors());
 let authObject = { Authorization: process.env.GITHUB_API_KEY };
 let requestCounter = 0;
 //ROUTES BELOW
-app.get("/products", (req, res) => {
-  axios
-    .get(
-      "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/" +
-        req.query.specificURL,
-      { headers: authObject }
-    )
-    .then((data) => {
-      res.send(data.data);
-    })
-    .catch((err) => {
-      res.status(500);
-      res.end();
-    });
-});
+app.get('/products', (req, res) => {
 
-app.get("/comparison", (req, res) => {
-  axios
-    .get(
-      "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/" +
-        req.query.specificURL,
-      { headers: authObject }
-    )
-    .then((data) => {
-      res.send(data.data);
-    })
-    .catch((err) => {
-      res.status(500);
-      res.end();
-      console.log(err);
-    });
-});
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/' + req.query.specificURL, { headers: authObject }).then(data => {
+    res.send(data.data)
+  }).catch(err => {
+    res.status(500)
+    res.end()
+  })
+})
 
-app.get("/qanda", (req, res) => {
-  axios
-    .get(
-      "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/" +
-        req.query.specificURL,
-      { headers: authObject }
-    )
-    .then((data) => {
-      res.send(data.data);
-    })
-    .catch((err) => {
-      res.status(500);
-      res.end();
-    });
-});
+app.get('/comparison', (req, res) => {
 
-app.put("/qanda/qhelp", (req, res) => {
-  axios
-    .put(
-      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.body.questionId}/helpful`,
-      {},
-      { headers: authObject }
-    )
-    .then(() => {
-      res.send();
-    })
-    .catch((err) => {
-      res.status(400);
-      res.end();
-    });
-});
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/' + req.query.specificURL, { headers: authObject }).then(data => {
+    res.send(data.data)
+  }).catch(err => {
+    res.status(500)
+    res.end()
+    console.log(err)
+  })
+})
 
-app.put("/qanda/ahelp", (req, res) => {
-  axios
-    .put(
-      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/answers/${req.body.answerId}/helpful`,
-      {},
-      { headers: authObject }
-    )
-    .then(() => {
-      res.send();
-    })
-    .catch((err) => {
-      res.status(400);
-      res.end();
-    });
-});
 
-app.put("/qanda/areport", (req, res) => {
-  axios
-    .put(
-      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/answers/${req.body.answerId}/report`,
-      {},
-      { headers: authObject }
-    )
-    .then(() => {
-      res.send();
-    })
-    .catch((err) => {
-      res.status(400);
-      res.end();
-    });
-});
+//NOTE IP ADDRESS IS HARDCODED TO DEPLOYED INSTANCE- PASSED IN PRODUCT ID IS 1 FOR SAKE OF INSTANCE
+app.get('/qanda', (req, res) => {
+  console.log(req.query.specificURL)
+  axios.get('http://18.219.129.125:3000/' + req.query.specificURL).then(data => {
+    res.send(data.data)
+  }).catch(err => {
+    console.log(err)
+    res.status(500)
+    res.end()
+  })
+})
 
-app.post("/qanda/question", (req, res) => {
-  axios
-    .post(
-      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/`,
-      req.body,
-      { headers: authObject }
-    )
-    .then(() => {
-      res.send();
-    })
-    .catch((err) => {
-      console.log("error in qanda question post", err);
-      res.status(500);
-      res.end();
-    });
-});
+app.put('/qanda/qhelp', (req, res) => {
+  axios.put(`http://18.219.129.125:3000/qa/questions/${req.body.questionId}/helpful`, {}, { headers: authObject }).then(() => {
+    res.send()
+  }).catch((err) => {
+    res.status(400)
+    res.end()
+  })
+})
 
-app.post("/qanda/answer", (req, res) => {
+app.put('/qanda/ahelp', (req, res) => {
+  axios.put(`http://18.219.129.125:3000/qa/answers/${req.body.answerId}/helpful`, {}, { headers: authObject }).then(() => {
+    res.send()
+  }).catch((err) => {
+    res.status(400)
+    res.end()
+  })
+})
+
+app.put('/qanda/areport', (req, res) => {
+  axios.put(`http://18.219.129.125:3000/qa/answers/${req.body.answerId}/report`, {}, { headers: authObject }).then(() => {
+    console.log("report achieved")
+    res.send()
+  }).catch((err) => {
+    res.status(400)
+    res.end()
+  })
+})
+
+app.post('/qanda/question', (req, res) => {
+  console.log(req.body)
+  axios.post(`http://18.219.129.125:3000/qa/questions/`, req.body, { headers: authObject }).then(() => {
+    res.send()
+  }).catch((err) => {
+    console.log('error in qanda question post', err)
+    res.status(500)
+    res.end()
+  })
+})
+
+app.post('/qanda/answer', (req, res) => {
   let answerObject = {
     body: req.body.body,
     name: req.body.name,

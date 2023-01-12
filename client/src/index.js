@@ -41,7 +41,6 @@ const App = () => {
       })
   }
 
-
   //grabs all the styles for current product
   const fetchAllStyles = () => {
     axiosDef.default.get(`${baseURL}/products`, {
@@ -64,17 +63,6 @@ const App = () => {
     }).catch(err => {
       console.log('error getting', err)
     })
-  }
-
-
-  const fetchCurrentProduct = () => {
-    axiosDef.default.get(`${baseURL}/products`, { params: { specificURL: `products/${currentProductID}` } })
-      .then(response => {
-        setCurrentProduct(response.data);
-      })
-      .catch(err => {
-        console.log(err);
-      })
   }
 
 
@@ -108,7 +96,7 @@ const App = () => {
         {currentProductID !== 0 && currentProductName !== '' && currentProduct && Object.keys(currentProduct).length !== 0 && < div >
           <Overview currentProduct={currentProduct} styles={styles} selectedStyle={selectedStyle} changeStyle={changeSelectedStyle} metaReviews={metaReviews} />
           <RelatedItemsAndComparison currentProductID={currentProductID} changeCurrentProduct={changeCurrentProduct} selectedStyle={selectedStyle} currentProduct={currentProduct} metaReviews={metaReviews} />
-          <QuestionsAndAnswers currentProductID={currentProductID} currentProductName={currentProductName} />
+          <QuestionsAndAnswers currentProductID={1} currentProductName={currentProductName} />
           <RatingsAndReviews currentProductID={currentProductID} currentProductName={currentProductName} metaReviews={metaReviews} />
         </div>}
         <footer className='footer'>

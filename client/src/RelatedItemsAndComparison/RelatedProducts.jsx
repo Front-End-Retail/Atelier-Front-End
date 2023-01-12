@@ -2,24 +2,20 @@ import React from 'react';
 const { useState, useEffect } = React;
 import axios from 'axios';
 import RelatedProduct from './RelatedProduct.jsx';
-// import '../assets/related.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-;
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
-
+import baseURL from '../baseURL.js'
 const RelatedProducts = ({relatedProductsID, currentProductID, currentProduct, changeCurrentProduct, metaReviews}) => {
-
   // relatedProductsID - [37313, 37314, 37317, 37319, 37320]
-
   const [currCarousel, setCurrCarousel] = useState([]);
-useEffect(()=>{
-  setCurrCarousel(relatedProductsID);
-},[relatedProductsID])//it takes sometime to get relatedProductsID prop
+
+  useEffect(()=>{
+    setCurrCarousel(relatedProductsID);
+  },[relatedProductsID])
 
   const handleRightArrowClick = () => {
     const leftoverCarousel = currCarousel.slice(4); //relatedProductsID was put to mapping
-    // console.log('leftoverCarousel: ', leftoverCarousel) //[4, ...]
+    // leftoverCarousel - [4, ...]
     setCurrCarousel(leftoverCarousel);
   }
 
@@ -29,6 +25,7 @@ useEffect(()=>{
     setCurrCarousel(prevCarousel);
   }
 
+  //helper
   const arraysMatch = (arr1, arr2) => {
 	  if (arr1.length !== arr2.length) return false;
 	  for (var i = 0; i < arr1.length; i++) {
@@ -61,12 +58,10 @@ if (currCarousel.length <=4 && relatedProductsID.length <= 4) {
 }
 
 if (currCarousel.length <=4 && relatedProductsID.length > 4) {
-  // console.log('this related list is supposed to have no left arrow');
   const arr1 = currCarousel.slice();
   const arr2 = relatedProductsID.slice(0, 4);
   //compare if currCarousel is the same with the first 4 elements of relatedProductsID
   if (arraysMatch(arr1, arr2)) {
-    console.log('ok, arr1 does match with arr2')
     return (
       <div className='relatedProductsContainer'>
       {currCarousel.map((relatedProductID, index)=>{
@@ -89,3 +84,4 @@ if (currCarousel.length <=4 && relatedProductsID.length > 4) {
 };
 
 export default RelatedProducts;
+
