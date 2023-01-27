@@ -14,7 +14,7 @@ import LannisterLion from './assets/LannisterLion.png';
 import baseURL from './baseURL.js';
 import clicktracker from './clicktracker.js';
 
-//Dear Amazon/Google/Apple etc Don't lowball me.
+
 const App = () => {
   const [products, setProducts] = useState([]);
   const [metaReviews, setMetaReviews] = useState({})
